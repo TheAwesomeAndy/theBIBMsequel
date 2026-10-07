@@ -10,7 +10,9 @@ jitter; re-averaging from 1/4/16 trials. The ERP-window encoder is recomputed un
 same conditions for paired contrasts.
 
 Optional recipe sensitivity (environment variable J3_RECIPE): "default", "epochs40",
-"epochs160", "dropout50". Each recipe writes its own JSON. Writes aggregate JSON only.
+"epochs160", "dropout50". Each recipe writes its own JSON. Recipe variants run on the
+seed-42 partition only (J3_SEEDS, default "42" for variants and "42,43,44,45,46" for the
+default recipe); the JSON records the seeds used. Writes aggregate JSON only.
 """
 from __future__ import annotations
 
@@ -36,6 +38,7 @@ RECIPE = os.environ.get("J3_RECIPE", "default")
 EPOCHS, DROPOUT = RECIPES[RECIPE]
 BATCH, LR = 64, 1e-3
 torch.set_num_threads(int(os.environ.get("J3_THREADS", "2")))
+SEEDS = [int(x) for x in os.environ.get("J3_SEEDS", "42,43,44,45,46" if RECIPE == "default" else "42").split(",")]
 if RECIPE == "default":
     CONDS = (["clean", "remove_0.1", "remove_0.3", "remove_0.5", "spline_0.3", "spline_0.5",
               "amp_5dB", "jitter_50ms", "trials_1", "trials_4", "trials_16"])
@@ -107,7 +110,7 @@ def main():
     pos = SP.sph_to_cart(TD.montage()[1])
     models_ = ("EEGNet", "EEGNet+aug", "ERP-window")
     acc = {(m, c): np.zeros((N, classes.size)) for m in models_ for c in CONDS}
-    for seed, fold, tr, te in J.folds(y, g):
+    for seed, fold, tr, te in J.folds(y, g, seeds=SEEDS):
         mu = X[tr].mean(axis=(0, 1)); sd = X[tr].std(axis=(0, 1)) + 1e-8
         nets = {"EEGNet": train_eegnet(to_input(X[tr], mu, sd), y[tr], 100 * seed + fold, False, C),
                 "EEGNet+aug": train_eegnet(to_input(X[tr], mu, sd), y[tr], 100 * seed + fold, True, C)}
@@ -135,10 +138,10 @@ def main():
                 sc.transform(J.erp_windows(Xte).reshape(len(te), -1)))
         print(f"[J3 {RECIPE}] seed {seed} fold {fold} ({time.time() - t0:.0f}s)", flush=True)
     preds = {k: J.argmax_pred(v, classes) for k, v in acc.items()}
-    res = {"recipe": RECIPE,
+    res = {"recipe": RECIPE, "cv_seeds": SEEDS,
            "protocol": "EEGNet-8,2 (F1=8,D=2,F2=16,k=64,dropout=%.2f), Adam lr=%g, %d epochs, batch %d; "
                        "aug: per-sample p=0.5 zero 0-50%% channels + Gaussian noise std~U(0,0.5); "
-                       "J2 signal-level conditions and draws; StratifiedGroupKFold(5) x seeds 42-46; "
+                       "J2 signal-level conditions and draws; StratifiedGroupKFold(5) x the listed seeds; "
                        "train-only per-channel z-score; OOF proba averaged over partitions; "
                        "subject-level bootstrap n_boot=%d" % (DROPOUT, LR, EPOCHS, BATCH, J.N_BOOT),
            "BA": {}, "clean_metrics": {}, "paired_minus_ERPwindow": {}, "paired_aug_minus_unaug": {},
@@ -157,7 +160,9 @@ def main():
                                                       for m in ("EEGNet", "EEGNet+aug")}
         print(f"[J3 {c}] " + " | ".join(f"{m}={pt[m]:.3f}[{ci[m][0]:.3f},{ci[m][1]:.3f}]" for m in models_)
               + f" aug-unaug={res['paired_aug_minus_unaug'][c]['mean_diff']:+.3f}", flush=True)
-    J.dump(res, "j3_tcrzem_eegnet.json" if RECIPE == "default" else f"j3_tcrzem_eegnet_{RECIPE}.json")
+    name = "j3_tcrzem_eegnet" + ("" if RECIPE == "default" else f"_{RECIPE}")
+    name += "" if SEEDS == J.SEEDS else "_s" + "-".join(map(str, SEEDS))
+    J.dump(res, name + ".json")
     return 0
 
 

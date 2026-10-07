@@ -1,0 +1,133 @@
+\documentclass[journal]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\graphicspath{{../figures/imported/}{../figures/journal/}}
+\usepackage{cite}
+\usepackage{url}
+
+\newcommand{\BSC}{\ensuremath{\mathrm{BSC}_{6}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ind}{\mathbf{1}}
+\input{generated/values.tex}
+
+\title{SKELETON}
+\author{Andrew A. Lane, Wendy Tang, and Brady D. Nelson}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Skeleton.
+\end{abstract}
+\section{Introduction}
+Electroencephalographic event-related potentials (ERPs) measure evoked neural dynamics at millisecond resolution, but the recorded waveform is a noisy, low-dimensional, and subject-dependent projection of an unobserved neural process~\cite{makeig2002dynamic,blankertz2011singletrial}. A representation of affective ERPs can separate conditions under one protocol and keep little usable structure after amplitude noise, temporal misalignment, or electrode loss, and endpoint accuracy alone does not say which. Spiking reservoirs make the gap sharper: fixed recurrent networks give nonlinear temporal expansions~\cite{maass2002real,lukosevicius2009reservoir}, yet EEG studies usually score them as classifiers~\cite{gong2023sglnet,craik2019deep} rather than as measurement operators whose invariances can be tested.
+
+Every such test has to decide what \emph{nothing} means. An absent electrode must be represented by some number. A feature coordinate has an origin, and a zero-filled block sits at that origin whether or not it means anything there. The interval before stimulus onset contains no stimulus-locked signal, yet it is part of every epoch the encoder reads. A score has to be compared with the floor set by no information at all. And a reservoir's recurrence can be switched off ($\rho=0$) to ask what the dynamics add. These choices are rarely stated, and each one can move a measured result.
+
+Our conference study~\cite{lane2026edge} measured two of them on one cohort. On SHAPE ($211$ subjects), raw retention rewarded the encoder closest to chance, and zero-filling a dropped channel before standardization, which is not invariant to re-centering the features (Proposition~1), halved the measured lead of ERP-window features over a near-centered spiking-reservoir code at $30\%$ dropout ($\V{s-fc30-zero-erpres}$ versus $\V{s-fc30-mean-erpres}$ to $\V{s-fc30-spatial-erpres}$ BA); on DEAP the fill rule alone moved band-power BA by up to $0.11$. The reservoir, a fixed leaky integrate-and-fire (LIF) network read out through six spike-count bins (\BSC{}), sat just past its measured edge of stability ($\rho^\ast\approx0.82$, below the echo-state heuristic $\rho=1$), and removing its recurrence cost $\V{s-rho0-minus-09-abs}$ BA. That study left five questions open. It used one cohort, one reservoir draw, and one EEGNet recipe. It argued Proposition~1 algebraically but never moved the origin to watch the score follow. And a post-publication code check found that its reservoir window, $t\in[10,70)$ samples, spans about $-160$ to $+73$~ms around onset, so most of what the reservoir encoded came before the stimulus.
+
+This paper answers those questions with a second, public cohort and new experiments. The contributions are:
+\begin{enumerate}
+    \item An external, paradigm-matched test on an independent IAPS cohort ($228$ subjects, different laboratory, montage, and amplifier) at the conference-matched epoch and at a long epoch pre-specified from the dataset's published effect latencies (Secs.~\ref{sec:data}, \ref{sec:res-clean}).
+    \item A direct experimental test of Proposition~1: shifting the coordinate origin leaves every clean prediction unchanged while the dropout score follows the standardized position of the fill (Sec.~\ref{sec:res-origin}).
+    \item Proposition~2, which shows that per-epoch z-scoring writes a function of the post-stimulus signal into the pre-stimulus interval, and a test of how much of each encoder's accuracy that interval carries (Secs.~\ref{sec:prop2}, \ref{sec:res-prestim}).
+    \item The operating point across ten reservoir draws, thresholds, and leaks: where the measured edge of stability lies and whether accuracy follows it (Sec.~\ref{sec:res-edge}).
+    \item Two physically grounded perturbations, spherical-spline repair of removed electrodes and re-averaging from fewer recorded trials, together with EEGNet with and without augmentation and across recipes on the second cohort (Sec.~\ref{sec:res-signal}).
+\end{enumerate}
+The affective categories define the task. The object of study is what each representation does with nothing: with a missing electrode, a shifted origin, an empty baseline, and a chance floor.
+\section{Related Work}
+\label{sec:related}
+\emph{ERP representations of affect.} Emotional pictures enlarge the late positive potential relative to neutral ones from roughly $400$~ms after onset~\cite{cuthbert2000brain,schupp2006emotion,hajcak2010erp}, and a recent cohort of $224$ participants adds an ordered valence effect between $1500$ and $2500$~ms~\cite{revers2025dissociating}. ERP/EEG decoders commonly use window amplitudes, Hjorth~\cite{hjorth1970eeg} and spectral descriptors~\cite{subasi2007eeg}, and linear models~\cite{blankertz2011singletrial,grootswagers2017decoding}, which are interpretable through these known components but can miss nonlinear temporal structure. Deep networks such as EEGNet~\cite{lawhern2018eegnet} are now common~\cite{craik2019deep,roy2019deep}, and much of this literature reports endpoint accuracy over preprocessing and acquisition choices~\cite{delpup2025preprocessing}.
+
+\emph{Reservoirs and the edge of stability.} Reservoir computing maps an input through a fixed high-dimensional recurrent system to a state trajectory read out by a simple classifier~\cite{maass2002real,jaeger2001echo,jaeger2004harnessing,lukosevicius2009reservoir}, and spiking liquid-state machines add event timing and count structure~\cite{diehl2015unsupervised,roy2019towards}. Computation is often reported to peak near the transition between ordered and irregular dynamics, located by how far a small state perturbation spreads~\cite{bertschinger2004realtime,legenstein2007edge,boedecker2012information}. The spectral radius $\rho=1$ is a heuristic for rate reservoirs, and it is neither necessary nor sufficient for the echo-state property of a driven system~\cite{yildiz2012revisiting}; for a thresholded spiking reservoir the transition need not lie at $\rho=1$. Neuromorphic reservoir features for affective EEG were introduced in earlier ARSPI-Net work~\cite{lane2023arspi,lane2024arspi}, and this paper extends our conference study~\cite{lane2026edge}.
+
+\emph{Missing electrodes.} Dynamic spatial filtering handles missing channels with a learned attention front end~\cite{banville2022dsf}, and channel-dropout or noise augmentation hardens trained models~\cite{rommel2022augment}. A recent EEG foundation-model benchmark finds that apparent channel-dropout fragility depends on whether dropped channels are removed or zero-padded~\cite{sirca2026beyond}. Fills range from constants and spherical-spline interpolation~\cite{perrin1989spherical}, through learned imputation~\cite{banville2022dsf}, to generative synthesis of whole missing modalities~\cite{bi2024graymatters,hu2025gmldm}. The non-learned fills studied here sit at the simple end of that spectrum.
+
+\emph{Evaluation choices that create or remove effects.} High-pass filters can move late ERP effects into earlier latencies, including the pre-stimulus baseline~\cite{acunzo2012systematic,tanner2015inappropriate,vanrullen2011four}, and leakage between preprocessing and evaluation inflates reported accuracy across machine-learning science~\cite{kriegeskorte2009circular,kapoor2023leakage}. Decoding accuracy near a theoretical chance level needs empirical null distributions~\cite{combrisson2015exceeding}, and cross-validated accuracy on a few hundred observations carries wide error bars~\cite{varoquaux2018cross}. Per-epoch normalization, the fill convention for an absent electrode, and the origin of a feature coordinate belong to the same family of choices; we give each a proposition or a direct test.
+\section{Methods}
+\label{sec:methods}
+\subsection{ERP Observation Model}
+Let $X_s^{(c)}\in\R^{C\times T}$ denote the trial-averaged ERP observation of subject $s$ in condition $c$. We treat it as a noisy readout of an unobserved neural state trajectory,
+\begin{equation}\label{eq:obs}
+    \xi_{t+1}=f_\theta(\xi_t,u_t)+\eta_t,\qquad
+    x_t=H\xi_t+\epsilon_t,
+\end{equation}
+where $H$ is the scalp measurement operator and $\epsilon_t$ collects measurement noise, residual single-trial variability, and preprocessing. Every perturbation below acts on a term of this model: electrode removal zeroes rows of $H$, additive noise and re-averaging from fewer trials enlarge $\epsilon_t$, and alignment jitter shifts the sampling index of $x_t$. Normalization acts on $x_t$ before any encoder sees it, which is why it is treated as part of the measurement (Sec.~\ref{sec:prop2}).
+
+\subsection{Spiking Reservoir Encoding}
+Each electrode trace drives a fixed LIF reservoir of $256$ units with input weights $W_{\mathrm{in}}$, recurrent weights $W$, leak $\beta=0.05$, and threshold $\vartheta=0.5$:
+\begin{align}
+    v_{t} &= \big[(1-\beta)\,(1-z_{t-1})\odot v_{t-1} + W z_{t-1} + W_{\mathrm{in}}x_t\big]_+, \\
+    z_{t} &= \Ind[v_{t}\geq \vartheta],
+\end{align}
+where $v_t$ is the membrane potential, $z_t$ the binary spike vector, and $[\cdot]_+$ rectification at zero; the factor $(1-z_{t-1})$ resets every unit that spiked at the previous step. $W_{\mathrm{in}}$ and $W$ are drawn once from a Xavier-uniform law, and $W$ is rescaled to spectral radius $\rho$. Unless stated otherwise the draw is seed $42$ and $\rho=0.9$, the conference operating point; only the readout is trained.
+
+Activity is summarized by six equal temporal bins over an analysis window. For unit $j$ and bin $k$, the binned spike-count code is $b_{j,k}=\sum_{t\in\mathcal{B}_k} z_j(t)$. Each electrode's $1536$-dimensional spike-bin vector is projected onto a single $64$-component PCA basis shared across electrodes and fitted on the training subjects of each fold, and the projections are concatenated, giving $E\in\R^{64C}$ ($2176$ for SHAPE, $2048$ for the external cohort):
+\begin{equation}\label{eq:operator}
+E=\phi_{\mathrm{PCA}}\!\big([b_1,\dots,b_6]\big)=\Phi(X).
+\end{equation}
+The conference window is $t\in[10,70)$ in samples. With onset at sample $51$ in both cohorts it spans about $-160$ to $+73$~ms around onset, so most of it precedes the stimulus. Section~\ref{sec:prop2} examines what that window can read, and Sec.~\ref{sec:res-prestim} adds windows wholly before and wholly after onset.
+
+A silent electrode is a fixed point of the reservoir: with $x_t=0$ from a zero initial state, $v_t$ stays at zero and no unit spikes, so the electrode's spike-bin block is exactly zero. After the PCA step that block maps to $-P\bar b$, the negative of the projected training mean, not to the origin of the embedding.
+
+\subsection{Operating Point and Order Parameter}
+To test whether the recurrent dynamics matter, the same draw is rescaled to $\rho\in\{0,0.3,0.6,0.8,0.9,1.0,1.2,1.5\}$ with every other parameter fixed ($\rho=0$ leaves a feedforward LIF layer). A label-free order parameter locates the dynamical transition by damage spreading~\cite{bertschinger2004realtime}: two copies of the reservoir receive the same electrode drive, one unit's spike is flipped at $t=10$, and the normalized Hamming distance between the copies' spike vectors is averaged over steps $21$ to $69$ and over $400$ sampled drives and flipped units. The transition $\rho^\ast$ is the $\rho$ at which this damage, linearly interpolated on the grid $\rho=0,0.1,\dots,2$, reaches half its maximum. The conference measured $\rho^\ast$ for one draw on SHAPE drives. Here the order parameter and the accuracy sweep are repeated for ten independent draws (seeds $42$--$51$) on the external drives, and $\rho^\ast$ is also measured at thresholds $\vartheta\in\{0.25,0.5,1.0\}$ and leaks $\beta\in\{0.02,0.05,0.1,0.2\}$.
+
+\subsection{Baselines}
+Band-power uses Welch power in five bands ($1$--$4$, $4$--$8$, $8$--$13$, $13$--$30$, $30$--$45$~Hz) per channel ($5C$ dimensions). ERP-window uses mean amplitude in three windows, about $-120$--$0$~ms, $50$--$250$~ms, and $250$--$600$~ms relative to onset, per channel ($3C$ dimensions). All three fixed encoders feed a balanced L2-regularized logistic readout. As a trained baseline, EEGNet-8,2~\cite{lawhern2018eegnet} is trained per fold on the raw $C\times T$ signal (Adam, learning rate $10^{-3}$, $80$ epochs, batch $64$, dropout $0.25$) with train-only per-channel standardization, with and without augmentation by random channel dropout and additive noise. On the external cohort the recipe is also varied ($40$ or $160$ epochs, dropout $0.5$) to bound the effect of a single recipe.
+
+\subsection{Perturbations}
+\label{sec:perturb-methods}
+The feature-coordinate experiment suppresses a dropped channel's feature block after extraction and refills it by one of four rules: zero, train mean, train-fitted $k$-nearest-neighbor imputation ($k{=}10$), and the mean of the retained channels (spatial). It isolates the fill convention and applies to the fixed encoders.
+
+The signal-level experiment corrupts the test subjects' signal before any feature extraction, identically for every encoder including EEGNet, with the same draws in each fold, while training uses the clean signal: removal of $10$, $30$, or $50\%$ of the electrodes (a removed electrode is a zero trace), additive white noise at $5$~dB SNR per channel, and a uniform alignment shift of up to $\pm50$~ms. Two signal-level conditions are new. \emph{Spline repair} replaces each removed electrode by spherical-spline interpolation from the retained electrodes~\cite{perrin1989spherical} (order $4$, seven Legendre terms) on the baseline-corrected microvolt signal before normalization, a physically grounded alternative to the zero trace. \emph{Recorded observation noise} re-averages every test observation from $1$, $4$, or $16$ of its own single trials instead of all of them, so the added variance is the recorded trial-to-trial variability rather than synthetic noise; it needs single trials and is run on the external cohort only.
+
+\subsection{Retention and the Coordinate Origin}
+\label{sec:confound}
+\emph{Raw retention}, the ratio of perturbed to clean BA, overstates the stability of representations whose clean BA is close to chance ($c=1/3$), so we also report \emph{above-chance retention}, $(\mathrm{BA}_{\mathrm{pert}}-c)/(\mathrm{BA}_{\mathrm{clean}}-c)$, and treat absolute BA and paired subject-level differences as primary.
+
+Write the standardized readout input as $z=D_\sigma^{-1}(x-\mu)$ with $D_\sigma=\operatorname{diag}(\sigma)$, and let $S$ index the dropped coordinates. Zero-fill sets $x_S=0$, so the dropped block enters as $z_S=-D_{\sigma,S}^{-1}\mu_S$; train-mean fill sets $x_S=\mu_S$, so $z_S=0$:
+\begin{equation}\label{eq:noninv}
+z_S^{\mathrm{zero}}-z_S^{\mathrm{mean}}=-D_{\sigma,S}^{-1}\mu_S .
+\end{equation}
+
+\noindent\textbf{Proposition 1 (origin dependence of zero-fill).} \emph{Let the clean readout depend on $x$ only through $z$, so it is invariant to a constant offset $x\mapsto x-b$ (train-only standardization guarantees this). Then the clean prediction is unchanged by the re-centering, while the zero-fill dropout input shifts by $\Delta z_S=D_{\sigma,S}^{-1}b_S$. Hence the measured zero-fill dropout accuracy depends on the coordinate origin, and the zero- and mean-fill inputs coincide if and only if $\mu_S=0$.}
+
+\noindent\emph{Proof.} Standardization subtracts the training mean, so $b$ cancels from the clean input. A zero-filled coordinate maps to $z_i=-(\mu_i-b_i)/\sigma_i$ instead of $-\mu_i/\sigma_i$, a shift of $b_i/\sigma_i\neq0$ for any $b_i\neq0$.\hfill$\square$
+
+For a linear readout with class weights $W$, Eq.~\eqref{eq:noninv} moves the class logits by $\Delta\ell=-W_S D_{\sigma,S}^{-1}\mu_S$ between the two fills, so the fills can disagree only as far as the dropped features are non-centered. Proposition~1 has a direct experimental test, run here for the first time: fill the dropped block with the raw value $x_i=\mu_i+\kappa\sigma_i$, which places it at standardized position $z_i=\kappa$ for every encoder, and sweep $\kappa$. Clean predictions must not change with any offset $b$, while dropout accuracy must trace a curve in $\kappa$ on which train-mean fill is $\kappa=0$ and each encoder's own zero sits near $\kappa=-\overline{|\mu|/\sigma}$. We refit the readout on features shifted by $b=\mu+2\sigma$ to check the first prediction and sweep $\kappa\in[-3,3]$ to test the second.
+
+\subsection{What the Pre-Stimulus Interval Can Contain}
+\label{sec:prop2}
+Both cohorts are baseline-corrected over the $200$~ms before onset, so the pre-stimulus mean of every trial-averaged trace is zero, and both are then z-scored per channel over the whole epoch, as in the conference pipeline. Let $P$ be the pre-stimulus samples and $Q$ the rest, with $|P|+|Q|=T$, and let $m_Q$ be the post-stimulus mean and $s$ the epoch standard deviation of one channel.
+
+\noindent\textbf{Proposition 2 (baseline transfer under per-epoch normalization).} \emph{For a baseline-corrected trace normalized by its own epoch mean and standard deviation, the mean of the normalized pre-stimulus segment is $-\tfrac{|Q|}{T}\,m_Q/s$. The pre-stimulus segment is therefore a deterministic function of the post-stimulus signal, and any encoder that reads only $P$ has access to $m_Q/s$.}
+
+\noindent\emph{Proof.} The epoch mean is $(|P|\cdot 0+|Q|\,m_Q)/T$. Subtracting it and dividing by $s$ maps the zero pre-stimulus mean to $-|Q|m_Q/(Ts)$.\hfill$\square$
+
+With onset at sample $51$ of $256$, $|Q|/T=0.80$. An affective modulation of the late positive potential changes $m_Q$, so under per-epoch z-scoring a classifier can separate conditions from an interval in which no stimulus has yet been shown. Train-only per-channel scaling (one scale per channel from the training subjects, applied to every epoch) leaves the pre-stimulus mean at zero and removes this route. We compare the two normalizations for windows wholly before onset, the conference window, and windows wholly after onset (Sec.~\ref{sec:res-prestim}).
+\section{Data and Protocol}
+\label{sec:data}
+\subsection{SHAPE Cohort}
+The primary cohort is the trial-averaged affective ERP data of the Stress, Health, and the Psychophysiology of Emotion (SHAPE) project~\cite{shape}, collected by the Laboratory for Clinical Affective Neuroscience at Stony Brook University: $211$ subjects after exclusion of one anomalous record, each contributing negative, neutral, and pleasant observations ($633$ in total). Each epoch ($34$ scalp channels at $1024$~Hz, $1.2$~s, baseline-corrected over the $200$~ms pre-stimulus interval) is analyzed as every fourth of its first $1024$ samples: $256$ samples at $256$~Hz spanning $-200$ to $+800$~ms, onset at sample $51$, z-scored per channel within each epoch. SHAPE data are held in a restricted environment; every SHAPE number in this paper is the conference result~\cite{lane2026edge}, regenerated from its committed code and aggregate outputs, and no SHAPE analysis was rerun for this version.
+
+\subsection{External Cohort}
+The external cohort is a public IAPS passive-viewing dataset~\cite{revers2025dissociating,tcrzem2025data} from a different laboratory, montage, and amplifier: $32$ scalp electrodes (BioSemi layout) referenced to the mastoids, recorded at $512$~Hz, filtered, ocular-corrected with ICA, and artifact-rejected by the dataset authors. Of $239$ participants, the $228$ with a complete negative, neutral, and pleasant panel in the preprocessed release are used ($684$ observations; median $44$ trials per observation, range $20$ to $54$; high- and low-arousal pictures of one valence are pooled). Each observation is built to the SHAPE layout: trial average, baseline correction over $-200$ to $0$~ms, every second sample from $-200$~ms, giving $256$ samples at $256$~Hz with onset at sample $51$, and z-scoring per channel within the epoch. This conference-matched epoch is the primary external analysis. The grand averages reproduce the published effects (Fig.~\ref{fig:tcrzem-erp}): emotional pictures exceed neutral ones by $2.12$~$\mu$V at PO3 between $500$ and $1300$~ms, and negative pictures exceed pleasant ones by $1.32$~$\mu$V between $1500$ and $2500$~ms. Most of both effects lies after $+800$~ms, so we pre-specified, before computing any of its results, a secondary analysis on a long epoch from $-200$ to $+2496$~ms ($691$ samples, same sampling, baseline, and onset). In it the reservoir window covers $0$ to $+2484$~ms after onset (six bins of $106$ samples), the ERP-window encoder adds the two published windows ($500$--$1300$ and $1500$--$2500$~ms), and band-power and EEGNet see the whole epoch.
+
+\subsection{DEAP Check}
+On DEAP~\cite{koelstra2012deap} ($32$ subjects, band-power features, binary valence, within-subject $5$-fold) the conference measured how much the fill rule alone moves channel-dropout accuracy. That check is reported unchanged (Fig.~\ref{fig:deapaug}a).
+
+\subsection{Validation}
+All analyses share one fold structure: StratifiedGroupKFold ($5$ folds, seeds $42$--$46$) with subjects as groups, so a subject's observations never span training and test. Standardization and the reservoir's PCA basis are fitted on the training subjects of each fold, the fixed encoders use a balanced L2 logistic readout, and EEGNet is trained on the same folds. The out-of-fold class probabilities of each observation are averaged over the five partitions, and $95\%$ confidence intervals (CIs) come from $4000$ resamples of the subjects with replacement, each keeping its three observations. Contrasts between encoders, fills, conditions, or operating points are paired differences under the same resampling, so no test treats the $25$ overlapping folds as independent. Chance is $1/3$, and a within-subject label-permutation null ($20$ permutations) gives the empirical floor for every fixed encoder~\cite{combrisson2015exceeding}. The journal code reproduces the conference implementation bit for bit on synthetic data (reservoir codes, damage, and bootstrap intervals), and only aggregate results leave the restricted environment.
+\section{Results}
+\label{sec:res-clean}\label{sec:res-origin}\label{sec:res-prestim}\label{sec:res-edge}\label{sec:res-signal}
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{fig_tcrzem_erp.pdf}\caption{x}\label{fig:tcrzem-erp}\end{figure}
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{fig_deap_aug.pdf}\caption{x}\label{fig:deapaug}\end{figure}
+\begin{thebibliography}{99}
+\bibitem{x} x
+\end{thebibliography}
+\end{document}

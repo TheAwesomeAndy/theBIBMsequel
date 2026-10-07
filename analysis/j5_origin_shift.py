@@ -12,7 +12,9 @@ For every fixed encoder (band-power, ERP-window, reservoir rho = 0.9 with train-
 PCA-64) this script:
 1. checks clean invariance: the readout is refitted on features shifted by
    b = mu + 2 sigma (fold-wise training statistics) and the out-of-fold class
-   probabilities are compared with the unshifted ones (max absolute difference);
+   probabilities are compared with the unshifted ones (max absolute difference, which
+   is bounded by the L-BFGS stopping tolerance, and the share of predicted labels that
+   differ, per fold);
 2. scores channel dropout (10/30/50%, conference draws) with the dropped block placed at
    kappa in {-3, -2, -1, -0.5, 0, 0.5, 1, 2, 3}, and with the encoder's native zero;
 3. computes, per test observation at 30% dropout, the logit change between native-zero
@@ -51,6 +53,7 @@ def main():
     shifted = {n: np.zeros((N, classes.size)) for n in NAMES}
     dlogit = {n: [] for n in NAMES}
     flips = {n: [] for n in NAMES}
+    inv_labels = {n: [] for n in NAMES}
     zpos = {n: [] for n in NAMES}
     for seed, fold, tr, te in F:
         _, E, _ = J.pca_embed(B, tr)
@@ -62,7 +65,9 @@ def main():
             clean[n][te] += p
             mu, sd = sc.mean_, sc.scale_
             b = mu + 2.0 * sd
-            shifted[n][te] += J.fit_pred(Ztr - b, y[tr], Zte - b, seed)
+            ps = J.fit_pred(Ztr - b, y[tr], Zte - b, seed)
+            shifted[n][te] += ps
+            inv_labels[n].append(float(np.mean(np.argmax(ps, 1) != np.argmax(p, 1))))
             for lv in LEVELS:
                 drop = J.removal_draw(n_ch, lv, seed, fold)
                 cols = (drop[:, None] * nf + np.arange(nf)[None, :]).ravel()
@@ -84,7 +89,10 @@ def main():
                        "statistics) or native zero; conference removal draws; reservoir rho=0.9 with "
                        "train-only PCA-64; StratifiedGroupKFold(5) x seeds 42-46; balanced L2 logreg; OOF "
                        "proba averaged over partitions; subject-level bootstrap n_boot=%d" % J.N_BOOT,
-           "kappas": KAPPAS, "clean_invariance_max_abs_proba_diff": {}, "clean_BA": {}, "dropout": {},
+           "kappas": KAPPAS, "clean_invariance_max_abs_proba_diff": {},
+           "clean_invariance_fraction_labels_changed_per_fold_max": {n: float(np.max(v)) for n, v in inv_labels.items()},
+           "clean_invariance_fraction_labels_changed_mean": {n: float(np.mean(v)) for n, v in inv_labels.items()},
+           "clean_BA": {}, "dropout": {},
            "predicted_logit_shift_30": {}}
     for n in NAMES:
         res["clean_invariance_max_abs_proba_diff"][n] = float(np.max(np.abs(clean[n] - shifted[n])))
@@ -98,6 +106,8 @@ def main():
             ent = {f: {"BA": pt[f], "ci95": ci[f]} for f in fills}
             ent["native_minus_mean"] = J.paired_ci(y, g, pm["native_zero"], pm["kappa_+0.0"])
             ent["kappa-2_minus_kappa+2"] = J.paired_ci(y, g, pm["kappa_-2.0"], pm["kappa_+2.0"])
+            ent["kappa0_minus"] = {f: J.paired_ci(y, g, pm["kappa_+0.0"], pm[f])
+                                   for f in fills if f != "kappa_+0.0"}
             res["dropout"][n][key] = ent
         res["predicted_logit_shift_30"][n] = {
             "mean_class_centered_norm": float(np.mean(dlogit[n])), "sd": float(np.std(dlogit[n], ddof=1)),
