@@ -187,6 +187,8 @@ def ext_values(tag, suffix):
             if c != "clean":
                 for m in ("EEGNet", "EEGNet+aug"):
                     put_diff(f"{tag}-loss-{cc}-{ENC[m]}", j3["paired_clean_minus_condition"][c][m])
+        put(f"{tag}-augminus-max", s3(max(v["mean_diff"] for v in j3["paired_aug_minus_unaug"].values())))
+        put(f"{tag}-augminus-sigconds", ", ".join(c for c, v in j3["paired_aug_minus_unaug"].items() if v["ci95"][0] > 0))
         put_ba(f"{tag}-clean-eegnet", j3["BA"]["clean"]["EEGNet"]["BA"], j3["BA"]["clean"]["EEGNet"]["ci95"])
         put_ba(f"{tag}-clean-aug", j3["BA"]["clean"]["EEGNet+aug"]["BA"], j3["BA"]["clean"]["EEGNet+aug"]["ci95"])
     if j5:
@@ -316,6 +318,8 @@ def edge_values():
         for r in j8["rho"]:
             put(f"e-z0-{r}", f"{j8['silent_block_mean_abs_z'][str(r)]:.2f}")
             put(f"e-rawcent-{r}", f"{j8['raw_counts_mean_abs_mu_over_sigma'][str(r)]:.2f}")
+        low = [j8["silent_block_mean_abs_z"][str(r)] for r in j8["rho"] if r <= 0.6]
+        put("e-z0-low-min", f"{min(low):.2f}"); put("e-z0-low-max", f"{max(low):.2f}")
     return j4
 
 
@@ -356,9 +360,9 @@ def table_fills(e2, x, xl):
     rows = []
     blocks = [("SHAPE", "s", e2)]
     if xl:
-        blocks.append(("External, long", "xl", xl))
+        blocks.append(("Ext.\\ long", "xl", xl))
     if x:
-        blocks.append(("External, $-200$..$800$", "x", x))
+        blocks.append(("Ext.\\ matched", "x", x))
     for bi, (lab, tag, src) in enumerate(blocks):
         for fi, fill in enumerate(("zero", "mean", "knn", "spatial")):
             if tag == "s":

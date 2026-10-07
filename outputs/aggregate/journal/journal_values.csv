@@ -79,6 +79,12 @@ e-rate-0.6,0.05
 e-rate-0.9,0.14
 e-rate-1.2,0.23
 e-rate-1.5,0.29
+e-rawcent-0.0,0.85
+e-rawcent-0.3,0.88
+e-rawcent-0.6,0.90
+e-rawcent-0.9,2.58
+e-rawcent-1.2,4.40
+e-rawcent-1.5,5.72
 e-rhostar-42,0.82
 e-rhostar-beta0.02,0.79
 e-rhostar-beta0.05,0.82
@@ -91,6 +97,14 @@ e-rhostar-sd,0.04
 e-rhostar-theta0.25,0.35
 e-rhostar-theta0.5,0.82
 e-rhostar-theta1.0,1.57
+e-z0-0.0,1.23
+e-z0-0.3,1.36
+e-z0-0.6,1.21
+e-z0-0.9,4.95
+e-z0-1.2,6.23
+e-z0-1.5,6.23
+e-z0-low-max,1.36
+e-z0-low-min,1.21
 s-auc-band,0.682
 s-auc-erp,0.799
 s-auc-res,0.658
@@ -535,9 +549,123 @@ t-sal-dz,0.69
 t-sal-uv,2.12
 t-val-dz,0.25
 t-val-uv,1.32
+x-auc-aug,0.679
 x-auc-band,0.531
+x-auc-eegnet,0.666
 x-auc-erp,0.561
 x-auc-res,0.482
+x-augminus-amp5dB,+0.041
+x-augminus-amp5dB-abs,0.041
+x-augminus-amp5dB-ci,"[+0.010, +0.072]"
+x-augminus-amp5dB-hi,+0.072
+x-augminus-amp5dB-lo,+0.010
+x-augminus-clean,+0.022
+x-augminus-clean-abs,0.022
+x-augminus-clean-ci,"[-0.003, +0.048]"
+x-augminus-clean-hi,+0.048
+x-augminus-clean-lo,-0.003
+x-augminus-jitter50ms,+0.003
+x-augminus-jitter50ms-abs,0.003
+x-augminus-jitter50ms-ci,"[-0.023, +0.029]"
+x-augminus-jitter50ms-hi,+0.029
+x-augminus-jitter50ms-lo,-0.023
+x-augminus-max,+0.041
+x-augminus-remove0.1,+0.032
+x-augminus-remove0.1-abs,0.032
+x-augminus-remove0.1-ci,"[+0.006, +0.058]"
+x-augminus-remove0.1-hi,+0.058
+x-augminus-remove0.1-lo,+0.006
+x-augminus-remove0.3,+0.029
+x-augminus-remove0.3-abs,0.029
+x-augminus-remove0.3-ci,"[-0.003, +0.058]"
+x-augminus-remove0.3-hi,+0.058
+x-augminus-remove0.3-lo,-0.003
+x-augminus-remove0.5,+0.015
+x-augminus-remove0.5-abs,0.015
+x-augminus-remove0.5-ci,"[-0.013, +0.042]"
+x-augminus-remove0.5-hi,+0.042
+x-augminus-remove0.5-lo,-0.013
+x-augminus-sigconds,"remove_0.1, spline_0.3, amp_5dB"
+x-augminus-spline0.3,+0.029
+x-augminus-spline0.3-abs,0.029
+x-augminus-spline0.3-ci,"[+0.007, +0.053]"
+x-augminus-spline0.3-hi,+0.053
+x-augminus-spline0.3-lo,+0.007
+x-augminus-spline0.5,+0.005
+x-augminus-spline0.5-abs,0.005
+x-augminus-spline0.5-ci,"[-0.022, +0.032]"
+x-augminus-spline0.5-hi,+0.032
+x-augminus-spline0.5-lo,-0.022
+x-augminus-trials1,+0.007
+x-augminus-trials1-abs,0.007
+x-augminus-trials1-ci,"[-0.022, +0.037]"
+x-augminus-trials1-hi,+0.037
+x-augminus-trials1-lo,-0.022
+x-augminus-trials16,-0.002
+x-augminus-trials16-abs,0.002
+x-augminus-trials16-ci,"[-0.031, +0.026]"
+x-augminus-trials16-hi,+0.026
+x-augminus-trials16-lo,-0.031
+x-augminus-trials4,+0.007
+x-augminus-trials4-abs,0.007
+x-augminus-trials4-ci,"[-0.019, +0.034]"
+x-augminus-trials4-hi,+0.034
+x-augminus-trials4-lo,-0.019
+x-augminuserp-amp5dB,+0.108
+x-augminuserp-amp5dB-abs,0.108
+x-augminuserp-amp5dB-ci,"[+0.069, +0.149]"
+x-augminuserp-amp5dB-hi,+0.149
+x-augminuserp-amp5dB-lo,+0.069
+x-augminuserp-clean,+0.138
+x-augminuserp-clean-abs,0.138
+x-augminuserp-clean-ci,"[+0.101, +0.175]"
+x-augminuserp-clean-hi,+0.175
+x-augminuserp-clean-lo,+0.101
+x-augminuserp-jitter50ms,+0.076
+x-augminuserp-jitter50ms-abs,0.076
+x-augminuserp-jitter50ms-ci,"[+0.037, +0.114]"
+x-augminuserp-jitter50ms-hi,+0.114
+x-augminuserp-jitter50ms-lo,+0.037
+x-augminuserp-remove0.1,+0.118
+x-augminuserp-remove0.1-abs,0.118
+x-augminuserp-remove0.1-ci,"[+0.083, +0.155]"
+x-augminuserp-remove0.1-hi,+0.155
+x-augminuserp-remove0.1-lo,+0.083
+x-augminuserp-remove0.3,+0.102
+x-augminuserp-remove0.3-abs,0.102
+x-augminuserp-remove0.3-ci,"[+0.066, +0.137]"
+x-augminuserp-remove0.3-hi,+0.137
+x-augminuserp-remove0.3-lo,+0.066
+x-augminuserp-remove0.5,+0.117
+x-augminuserp-remove0.5-abs,0.117
+x-augminuserp-remove0.5-ci,"[+0.082, +0.152]"
+x-augminuserp-remove0.5-hi,+0.152
+x-augminuserp-remove0.5-lo,+0.082
+x-augminuserp-spline0.3,+0.142
+x-augminuserp-spline0.3-abs,0.142
+x-augminuserp-spline0.3-ci,"[+0.107, +0.178]"
+x-augminuserp-spline0.3-hi,+0.178
+x-augminuserp-spline0.3-lo,+0.107
+x-augminuserp-spline0.5,+0.097
+x-augminuserp-spline0.5-abs,0.097
+x-augminuserp-spline0.5-ci,"[+0.060, +0.133]"
+x-augminuserp-spline0.5-hi,+0.133
+x-augminuserp-spline0.5-lo,+0.060
+x-augminuserp-trials1,+0.047
+x-augminuserp-trials1-abs,0.047
+x-augminuserp-trials1-ci,"[+0.007, +0.085]"
+x-augminuserp-trials1-hi,+0.085
+x-augminuserp-trials1-lo,+0.007
+x-augminuserp-trials16,+0.090
+x-augminuserp-trials16-abs,0.090
+x-augminuserp-trials16-ci,"[+0.051, +0.129]"
+x-augminuserp-trials16-hi,+0.129
+x-augminuserp-trials16-lo,+0.051
+x-augminuserp-trials4,+0.048
+x-augminuserp-trials4-abs,0.048
+x-augminuserp-trials4-ci,"[+0.007, +0.089]"
+x-augminuserp-trials4-hi,+0.089
+x-augminuserp-trials4-lo,+0.007
 x-bsc6minus1-clean,+0.015
 x-bsc6minus1-clean-abs,0.015
 x-bsc6minus1-clean-ci,"[-0.032, +0.061]"
@@ -552,10 +680,18 @@ x-cent-band,1.20
 x-cent-erp,0.68
 x-cent-rawcounts,1.14
 x-cent-res,0.05
+x-clean-aug,0.523
+x-clean-aug-ci,"[0.491, 0.556]"
+x-clean-aug-hi,0.556
+x-clean-aug-lo,0.491
 x-clean-band,0.368
 x-clean-band-ci,"[0.339, 0.399]"
 x-clean-band-hi,0.399
 x-clean-band-lo,0.339
+x-clean-eegnet,0.501
+x-clean-eegnet-ci,"[0.471, 0.534]"
+x-clean-eegnet-hi,0.534
+x-clean-eegnet-lo,0.471
 x-clean-erp,0.386
 x-clean-erp-ci,"[0.358, 0.414]"
 x-clean-erp-hi,0.414
@@ -572,7 +708,65 @@ x-clean-res-lo,0.288
 x-dlogit-band,1.78
 x-dlogit-erp,0.71
 x-dlogit-res,0.17
+x-eegnet-seeds,"42, 43, 44, 45, 46"
+x-eegnetminuserp-amp5dB,+0.067
+x-eegnetminuserp-amp5dB-abs,0.067
+x-eegnetminuserp-amp5dB-ci,"[+0.031, +0.104]"
+x-eegnetminuserp-amp5dB-hi,+0.104
+x-eegnetminuserp-amp5dB-lo,+0.031
+x-eegnetminuserp-clean,+0.116
+x-eegnetminuserp-clean-abs,0.116
+x-eegnetminuserp-clean-ci,"[+0.076, +0.154]"
+x-eegnetminuserp-clean-hi,+0.154
+x-eegnetminuserp-clean-lo,+0.076
+x-eegnetminuserp-jitter50ms,+0.073
+x-eegnetminuserp-jitter50ms-abs,0.073
+x-eegnetminuserp-jitter50ms-ci,"[+0.035, +0.111]"
+x-eegnetminuserp-jitter50ms-hi,+0.111
+x-eegnetminuserp-jitter50ms-lo,+0.035
+x-eegnetminuserp-remove0.1,+0.086
+x-eegnetminuserp-remove0.1-abs,0.086
+x-eegnetminuserp-remove0.1-ci,"[+0.050, +0.124]"
+x-eegnetminuserp-remove0.1-hi,+0.124
+x-eegnetminuserp-remove0.1-lo,+0.050
+x-eegnetminuserp-remove0.3,+0.073
+x-eegnetminuserp-remove0.3-abs,0.073
+x-eegnetminuserp-remove0.3-ci,"[+0.035, +0.110]"
+x-eegnetminuserp-remove0.3-hi,+0.110
+x-eegnetminuserp-remove0.3-lo,+0.035
+x-eegnetminuserp-remove0.5,+0.102
+x-eegnetminuserp-remove0.5-abs,0.102
+x-eegnetminuserp-remove0.5-ci,"[+0.064, +0.139]"
+x-eegnetminuserp-remove0.5-hi,+0.139
+x-eegnetminuserp-remove0.5-lo,+0.064
+x-eegnetminuserp-spline0.3,+0.113
+x-eegnetminuserp-spline0.3-abs,0.113
+x-eegnetminuserp-spline0.3-ci,"[+0.075, +0.151]"
+x-eegnetminuserp-spline0.3-hi,+0.151
+x-eegnetminuserp-spline0.3-lo,+0.075
+x-eegnetminuserp-spline0.5,+0.092
+x-eegnetminuserp-spline0.5-abs,0.092
+x-eegnetminuserp-spline0.5-ci,"[+0.056, +0.130]"
+x-eegnetminuserp-spline0.5-hi,+0.130
+x-eegnetminuserp-spline0.5-lo,+0.056
+x-eegnetminuserp-trials1,+0.039
+x-eegnetminuserp-trials1-abs,0.039
+x-eegnetminuserp-trials1-ci,"[-0.000, +0.079]"
+x-eegnetminuserp-trials1-hi,+0.079
+x-eegnetminuserp-trials1-lo,-0.000
+x-eegnetminuserp-trials16,+0.092
+x-eegnetminuserp-trials16-abs,0.092
+x-eegnetminuserp-trials16-ci,"[+0.053, +0.130]"
+x-eegnetminuserp-trials16-hi,+0.130
+x-eegnetminuserp-trials16-lo,+0.053
+x-eegnetminuserp-trials4,+0.041
+x-eegnetminuserp-trials4-abs,0.041
+x-eegnetminuserp-trials4-ci,"[+0.000, +0.082]"
+x-eegnetminuserp-trials4-hi,+0.082
+x-eegnetminuserp-trials4-lo,+0.000
+x-f1-aug,0.522
 x-f1-band,0.367
+x-f1-eegnet,0.501
 x-f1-erp,0.385
 x-f1-res,0.320
 x-fc10-knn-band,0.364
@@ -1266,11 +1460,24 @@ x-fmz-spatial50-res-lo,-0.007
 x-inv-band,5.9\times10^{-6}
 x-inv-erp,3.3\times10^{-3}
 x-inv-res,5.9\times10^{-14}
+x-invlabels-band,0.0
+x-invlabels-erp,0.7
+x-invlabels-res,0.0
+x-loss-amp5dB-aug,+0.024
+x-loss-amp5dB-aug-abs,0.024
+x-loss-amp5dB-aug-ci,"[+0.003, +0.045]"
+x-loss-amp5dB-aug-hi,+0.045
+x-loss-amp5dB-aug-lo,+0.003
 x-loss-amp5dB-band,+0.014
 x-loss-amp5dB-band-abs,0.014
 x-loss-amp5dB-band-ci,"[-0.018, +0.048]"
 x-loss-amp5dB-band-hi,+0.048
 x-loss-amp5dB-band-lo,-0.018
+x-loss-amp5dB-eegnet,+0.042
+x-loss-amp5dB-eegnet-abs,0.042
+x-loss-amp5dB-eegnet-ci,"[+0.016, +0.069]"
+x-loss-amp5dB-eegnet-hi,+0.069
+x-loss-amp5dB-eegnet-lo,+0.016
 x-loss-amp5dB-erp,-0.006
 x-loss-amp5dB-erp-abs,0.006
 x-loss-amp5dB-erp-ci,"[-0.026, +0.013]"
@@ -1281,11 +1488,21 @@ x-loss-amp5dB-res-abs,0.050
 x-loss-amp5dB-res-ci,"[-0.098, -0.003]"
 x-loss-amp5dB-res-hi,-0.003
 x-loss-amp5dB-res-lo,-0.098
+x-loss-jitter50ms-aug,+0.044
+x-loss-jitter50ms-aug-abs,0.044
+x-loss-jitter50ms-aug-ci,"[+0.018, +0.069]"
+x-loss-jitter50ms-aug-hi,+0.069
+x-loss-jitter50ms-aug-lo,+0.018
 x-loss-jitter50ms-band,+0.003
 x-loss-jitter50ms-band-abs,0.003
 x-loss-jitter50ms-band-ci,"[-0.006, +0.013]"
 x-loss-jitter50ms-band-hi,+0.013
 x-loss-jitter50ms-band-lo,-0.006
+x-loss-jitter50ms-eegnet,+0.025
+x-loss-jitter50ms-eegnet-abs,0.025
+x-loss-jitter50ms-eegnet-ci,"[+0.000, +0.050]"
+x-loss-jitter50ms-eegnet-hi,+0.050
+x-loss-jitter50ms-eegnet-lo,+0.000
 x-loss-jitter50ms-erp,-0.018
 x-loss-jitter50ms-erp-abs,0.018
 x-loss-jitter50ms-erp-ci,"[-0.038, +0.003]"
@@ -1296,11 +1513,21 @@ x-loss-jitter50ms-res-abs,0.035
 x-loss-jitter50ms-res-ci,"[-0.083, +0.012]"
 x-loss-jitter50ms-res-hi,+0.012
 x-loss-jitter50ms-res-lo,-0.083
+x-loss-remove0.1-aug,+0.026
+x-loss-remove0.1-aug-abs,0.026
+x-loss-remove0.1-aug-ci,"[+0.012, +0.042]"
+x-loss-remove0.1-aug-hi,+0.042
+x-loss-remove0.1-aug-lo,+0.012
 x-loss-remove0.1-band,+0.016
 x-loss-remove0.1-band-abs,0.016
 x-loss-remove0.1-band-ci,"[-0.010, +0.041]"
 x-loss-remove0.1-band-hi,+0.041
 x-loss-remove0.1-band-lo,-0.010
+x-loss-remove0.1-eegnet,+0.036
+x-loss-remove0.1-eegnet-abs,0.036
+x-loss-remove0.1-eegnet-ci,"[+0.015, +0.058]"
+x-loss-remove0.1-eegnet-hi,+0.058
+x-loss-remove0.1-eegnet-lo,+0.015
 x-loss-remove0.1-erp,+0.007
 x-loss-remove0.1-erp-abs,0.007
 x-loss-remove0.1-erp-ci,"[-0.018, +0.031]"
@@ -1311,11 +1538,21 @@ x-loss-remove0.1-res-abs,0.020
 x-loss-remove0.1-res-ci,"[+0.003, +0.039]"
 x-loss-remove0.1-res-hi,+0.039
 x-loss-remove0.1-res-lo,+0.003
+x-loss-remove0.3-aug,+0.051
+x-loss-remove0.3-aug-abs,0.051
+x-loss-remove0.3-aug-ci,"[+0.026, +0.077]"
+x-loss-remove0.3-aug-hi,+0.077
+x-loss-remove0.3-aug-lo,+0.026
 x-loss-remove0.3-band,+0.009
 x-loss-remove0.3-band-abs,0.009
 x-loss-remove0.3-band-ci,"[-0.025, +0.042]"
 x-loss-remove0.3-band-hi,+0.042
 x-loss-remove0.3-band-lo,-0.025
+x-loss-remove0.3-eegnet,+0.058
+x-loss-remove0.3-eegnet-abs,0.058
+x-loss-remove0.3-eegnet-ci,"[+0.026, +0.089]"
+x-loss-remove0.3-eegnet-hi,+0.089
+x-loss-remove0.3-eegnet-lo,+0.026
 x-loss-remove0.3-erp,+0.016
 x-loss-remove0.3-erp-abs,0.016
 x-loss-remove0.3-erp-ci,"[-0.012, +0.042]"
@@ -1326,11 +1563,21 @@ x-loss-remove0.3-res-abs,0.010
 x-loss-remove0.3-res-ci,"[-0.018, +0.039]"
 x-loss-remove0.3-res-hi,+0.039
 x-loss-remove0.3-res-lo,-0.018
+x-loss-remove0.5-aug,+0.057
+x-loss-remove0.5-aug-abs,0.057
+x-loss-remove0.5-aug-ci,"[+0.031, +0.085]"
+x-loss-remove0.5-aug-hi,+0.085
+x-loss-remove0.5-aug-lo,+0.031
 x-loss-remove0.5-band,+0.026
 x-loss-remove0.5-band-abs,0.026
 x-loss-remove0.5-band-ci,"[-0.006, +0.058]"
 x-loss-remove0.5-band-hi,+0.058
 x-loss-remove0.5-band-lo,-0.006
+x-loss-remove0.5-eegnet,+0.050
+x-loss-remove0.5-eegnet-abs,0.050
+x-loss-remove0.5-eegnet-ci,"[+0.016, +0.083]"
+x-loss-remove0.5-eegnet-hi,+0.083
+x-loss-remove0.5-eegnet-lo,+0.016
 x-loss-remove0.5-erp,+0.036
 x-loss-remove0.5-erp-abs,0.036
 x-loss-remove0.5-erp-ci,"[+0.006, +0.066]"
@@ -1356,11 +1603,21 @@ x-loss-spline0.1-res-abs,0.006
 x-loss-spline0.1-res-ci,"[-0.026, +0.013]"
 x-loss-spline0.1-res-hi,+0.013
 x-loss-spline0.1-res-lo,-0.026
+x-loss-spline0.3-aug,+0.008
+x-loss-spline0.3-aug-abs,0.008
+x-loss-spline0.3-aug-ci,"[-0.010, +0.026]"
+x-loss-spline0.3-aug-hi,+0.026
+x-loss-spline0.3-aug-lo,-0.010
 x-loss-spline0.3-band,+0.007
 x-loss-spline0.3-band-abs,0.007
 x-loss-spline0.3-band-ci,"[-0.018, +0.032]"
 x-loss-spline0.3-band-hi,+0.032
 x-loss-spline0.3-band-lo,-0.018
+x-loss-spline0.3-eegnet,+0.015
+x-loss-spline0.3-eegnet-abs,0.015
+x-loss-spline0.3-eegnet-ci,"[-0.007, +0.037]"
+x-loss-spline0.3-eegnet-hi,+0.037
+x-loss-spline0.3-eegnet-lo,-0.007
 x-loss-spline0.3-erp,+0.012
 x-loss-spline0.3-erp-abs,0.012
 x-loss-spline0.3-erp-ci,"[-0.012, +0.035]"
@@ -1371,11 +1628,21 @@ x-loss-spline0.3-res-abs,0.031
 x-loss-spline0.3-res-ci,"[-0.061, +0.000]"
 x-loss-spline0.3-res-hi,+0.000
 x-loss-spline0.3-res-lo,-0.061
+x-loss-spline0.5-aug,+0.026
+x-loss-spline0.5-aug-abs,0.026
+x-loss-spline0.5-aug-ci,"[+0.004, +0.048]"
+x-loss-spline0.5-aug-hi,+0.048
+x-loss-spline0.5-aug-lo,+0.004
 x-loss-spline0.5-band,+0.012
 x-loss-spline0.5-band-abs,0.012
 x-loss-spline0.5-band-ci,"[-0.020, +0.044]"
 x-loss-spline0.5-band-hi,+0.044
 x-loss-spline0.5-band-lo,-0.020
+x-loss-spline0.5-eegnet,+0.009
+x-loss-spline0.5-eegnet-abs,0.009
+x-loss-spline0.5-eegnet-ci,"[-0.018, +0.037]"
+x-loss-spline0.5-eegnet-hi,+0.037
+x-loss-spline0.5-eegnet-lo,-0.018
 x-loss-spline0.5-erp,-0.015
 x-loss-spline0.5-erp-abs,0.015
 x-loss-spline0.5-erp-ci,"[-0.042, +0.012]"
@@ -1386,11 +1653,21 @@ x-loss-spline0.5-res-abs,0.026
 x-loss-spline0.5-res-ci,"[-0.063, +0.009]"
 x-loss-spline0.5-res-hi,+0.009
 x-loss-spline0.5-res-lo,-0.063
+x-loss-trials1-aug,+0.146
+x-loss-trials1-aug-abs,0.146
+x-loss-trials1-aug-ci,"[+0.110, +0.183]"
+x-loss-trials1-aug-hi,+0.183
+x-loss-trials1-aug-lo,+0.110
 x-loss-trials1-band,+0.039
 x-loss-trials1-band-abs,0.039
 x-loss-trials1-band-ci,"[-0.000, +0.080]"
 x-loss-trials1-band-hi,+0.080
 x-loss-trials1-band-lo,-0.000
+x-loss-trials1-eegnet,+0.131
+x-loss-trials1-eegnet-abs,0.131
+x-loss-trials1-eegnet-ci,"[+0.092, +0.171]"
+x-loss-trials1-eegnet-hi,+0.171
+x-loss-trials1-eegnet-lo,+0.092
 x-loss-trials1-erp,+0.055
 x-loss-trials1-erp-abs,0.055
 x-loss-trials1-erp-ci,"[+0.019, +0.091]"
@@ -1401,11 +1678,21 @@ x-loss-trials1-res-abs,0.037
 x-loss-trials1-res-ci,"[-0.086, +0.012]"
 x-loss-trials1-res-hi,+0.012
 x-loss-trials1-res-lo,-0.086
+x-loss-trials16-aug,+0.042
+x-loss-trials16-aug-abs,0.042
+x-loss-trials16-aug-ci,"[+0.010, +0.073]"
+x-loss-trials16-aug-hi,+0.073
+x-loss-trials16-aug-lo,+0.010
 x-loss-trials16-band,+0.007
 x-loss-trials16-band-abs,0.007
 x-loss-trials16-band-ci,"[-0.025, +0.041]"
 x-loss-trials16-band-hi,+0.041
 x-loss-trials16-band-lo,-0.025
+x-loss-trials16-eegnet,+0.018
+x-loss-trials16-eegnet-abs,0.018
+x-loss-trials16-eegnet-ci,"[-0.015, +0.051]"
+x-loss-trials16-eegnet-hi,+0.051
+x-loss-trials16-eegnet-lo,-0.015
 x-loss-trials16-erp,-0.006
 x-loss-trials16-erp-abs,0.006
 x-loss-trials16-erp-ci,"[-0.034, +0.019]"
@@ -1416,11 +1703,21 @@ x-loss-trials16-res-abs,0.027
 x-loss-trials16-res-ci,"[-0.076, +0.020]"
 x-loss-trials16-res-hi,+0.020
 x-loss-trials16-res-lo,-0.076
+x-loss-trials4-aug,+0.092
+x-loss-trials4-aug-abs,0.092
+x-loss-trials4-aug-ci,"[+0.053, +0.132]"
+x-loss-trials4-aug-hi,+0.132
+x-loss-trials4-aug-lo,+0.053
 x-loss-trials4-band,+0.010
 x-loss-trials4-band-abs,0.010
 x-loss-trials4-band-ci,"[-0.029, +0.048]"
 x-loss-trials4-band-hi,+0.048
 x-loss-trials4-band-lo,-0.029
+x-loss-trials4-eegnet,+0.077
+x-loss-trials4-eegnet-abs,0.077
+x-loss-trials4-eegnet-ci,"[+0.038, +0.115]"
+x-loss-trials4-eegnet-hi,+0.115
+x-loss-trials4-eegnet-lo,+0.038
 x-loss-trials4-erp,+0.002
 x-loss-trials4-erp-abs,0.002
 x-loss-trials4-erp-ci,"[-0.031, +0.035]"
@@ -1445,6 +1742,141 @@ x-nullmax-res,0.368
 x-nullmean-band,0.333
 x-nullmean-erp,0.337
 x-nullmean-res,0.333
+x-o10-k0minuskm05-band,+0.007
+x-o10-k0minuskm05-band-abs,0.007
+x-o10-k0minuskm05-band-ci,"[-0.010, +0.025]"
+x-o10-k0minuskm05-band-hi,+0.025
+x-o10-k0minuskm05-band-lo,-0.010
+x-o10-k0minuskm05-erp,+0.003
+x-o10-k0minuskm05-erp-abs,0.003
+x-o10-k0minuskm05-erp-ci,"[-0.019, +0.026]"
+x-o10-k0minuskm05-erp-hi,+0.026
+x-o10-k0minuskm05-erp-lo,-0.019
+x-o10-k0minuskm05-res,-0.001
+x-o10-k0minuskm05-res-abs,0.001
+x-o10-k0minuskm05-res-ci,"[-0.013, +0.010]"
+x-o10-k0minuskm05-res-hi,+0.010
+x-o10-k0minuskm05-res-lo,-0.013
+x-o10-k0minuskm10-band,-0.003
+x-o10-k0minuskm10-band-abs,0.003
+x-o10-k0minuskm10-band-ci,"[-0.026, +0.020]"
+x-o10-k0minuskm10-band-hi,+0.020
+x-o10-k0minuskm10-band-lo,-0.026
+x-o10-k0minuskm10-erp,+0.006
+x-o10-k0minuskm10-erp-abs,0.006
+x-o10-k0minuskm10-erp-ci,"[-0.022, +0.034]"
+x-o10-k0minuskm10-erp-hi,+0.034
+x-o10-k0minuskm10-erp-lo,-0.022
+x-o10-k0minuskm10-res,-0.006
+x-o10-k0minuskm10-res-abs,0.006
+x-o10-k0minuskm10-res-ci,"[-0.022, +0.012]"
+x-o10-k0minuskm10-res-hi,+0.012
+x-o10-k0minuskm10-res-lo,-0.022
+x-o10-k0minuskm20-band,+0.010
+x-o10-k0minuskm20-band-abs,0.010
+x-o10-k0minuskm20-band-ci,"[-0.016, +0.037]"
+x-o10-k0minuskm20-band-hi,+0.037
+x-o10-k0minuskm20-band-lo,-0.016
+x-o10-k0minuskm20-erp,+0.035
+x-o10-k0minuskm20-erp-abs,0.035
+x-o10-k0minuskm20-erp-ci,"[+0.006, +0.063]"
+x-o10-k0minuskm20-erp-hi,+0.063
+x-o10-k0minuskm20-erp-lo,+0.006
+x-o10-k0minuskm20-res,-0.018
+x-o10-k0minuskm20-res-abs,0.018
+x-o10-k0minuskm20-res-ci,"[-0.038, +0.003]"
+x-o10-k0minuskm20-res-hi,+0.003
+x-o10-k0minuskm20-res-lo,-0.038
+x-o10-k0minuskm30-band,+0.020
+x-o10-k0minuskm30-band-abs,0.020
+x-o10-k0minuskm30-band-ci,"[-0.009, +0.048]"
+x-o10-k0minuskm30-band-hi,+0.048
+x-o10-k0minuskm30-band-lo,-0.009
+x-o10-k0minuskm30-erp,+0.038
+x-o10-k0minuskm30-erp-abs,0.038
+x-o10-k0minuskm30-erp-ci,"[+0.009, +0.067]"
+x-o10-k0minuskm30-erp-hi,+0.067
+x-o10-k0minuskm30-erp-lo,+0.009
+x-o10-k0minuskm30-res,-0.009
+x-o10-k0minuskm30-res-abs,0.009
+x-o10-k0minuskm30-res-ci,"[-0.034, +0.016]"
+x-o10-k0minuskm30-res-hi,+0.016
+x-o10-k0minuskm30-res-lo,-0.034
+x-o10-k0minuskp05-band,-0.018
+x-o10-k0minuskp05-band-abs,0.018
+x-o10-k0minuskp05-band-ci,"[-0.034, -0.003]"
+x-o10-k0minuskp05-band-hi,-0.003
+x-o10-k0minuskp05-band-lo,-0.034
+x-o10-k0minuskp05-erp,+0.013
+x-o10-k0minuskp05-erp-abs,0.013
+x-o10-k0minuskp05-erp-ci,"[-0.009, +0.035]"
+x-o10-k0minuskp05-erp-hi,+0.035
+x-o10-k0minuskp05-erp-lo,-0.009
+x-o10-k0minuskp05-res,+0.001
+x-o10-k0minuskp05-res-abs,0.001
+x-o10-k0minuskp05-res-ci,"[-0.009, +0.012]"
+x-o10-k0minuskp05-res-hi,+0.012
+x-o10-k0minuskp05-res-lo,-0.009
+x-o10-k0minuskp10-band,-0.015
+x-o10-k0minuskp10-band-abs,0.015
+x-o10-k0minuskp10-band-ci,"[-0.035, +0.004]"
+x-o10-k0minuskp10-band-hi,+0.004
+x-o10-k0minuskp10-band-lo,-0.035
+x-o10-k0minuskp10-erp,+0.028
+x-o10-k0minuskp10-erp-abs,0.028
+x-o10-k0minuskp10-erp-ci,"[+0.001, +0.054]"
+x-o10-k0minuskp10-erp-hi,+0.054
+x-o10-k0minuskp10-erp-lo,+0.001
+x-o10-k0minuskp10-res,-0.001
+x-o10-k0minuskp10-res-abs,0.001
+x-o10-k0minuskp10-res-ci,"[-0.018, +0.015]"
+x-o10-k0minuskp10-res-hi,+0.015
+x-o10-k0minuskp10-res-lo,-0.018
+x-o10-k0minuskp20-band,-0.001
+x-o10-k0minuskp20-band-abs,0.001
+x-o10-k0minuskp20-band-ci,"[-0.026, +0.023]"
+x-o10-k0minuskp20-band-hi,+0.023
+x-o10-k0minuskp20-band-lo,-0.026
+x-o10-k0minuskp20-erp,+0.026
+x-o10-k0minuskp20-erp-abs,0.026
+x-o10-k0minuskp20-erp-ci,"[-0.001, +0.054]"
+x-o10-k0minuskp20-erp-hi,+0.054
+x-o10-k0minuskp20-erp-lo,-0.001
+x-o10-k0minuskp20-res,+0.006
+x-o10-k0minuskp20-res-abs,0.006
+x-o10-k0minuskp20-res-ci,"[-0.015, +0.028]"
+x-o10-k0minuskp20-res-hi,+0.028
+x-o10-k0minuskp20-res-lo,-0.015
+x-o10-k0minuskp30-band,+0.003
+x-o10-k0minuskp30-band-abs,0.003
+x-o10-k0minuskp30-band-ci,"[-0.026, +0.031]"
+x-o10-k0minuskp30-band-hi,+0.031
+x-o10-k0minuskp30-band-lo,-0.026
+x-o10-k0minuskp30-erp,+0.037
+x-o10-k0minuskp30-erp-abs,0.037
+x-o10-k0minuskp30-erp-ci,"[+0.007, +0.066]"
+x-o10-k0minuskp30-erp-hi,+0.066
+x-o10-k0minuskp30-erp-lo,+0.007
+x-o10-k0minuskp30-res,-0.002
+x-o10-k0minuskp30-res-abs,0.002
+x-o10-k0minuskp30-res-ci,"[-0.028, +0.023]"
+x-o10-k0minuskp30-res-hi,+0.023
+x-o10-k0minuskp30-res-lo,-0.028
+x-o10-k0minusnative_zero-band,+0.005
+x-o10-k0minusnative_zero-band-abs,0.005
+x-o10-k0minusnative_zero-band-ci,"[-0.020, +0.031]"
+x-o10-k0minusnative_zero-band-hi,+0.031
+x-o10-k0minusnative_zero-band-lo,-0.020
+x-o10-k0minusnative_zero-erp,+0.012
+x-o10-k0minusnative_zero-erp-abs,0.012
+x-o10-k0minusnative_zero-erp-ci,"[-0.007, +0.032]"
+x-o10-k0minusnative_zero-erp-hi,+0.032
+x-o10-k0minusnative_zero-erp-lo,-0.007
+x-o10-k0minusnative_zero-res,+0.000
+x-o10-k0minusnative_zero-res-abs,0.000
+x-o10-k0minusnative_zero-res-ci,"[-0.009, +0.009]"
+x-o10-k0minusnative_zero-res-hi,+0.009
+x-o10-k0minusnative_zero-res-lo,-0.009
 x-o10-km05-band,0.351
 x-o10-km05-band-ci,"[0.319, 0.385]"
 x-o10-km05-band-hi,0.385
@@ -1595,6 +2027,141 @@ x-o10-nativeminusmean-res-abs,0.000
 x-o10-nativeminusmean-res-ci,"[-0.009, +0.009]"
 x-o10-nativeminusmean-res-hi,+0.009
 x-o10-nativeminusmean-res-lo,-0.009
+x-o30-k0minuskm05-band,+0.006
+x-o30-k0minuskm05-band-abs,0.006
+x-o30-k0minuskm05-band-ci,"[-0.012, +0.025]"
+x-o30-k0minuskm05-band-hi,+0.025
+x-o30-k0minuskm05-band-lo,-0.012
+x-o30-k0minuskm05-erp,-0.020
+x-o30-k0minuskm05-erp-abs,0.020
+x-o30-k0minuskm05-erp-ci,"[-0.047, +0.007]"
+x-o30-k0minuskm05-erp-hi,+0.007
+x-o30-k0minuskm05-erp-lo,-0.047
+x-o30-k0minuskm05-res,-0.006
+x-o30-k0minuskm05-res-abs,0.006
+x-o30-k0minuskm05-res-ci,"[-0.026, +0.015]"
+x-o30-k0minuskm05-res-hi,+0.015
+x-o30-k0minuskm05-res-lo,-0.026
+x-o30-k0minuskm10-band,+0.006
+x-o30-k0minuskm10-band-abs,0.006
+x-o30-k0minuskm10-band-ci,"[-0.020, +0.032]"
+x-o30-k0minuskm10-band-hi,+0.032
+x-o30-k0minuskm10-band-lo,-0.020
+x-o30-k0minuskm10-erp,-0.009
+x-o30-k0minuskm10-erp-abs,0.009
+x-o30-k0minuskm10-erp-ci,"[-0.035, +0.019]"
+x-o30-k0minuskm10-erp-hi,+0.019
+x-o30-k0minuskm10-erp-lo,-0.035
+x-o30-k0minuskm10-res,-0.000
+x-o30-k0minuskm10-res-abs,0.000
+x-o30-k0minuskm10-res-ci,"[-0.025, +0.025]"
+x-o30-k0minuskm10-res-hi,+0.025
+x-o30-k0minuskm10-res-lo,-0.025
+x-o30-k0minuskm20-band,+0.018
+x-o30-k0minuskm20-band-abs,0.018
+x-o30-k0minuskm20-band-ci,"[-0.013, +0.051]"
+x-o30-k0minuskm20-band-hi,+0.051
+x-o30-k0minuskm20-band-lo,-0.013
+x-o30-k0minuskm20-erp,+0.003
+x-o30-k0minuskm20-erp-abs,0.003
+x-o30-k0minuskm20-erp-ci,"[-0.023, +0.031]"
+x-o30-k0minuskm20-erp-hi,+0.031
+x-o30-k0minuskm20-erp-lo,-0.023
+x-o30-k0minuskm20-res,+0.022
+x-o30-k0minuskm20-res-abs,0.022
+x-o30-k0minuskm20-res-ci,"[-0.009, +0.051]"
+x-o30-k0minuskm20-res-hi,+0.051
+x-o30-k0minuskm20-res-lo,-0.009
+x-o30-k0minuskm30-band,+0.020
+x-o30-k0minuskm30-band-abs,0.020
+x-o30-k0minuskm30-band-ci,"[-0.012, +0.053]"
+x-o30-k0minuskm30-band-hi,+0.053
+x-o30-k0minuskm30-band-lo,-0.012
+x-o30-k0minuskm30-erp,+0.006
+x-o30-k0minuskm30-erp-abs,0.006
+x-o30-k0minuskm30-erp-ci,"[-0.020, +0.032]"
+x-o30-k0minuskm30-erp-hi,+0.032
+x-o30-k0minuskm30-erp-lo,-0.020
+x-o30-k0minuskm30-res,+0.006
+x-o30-k0minuskm30-res-abs,0.006
+x-o30-k0minuskm30-res-ci,"[-0.025, +0.038]"
+x-o30-k0minuskm30-res-hi,+0.038
+x-o30-k0minuskm30-res-lo,-0.025
+x-o30-k0minuskp05-band,+0.002
+x-o30-k0minuskp05-band-abs,0.002
+x-o30-k0minuskp05-band-ci,"[-0.016, +0.019]"
+x-o30-k0minuskp05-band-hi,+0.019
+x-o30-k0minuskp05-band-lo,-0.016
+x-o30-k0minuskp05-erp,-0.007
+x-o30-k0minuskp05-erp-abs,0.007
+x-o30-k0minuskp05-erp-ci,"[-0.034, +0.019]"
+x-o30-k0minuskp05-erp-hi,+0.019
+x-o30-k0minuskp05-erp-lo,-0.034
+x-o30-k0minuskp05-res,+0.016
+x-o30-k0minuskp05-res-abs,0.016
+x-o30-k0minuskp05-res-ci,"[-0.004, +0.037]"
+x-o30-k0minuskp05-res-hi,+0.037
+x-o30-k0minuskp05-res-lo,-0.004
+x-o30-k0minuskp10-band,+0.015
+x-o30-k0minuskp10-band-abs,0.015
+x-o30-k0minuskp10-band-ci,"[-0.009, +0.038]"
+x-o30-k0minuskp10-band-hi,+0.038
+x-o30-k0minuskp10-band-lo,-0.009
+x-o30-k0minuskp10-erp,-0.010
+x-o30-k0minuskp10-erp-abs,0.010
+x-o30-k0minuskp10-erp-ci,"[-0.038, +0.018]"
+x-o30-k0minuskp10-erp-hi,+0.018
+x-o30-k0minuskp10-erp-lo,-0.038
+x-o30-k0minuskp10-res,+0.005
+x-o30-k0minuskp10-res-abs,0.005
+x-o30-k0minuskp10-res-ci,"[-0.025, +0.035]"
+x-o30-k0minuskp10-res-hi,+0.035
+x-o30-k0minuskp10-res-lo,-0.025
+x-o30-k0minuskp20-band,+0.019
+x-o30-k0minuskp20-band-abs,0.019
+x-o30-k0minuskp20-band-ci,"[-0.010, +0.047]"
+x-o30-k0minuskp20-band-hi,+0.047
+x-o30-k0minuskp20-band-lo,-0.010
+x-o30-k0minuskp20-erp,+0.007
+x-o30-k0minuskp20-erp-abs,0.007
+x-o30-k0minuskp20-erp-ci,"[-0.022, +0.035]"
+x-o30-k0minuskp20-erp-hi,+0.035
+x-o30-k0minuskp20-erp-lo,-0.022
+x-o30-k0minuskp20-res,+0.000
+x-o30-k0minuskp20-res-abs,0.000
+x-o30-k0minuskp20-res-ci,"[-0.032, +0.032]"
+x-o30-k0minuskp20-res-hi,+0.032
+x-o30-k0minuskp20-res-lo,-0.032
+x-o30-k0minuskp30-band,+0.012
+x-o30-k0minuskp30-band-abs,0.012
+x-o30-k0minuskp30-band-ci,"[-0.018, +0.041]"
+x-o30-k0minuskp30-band-hi,+0.041
+x-o30-k0minuskp30-band-lo,-0.018
+x-o30-k0minuskp30-erp,+0.013
+x-o30-k0minuskp30-erp-abs,0.013
+x-o30-k0minuskp30-erp-ci,"[-0.013, +0.041]"
+x-o30-k0minuskp30-erp-hi,+0.041
+x-o30-k0minuskp30-erp-lo,-0.013
+x-o30-k0minuskp30-res,+0.001
+x-o30-k0minuskp30-res-abs,0.001
+x-o30-k0minuskp30-res-ci,"[-0.031, +0.035]"
+x-o30-k0minuskp30-res-hi,+0.035
+x-o30-k0minuskp30-res-lo,-0.031
+x-o30-k0minusnative_zero-band,+0.000
+x-o30-k0minusnative_zero-band-abs,0.000
+x-o30-k0minusnative_zero-band-ci,"[-0.029, +0.029]"
+x-o30-k0minusnative_zero-band-hi,+0.029
+x-o30-k0minusnative_zero-band-lo,-0.029
+x-o30-k0minusnative_zero-erp,-0.016
+x-o30-k0minusnative_zero-erp-abs,0.016
+x-o30-k0minusnative_zero-erp-ci,"[-0.039, +0.007]"
+x-o30-k0minusnative_zero-erp-hi,+0.007
+x-o30-k0minusnative_zero-erp-lo,-0.039
+x-o30-k0minusnative_zero-res,+0.000
+x-o30-k0minusnative_zero-res-abs,0.000
+x-o30-k0minusnative_zero-res-ci,"[-0.009, +0.009]"
+x-o30-k0minusnative_zero-res-hi,+0.009
+x-o30-k0minusnative_zero-res-lo,-0.009
 x-o30-km05-band,0.354
 x-o30-km05-band-ci,"[0.323, 0.385]"
 x-o30-km05-band-hi,0.385
@@ -1745,6 +2312,141 @@ x-o30-nativeminusmean-res-abs,0.000
 x-o30-nativeminusmean-res-ci,"[-0.009, +0.009]"
 x-o30-nativeminusmean-res-hi,+0.009
 x-o30-nativeminusmean-res-lo,-0.009
+x-o50-k0minuskm05-band,+0.006
+x-o50-k0minuskm05-band-abs,0.006
+x-o50-k0minuskm05-band-ci,"[-0.020, +0.034]"
+x-o50-k0minuskm05-band-hi,+0.034
+x-o50-k0minuskm05-band-lo,-0.020
+x-o50-k0minuskm05-erp,+0.016
+x-o50-k0minuskm05-erp-abs,0.016
+x-o50-k0minuskm05-erp-ci,"[-0.010, +0.042]"
+x-o50-k0minuskm05-erp-hi,+0.042
+x-o50-k0minuskm05-erp-lo,-0.010
+x-o50-k0minuskm05-res,-0.005
+x-o50-k0minuskm05-res-abs,0.005
+x-o50-k0minuskm05-res-ci,"[-0.031, +0.020]"
+x-o50-k0minuskm05-res-hi,+0.020
+x-o50-k0minuskm05-res-lo,-0.031
+x-o50-k0minuskm10-band,+0.012
+x-o50-k0minuskm10-band-abs,0.012
+x-o50-k0minuskm10-band-ci,"[-0.018, +0.041]"
+x-o50-k0minuskm10-band-hi,+0.041
+x-o50-k0minuskm10-band-lo,-0.018
+x-o50-k0minuskm10-erp,+0.018
+x-o50-k0minuskm10-erp-abs,0.018
+x-o50-k0minuskm10-erp-ci,"[-0.009, +0.044]"
+x-o50-k0minuskm10-erp-hi,+0.044
+x-o50-k0minuskm10-erp-lo,-0.009
+x-o50-k0minuskm10-res,-0.025
+x-o50-k0minuskm10-res-abs,0.025
+x-o50-k0minuskm10-res-ci,"[-0.056, +0.007]"
+x-o50-k0minuskm10-res-hi,+0.007
+x-o50-k0minuskm10-res-lo,-0.056
+x-o50-k0minuskm20-band,+0.002
+x-o50-k0minuskm20-band-abs,0.002
+x-o50-k0minuskm20-band-ci,"[-0.029, +0.032]"
+x-o50-k0minuskm20-band-hi,+0.032
+x-o50-k0minuskm20-band-lo,-0.029
+x-o50-k0minuskm20-erp,+0.015
+x-o50-k0minuskm20-erp-abs,0.015
+x-o50-k0minuskm20-erp-ci,"[-0.012, +0.042]"
+x-o50-k0minuskm20-erp-hi,+0.042
+x-o50-k0minuskm20-erp-lo,-0.012
+x-o50-k0minuskm20-res,-0.016
+x-o50-k0minuskm20-res-abs,0.016
+x-o50-k0minuskm20-res-ci,"[-0.054, +0.022]"
+x-o50-k0minuskm20-res-hi,+0.022
+x-o50-k0minuskm20-res-lo,-0.054
+x-o50-k0minuskm30-band,+0.014
+x-o50-k0minuskm30-band-abs,0.014
+x-o50-k0minuskm30-band-ci,"[-0.018, +0.047]"
+x-o50-k0minuskm30-band-hi,+0.047
+x-o50-k0minuskm30-band-lo,-0.018
+x-o50-k0minuskm30-erp,+0.021
+x-o50-k0minuskm30-erp-abs,0.021
+x-o50-k0minuskm30-erp-ci,"[-0.004, +0.047]"
+x-o50-k0minuskm30-erp-hi,+0.047
+x-o50-k0minuskm30-erp-lo,-0.004
+x-o50-k0minuskm30-res,-0.011
+x-o50-k0minuskm30-res-abs,0.011
+x-o50-k0minuskm30-res-ci,"[-0.047, +0.023]"
+x-o50-k0minuskm30-res-hi,+0.023
+x-o50-k0minuskm30-res-lo,-0.047
+x-o50-k0minuskp05-band,-0.006
+x-o50-k0minuskp05-band-abs,0.006
+x-o50-k0minuskp05-band-ci,"[-0.031, +0.019]"
+x-o50-k0minuskp05-band-hi,+0.019
+x-o50-k0minuskp05-band-lo,-0.031
+x-o50-k0minuskp05-erp,+0.005
+x-o50-k0minuskp05-erp-abs,0.005
+x-o50-k0minuskp05-erp-ci,"[-0.022, +0.032]"
+x-o50-k0minuskp05-erp-hi,+0.032
+x-o50-k0minuskp05-erp-lo,-0.022
+x-o50-k0minuskp05-res,-0.004
+x-o50-k0minuskp05-res-abs,0.004
+x-o50-k0minuskp05-res-ci,"[-0.031, +0.020]"
+x-o50-k0minuskp05-res-hi,+0.020
+x-o50-k0minuskp05-res-lo,-0.031
+x-o50-k0minuskp10-band,+0.007
+x-o50-k0minuskp10-band-abs,0.007
+x-o50-k0minuskp10-band-ci,"[-0.019, +0.034]"
+x-o50-k0minuskp10-band-hi,+0.034
+x-o50-k0minuskp10-band-lo,-0.019
+x-o50-k0minuskp10-erp,+0.005
+x-o50-k0minuskp10-erp-abs,0.005
+x-o50-k0minuskp10-erp-ci,"[-0.023, +0.032]"
+x-o50-k0minuskp10-erp-hi,+0.032
+x-o50-k0minuskp10-erp-lo,-0.023
+x-o50-k0minuskp10-res,-0.010
+x-o50-k0minuskp10-res-abs,0.010
+x-o50-k0minuskp10-res-ci,"[-0.042, +0.022]"
+x-o50-k0minuskp10-res-hi,+0.022
+x-o50-k0minuskp10-res-lo,-0.042
+x-o50-k0minuskp20-band,+0.001
+x-o50-k0minuskp20-band-abs,0.001
+x-o50-k0minuskp20-band-ci,"[-0.028, +0.032]"
+x-o50-k0minuskp20-band-hi,+0.032
+x-o50-k0minuskp20-band-lo,-0.028
+x-o50-k0minuskp20-erp,-0.004
+x-o50-k0minuskp20-erp-abs,0.004
+x-o50-k0minuskp20-erp-ci,"[-0.032, +0.023]"
+x-o50-k0minuskp20-erp-hi,+0.023
+x-o50-k0minuskp20-erp-lo,-0.032
+x-o50-k0minuskp20-res,-0.017
+x-o50-k0minuskp20-res-abs,0.017
+x-o50-k0minuskp20-res-ci,"[-0.050, +0.015]"
+x-o50-k0minuskp20-res-hi,+0.015
+x-o50-k0minuskp20-res-lo,-0.050
+x-o50-k0minuskp30-band,+0.009
+x-o50-k0minuskp30-band-abs,0.009
+x-o50-k0minuskp30-band-ci,"[-0.022, +0.038]"
+x-o50-k0minuskp30-band-hi,+0.038
+x-o50-k0minuskp30-band-lo,-0.022
+x-o50-k0minuskp30-erp,+0.010
+x-o50-k0minuskp30-erp-abs,0.010
+x-o50-k0minuskp30-erp-ci,"[-0.016, +0.038]"
+x-o50-k0minuskp30-erp-hi,+0.038
+x-o50-k0minuskp30-erp-lo,-0.016
+x-o50-k0minuskp30-res,-0.013
+x-o50-k0minuskp30-res-abs,0.013
+x-o50-k0minuskp30-res-ci,"[-0.045, +0.020]"
+x-o50-k0minuskp30-res-hi,+0.020
+x-o50-k0minuskp30-res-lo,-0.045
+x-o50-k0minusnative_zero-band,+0.018
+x-o50-k0minusnative_zero-band-abs,0.018
+x-o50-k0minusnative_zero-band-ci,"[-0.010, +0.047]"
+x-o50-k0minusnative_zero-band-hi,+0.047
+x-o50-k0minusnative_zero-band-lo,-0.010
+x-o50-k0minusnative_zero-erp,+0.010
+x-o50-k0minusnative_zero-erp-abs,0.010
+x-o50-k0minusnative_zero-erp-ci,"[-0.016, +0.037]"
+x-o50-k0minusnative_zero-erp-hi,+0.037
+x-o50-k0minusnative_zero-erp-lo,-0.016
+x-o50-k0minusnative_zero-res,+0.000
+x-o50-k0minusnative_zero-res-abs,0.000
+x-o50-k0minusnative_zero-res-ci,"[-0.013, +0.015]"
+x-o50-k0minusnative_zero-res-hi,+0.015
+x-o50-k0minusnative_zero-res-lo,-0.013
 x-o50-km05-band,0.354
 x-o50-km05-band-ci,"[0.327, 0.382]"
 x-o50-km05-band-hi,0.382
@@ -2075,10 +2777,18 @@ x-resfill-maxabs,0.010
 x-resfill-maxabs-both,0.010
 x-resfill-wmax,0.028
 x-resfill-wmin,0.009
+x-sig-amp5dB-aug,0.500
+x-sig-amp5dB-aug-ci,"[0.468, 0.532]"
+x-sig-amp5dB-aug-hi,0.532
+x-sig-amp5dB-aug-lo,0.468
 x-sig-amp5dB-band,0.354
 x-sig-amp5dB-band-ci,"[0.322, 0.386]"
 x-sig-amp5dB-band-hi,0.386
 x-sig-amp5dB-band-lo,0.322
+x-sig-amp5dB-eegnet,0.459
+x-sig-amp5dB-eegnet-ci,"[0.428, 0.491]"
+x-sig-amp5dB-eegnet-hi,0.491
+x-sig-amp5dB-eegnet-lo,0.428
 x-sig-amp5dB-erp,0.392
 x-sig-amp5dB-erp-ci,"[0.364, 0.421]"
 x-sig-amp5dB-erp-hi,0.421
@@ -2092,10 +2802,18 @@ x-sig-amp5dB-res,0.370
 x-sig-amp5dB-res-ci,"[0.336, 0.405]"
 x-sig-amp5dB-res-hi,0.405
 x-sig-amp5dB-res-lo,0.336
+x-sig-clean-aug,0.523
+x-sig-clean-aug-ci,"[0.491, 0.556]"
+x-sig-clean-aug-hi,0.556
+x-sig-clean-aug-lo,0.491
 x-sig-clean-band,0.368
 x-sig-clean-band-ci,"[0.339, 0.399]"
 x-sig-clean-band-hi,0.399
 x-sig-clean-band-lo,0.339
+x-sig-clean-eegnet,0.501
+x-sig-clean-eegnet-ci,"[0.471, 0.534]"
+x-sig-clean-eegnet-hi,0.534
+x-sig-clean-eegnet-lo,0.471
 x-sig-clean-erp,0.386
 x-sig-clean-erp-ci,"[0.358, 0.414]"
 x-sig-clean-erp-hi,0.414
@@ -2109,10 +2827,18 @@ x-sig-clean-res,0.320
 x-sig-clean-res-ci,"[0.288, 0.354]"
 x-sig-clean-res-hi,0.354
 x-sig-clean-res-lo,0.288
+x-sig-jitter50ms-aug,0.480
+x-sig-jitter50ms-aug-ci,"[0.449, 0.510]"
+x-sig-jitter50ms-aug-hi,0.510
+x-sig-jitter50ms-aug-lo,0.449
 x-sig-jitter50ms-band,0.365
 x-sig-jitter50ms-band-ci,"[0.338, 0.395]"
 x-sig-jitter50ms-band-hi,0.395
 x-sig-jitter50ms-band-lo,0.338
+x-sig-jitter50ms-eegnet,0.477
+x-sig-jitter50ms-eegnet-ci,"[0.447, 0.507]"
+x-sig-jitter50ms-eegnet-hi,0.507
+x-sig-jitter50ms-eegnet-lo,0.447
 x-sig-jitter50ms-erp,0.404
 x-sig-jitter50ms-erp-ci,"[0.374, 0.434]"
 x-sig-jitter50ms-erp-hi,0.434
@@ -2126,10 +2852,18 @@ x-sig-jitter50ms-res,0.355
 x-sig-jitter50ms-res-ci,"[0.320, 0.390]"
 x-sig-jitter50ms-res-hi,0.390
 x-sig-jitter50ms-res-lo,0.320
+x-sig-remove0.1-aug,0.497
+x-sig-remove0.1-aug-ci,"[0.466, 0.528]"
+x-sig-remove0.1-aug-hi,0.528
+x-sig-remove0.1-aug-lo,0.466
 x-sig-remove0.1-band,0.352
 x-sig-remove0.1-band-ci,"[0.323, 0.383]"
 x-sig-remove0.1-band-hi,0.383
 x-sig-remove0.1-band-lo,0.323
+x-sig-remove0.1-eegnet,0.465
+x-sig-remove0.1-eegnet-ci,"[0.433, 0.499]"
+x-sig-remove0.1-eegnet-hi,0.499
+x-sig-remove0.1-eegnet-lo,0.433
 x-sig-remove0.1-erp,0.379
 x-sig-remove0.1-erp-ci,"[0.352, 0.405]"
 x-sig-remove0.1-erp-hi,0.405
@@ -2143,10 +2877,18 @@ x-sig-remove0.1-res,0.300
 x-sig-remove0.1-res-ci,"[0.266, 0.335]"
 x-sig-remove0.1-res-hi,0.335
 x-sig-remove0.1-res-lo,0.266
+x-sig-remove0.3-aug,0.472
+x-sig-remove0.3-aug-ci,"[0.443, 0.501]"
+x-sig-remove0.3-aug-hi,0.501
+x-sig-remove0.3-aug-lo,0.443
 x-sig-remove0.3-band,0.360
 x-sig-remove0.3-band-ci,"[0.332, 0.389]"
 x-sig-remove0.3-band-hi,0.389
 x-sig-remove0.3-band-lo,0.332
+x-sig-remove0.3-eegnet,0.443
+x-sig-remove0.3-eegnet-ci,"[0.412, 0.474]"
+x-sig-remove0.3-eegnet-hi,0.474
+x-sig-remove0.3-eegnet-lo,0.412
 x-sig-remove0.3-erp,0.370
 x-sig-remove0.3-erp-ci,"[0.346, 0.393]"
 x-sig-remove0.3-erp-hi,0.393
@@ -2160,10 +2902,18 @@ x-sig-remove0.3-res,0.310
 x-sig-remove0.3-res-ci,"[0.278, 0.344]"
 x-sig-remove0.3-res-hi,0.344
 x-sig-remove0.3-res-lo,0.278
+x-sig-remove0.5-aug,0.466
+x-sig-remove0.5-aug-ci,"[0.436, 0.499]"
+x-sig-remove0.5-aug-hi,0.499
+x-sig-remove0.5-aug-lo,0.436
 x-sig-remove0.5-band,0.342
 x-sig-remove0.5-band-ci,"[0.320, 0.364]"
 x-sig-remove0.5-band-hi,0.364
 x-sig-remove0.5-band-lo,0.320
+x-sig-remove0.5-eegnet,0.452
+x-sig-remove0.5-eegnet-ci,"[0.421, 0.482]"
+x-sig-remove0.5-eegnet-hi,0.482
+x-sig-remove0.5-eegnet-lo,0.421
 x-sig-remove0.5-erp,0.349
 x-sig-remove0.5-erp-ci,"[0.329, 0.368]"
 x-sig-remove0.5-erp-hi,0.368
@@ -2194,10 +2944,18 @@ x-sig-spline0.1-res,0.326
 x-sig-spline0.1-res-ci,"[0.292, 0.363]"
 x-sig-spline0.1-res-hi,0.363
 x-sig-spline0.1-res-lo,0.292
+x-sig-spline0.3-aug,0.516
+x-sig-spline0.3-aug-ci,"[0.485, 0.547]"
+x-sig-spline0.3-aug-hi,0.547
+x-sig-spline0.3-aug-lo,0.485
 x-sig-spline0.3-band,0.361
 x-sig-spline0.3-band-ci,"[0.332, 0.390]"
 x-sig-spline0.3-band-hi,0.390
 x-sig-spline0.3-band-lo,0.332
+x-sig-spline0.3-eegnet,0.487
+x-sig-spline0.3-eegnet-ci,"[0.455, 0.520]"
+x-sig-spline0.3-eegnet-hi,0.520
+x-sig-spline0.3-eegnet-lo,0.455
 x-sig-spline0.3-erp,0.374
 x-sig-spline0.3-erp-ci,"[0.348, 0.401]"
 x-sig-spline0.3-erp-hi,0.401
@@ -2211,10 +2969,18 @@ x-sig-spline0.3-res,0.351
 x-sig-spline0.3-res-ci,"[0.317, 0.386]"
 x-sig-spline0.3-res-hi,0.386
 x-sig-spline0.3-res-lo,0.317
+x-sig-spline0.5-aug,0.497
+x-sig-spline0.5-aug-ci,"[0.466, 0.528]"
+x-sig-spline0.5-aug-hi,0.528
+x-sig-spline0.5-aug-lo,0.466
 x-sig-spline0.5-band,0.357
 x-sig-spline0.5-band-ci,"[0.326, 0.389]"
 x-sig-spline0.5-band-hi,0.389
 x-sig-spline0.5-band-lo,0.326
+x-sig-spline0.5-eegnet,0.493
+x-sig-spline0.5-eegnet-ci,"[0.461, 0.525]"
+x-sig-spline0.5-eegnet-hi,0.525
+x-sig-spline0.5-eegnet-lo,0.461
 x-sig-spline0.5-erp,0.401
 x-sig-spline0.5-erp-ci,"[0.377, 0.425]"
 x-sig-spline0.5-erp-hi,0.425
@@ -2228,10 +2994,18 @@ x-sig-spline0.5-res,0.346
 x-sig-spline0.5-res-ci,"[0.311, 0.383]"
 x-sig-spline0.5-res-hi,0.383
 x-sig-spline0.5-res-lo,0.311
+x-sig-trials1-aug,0.377
+x-sig-trials1-aug-ci,"[0.346, 0.408]"
+x-sig-trials1-aug-hi,0.408
+x-sig-trials1-aug-lo,0.346
 x-sig-trials1-band,0.329
 x-sig-trials1-band-ci,"[0.301, 0.355]"
 x-sig-trials1-band-hi,0.355
 x-sig-trials1-band-lo,0.301
+x-sig-trials1-eegnet,0.370
+x-sig-trials1-eegnet-ci,"[0.341, 0.401]"
+x-sig-trials1-eegnet-hi,0.401
+x-sig-trials1-eegnet-lo,0.341
 x-sig-trials1-erp,0.330
 x-sig-trials1-erp-ci,"[0.303, 0.360]"
 x-sig-trials1-erp-hi,0.360
@@ -2245,10 +3019,18 @@ x-sig-trials1-res,0.357
 x-sig-trials1-res-ci,"[0.320, 0.393]"
 x-sig-trials1-res-hi,0.393
 x-sig-trials1-res-lo,0.320
+x-sig-trials16-aug,0.482
+x-sig-trials16-aug-ci,"[0.449, 0.516]"
+x-sig-trials16-aug-hi,0.516
+x-sig-trials16-aug-lo,0.449
 x-sig-trials16-band,0.361
 x-sig-trials16-band-ci,"[0.333, 0.389]"
 x-sig-trials16-band-hi,0.389
 x-sig-trials16-band-lo,0.333
+x-sig-trials16-eegnet,0.484
+x-sig-trials16-eegnet-ci,"[0.450, 0.519]"
+x-sig-trials16-eegnet-hi,0.519
+x-sig-trials16-eegnet-lo,0.450
 x-sig-trials16-erp,0.392
 x-sig-trials16-erp-ci,"[0.365, 0.418]"
 x-sig-trials16-erp-hi,0.418
@@ -2262,10 +3044,18 @@ x-sig-trials16-res,0.346
 x-sig-trials16-res-ci,"[0.310, 0.385]"
 x-sig-trials16-res-hi,0.385
 x-sig-trials16-res-lo,0.310
+x-sig-trials4-aug,0.431
+x-sig-trials4-aug-ci,"[0.398, 0.465]"
+x-sig-trials4-aug-hi,0.465
+x-sig-trials4-aug-lo,0.398
 x-sig-trials4-band,0.358
 x-sig-trials4-band-ci,"[0.327, 0.389]"
 x-sig-trials4-band-hi,0.389
 x-sig-trials4-band-lo,0.327
+x-sig-trials4-eegnet,0.424
+x-sig-trials4-eegnet-ci,"[0.390, 0.459]"
+x-sig-trials4-eegnet-hi,0.459
+x-sig-trials4-eegnet-lo,0.390
 x-sig-trials4-erp,0.383
 x-sig-trials4-erp-ci,"[0.354, 0.411]"
 x-sig-trials4-erp-hi,0.411
@@ -3062,6 +3852,9 @@ xl-fmz-spatial50-res-lo,-0.019
 xl-inv-band,3.2\times10^{-3}
 xl-inv-erp,5.8\times10^{-3}
 xl-inv-res,4.2\times10^{-14}
+xl-invlabels-band,0.0
+xl-invlabels-erp,0.7
+xl-invlabels-res,0.0
 xl-loss-amp5dB-band,+0.047
 xl-loss-amp5dB-band-abs,0.047
 xl-loss-amp5dB-band-ci,"[+0.015, +0.079]"
@@ -3241,6 +4034,141 @@ xl-nullmax-res,0.387
 xl-nullmean-band,0.343
 xl-nullmean-erp,0.332
 xl-nullmean-res,0.334
+xl-o10-k0minuskm05-band,-0.012
+xl-o10-k0minuskm05-band-abs,0.012
+xl-o10-k0minuskm05-band-ci,"[-0.028, +0.004]"
+xl-o10-k0minuskm05-band-hi,+0.004
+xl-o10-k0minuskm05-band-lo,-0.028
+xl-o10-k0minuskm05-erp,-0.003
+xl-o10-k0minuskm05-erp-abs,0.003
+xl-o10-k0minuskm05-erp-ci,"[-0.026, +0.020]"
+xl-o10-k0minuskm05-erp-hi,+0.020
+xl-o10-k0minuskm05-erp-lo,-0.026
+xl-o10-k0minuskm05-res,+0.003
+xl-o10-k0minuskm05-res-abs,0.003
+xl-o10-k0minuskm05-res-ci,"[-0.010, +0.016]"
+xl-o10-k0minuskm05-res-hi,+0.016
+xl-o10-k0minuskm05-res-lo,-0.010
+xl-o10-k0minuskm10-band,-0.014
+xl-o10-k0minuskm10-band-abs,0.014
+xl-o10-k0minuskm10-band-ci,"[-0.035, +0.006]"
+xl-o10-k0minuskm10-band-hi,+0.006
+xl-o10-k0minuskm10-band-lo,-0.035
+xl-o10-k0minuskm10-erp,+0.007
+xl-o10-k0minuskm10-erp-abs,0.007
+xl-o10-k0minuskm10-erp-ci,"[-0.023, +0.037]"
+xl-o10-k0minuskm10-erp-hi,+0.037
+xl-o10-k0minuskm10-erp-lo,-0.023
+xl-o10-k0minuskm10-res,-0.006
+xl-o10-k0minuskm10-res-abs,0.006
+xl-o10-k0minuskm10-res-ci,"[-0.022, +0.012]"
+xl-o10-k0minuskm10-res-hi,+0.012
+xl-o10-k0minuskm10-res-lo,-0.022
+xl-o10-k0minuskm20-band,+0.009
+xl-o10-k0minuskm20-band-abs,0.009
+xl-o10-k0minuskm20-band-ci,"[-0.018, +0.037]"
+xl-o10-k0minuskm20-band-hi,+0.037
+xl-o10-k0minuskm20-band-lo,-0.018
+xl-o10-k0minuskm20-erp,+0.042
+xl-o10-k0minuskm20-erp-abs,0.042
+xl-o10-k0minuskm20-erp-ci,"[+0.013, +0.073]"
+xl-o10-k0minuskm20-erp-hi,+0.073
+xl-o10-k0minuskm20-erp-lo,+0.013
+xl-o10-k0minuskm20-res,-0.013
+xl-o10-k0minuskm20-res-abs,0.013
+xl-o10-k0minuskm20-res-ci,"[-0.035, +0.007]"
+xl-o10-k0minuskm20-res-hi,+0.007
+xl-o10-k0minuskm20-res-lo,-0.035
+xl-o10-k0minuskm30-band,+0.022
+xl-o10-k0minuskm30-band-abs,0.022
+xl-o10-k0minuskm30-band-ci,"[-0.006, +0.050]"
+xl-o10-k0minuskm30-band-hi,+0.050
+xl-o10-k0minuskm30-band-lo,-0.006
+xl-o10-k0minuskm30-erp,+0.064
+xl-o10-k0minuskm30-erp-abs,0.064
+xl-o10-k0minuskm30-erp-ci,"[+0.035, +0.094]"
+xl-o10-k0minuskm30-erp-hi,+0.094
+xl-o10-k0minuskm30-erp-lo,+0.035
+xl-o10-k0minuskm30-res,-0.023
+xl-o10-k0minuskm30-res-abs,0.023
+xl-o10-k0minuskm30-res-ci,"[-0.050, +0.003]"
+xl-o10-k0minuskm30-res-hi,+0.003
+xl-o10-k0minuskm30-res-lo,-0.050
+xl-o10-k0minuskp05-band,+0.001
+xl-o10-k0minuskp05-band-abs,0.001
+xl-o10-k0minuskp05-band-ci,"[-0.013, +0.016]"
+xl-o10-k0minuskp05-band-hi,+0.016
+xl-o10-k0minuskp05-band-lo,-0.013
+xl-o10-k0minuskp05-erp,-0.002
+xl-o10-k0minuskp05-erp-abs,0.002
+xl-o10-k0minuskp05-erp-ci,"[-0.028, +0.023]"
+xl-o10-k0minuskp05-erp-hi,+0.023
+xl-o10-k0minuskp05-erp-lo,-0.028
+xl-o10-k0minuskp05-res,+0.007
+xl-o10-k0minuskp05-res-abs,0.007
+xl-o10-k0minuskp05-res-ci,"[-0.006, +0.020]"
+xl-o10-k0minuskp05-res-hi,+0.020
+xl-o10-k0minuskp05-res-lo,-0.006
+xl-o10-k0minuskp10-band,+0.003
+xl-o10-k0minuskp10-band-abs,0.003
+xl-o10-k0minuskp10-band-ci,"[-0.019, +0.026]"
+xl-o10-k0minuskp10-band-hi,+0.026
+xl-o10-k0minuskp10-band-lo,-0.019
+xl-o10-k0minuskp10-erp,+0.029
+xl-o10-k0minuskp10-erp-abs,0.029
+xl-o10-k0minuskp10-erp-ci,"[+0.001, +0.057]"
+xl-o10-k0minuskp10-erp-hi,+0.057
+xl-o10-k0minuskp10-erp-lo,+0.001
+xl-o10-k0minuskp10-res,+0.006
+xl-o10-k0minuskp10-res-abs,0.006
+xl-o10-k0minuskp10-res-ci,"[-0.012, +0.023]"
+xl-o10-k0minuskp10-res-hi,+0.023
+xl-o10-k0minuskp10-res-lo,-0.012
+xl-o10-k0minuskp20-band,+0.010
+xl-o10-k0minuskp20-band-abs,0.010
+xl-o10-k0minuskp20-band-ci,"[-0.018, +0.038]"
+xl-o10-k0minuskp20-band-hi,+0.038
+xl-o10-k0minuskp20-band-lo,-0.018
+xl-o10-k0minuskp20-erp,+0.045
+xl-o10-k0minuskp20-erp-abs,0.045
+xl-o10-k0minuskp20-erp-ci,"[+0.015, +0.075]"
+xl-o10-k0minuskp20-erp-hi,+0.075
+xl-o10-k0minuskp20-erp-lo,+0.015
+xl-o10-k0minuskp20-res,-0.009
+xl-o10-k0minuskp20-res-abs,0.009
+xl-o10-k0minuskp20-res-ci,"[-0.031, +0.013]"
+xl-o10-k0minuskp20-res-hi,+0.013
+xl-o10-k0minuskp20-res-lo,-0.031
+xl-o10-k0minuskp30-band,+0.007
+xl-o10-k0minuskp30-band-abs,0.007
+xl-o10-k0minuskp30-band-ci,"[-0.022, +0.037]"
+xl-o10-k0minuskp30-band-hi,+0.037
+xl-o10-k0minuskp30-band-lo,-0.022
+xl-o10-k0minuskp30-erp,+0.061
+xl-o10-k0minuskp30-erp-abs,0.061
+xl-o10-k0minuskp30-erp-ci,"[+0.031, +0.091]"
+xl-o10-k0minuskp30-erp-hi,+0.091
+xl-o10-k0minuskp30-erp-lo,+0.031
+xl-o10-k0minuskp30-res,+0.002
+xl-o10-k0minuskp30-res-abs,0.002
+xl-o10-k0minuskp30-res-ci,"[-0.025, +0.026]"
+xl-o10-k0minuskp30-res-hi,+0.026
+xl-o10-k0minuskp30-res-lo,-0.025
+xl-o10-k0minusnative_zero-band,-0.010
+xl-o10-k0minusnative_zero-band-abs,0.010
+xl-o10-k0minusnative_zero-band-ci,"[-0.034, +0.012]"
+xl-o10-k0minusnative_zero-band-hi,+0.012
+xl-o10-k0minusnative_zero-band-lo,-0.034
+xl-o10-k0minusnative_zero-erp,+0.018
+xl-o10-k0minusnative_zero-erp-abs,0.018
+xl-o10-k0minusnative_zero-erp-ci,"[-0.003, +0.038]"
+xl-o10-k0minusnative_zero-erp-hi,+0.038
+xl-o10-k0minusnative_zero-erp-lo,-0.003
+xl-o10-k0minusnative_zero-res,-0.001
+xl-o10-k0minusnative_zero-res-abs,0.001
+xl-o10-k0minusnative_zero-res-ci,"[-0.006, +0.003]"
+xl-o10-k0minusnative_zero-res-hi,+0.003
+xl-o10-k0minusnative_zero-res-lo,-0.006
 xl-o10-km05-band,0.387
 xl-o10-km05-band-ci,"[0.358, 0.417]"
 xl-o10-km05-band-hi,0.417
@@ -3391,6 +4319,141 @@ xl-o10-nativeminusmean-res-abs,0.001
 xl-o10-nativeminusmean-res-ci,"[-0.003, +0.006]"
 xl-o10-nativeminusmean-res-hi,+0.006
 xl-o10-nativeminusmean-res-lo,-0.003
+xl-o30-k0minuskm05-band,+0.010
+xl-o30-k0minuskm05-band-abs,0.010
+xl-o30-k0minuskm05-band-ci,"[-0.012, +0.032]"
+xl-o30-k0minuskm05-band-hi,+0.032
+xl-o30-k0minuskm05-band-lo,-0.012
+xl-o30-k0minuskm05-erp,+0.000
+xl-o30-k0minuskm05-erp-abs,0.000
+xl-o30-k0minuskm05-erp-ci,"[-0.025, +0.025]"
+xl-o30-k0minuskm05-erp-hi,+0.025
+xl-o30-k0minuskm05-erp-lo,-0.025
+xl-o30-k0minuskm05-res,-0.018
+xl-o30-k0minuskm05-res-abs,0.018
+xl-o30-k0minuskm05-res-ci,"[-0.037, +0.000]"
+xl-o30-k0minuskm05-res-hi,+0.000
+xl-o30-k0minuskm05-res-lo,-0.037
+xl-o30-k0minuskm10-band,+0.002
+xl-o30-k0minuskm10-band-abs,0.002
+xl-o30-k0minuskm10-band-ci,"[-0.025, +0.028]"
+xl-o30-k0minuskm10-band-hi,+0.028
+xl-o30-k0minuskm10-band-lo,-0.025
+xl-o30-k0minuskm10-erp,+0.014
+xl-o30-k0minuskm10-erp-abs,0.014
+xl-o30-k0minuskm10-erp-ci,"[-0.015, +0.042]"
+xl-o30-k0minuskm10-erp-hi,+0.042
+xl-o30-k0minuskm10-erp-lo,-0.015
+xl-o30-k0minuskm10-res,-0.021
+xl-o30-k0minuskm10-res-abs,0.021
+xl-o30-k0minuskm10-res-ci,"[-0.045, +0.006]"
+xl-o30-k0minuskm10-res-hi,+0.006
+xl-o30-k0minuskm10-res-lo,-0.045
+xl-o30-k0minuskm20-band,+0.010
+xl-o30-k0minuskm20-band-abs,0.010
+xl-o30-k0minuskm20-band-ci,"[-0.019, +0.039]"
+xl-o30-k0minuskm20-band-hi,+0.039
+xl-o30-k0minuskm20-band-lo,-0.019
+xl-o30-k0minuskm20-erp,+0.041
+xl-o30-k0minuskm20-erp-abs,0.041
+xl-o30-k0minuskm20-erp-ci,"[+0.012, +0.072]"
+xl-o30-k0minuskm20-erp-hi,+0.072
+xl-o30-k0minuskm20-erp-lo,+0.012
+xl-o30-k0minuskm20-res,-0.004
+xl-o30-k0minuskm20-res-abs,0.004
+xl-o30-k0minuskm20-res-ci,"[-0.037, +0.026]"
+xl-o30-k0minuskm20-res-hi,+0.026
+xl-o30-k0minuskm20-res-lo,-0.037
+xl-o30-k0minuskm30-band,+0.025
+xl-o30-k0minuskm30-band-abs,0.025
+xl-o30-k0minuskm30-band-ci,"[-0.007, +0.057]"
+xl-o30-k0minuskm30-band-hi,+0.057
+xl-o30-k0minuskm30-band-lo,-0.007
+xl-o30-k0minuskm30-erp,+0.046
+xl-o30-k0minuskm30-erp-abs,0.046
+xl-o30-k0minuskm30-erp-ci,"[+0.019, +0.075]"
+xl-o30-k0minuskm30-erp-hi,+0.075
+xl-o30-k0minuskm30-erp-lo,+0.019
+xl-o30-k0minuskm30-res,+0.002
+xl-o30-k0minuskm30-res-abs,0.002
+xl-o30-k0minuskm30-res-ci,"[-0.029, +0.032]"
+xl-o30-k0minuskm30-res-hi,+0.032
+xl-o30-k0minuskm30-res-lo,-0.029
+xl-o30-k0minuskp05-band,+0.013
+xl-o30-k0minuskp05-band-abs,0.013
+xl-o30-k0minuskp05-band-ci,"[-0.009, +0.035]"
+xl-o30-k0minuskp05-band-hi,+0.035
+xl-o30-k0minuskp05-band-lo,-0.009
+xl-o30-k0minuskp05-erp,+0.019
+xl-o30-k0minuskp05-erp-abs,0.019
+xl-o30-k0minuskp05-erp-ci,"[-0.007, +0.045]"
+xl-o30-k0minuskp05-erp-hi,+0.045
+xl-o30-k0minuskp05-erp-lo,-0.007
+xl-o30-k0minuskp05-res,+0.006
+xl-o30-k0minuskp05-res-abs,0.006
+xl-o30-k0minuskp05-res-ci,"[-0.012, +0.023]"
+xl-o30-k0minuskp05-res-hi,+0.023
+xl-o30-k0minuskp05-res-lo,-0.012
+xl-o30-k0minuskp10-band,+0.023
+xl-o30-k0minuskp10-band-abs,0.023
+xl-o30-k0minuskp10-band-ci,"[-0.003, +0.050]"
+xl-o30-k0minuskp10-band-hi,+0.050
+xl-o30-k0minuskp10-band-lo,-0.003
+xl-o30-k0minuskp10-erp,+0.021
+xl-o30-k0minuskp10-erp-abs,0.021
+xl-o30-k0minuskp10-erp-ci,"[-0.007, +0.048]"
+xl-o30-k0minuskp10-erp-hi,+0.048
+xl-o30-k0minuskp10-erp-lo,-0.007
+xl-o30-k0minuskp10-res,+0.008
+xl-o30-k0minuskp10-res-abs,0.008
+xl-o30-k0minuskp10-res-ci,"[-0.018, +0.032]"
+xl-o30-k0minuskp10-res-hi,+0.032
+xl-o30-k0minuskp10-res-lo,-0.018
+xl-o30-k0minuskp20-band,+0.024
+xl-o30-k0minuskp20-band-abs,0.024
+xl-o30-k0minuskp20-band-ci,"[-0.009, +0.056]"
+xl-o30-k0minuskp20-band-hi,+0.056
+xl-o30-k0minuskp20-band-lo,-0.009
+xl-o30-k0minuskp20-erp,+0.049
+xl-o30-k0minuskp20-erp-abs,0.049
+xl-o30-k0minuskp20-erp-ci,"[+0.019, +0.077]"
+xl-o30-k0minuskp20-erp-hi,+0.077
+xl-o30-k0minuskp20-erp-lo,+0.019
+xl-o30-k0minuskp20-res,+0.022
+xl-o30-k0minuskp20-res-abs,0.022
+xl-o30-k0minuskp20-res-ci,"[-0.009, +0.054]"
+xl-o30-k0minuskp20-res-hi,+0.054
+xl-o30-k0minuskp20-res-lo,-0.009
+xl-o30-k0minuskp30-band,+0.036
+xl-o30-k0minuskp30-band-abs,0.036
+xl-o30-k0minuskp30-band-ci,"[+0.001, +0.069]"
+xl-o30-k0minuskp30-band-hi,+0.069
+xl-o30-k0minuskp30-band-lo,+0.001
+xl-o30-k0minuskp30-erp,+0.062
+xl-o30-k0minuskp30-erp-abs,0.062
+xl-o30-k0minuskp30-erp-ci,"[+0.034, +0.089]"
+xl-o30-k0minuskp30-erp-hi,+0.089
+xl-o30-k0minuskp30-erp-lo,+0.034
+xl-o30-k0minuskp30-res,+0.041
+xl-o30-k0minuskp30-res-abs,0.041
+xl-o30-k0minuskp30-res-ci,"[+0.007, +0.073]"
+xl-o30-k0minuskp30-res-hi,+0.073
+xl-o30-k0minuskp30-res-lo,+0.007
+xl-o30-k0minusnative_zero-band,-0.013
+xl-o30-k0minusnative_zero-band-abs,0.013
+xl-o30-k0minusnative_zero-band-ci,"[-0.038, +0.012]"
+xl-o30-k0minusnative_zero-band-hi,+0.012
+xl-o30-k0minusnative_zero-band-lo,-0.038
+xl-o30-k0minusnative_zero-erp,+0.014
+xl-o30-k0minusnative_zero-erp-abs,0.014
+xl-o30-k0minusnative_zero-erp-ci,"[-0.012, +0.039]"
+xl-o30-k0minusnative_zero-erp-hi,+0.039
+xl-o30-k0minusnative_zero-erp-lo,-0.012
+xl-o30-k0minusnative_zero-res,-0.002
+xl-o30-k0minusnative_zero-res-abs,0.002
+xl-o30-k0minusnative_zero-res-ci,"[-0.009, +0.006]"
+xl-o30-k0minusnative_zero-res-hi,+0.006
+xl-o30-k0minusnative_zero-res-lo,-0.009
 xl-o30-km05-band,0.374
 xl-o30-km05-band-ci,"[0.346, 0.402]"
 xl-o30-km05-band-hi,0.402
@@ -3541,6 +4604,141 @@ xl-o30-nativeminusmean-res-abs,0.002
 xl-o30-nativeminusmean-res-ci,"[-0.006, +0.009]"
 xl-o30-nativeminusmean-res-hi,+0.009
 xl-o30-nativeminusmean-res-lo,-0.006
+xl-o50-k0minuskm05-band,+0.010
+xl-o50-k0minuskm05-band-abs,0.010
+xl-o50-k0minuskm05-band-ci,"[-0.015, +0.035]"
+xl-o50-k0minuskm05-band-hi,+0.035
+xl-o50-k0minuskm05-band-lo,-0.015
+xl-o50-k0minuskm05-erp,+0.015
+xl-o50-k0minuskm05-erp-abs,0.015
+xl-o50-k0minuskm05-erp-ci,"[-0.013, +0.042]"
+xl-o50-k0minuskm05-erp-hi,+0.042
+xl-o50-k0minuskm05-erp-lo,-0.013
+xl-o50-k0minuskm05-res,-0.015
+xl-o50-k0minuskm05-res-abs,0.015
+xl-o50-k0minuskm05-res-ci,"[-0.035, +0.006]"
+xl-o50-k0minuskm05-res-hi,+0.006
+xl-o50-k0minuskm05-res-lo,-0.035
+xl-o50-k0minuskm10-band,-0.006
+xl-o50-k0minuskm10-band-abs,0.006
+xl-o50-k0minuskm10-band-ci,"[-0.037, +0.025]"
+xl-o50-k0minuskm10-band-hi,+0.025
+xl-o50-k0minuskm10-band-lo,-0.037
+xl-o50-k0minuskm10-erp,+0.029
+xl-o50-k0minuskm10-erp-abs,0.029
+xl-o50-k0minuskm10-erp-ci,"[+0.001, +0.058]"
+xl-o50-k0minuskm10-erp-hi,+0.058
+xl-o50-k0minuskm10-erp-lo,+0.001
+xl-o50-k0minuskm10-res,+0.005
+xl-o50-k0minuskm10-res-abs,0.005
+xl-o50-k0minuskm10-res-ci,"[-0.023, +0.034]"
+xl-o50-k0minuskm10-res-hi,+0.034
+xl-o50-k0minuskm10-res-lo,-0.023
+xl-o50-k0minuskm20-band,-0.007
+xl-o50-k0minuskm20-band-abs,0.007
+xl-o50-k0minuskm20-band-ci,"[-0.039, +0.025]"
+xl-o50-k0minuskm20-band-hi,+0.025
+xl-o50-k0minuskm20-band-lo,-0.039
+xl-o50-k0minuskm20-erp,+0.056
+xl-o50-k0minuskm20-erp-abs,0.056
+xl-o50-k0minuskm20-erp-ci,"[+0.028, +0.083]"
+xl-o50-k0minuskm20-erp-hi,+0.083
+xl-o50-k0minuskm20-erp-lo,+0.028
+xl-o50-k0minuskm20-res,+0.044
+xl-o50-k0minuskm20-res-abs,0.044
+xl-o50-k0minuskm20-res-ci,"[+0.009, +0.079]"
+xl-o50-k0minuskm20-res-hi,+0.079
+xl-o50-k0minuskm20-res-lo,+0.009
+xl-o50-k0minuskm30-band,+0.010
+xl-o50-k0minuskm30-band-abs,0.010
+xl-o50-k0minuskm30-band-ci,"[-0.020, +0.041]"
+xl-o50-k0minuskm30-band-hi,+0.041
+xl-o50-k0minuskm30-band-lo,-0.020
+xl-o50-k0minuskm30-erp,+0.056
+xl-o50-k0minuskm30-erp-abs,0.056
+xl-o50-k0minuskm30-erp-ci,"[+0.026, +0.085]"
+xl-o50-k0minuskm30-erp-hi,+0.085
+xl-o50-k0minuskm30-erp-lo,+0.026
+xl-o50-k0minuskm30-res,+0.053
+xl-o50-k0minuskm30-res-abs,0.053
+xl-o50-k0minuskm30-res-ci,"[+0.015, +0.091]"
+xl-o50-k0minuskm30-res-hi,+0.091
+xl-o50-k0minuskm30-res-lo,+0.015
+xl-o50-k0minuskp05-band,+0.008
+xl-o50-k0minuskp05-band-abs,0.008
+xl-o50-k0minuskp05-band-ci,"[-0.015, +0.032]"
+xl-o50-k0minuskp05-band-hi,+0.032
+xl-o50-k0minuskp05-band-lo,-0.015
+xl-o50-k0minuskp05-erp,+0.032
+xl-o50-k0minuskp05-erp-abs,0.032
+xl-o50-k0minuskp05-erp-ci,"[+0.001, +0.064]"
+xl-o50-k0minuskp05-erp-hi,+0.064
+xl-o50-k0minuskp05-erp-lo,+0.001
+xl-o50-k0minuskp05-res,+0.010
+xl-o50-k0minuskp05-res-abs,0.010
+xl-o50-k0minuskp05-res-ci,"[-0.015, +0.035]"
+xl-o50-k0minuskp05-res-hi,+0.035
+xl-o50-k0minuskp05-res-lo,-0.015
+xl-o50-k0minuskp10-band,+0.004
+xl-o50-k0minuskp10-band-abs,0.004
+xl-o50-k0minuskp10-band-ci,"[-0.023, +0.031]"
+xl-o50-k0minuskp10-band-hi,+0.031
+xl-o50-k0minuskp10-band-lo,-0.023
+xl-o50-k0minuskp10-erp,+0.051
+xl-o50-k0minuskp10-erp-abs,0.051
+xl-o50-k0minuskp10-erp-ci,"[+0.023, +0.079]"
+xl-o50-k0minuskp10-erp-hi,+0.079
+xl-o50-k0minuskp10-erp-lo,+0.023
+xl-o50-k0minuskp10-res,+0.015
+xl-o50-k0minuskp10-res-abs,0.015
+xl-o50-k0minuskp10-res-ci,"[-0.016, +0.047]"
+xl-o50-k0minuskp10-res-hi,+0.047
+xl-o50-k0minuskp10-res-lo,-0.016
+xl-o50-k0minuskp20-band,+0.001
+xl-o50-k0minuskp20-band-abs,0.001
+xl-o50-k0minuskp20-band-ci,"[-0.026, +0.029]"
+xl-o50-k0minuskp20-band-hi,+0.029
+xl-o50-k0minuskp20-band-lo,-0.026
+xl-o50-k0minuskp20-erp,+0.066
+xl-o50-k0minuskp20-erp-abs,0.066
+xl-o50-k0minuskp20-erp-ci,"[+0.039, +0.092]"
+xl-o50-k0minuskp20-erp-hi,+0.092
+xl-o50-k0minuskp20-erp-lo,+0.039
+xl-o50-k0minuskp20-res,+0.034
+xl-o50-k0minuskp20-res-abs,0.034
+xl-o50-k0minuskp20-res-ci,"[-0.004, +0.070]"
+xl-o50-k0minuskp20-res-hi,+0.070
+xl-o50-k0minuskp20-res-lo,-0.004
+xl-o50-k0minuskp30-band,+0.009
+xl-o50-k0minuskp30-band-abs,0.009
+xl-o50-k0minuskp30-band-ci,"[-0.020, +0.038]"
+xl-o50-k0minuskp30-band-hi,+0.038
+xl-o50-k0minuskp30-band-lo,-0.020
+xl-o50-k0minuskp30-erp,+0.069
+xl-o50-k0minuskp30-erp-abs,0.069
+xl-o50-k0minuskp30-erp-ci,"[+0.042, +0.095]"
+xl-o50-k0minuskp30-erp-hi,+0.095
+xl-o50-k0minuskp30-erp-lo,+0.042
+xl-o50-k0minuskp30-res,+0.042
+xl-o50-k0minuskp30-res-abs,0.042
+xl-o50-k0minuskp30-res-ci,"[+0.004, +0.080]"
+xl-o50-k0minuskp30-res-hi,+0.080
+xl-o50-k0minuskp30-res-lo,+0.004
+xl-o50-k0minusnative_zero-band,-0.001
+xl-o50-k0minusnative_zero-band-abs,0.001
+xl-o50-k0minusnative_zero-band-ci,"[-0.032, +0.028]"
+xl-o50-k0minusnative_zero-band-hi,+0.028
+xl-o50-k0minusnative_zero-band-lo,-0.032
+xl-o50-k0minusnative_zero-erp,-0.013
+xl-o50-k0minusnative_zero-erp-abs,0.013
+xl-o50-k0minusnative_zero-erp-ci,"[-0.041, +0.015]"
+xl-o50-k0minusnative_zero-erp-hi,+0.015
+xl-o50-k0minusnative_zero-erp-lo,-0.041
+xl-o50-k0minusnative_zero-res,-0.009
+xl-o50-k0minusnative_zero-res-abs,0.009
+xl-o50-k0minusnative_zero-res-ci,"[-0.022, +0.004]"
+xl-o50-k0minusnative_zero-res-hi,+0.004
+xl-o50-k0minusnative_zero-res-lo,-0.022
 xl-o50-km05-band,0.335
 xl-o50-km05-band-ci,"[0.307, 0.363]"
 xl-o50-km05-band-hi,0.363
