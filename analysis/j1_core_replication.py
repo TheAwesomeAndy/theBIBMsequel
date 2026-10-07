@@ -68,8 +68,9 @@ def main():
     blocks = {"Band-power": [band] * len(F), "ERP-window": [erp] * len(F),
               "Reservoir": [e for e, _ in emb[64]]}
 
+    span = "-200..+800 ms" if TD.EPOCH == "standard" else "-200..+2496 ms (pre-specified long epoch)"
     res = {"dataset": "TCRZEM (doi:10.34894/TCRZEM), 228 subjects x 3 valences, 32 scalp channels, "
-                      "-200..+800 ms at 256 Hz, onset sample 51, per-epoch per-channel z-score",
+                      f"{span} at 256 Hz, onset sample 51, per-epoch per-channel z-score",
            "protocol": "StratifiedGroupKFold(5,shuffle) x seeds 42-46; train-only StandardScaler; "
                        "balanced L2 logreg; reservoir rho=0.9, train-only PCA-64; OOF proba averaged "
                        "over partitions; subject-level bootstrap n_boot=%d" % J.N_BOOT,

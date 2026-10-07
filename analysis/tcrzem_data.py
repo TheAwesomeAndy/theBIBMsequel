@@ -7,9 +7,11 @@ BrainVision segmented files, one per subject x valence x arousal
 (S<id>_Mastoid_<Neg|Neu|Pos>_<High|Low>.{vhdr,vmrk,dat}): INT_16, multiplexed,
 41 channels (32 scalp electrodes of the BioSemi 32 layout, M1, M2, four EOG, two
 ECG, Status), 1792-point segments at 512 Hz from -1000 to +2500 ms
-(stimulus onset at segment point 512, 0-indexed). The upstream pipeline
-re-referenced to the mastoids, filtered, corrected ocular artifacts with ICA and
-removed rejected segments before export.
+(stimulus onset at segment point 512, 0-indexed). The upstream history recorded in
+every .vhdr header is "Raw Data / Topographic Interpolation / Edit Channels / New
+Reference / Filters / Segmentation / Ocular Correction ICA / Artifact Rejection": bad
+channels interpolated, re-referenced to the mastoids, filtered, segmented, ocular
+artifacts corrected with ICA, and rejected segments removed before export.
 
 To match the SHAPE observations of the conference paper exactly, every
 (subject, valence) observation is built as follows:

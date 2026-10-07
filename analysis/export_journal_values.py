@@ -40,6 +40,11 @@ def s3(v):
     return f"{v:+.3f}"
 
 
+def ceil3(v):
+    import math
+    return f"{math.ceil(v * 1000 - 1e-9) / 1000:.3f}"
+
+
 def put(key, val):
     VALUES[key] = val
     return val
@@ -256,7 +261,7 @@ def derived(e5, x1, xl1):
         put(f"{tag}-nonfill-wmin", f"{min(w2):.3f}"); put(f"{tag}-nonfill-wmax", f"{max(w2):.3f}")
     if x1 and xl1:
         allr = [abs(v["mean_diff"]) for src in (x1, xl1) for v in src["fill_minus_zero"]["Reservoir"]["mean"].values()]
-        put("x-resfill-maxabs-both", f"{max(allr):.3f}")
+        put("x-resfill-maxabs-both", ceil3(max(allr)))
 
 
 def recipe_values():
@@ -286,6 +291,19 @@ def erp_summary():
         put("t-sal-uv", f"{e['salience_500_1300ms_uV']:.2f}"); put("t-sal-dz", f"{e['salience_within_subject_dz']:.2f}")
         put("t-val-uv", f"{e['valence_1500_2500ms_uV']:.2f}"); put("t-val-dz", f"{e['valence_within_subject_dz']:.2f}")
         put("t-between-sd", f"{e['neutral_amplitude_between_subject_sd_uV']:.2f}"); put("t-channel", e["channel"])
+
+
+def extra_values(e1, xl2):
+    if xl2:
+        losses = [xl2["paired_clean_minus_condition"]["spline_0.5"][n]["mean_diff"] for n in list(ENC)[:3]]
+        put("xl-spline50-maxloss", ceil3(max(losses)))
+    for r in e1["rho_grid"]:
+        put(f"s-e1-ba30-{r}", f3(e1["BA"][str(r)]["signal"]["BA"]))
+        put(f"s-e1-loss30-{r}", f3(e1["BA"][str(r)]["clean"]["BA"] - e1["BA"][str(r)]["signal"]["BA"]))
+    j4 = load(JAG / "j4_tcrzem_edge_long.json")
+    if j4:
+        d = max(abs(e1["damage"][k] - j4["draws"]["42"]["damage"][k]) for k in e1["damage"])
+        put("e-damage-maxdiff-42", ceil3(d))
 
 
 def edge_values():
@@ -476,6 +494,7 @@ def main():
     derived(e5, x[0], xl[0])
     recipe_values()
     erp_summary()
+    extra_values(e1, xl[1])
     j4 = edge_values()
     table_clean(e5, e3, x[0], xl[0], x[2], xl[2])
     table_fills(e2, x[0], xl[0])

@@ -1,5 +1,5 @@
 {
-  "dataset": "TCRZEM (doi:10.34894/TCRZEM), 228 subjects x 3 valences, 32 scalp channels, -200..+800 ms at 256 Hz, onset sample 51, per-epoch per-channel z-score",
+  "dataset": "TCRZEM (doi:10.34894/TCRZEM), 228 subjects x 3 valences, 32 scalp channels, -200..+2496 ms (pre-specified long epoch) at 256 Hz, onset sample 51, per-epoch per-channel z-score",
   "protocol": "StratifiedGroupKFold(5,shuffle) x seeds 42-46; train-only StandardScaler; balanced L2 logreg; reservoir rho=0.9, train-only PCA-64; OOF proba averaged over partitions; subject-level bootstrap n_boot=4000",
   "n_obs": 684,
   "n_subjects": 228,
@@ -1810,5 +1810,6 @@
       "max": 0.3874269005847953,
       "n_perm": 20
     }
-  }
+  },
+  "dataset_note": "dataset string corrected after the run (metadata only; the run used TCRZEM_EPOCH=long, n_samples 691)"
 }

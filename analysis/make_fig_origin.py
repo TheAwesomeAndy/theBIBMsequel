@@ -25,8 +25,8 @@ OUT = Path(os.environ.get("FIG_OUT", ROOT / "manuscript/figures/journal/fig_orig
 plt.rcParams.update({"font.size": 7, "axes.linewidth": 0.6, "pdf.fonttype": 42, "ps.fonttype": 42})
 STY = {"Band-power": ("#E69F00", "s", "-"), "ERP-window": ("#0072B2", "o", "--"),
        "Reservoir": ("#009E73", "^", ":")}
-PANELS = [("j5_tcrzem_origin.json", "conference-matched epoch"),
-          ("j5_tcrzem_origin_long.json", "long epoch (pre-specified)")]
+PANELS = [("j5_tcrzem_origin.json", "(a) conference-matched epoch"),
+          ("j5_tcrzem_origin_long.json", "(b) long epoch (pre-specified)")]
 
 
 def main():

@@ -1,0 +1,8 @@
+\begin{tabular}{lccccccccc}
+\toprule
+Recipe & \multicolumn{4}{c}{EEGNet} & \multicolumn{4}{c}{EEGNet + aug.} & Aug.$-$unaug., $50\%$ \\ & Clean & $30\%$ & $50\%$ & Noise & Clean & $30\%$ & $50\%$ & Noise & [95\% CI] \\
+\midrule
+Default ($80$ ep., $p{=}0.25$) & $0.463$ & $0.408$ & $0.399$ & $0.434$ & $0.485$ & $0.447$ & $0.446$ & $0.465$ & $+0.047$ [$+0.013,+0.079$] \\
+$40$ epochs & $0.459$ & $0.417$ & $0.404$ & $0.430$ & $0.472$ & $0.442$ & $0.424$ & $0.468$ & $+0.020$ [$-0.009,+0.048$] \\
+\bottomrule
+\end{tabular}
