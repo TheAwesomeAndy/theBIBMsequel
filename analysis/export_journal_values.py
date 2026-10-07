@@ -86,6 +86,22 @@ def shape_values():
         put_diff(f"s-fc30-{fill}-erpres", e2["paired_ERPwindow_minus_Reservoir_30"][fill])
     for n, k in list(ENC.items())[:3]:
         put_diff(f"s-meanzero30-{k}", e2["mean_minus_zero_30"][n])
+    for c, row in e4["BA"].items():
+        cc = c.replace("_", "")
+        for n, k in list(ENC.items())[:3]:
+            put_ba(f"s-sig-{cc}-{k}", row[n]["BA"], row[n]["ci95"])
+        if c != "clean":
+            for n, k in list(ENC.items())[:3]:
+                put_diff(f"s-loss-{cc}-{k}", e4["paired_clean_minus_condition"][c][n])
+        put_diff(f"s-sig-{cc}-erpres", e4["paired_ERPwindow_minus_Reservoir"][c])
+    for c, row in e3["BA"].items():
+        cc = "clean" if c == "remove_0.0" else c.replace("_", "")
+        for m in ("EEGNet", "EEGNet+aug"):
+            put_ba(f"s-sig-{cc}-{ENC[m]}", row[m]["BA"], row[m]["ci95"])
+        put_diff(f"s-augminus-{cc}", e3["paired_aug_minus_unaug"][c])
+        if c != "remove_0.0":
+            for m in ("EEGNet", "EEGNet+aug"):
+                put_diff(f"s-loss-{cc}-{ENC[m]}", e3["paired_clean_minus_condition"][c][m])
     put(f"s-rhostar", "0.82")
     put_ba("s-rho09-clean", e1["BA"]["0.9"]["clean"]["BA"], e1["BA"]["0.9"]["clean"]["ci95"])
     put_diff("s-rho0-minus-09", e1["paired_vs_rho0.9"]["0.0"]["clean"])
@@ -97,6 +113,10 @@ def ext_values(tag, suffix):
     j1, j2, j3, j5, j6 = (load(JAG / f"{n}{suffix}.json") for n in
                           ("j1_tcrzem_core", "j2_tcrzem_signal", "j3_tcrzem_eegnet", "j5_tcrzem_origin",
                            "j6_tcrzem_prestimulus"))
+    if j3 is None:                     # long-epoch EEGNet runs on the seed-42 partition only
+        j3 = load(JAG / f"j3_tcrzem_eegnet_s42{suffix}.json")
+    if j3 is not None:
+        put(f"{tag}-eegnet-seeds", ", ".join(str(x) for x in j3.get("cv_seeds", [42, 43, 44, 45, 46])))
     if j1:
         for n, k in list(ENC.items())[:3]:
             r = j1["clean_metrics"][n]
@@ -131,12 +151,14 @@ def ext_values(tag, suffix):
         for lv, r in j2["spline_mean_correlation_missing_channels"].items():
             put(f"{tag}-splinecorr-{int(float(lv) * 100)}", f"{r:.2f}")
         for c, row in j2["BA"].items():
+            cc = c.replace("_", "")
             for n, k in list(ENC.items())[:3]:
-                put_ba(f"{tag}-sig-{c}-{k}", row[n]["BA"], row[n]["ci95"])
-            put_diff(f"{tag}-sig-{c}-erpres", j2["paired_ERPwindow_minus_Reservoir"][c])
+                put_ba(f"{tag}-sig-{cc}-{k}", row[n]["BA"], row[n]["ci95"])
+                put(f"{tag}-rawret-{cc}-{k}", f"{row[n]['BA'] / j2['BA']['clean'][n]['BA']:.2f}")
+            put_diff(f"{tag}-sig-{cc}-erpres", j2["paired_ERPwindow_minus_Reservoir"][c])
             if c != "clean":
                 for n, k in list(ENC.items())[:3]:
-                    put_diff(f"{tag}-loss-{c}-{k}", j2["paired_clean_minus_condition"][c][n])
+                    put_diff(f"{tag}-loss-{cc}-{k}", j2["paired_clean_minus_condition"][c][n])
         for lv, row in j2["paired_spline_minus_zero"].items():
             for n, k in list(ENC.items())[:3]:
                 put_diff(f"{tag}-splminuszero{int(float(lv) * 100)}-{k}", row[n])
@@ -145,19 +167,27 @@ def ext_values(tag, suffix):
             r = j3["clean_metrics"][m]
             put(f"{tag}-f1-{ENC[m]}", f3(r["macro_F1"])); put(f"{tag}-auc-{ENC[m]}", f3(r["macro_OvR_AUC"]))
         for c, row in j3["BA"].items():
+            cc = c.replace("_", "")
             for m in ("EEGNet", "EEGNet+aug"):
-                put_ba(f"{tag}-sig-{c}-{ENC[m]}", row[m]["BA"], row[m]["ci95"])
-            put_diff(f"{tag}-augminus-{c}", j3["paired_aug_minus_unaug"][c])
+                put_ba(f"{tag}-sig-{cc}-{ENC[m]}", row[m]["BA"], row[m]["ci95"])
+            put_diff(f"{tag}-augminus-{cc}", j3["paired_aug_minus_unaug"][c])
             for m in ("EEGNet", "EEGNet+aug"):
-                put_diff(f"{tag}-{ENC[m]}minuserp-{c}", j3["paired_minus_ERPwindow"][c][m])
+                put_diff(f"{tag}-{ENC[m]}minuserp-{cc}", j3["paired_minus_ERPwindow"][c][m])
             if c != "clean":
                 for m in ("EEGNet", "EEGNet+aug"):
-                    put_diff(f"{tag}-loss-{c}-{ENC[m]}", j3["paired_clean_minus_condition"][c][m])
+                    put_diff(f"{tag}-loss-{cc}-{ENC[m]}", j3["paired_clean_minus_condition"][c][m])
         put_ba(f"{tag}-clean-eegnet", j3["BA"]["clean"]["EEGNet"]["BA"], j3["BA"]["clean"]["EEGNet"]["ci95"])
         put_ba(f"{tag}-clean-aug", j3["BA"]["clean"]["EEGNet+aug"]["BA"], j3["BA"]["clean"]["EEGNet+aug"]["ci95"])
     if j5:
         for n, k in list(ENC.items())[:3]:
-            put(f"{tag}-inv-{k}", f"{j5['clean_invariance_max_abs_proba_diff'][n]:.0e}".replace("e-0", "e-"))
+            m, e = f"{j5['clean_invariance_max_abs_proba_diff'][n]:.1e}".split("e")
+            put(f"{tag}-inv-{k}", f"{m}\\times10^{{{int(e)}}}")
+            if "clean_invariance_fraction_labels_changed_per_fold_max" in j5:
+                put(f"{tag}-invlabels-{k}", f"{100 * j5['clean_invariance_fraction_labels_changed_per_fold_max'][n]:.1f}")
+            for lv, e in j5["dropout"][n].items():
+                for fk, d in e.get("kappa0_minus", {}).items():
+                    nm = fk.replace("kappa_", "k").replace("+", "p").replace("-", "m").replace(".", "")
+                    put_diff(f"{tag}-o{lv}-k0minus{nm}-{k}", d)
             for lv, e in j5["dropout"][n].items():
                 for fk, r in e.items():
                     if fk.startswith("kappa_") or fk == "native_zero":
@@ -169,6 +199,13 @@ def ext_values(tag, suffix):
             put(f"{tag}-dlogit-{k}", f"{p['mean_class_centered_norm']:.2f}")
             put(f"{tag}-flip-{k}", f"{100 * p['fraction_predictions_flipped_zero_vs_mean']:.1f}")
             put(f"{tag}-zpos-{k}", f"{p['mean_abs_mu_over_sigma_dropped']:.2f}")
+    j7 = load(JAG / f"j7_tcrzem_prestim_null{suffix}.json")
+    if j7:
+        for nm, r in j7["results"].items():
+            put(f"{tag}-pnull-{nm}-p", f"{r['p_value']:.3f}" if r["p_value"] >= 0.001 else "<0.001")
+            put(f"{tag}-pnull-{nm}-p95", f3(r["null_p95"])); put(f"{tag}-pnull-{nm}-mean", f3(r["null_mean"]))
+            put(f"{tag}-pnull-{nm}-ba", f3(r["BA"]))
+        put(f"{tag}-pnull-n", str(j7["n_perm"]))
     if j6:
         put(f"{tag}-prestim-corr", f"{j6['corr_prestim_mean_Z_vs_poststim_mean_uV']:.2f}")
         for v, row in j6["BA"].items():
@@ -176,7 +213,58 @@ def ext_values(tag, suffix):
             for nm in ("Z", "G"):
                 put_ba(f"{tag}-pre-{key}-{nm}", row[nm]["BA"], row[nm]["ci95"])
             put_diff(f"{tag}-pre-{key}-ZminusG", j6["paired_Z_minus_G"][v])
+        for nm, d in j6["paired_post_minus_conference_reservoir"].items():
+            put_diff(f"{tag}-pre-postminusconf-{nm}", d)
+        for w, r in j6["firing_rate_Z"].items():
+            put(f"{tag}-pre-rate-{w.replace('_', '')}", f"{r:.3f}")
     return j1, j2, j3, j5, j6
+
+
+def derived(e5, x1, xl1):
+    """Summary values computed across sources (margins, agreement bounds, CI widths)."""
+    third = 1.0 / 3.0
+    for n, k in list(ENC.items())[:3]:
+        ms = e5["clean_metrics"][n]["BA"] - third
+        put(f"s-margin-{k}", f3(ms))
+        for tag, src in (("x", x1), ("xl", xl1)):
+            if src:
+                mx = src["clean_metrics"][n]["BA"] - third
+                put(f"{tag}-margin-{k}", f3(mx))
+                put(f"{tag}-marginratio-{k}", f"{mx / ms:.2f}")
+    for tag, src in (("x", x1), ("xl", xl1)):
+        if not src:
+            continue
+        r = src["fill_minus_zero"]["Reservoir"]["mean"]
+        put(f"{tag}-resfill-maxabs", f"{max(abs(v['mean_diff']) for v in r.values()):.3f}")
+        w = [v["ci95"][1] - v["ci95"][0] for v in r.values()]
+        put(f"{tag}-resfill-wmin", f"{min(w):.3f}"); put(f"{tag}-resfill-wmax", f"{max(w):.3f}")
+        w2 = [v["ci95"][1] - v["ci95"][0] for n in ("Band-power", "ERP-window")
+              for v in src["fill_minus_zero"][n]["mean"].values()]
+        put(f"{tag}-nonfill-wmin", f"{min(w2):.3f}"); put(f"{tag}-nonfill-wmax", f"{max(w2):.3f}")
+    if x1 and xl1:
+        allr = [abs(v["mean_diff"]) for src in (x1, xl1) for v in src["fill_minus_zero"]["Reservoir"]["mean"].values()]
+        put("x-resfill-maxabs-both", f"{max(allr):.3f}")
+
+
+def recipe_values():
+    rows = []
+    names = {"default": "Default ($80$ ep., $p{=}0.25$)", "epochs40": "$40$ epochs",
+             "epochs160": "$160$ epochs", "dropout50": "Dropout $0.5$"}
+    for r, lab in names.items():
+        d = load(JAG / ("j3_tcrzem_eegnet_s42.json" if r == "default" else f"j3_tcrzem_eegnet_{r}_s42.json"))
+        if not d:
+            continue
+        cells = []
+        for m in ("EEGNet", "EEGNet+aug"):
+            for c in ("clean", "remove_0.3", "remove_0.5", "amp_5dB"):
+                put_ba(f"rc-{r}-{c}-{ENC[m]}", d["BA"][c][m]["BA"], d["BA"][c][m]["ci95"])
+                cells.append(f"${f3(d['BA'][c][m]['BA'])}$")
+        for c in ("remove_0.3", "remove_0.5"):
+            put_diff(f"rc-{r}-augminus-{c}", d["paired_aug_minus_unaug"][c])
+        a = d["paired_aug_minus_unaug"]["remove_0.5"]
+        rows.append(f"{lab} & " + " & ".join(cells) + f" & {dcell(a)} \\\\")
+    if rows:
+        (GEN / "tab_recipes.tex").write_text("\n".join(rows) + "\n")
 
 
 def edge_values():
@@ -332,6 +420,8 @@ def main():
     e5, e2, e4, e3, e1 = shape_values()
     x = ext_values("x", "")
     xl = ext_values("xl", "_long")
+    derived(e5, x[0], xl[0])
+    recipe_values()
     j4 = edge_values()
     table_clean(e5, e3, x[0], xl[0], x[2], xl[2])
     table_fills(e2, x[0], xl[0])
