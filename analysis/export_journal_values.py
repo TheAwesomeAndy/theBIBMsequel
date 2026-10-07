@@ -125,11 +125,14 @@ def shape_values():
     return e5, e2, e4, e3, e1
 
 
-def ext_values(tag, suffix):
-    j1, j2, j3, j5, j6 = (load(JAG / f"{n}{suffix}.json") for n in
+def ext_values(tag, suffix, cohort="tcrzem"):
+    """Values from the journal runs of one cohort and epoch. Tags: x / xl (external,
+    matched / long epoch); sj / so / sp (SHAPE rerun: conference windows / windows from
+    true onset / whole post-onset window)."""
+    j1, j2, j3, j5, j6 = (load(JAG / f"{n.replace('tcrzem', cohort)}{suffix}.json") for n in
                           ("j1_tcrzem_core", "j2_tcrzem_signal", "j3_tcrzem_eegnet", "j5_tcrzem_origin",
                            "j6_tcrzem_prestimulus"))
-    if j3 is None:                     # long-epoch EEGNet runs on the seed-42 partition only
+    if j3 is None and cohort == "tcrzem":  # long-epoch EEGNet runs on the seed-42 partition only
         j3 = load(JAG / f"j3_tcrzem_eegnet_s42{suffix}.json")
     if j3 is not None:
         put(f"{tag}-eegnet-seeds", ", ".join(str(x) for x in j3.get("cv_seeds", [42, 43, 44, 45, 46])))
@@ -217,7 +220,7 @@ def ext_values(tag, suffix):
             put(f"{tag}-dlogit-{k}", f"{p['mean_class_centered_norm']:.2f}")
             put(f"{tag}-flip-{k}", f"{100 * p['fraction_predictions_flipped_zero_vs_mean']:.1f}")
             put(f"{tag}-zpos-{k}", f"{p['mean_abs_mu_over_sigma_dropped']:.2f}")
-    j7 = load(JAG / f"j7_tcrzem_prestim_null{suffix}.json")
+    j7 = load(JAG / f"j7_{cohort}_prestim_null{suffix}.json")
     if j7:
         for nm, r in j7["results"].items():
             put(f"{tag}-pnull-{nm}-p", f"{r['p_value']:.3f}" if r["p_value"] >= 0.001 else "<0.001")
@@ -238,18 +241,18 @@ def ext_values(tag, suffix):
     return j1, j2, j3, j5, j6
 
 
-def derived(e5, x1, xl1):
+def derived(e5, x1, xl1, more=()):
     """Summary values computed across sources (margins, agreement bounds, CI widths)."""
     third = 1.0 / 3.0
     for n, k in list(ENC.items())[:3]:
         ms = e5["clean_metrics"][n]["BA"] - third
         put(f"s-margin-{k}", f3(ms))
-        for tag, src in (("x", x1), ("xl", xl1)):
+        for tag, src in (("x", x1), ("xl", xl1)) + tuple(more):
             if src:
                 mx = src["clean_metrics"][n]["BA"] - third
                 put(f"{tag}-margin-{k}", f3(mx))
                 put(f"{tag}-marginratio-{k}", f"{mx / ms:.2f}")
-    for tag, src in (("x", x1), ("xl", xl1)):
+    for tag, src in (("x", x1), ("xl", xl1)) + tuple(more):
         if not src:
             continue
         r = src["fill_minus_zero"]["Reservoir"]["mean"]
@@ -293,6 +296,7 @@ def recipe_values():
         put("rc-clean-min", f3(min(cl))); put("rc-clean-max", f3(max(cl)))
         augc = [float(VALUES[f"rc-{r}-augminus-clean"]) for r in got]
         put("rc-augclean-min", s3(min(augc))); put("rc-augclean-max", s3(max(augc)))
+        put("rc-augclean-nsig", str(sum(float(VALUES[f"rc-{r}-augminus-clean-lo"]) > 0 for r in got)))
         lu = [float(VALUES[f"rc-{r}-clean-eegnet"]) - float(VALUES[f"rc-{r}-remove_0.5-eegnet"]) for r in got]
         la = [float(VALUES[f"rc-{r}-clean-aug"]) - float(VALUES[f"rc-{r}-remove_0.5-aug"]) for r in got]
         put("rc-loss50-unaug-min", f3(min(lu))); put("rc-loss50-unaug-max", f3(max(lu)))
@@ -322,39 +326,89 @@ def extra_values(e1, xl2):
         put("e-damage-maxdiff-42", ceil3(d))
 
 
-def edge_values():
-    j4 = load(JAG / "j4_tcrzem_edge_long.json") or load(JAG / "j4_tcrzem_edge.json")
+def edge_values(pre="e", j4name="j4_tcrzem_edge_long.json", j8name="j8_tcrzem_silence_long.json"):
+    """Operating-point values. Prefixes: e (external, long epoch), se / seo / sep (SHAPE,
+    accuracy on the conference / onset / post windows; order parameter always on the
+    conference drives and window)."""
+    j4 = load(JAG / j4name)
     if not j4 or "summary" not in j4:
         return None
     S = j4["summary"]
     import numpy as np
     rs = np.array(S["rho_star"])
-    put("e-rhostar-mean", f"{rs.mean():.2f}"); put("e-rhostar-sd", f"{rs.std(ddof=1):.2f}")
-    put("e-rhostar-min", f"{rs.min():.2f}"); put("e-rhostar-max", f"{rs.max():.2f}")
-    put("e-ndraws", str(len(rs))); put("e-naccdraws", str(len(S["acc_draws"])))
+    put(f"{pre}-rhostar-mean", f"{rs.mean():.2f}"); put(f"{pre}-rhostar-sd", f"{rs.std(ddof=1):.2f}")
+    put(f"{pre}-rhostar-min", f"{rs.min():.2f}"); put(f"{pre}-rhostar-max", f"{rs.max():.2f}")
+    put(f"{pre}-ndraws", str(len(rs))); put(f"{pre}-naccdraws", str(len(S["acc_draws"])))
     for i, r in enumerate(j4["rho_acc"]):
-        put(f"e-ba-{r}-mean", f3(S["BA_clean_mean"][i])); put(f"e-ba-{r}-sd", f3(S["BA_clean_sd"][i]))
-        put(f"e-ba30-{r}-mean", f3(S["BA_signal30_mean"][i]))
-        put(f"e-loss30-{r}", f3(S["BA_clean_mean"][i] - S["BA_signal30_mean"][i]))
-        put(f"e-rate-{r}", f"{S['rate_mean'][i]:.2f}")
+        put(f"{pre}-ba-{r}-mean", f3(S["BA_clean_mean"][i])); put(f"{pre}-ba-{r}-sd", f3(S["BA_clean_sd"][i]))
+        put(f"{pre}-ba-{r}-min", f3(S["BA_clean_min"][i])); put(f"{pre}-ba-{r}-max", f3(S["BA_clean_max"][i]))
+        put(f"{pre}-ba30-{r}-mean", f3(S["BA_signal30_mean"][i]))
+        put(f"{pre}-loss30-{r}", f3(S["BA_clean_mean"][i] - S["BA_signal30_mean"][i]))
+        put(f"{pre}-rate-{r}", f"{S['rate_mean'][i]:.2f}")
     for c in ("clean", "signal30"):
-        put(f"e-n-rho0-sig-{c}", str(S[f"n_draws_rho0_below_rho0.9_ci_excludes0_{c}"]))
-        put(f"e-n-rho15-sig-{c}", str(S[f"n_draws_rho1.5_below_rho0.9_ci_excludes0_{c}"]))
-        put(f"e-argmax-{c}", ", ".join(str(x) for x in S[f"argmax_rho_{c}"]))
+        put(f"{pre}-n-rho0-sig-{c}", str(S[f"n_draws_rho0_below_rho0.9_ci_excludes0_{c}"]))
+        put(f"{pre}-n-rho15-sig-{c}", str(S[f"n_draws_rho1.5_below_rho0.9_ci_excludes0_{c}"]))
+        put(f"{pre}-argmax-{c}", ", ".join(str(x) for x in S[f"argmax_rho_{c}"]))
+        if f"n_draws_rho0_point_below_rho0.9_{c}" in S:
+            put(f"{pre}-n-rho0-below-{c}", str(S[f"n_draws_rho0_point_below_rho0.9_{c}"]))
+    for r, row in S.get("drawmean_paired_vs_rho0.9", {}).items():
+        for c, d in row.items():
+            put_diff(f"{pre}-dm-{r}minus09-{c}", d)
+            put(f"{pre}-dm-{r}minus09-{c}-point", s3(d["point"]))
     em = j4.get("edge_maps_draw42", {})
     for th, e in em.get("theta", {}).items():
-        put(f"e-rhostar-theta{th}", f"{e['rho_star']:.2f}")
+        put(f"{pre}-rhostar-theta{th}", f"{e['rho_star']:.2f}")
     for be, e in em.get("beta", {}).items():
-        put(f"e-rhostar-beta{be}", f"{e['rho_star']:.2f}")
-    put("e-rhostar-42", f"{j4['draws']['42']['rho_star']:.2f}")
-    j8 = load(JAG / "j8_tcrzem_silence_long.json")
+        put(f"{pre}-rhostar-beta{be}", f"{e['rho_star']:.2f}")
+    put(f"{pre}-rhostar-42", f"{j4['draws']['42']['rho_star']:.2f}")
+    j8 = load(JAG / j8name)
     if j8:
         for r in j8["rho"]:
-            put(f"e-z0-{r}", f"{j8['silent_block_mean_abs_z'][str(r)]:.2f}")
-            put(f"e-rawcent-{r}", f"{j8['raw_counts_mean_abs_mu_over_sigma'][str(r)]:.2f}")
+            put(f"{pre}-z0-{r}", f"{j8['silent_block_mean_abs_z'][str(r)]:.2f}")
+            put(f"{pre}-rawcent-{r}", f"{j8['raw_counts_mean_abs_mu_over_sigma'][str(r)]:.2f}")
         low = [j8["silent_block_mean_abs_z"][str(r)] for r in j8["rho"] if r <= 0.6]
-        put("e-z0-low-min", f"{min(low):.2f}"); put("e-z0-low-max", f"{max(low):.2f}")
+        put(f"{pre}-z0-low-min", f"{min(low):.2f}"); put(f"{pre}-z0-low-max", f"{max(low):.2f}")
     return j4
+
+
+def repro_values(e5, e2, e1, sj1, sj4):
+    """Largest absolute difference between the SHAPE rerun and every conference value it
+    repeats (clean BA and CI bounds; 30% fills; the draw-42 rho sweep and damage curve)."""
+    diffs = []
+    if sj1:
+        for n in ("Band-power", "ERP-window", "Reservoir"):
+            a, b = sj1["clean_metrics"][n], e5["clean_metrics"][n]
+            diffs += [abs(a["BA"] - b["BA"])] + [abs(x - y) for x, y in zip(a["ci95"], b["BA_ci95"])]
+            for fill in ("zero", "mean", "knn", "spatial"):
+                diffs.append(abs(sj1["dropout"]["30"][fill][n]["BA"] - e2["dropout_30"][fill][n]["drop_BA"]))
+    if sj4:
+        r = sj4["draws"]["42"]
+        for rho in e1["rho_grid"]:
+            for c, ce in (("clean", "clean"), ("signal30", "signal")):
+                diffs.append(abs(r["BA"][str(rho)][c]["BA"] - e1["BA"][str(rho)][ce]["BA"]))
+        diffs += [abs(e1["damage"][k] - r["damage"][k]) for k in e1["damage"]]
+    if diffs:
+        put("sj-repro-maxdiff", "0" if max(diffs) == 0 else f"{max(diffs):.1e}")
+        put("sj-repro-n", str(len(diffs)))
+
+
+def zscore_values():
+    """J9: does the reservoir read the per-epoch normalization offset (sz SHAPE, xz external)."""
+    for pre, cohort in (("sz", "shape"), ("xz", "tcrzem")):
+        j9 = load(JAG / f"j9_{cohort}_zscore.json")
+        if not j9:
+            continue
+        for inp in ("Z", "G"):
+            for w in ("pre", "conference"):
+                e = j9[f"{inp}_{w}"]
+                put(f"{pre}-{inp}-{w}-r2", f"{e['oof_R2_m_from_BSC6']:.3f}")
+                put(f"{pre}-{inp}-{w}-r2count", f"{e['oof_R2_m_from_count']:.3f}")
+                for kk in ("r_count_m", "r_count_absm"):
+                    nm = "r" if kk == "r_count_m" else "rabs"
+                    put(f"{pre}-{inp}-{w}-{nm}-med", f"{e[kk]['median']:+.2f}")
+                    put(f"{pre}-{inp}-{w}-{nm}-min", f"{e[kk]['min']:+.2f}")
+                    put(f"{pre}-{inp}-{w}-{nm}-max", f"{e[kk]['max']:+.2f}")
+                put(f"{pre}-{inp}-{w}-rate", f"{e['rate']:.3f}")
 
 
 # ----------------------------------------------------------------------------- tables
@@ -448,8 +502,8 @@ def table_signal_shape(e4, e3):
     (GEN / "tab_signal_shape.rows").write_text("\n".join(rows) + "\n")
 
 
-def table_edge(j4):
-    if not j4:
+def table_edge(j4, name="tab_edge"):
+    if not j4 or "summary" not in j4:
         return
     rows = []
     ra = j4["rho_acc"]
@@ -461,8 +515,29 @@ def table_edge(j4):
                     + f" & ${best}$ & {dcell(p0)} \\\\")
     S = j4["summary"]
     rows.append("\\midrule")
-    rows.append(f"Mean & ${sum(S['rho_star']) / len(S['rho_star']):.2f}$ & " + " & ".join(f"${f3(v)}$" for v in S["BA_clean_mean"]) + " & & \\\\")
-    (GEN / "tab_edge.rows").write_text("\n".join(rows) + "\n")
+    rows.append(f"Mean & ${sum(S['rho_star']) / len(S['rho_star']):.2f}$ & " + " & ".join(f"${f3(v)}$" for v in S["BA_clean_mean"])
+                + (f" & & {dcell(S['drawmean_paired_vs_rho0.9']['0.0']['clean'])} \\\\" if "drawmean_paired_vs_rho0.9" in S else " & & \\\\"))
+    rows.append(f"$30\\%$ silent & & " + " & ".join(f"${f3(v)}$" for v in S["BA_signal30_mean"])
+                + (f" & & {dcell(S['drawmean_paired_vs_rho0.9']['0.0']['signal30'])} \\\\" if "drawmean_paired_vs_rho0.9" in S else " & & \\\\"))
+    (GEN / f"{name}.rows").write_text("\n".join(rows) + "\n")
+
+
+def table_windows():
+    """SHAPE: the conference windows against windows measured from true onset."""
+    rows = []
+    for ep, lab in (("", "Conference ($-160$..$+73$)"), ("_onset", "Onset ($+39$..$+273$)"),
+                    ("_post", "Post ($0$..$+793$)")):
+        j1 = load(JAG / f"j1_shape_core{ep}.json"); j4 = load(JAG / f"j4_shape_edge{ep}.json")
+        if not j1:
+            continue
+        cm = j1["clean_metrics"]
+        z = j1["dropout"]["30"]["zero"]["ERP-window_minus_Reservoir"]
+        m = j1["dropout"]["30"]["mean"]["ERP-window_minus_Reservoir"]
+        r0 = (dcell(j4["summary"]["drawmean_paired_vs_rho0.9"]["0.0"]["clean"])
+              if j4 and "drawmean_paired_vs_rho0.9" in j4.get("summary", {}) else "--")
+        rows.append(f"{lab} & ${f3(cm['ERP-window']['BA'])}$ & ${f3(cm['Reservoir']['BA'])}$ & {dcell(z)} & {dcell(m)} & {r0} \\\\")
+    if rows:
+        (GEN / "tab_windows.rows").write_text("\n".join(rows) + "\n")
 
 
 def table_origin(tag, j5, j1):
@@ -486,6 +561,9 @@ HEADERS = {
     "tab_signal_x": ("lccccc", "Condition & Band & ERP & Res. & EEGNet & +aug. \\\\"),
     "tab_signal_xl": ("lccccc", "Condition & Band & ERP & Res. & EEGNet & +aug. \\\\"),
     "tab_edge": ("lccccccccc", "Draw & $\\rho^\\ast$ & $0$ & $0.3$ & $0.6$ & $0.9$ & $1.2$ & $1.5$ & Best & $\\rho{=}0$ $-$ $0.9$ [95\\% CI] \\\\"),
+    "tab_edge_s": ("lccccccccc", "Draw & $\\rho^\\ast$ & $0$ & $0.3$ & $0.6$ & $0.9$ & $1.2$ & $1.5$ & Best & $\\rho{=}0$ $-$ $0.9$ [95\\% CI] \\\\"),
+    "tab_windows": ("lccccc", "Window (ms) & ERP & Res. & Zero fill & Mean fill & $\\rho{=}0$ $-$ $0.9$ \\\\ & \\multicolumn{2}{c}{clean BA} & \\multicolumn{2}{c}{ERP$-$Res., $30\\%$ dropout} & draw mean \\\\"),
+    "tab_origin_sj": ("lcccccccc", "Encoder & $\\frac{|\\mu|}{\\sigma}$ & Clean & Zero & $\\kappa{=}{-2}$ & $\\kappa{=}0$ & $\\kappa{=}{+2}$ & $\\lVert\\Delta\\ell\\rVert$ & Flip \\% \\\\"),
     "tab_origin_x": ("lcccccccc", "Encoder & $\\frac{|\\mu|}{\\sigma}$ & Clean & Zero & $\\kappa{=}{-2}$ & $\\kappa{=}0$ & $\\kappa{=}{+2}$ & $\\lVert\\Delta\\ell\\rVert$ & Flip \\% \\\\"),
     "tab_origin_xl": ("lcccccccc", "Encoder & $\\frac{|\\mu|}{\\sigma}$ & Clean & Zero & $\\kappa{=}{-2}$ & $\\kappa{=}0$ & $\\kappa{=}{+2}$ & $\\lVert\\Delta\\ell\\rVert$ & Flip \\% \\\\"),
     "tab_recipes": ("lccccccccc", "Recipe & \\multicolumn{4}{c}{EEGNet} & \\multicolumn{4}{c}{EEGNet + aug.} & Aug.$-$unaug., $50\\%$ \\\\ & Clean & $30\\%$ & $50\\%$ & Noise & Clean & $30\\%$ & $50\\%$ & Noise & [95\\% CI] \\\\"),
@@ -507,17 +585,28 @@ def main():
     e5, e2, e4, e3, e1 = shape_values()
     x = ext_values("x", "")
     xl = ext_values("xl", "_long")
-    derived(e5, x[0], xl[0])
+    sj = ext_values("sj", "", "shape")
+    so = ext_values("so", "_onset", "shape")
+    sp = ext_values("sp", "_post", "shape")
+    derived(e5, x[0], xl[0], more=(("sj", sj[0]), ("so", so[0]), ("sp", sp[0])))
     recipe_values()
     erp_summary()
     extra_values(e1, xl[1])
     j4 = edge_values()
+    sj4 = edge_values("se", "j4_shape_edge.json", "j8_shape_silence.json")
+    edge_values("seo", "j4_shape_edge_onset.json", "j8_shape_silence_onset.json")
+    edge_values("sep", "j4_shape_edge_post.json", "j8_shape_silence_post.json")
+    repro_values(e5, e2, e1, sj[0], sj4)
+    zscore_values()
     table_clean(e5, e3, x[0], xl[0], x[2], xl[2])
     table_fills(e2, x[0], xl[0])
     table_signal_shape(e4, e3)
     table_signal_ext("x", x[1], x[2])
     table_signal_ext("xl", xl[1], xl[2])
     table_edge(j4)
+    table_edge(sj4, "tab_edge_s")
+    table_windows()
+    table_origin("sj", sj[3], sj[0])
     table_origin("x", x[3], x[0])
     table_origin("xl", xl[3], xl[0])
     wrap_tables()

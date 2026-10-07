@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Journal figure: the dropout score is a function of where the fill sits (Proposition 1).
 
-Reads outputs/aggregate/journal/j5_tcrzem_origin*.json. For each fixed encoder, subject-level
+Reads outputs/aggregate/journal/j5_{shape,tcrzem}_origin*.json. For each fixed encoder, subject-level
 BA (95% CI) at 30% channel dropout versus the standardized position kappa of the fill
 (kappa = 0 is train-mean fill), with the clean BA (dashed, identical for every origin by
 construction) and the encoder's native zero (marker at its mean standardized position
--|mu|/sigma of the dropped block). Panels: one per available epoch (conference-matched,
-pre-specified long epoch). Encoders differ by marker and line style (grayscale-legible).
+-|mu|/sigma of the dropped block). Panels: SHAPE (conference input and windows), external
+cohort at the conference-matched epoch, and at the pre-specified long epoch. Encoders differ by marker and line style (grayscale-legible).
 """
 from __future__ import annotations
 
@@ -25,13 +25,14 @@ OUT = Path(os.environ.get("FIG_OUT", ROOT / "manuscript/figures/journal/fig_orig
 plt.rcParams.update({"font.size": 7, "axes.linewidth": 0.6, "pdf.fonttype": 42, "ps.fonttype": 42})
 STY = {"Band-power": ("#E69F00", "s", "-"), "ERP-window": ("#0072B2", "o", "--"),
        "Reservoir": ("#009E73", "^", ":")}
-PANELS = [("j5_tcrzem_origin.json", "(a) conference-matched epoch"),
-          ("j5_tcrzem_origin_long.json", "(b) long epoch (pre-specified)")]
+PANELS = [("j5_shape_origin.json", "(a) SHAPE"),
+          ("j5_tcrzem_origin.json", "(b) external, conference-matched epoch"),
+          ("j5_tcrzem_origin_long.json", "(c) external, long epoch")]
 
 
 def main():
     panels = [(f, t) for f, t in PANELS if (AGG / f).exists()]
-    fig, axes = plt.subplots(1, len(panels), figsize=(3.5 * len(panels) / 1.0 if len(panels) > 1 else 3.5, 1.9),
+    fig, axes = plt.subplots(1, len(panels), figsize=(7.16 if len(panels) > 1 else 3.5, 1.9),
                              squeeze=False)
     for ax, (f, title) in zip(axes[0], panels):
         d = json.load(open(AGG / f))

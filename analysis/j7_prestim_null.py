@@ -19,7 +19,6 @@ from sklearn.metrics import balanced_accuracy_score
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import jcore as J  # noqa: E402
-import tcrzem_data as TD  # noqa: E402
 
 N_PERM = 200
 
@@ -33,10 +32,10 @@ def oof(Xf, yfit, F, N, classes):
 
 def main():
     t0 = time.time()
-    Xuv, y, g = TD.load_cohort(zscore=False)
+    Xuv, y, g = J.load_cohort(zscore=False)
     N = len(y); classes = np.unique(y)
     F = J.folds(y, g)
-    feats = {"Z": J.erp_windows(TD.zscore_epochs(Xuv), [(0, 200)]).reshape(N, -1),
+    feats = {"Z": J.erp_windows(J.zscore_epochs(Xuv), [(0, 200)]).reshape(N, -1),
              "G": J.erp_windows(Xuv / Xuv.std(axis=(0, 1)), [(0, 200)]).reshape(N, -1)}
     res = {"epoch": J.EPOCH, "n_perm": N_PERM,
            "protocol": "ERP-window pre-only (-200..0 ms) features; conference protocol; within-subject "

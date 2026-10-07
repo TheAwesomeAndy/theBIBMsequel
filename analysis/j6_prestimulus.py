@@ -33,7 +33,6 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import jcore as J  # noqa: E402
-import tcrzem_data as TD  # noqa: E402
 
 ONSET = 51
 RES_WINDOWS = {"pre": (3, 51), "conference": (10, 70), "early_post": (51, 111), "post": (51, 255)}
@@ -67,8 +66,8 @@ def reservoir_multiwindow(X, windows, n_bins=6, rho=J.RHO, seed=J.W_SEED):
 
 def main():
     t0 = time.time()
-    Xuv, y, g = TD.load_cohort(zscore=False)
-    Xz = TD.zscore_epochs(Xuv)
+    Xuv, y, g = J.load_cohort(zscore=False)
+    Xz = J.zscore_epochs(Xuv)
     N, T, n_ch = Xz.shape
     classes = np.unique(y)
     F = J.folds(y, g)

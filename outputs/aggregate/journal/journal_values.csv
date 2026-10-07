@@ -43,17 +43,29 @@ d-margin,0.14
 d-maxgap,0.11
 e-argmax-clean,"1.2, 1.2, 1.2, 0.3, 1.2"
 e-argmax-signal30,"0.6, 0.3, 0.3, 0.3, 0.6"
+e-ba-0.0-max,0.385
 e-ba-0.0-mean,0.372
+e-ba-0.0-min,0.364
 e-ba-0.0-sd,0.008
+e-ba-0.3-max,0.411
 e-ba-0.3-mean,0.397
+e-ba-0.3-min,0.379
 e-ba-0.3-sd,0.014
+e-ba-0.6-max,0.424
 e-ba-0.6-mean,0.401
+e-ba-0.6-min,0.380
 e-ba-0.6-sd,0.017
+e-ba-0.9-max,0.399
 e-ba-0.9-mean,0.385
+e-ba-0.9-min,0.367
 e-ba-0.9-sd,0.015
+e-ba-1.2-max,0.436
 e-ba-1.2-mean,0.413
+e-ba-1.2-min,0.395
 e-ba-1.2-sd,0.016
+e-ba-1.5-max,0.392
 e-ba-1.5-mean,0.373
+e-ba-1.5-min,0.352
 e-ba-1.5-sd,0.019
 e-ba30-0.0-mean,0.357
 e-ba30-0.3-mean,0.386
@@ -111,6 +123,7 @@ rc-aug50-min,+0.020
 rc-aug50-nsig,3
 rc-augclean-max,+0.046
 rc-augclean-min,+0.013
+rc-augclean-nsig,1
 rc-clean-max,0.463
 rc-clean-min,0.431
 rc-default-amp_5dB-aug,0.465
@@ -758,6 +771,1782 @@ s-sig-remove0.5-res,0.393
 s-sig-remove0.5-res-ci,"[0.367, 0.420]"
 s-sig-remove0.5-res-hi,0.420
 s-sig-remove0.5-res-lo,0.367
+sj-dlogit-band,4.13
+sj-dlogit-erp,1.75
+sj-dlogit-res,0.43
+sj-flip-band,40.9
+sj-flip-erp,27.7
+sj-flip-res,7.6
+sj-inv-band,1.3\times10^{-3}
+sj-inv-erp,5.1\times10^{-3}
+sj-inv-res,1.1\times10^{-13}
+sj-invlabels-band,0.0
+sj-invlabels-erp,0.8
+sj-invlabels-res,0.0
+sj-o10-k0minuskm05-band,-0.003
+sj-o10-k0minuskm05-band-abs,0.003
+sj-o10-k0minuskm05-band-ci,"[-0.021, +0.016]"
+sj-o10-k0minuskm05-band-hi,+0.016
+sj-o10-k0minuskm05-band-lo,-0.021
+sj-o10-k0minuskm05-erp,+0.005
+sj-o10-k0minuskm05-erp-abs,0.005
+sj-o10-k0minuskm05-erp-ci,"[-0.022, +0.032]"
+sj-o10-k0minuskm05-erp-hi,+0.032
+sj-o10-k0minuskm05-erp-lo,-0.022
+sj-o10-k0minuskm05-res,+0.003
+sj-o10-k0minuskm05-res-abs,0.003
+sj-o10-k0minuskm05-res-ci,"[-0.008, +0.014]"
+sj-o10-k0minuskm05-res-hi,+0.014
+sj-o10-k0minuskm05-res-lo,-0.008
+sj-o10-k0minuskm10-band,-0.002
+sj-o10-k0minuskm10-band-abs,0.002
+sj-o10-k0minuskm10-band-ci,"[-0.024, +0.021]"
+sj-o10-k0minuskm10-band-hi,+0.021
+sj-o10-k0minuskm10-band-lo,-0.024
+sj-o10-k0minuskm10-erp,+0.032
+sj-o10-k0minuskm10-erp-abs,0.032
+sj-o10-k0minuskm10-erp-ci,"[-0.003, +0.066]"
+sj-o10-k0minuskm10-erp-hi,+0.066
+sj-o10-k0minuskm10-erp-lo,-0.003
+sj-o10-k0minuskm10-res,+0.003
+sj-o10-k0minuskm10-res-abs,0.003
+sj-o10-k0minuskm10-res-ci,"[-0.013, +0.019]"
+sj-o10-k0minuskm10-res-hi,+0.019
+sj-o10-k0minuskm10-res-lo,-0.013
+sj-o10-k0minuskm20-band,+0.030
+sj-o10-k0minuskm20-band-abs,0.030
+sj-o10-k0minuskm20-band-ci,"[+0.000, +0.060]"
+sj-o10-k0minuskm20-band-hi,+0.060
+sj-o10-k0minuskm20-band-lo,+0.000
+sj-o10-k0minuskm20-erp,+0.108
+sj-o10-k0minuskm20-erp-abs,0.108
+sj-o10-k0minuskm20-erp-ci,"[+0.071, +0.145]"
+sj-o10-k0minuskm20-erp-hi,+0.145
+sj-o10-k0minuskm20-erp-lo,+0.071
+sj-o10-k0minuskm20-res,+0.019
+sj-o10-k0minuskm20-res-abs,0.019
+sj-o10-k0minuskm20-res-ci,"[-0.002, +0.041]"
+sj-o10-k0minuskm20-res-hi,+0.041
+sj-o10-k0minuskm20-res-lo,-0.002
+sj-o10-k0minuskm30-band,+0.046
+sj-o10-k0minuskm30-band-abs,0.046
+sj-o10-k0minuskm30-band-ci,"[+0.013, +0.079]"
+sj-o10-k0minuskm30-band-hi,+0.079
+sj-o10-k0minuskm30-band-lo,+0.013
+sj-o10-k0minuskm30-erp,+0.147
+sj-o10-k0minuskm30-erp-abs,0.147
+sj-o10-k0minuskm30-erp-ci,"[+0.111, +0.183]"
+sj-o10-k0minuskm30-erp-hi,+0.183
+sj-o10-k0minuskm30-erp-lo,+0.111
+sj-o10-k0minuskm30-res,+0.035
+sj-o10-k0minuskm30-res-abs,0.035
+sj-o10-k0minuskm30-res-ci,"[+0.011, +0.058]"
+sj-o10-k0minuskm30-res-hi,+0.058
+sj-o10-k0minuskm30-res-lo,+0.011
+sj-o10-k0minuskp05-band,+0.003
+sj-o10-k0minuskp05-band-abs,0.003
+sj-o10-k0minuskp05-band-ci,"[-0.014, +0.021]"
+sj-o10-k0minuskp05-band-hi,+0.021
+sj-o10-k0minuskp05-band-lo,-0.014
+sj-o10-k0minuskp05-erp,-0.013
+sj-o10-k0minuskp05-erp-abs,0.013
+sj-o10-k0minuskp05-erp-ci,"[-0.036, +0.009]"
+sj-o10-k0minuskp05-erp-hi,+0.009
+sj-o10-k0minuskp05-erp-lo,-0.036
+sj-o10-k0minuskp05-res,-0.008
+sj-o10-k0minuskp05-res-abs,0.008
+sj-o10-k0minuskp05-res-ci,"[-0.021, +0.003]"
+sj-o10-k0minuskp05-res-hi,+0.003
+sj-o10-k0minuskp05-res-lo,-0.021
+sj-o10-k0minuskp10-band,+0.011
+sj-o10-k0minuskp10-band-abs,0.011
+sj-o10-k0minuskp10-band-ci,"[-0.014, +0.036]"
+sj-o10-k0minuskp10-band-hi,+0.036
+sj-o10-k0minuskp10-band-lo,-0.014
+sj-o10-k0minuskp10-erp,+0.035
+sj-o10-k0minuskp10-erp-abs,0.035
+sj-o10-k0minuskp10-erp-ci,"[+0.003, +0.065]"
+sj-o10-k0minuskp10-erp-hi,+0.065
+sj-o10-k0minuskp10-erp-lo,+0.003
+sj-o10-k0minuskp10-res,-0.006
+sj-o10-k0minuskp10-res-abs,0.006
+sj-o10-k0minuskp10-res-ci,"[-0.024, +0.011]"
+sj-o10-k0minuskp10-res-hi,+0.011
+sj-o10-k0minuskp10-res-lo,-0.024
+sj-o10-k0minuskp20-band,+0.009
+sj-o10-k0minuskp20-band-abs,0.009
+sj-o10-k0minuskp20-band-ci,"[-0.021, +0.039]"
+sj-o10-k0minuskp20-band-hi,+0.039
+sj-o10-k0minuskp20-band-lo,-0.021
+sj-o10-k0minuskp20-erp,+0.090
+sj-o10-k0minuskp20-erp-abs,0.090
+sj-o10-k0minuskp20-erp-ci,"[+0.054, +0.126]"
+sj-o10-k0minuskp20-erp-hi,+0.126
+sj-o10-k0minuskp20-erp-lo,+0.054
+sj-o10-k0minuskp20-res,+0.003
+sj-o10-k0minuskp20-res-abs,0.003
+sj-o10-k0minuskp20-res-ci,"[-0.019, +0.025]"
+sj-o10-k0minuskp20-res-hi,+0.025
+sj-o10-k0minuskp20-res-lo,-0.019
+sj-o10-k0minuskp30-band,+0.028
+sj-o10-k0minuskp30-band-abs,0.028
+sj-o10-k0minuskp30-band-ci,"[-0.005, +0.062]"
+sj-o10-k0minuskp30-band-hi,+0.062
+sj-o10-k0minuskp30-band-lo,-0.005
+sj-o10-k0minuskp30-erp,+0.141
+sj-o10-k0minuskp30-erp-abs,0.141
+sj-o10-k0minuskp30-erp-ci,"[+0.106, +0.175]"
+sj-o10-k0minuskp30-erp-hi,+0.175
+sj-o10-k0minuskp30-erp-lo,+0.106
+sj-o10-k0minuskp30-res,+0.011
+sj-o10-k0minuskp30-res-abs,0.011
+sj-o10-k0minuskp30-res-ci,"[-0.016, +0.036]"
+sj-o10-k0minuskp30-res-hi,+0.036
+sj-o10-k0minuskp30-res-lo,-0.016
+sj-o10-k0minusnative_zero-band,+0.014
+sj-o10-k0minusnative_zero-band-abs,0.014
+sj-o10-k0minusnative_zero-band-ci,"[-0.009, +0.039]"
+sj-o10-k0minusnative_zero-band-hi,+0.039
+sj-o10-k0minusnative_zero-band-lo,-0.009
+sj-o10-k0minusnative_zero-erp,-0.014
+sj-o10-k0minusnative_zero-erp-abs,0.014
+sj-o10-k0minusnative_zero-erp-ci,"[-0.033, +0.005]"
+sj-o10-k0minusnative_zero-erp-hi,+0.005
+sj-o10-k0minusnative_zero-erp-lo,-0.033
+sj-o10-k0minusnative_zero-res,+0.001
+sj-o10-k0minusnative_zero-res-abs,0.001
+sj-o10-k0minusnative_zero-res-ci,"[-0.008, +0.011]"
+sj-o10-k0minusnative_zero-res-hi,+0.011
+sj-o10-k0minusnative_zero-res-lo,-0.008
+sj-o10-km05-band,0.493
+sj-o10-km05-band-ci,"[0.457, 0.528]"
+sj-o10-km05-band-hi,0.528
+sj-o10-km05-band-lo,0.457
+sj-o10-km05-erp,0.583
+sj-o10-km05-erp-ci,"[0.550, 0.616]"
+sj-o10-km05-erp-hi,0.616
+sj-o10-km05-erp-lo,0.550
+sj-o10-km05-res,0.476
+sj-o10-km05-res-ci,"[0.438, 0.512]"
+sj-o10-km05-res-hi,0.512
+sj-o10-km05-res-lo,0.438
+sj-o10-km10-band,0.491
+sj-o10-km10-band-ci,"[0.458, 0.524]"
+sj-o10-km10-band-hi,0.524
+sj-o10-km10-band-lo,0.458
+sj-o10-km10-erp,0.556
+sj-o10-km10-erp-ci,"[0.523, 0.589]"
+sj-o10-km10-erp-hi,0.589
+sj-o10-km10-erp-lo,0.523
+sj-o10-km10-res,0.476
+sj-o10-km10-res-ci,"[0.439, 0.512]"
+sj-o10-km10-res-hi,0.512
+sj-o10-km10-res-lo,0.439
+sj-o10-km20-band,0.460
+sj-o10-km20-band-ci,"[0.427, 0.493]"
+sj-o10-km20-band-hi,0.493
+sj-o10-km20-band-lo,0.427
+sj-o10-km20-erp,0.480
+sj-o10-km20-erp-ci,"[0.453, 0.507]"
+sj-o10-km20-erp-hi,0.507
+sj-o10-km20-erp-lo,0.453
+sj-o10-km20-res,0.460
+sj-o10-km20-res-ci,"[0.422, 0.496]"
+sj-o10-km20-res-hi,0.496
+sj-o10-km20-res-lo,0.422
+sj-o10-km2minuskp2-band,-0.020
+sj-o10-km2minuskp2-band-abs,0.020
+sj-o10-km2minuskp2-band-ci,"[-0.055, +0.017]"
+sj-o10-km2minuskp2-band-hi,+0.017
+sj-o10-km2minuskp2-band-lo,-0.055
+sj-o10-km2minuskp2-erp,-0.018
+sj-o10-km2minuskp2-erp-abs,0.018
+sj-o10-km2minuskp2-erp-ci,"[-0.054, +0.021]"
+sj-o10-km2minuskp2-erp-hi,+0.021
+sj-o10-km2minuskp2-erp-lo,-0.054
+sj-o10-km2minuskp2-res,-0.016
+sj-o10-km2minuskp2-res-abs,0.016
+sj-o10-km2minuskp2-res-ci,"[-0.046, +0.014]"
+sj-o10-km2minuskp2-res-hi,+0.014
+sj-o10-km2minuskp2-res-lo,-0.046
+sj-o10-km30-band,0.444
+sj-o10-km30-band-ci,"[0.412, 0.477]"
+sj-o10-km30-band-hi,0.477
+sj-o10-km30-band-lo,0.412
+sj-o10-km30-erp,0.441
+sj-o10-km30-erp-ci,"[0.415, 0.466]"
+sj-o10-km30-erp-hi,0.466
+sj-o10-km30-erp-lo,0.415
+sj-o10-km30-res,0.444
+sj-o10-km30-res-ci,"[0.406, 0.480]"
+sj-o10-km30-res-hi,0.480
+sj-o10-km30-res-lo,0.406
+sj-o10-kp00-band,0.490
+sj-o10-kp00-band-ci,"[0.455, 0.525]"
+sj-o10-kp00-band-hi,0.525
+sj-o10-kp00-band-lo,0.455
+sj-o10-kp00-erp,0.588
+sj-o10-kp00-erp-ci,"[0.556, 0.619]"
+sj-o10-kp00-erp-hi,0.619
+sj-o10-kp00-erp-lo,0.556
+sj-o10-kp00-res,0.479
+sj-o10-kp00-res-ci,"[0.441, 0.515]"
+sj-o10-kp00-res-hi,0.515
+sj-o10-kp00-res-lo,0.441
+sj-o10-kp05-band,0.487
+sj-o10-kp05-band-ci,"[0.453, 0.521]"
+sj-o10-kp05-band-hi,0.521
+sj-o10-kp05-band-lo,0.453
+sj-o10-kp05-erp,0.600
+sj-o10-kp05-erp-ci,"[0.567, 0.633]"
+sj-o10-kp05-erp-hi,0.633
+sj-o10-kp05-erp-lo,0.567
+sj-o10-kp05-res,0.487
+sj-o10-kp05-res-ci,"[0.449, 0.523]"
+sj-o10-kp05-res-hi,0.523
+sj-o10-kp05-res-lo,0.449
+sj-o10-kp10-band,0.479
+sj-o10-kp10-band-ci,"[0.447, 0.510]"
+sj-o10-kp10-band-hi,0.510
+sj-o10-kp10-band-lo,0.447
+sj-o10-kp10-erp,0.553
+sj-o10-kp10-erp-ci,"[0.521, 0.586]"
+sj-o10-kp10-erp-hi,0.586
+sj-o10-kp10-erp-lo,0.521
+sj-o10-kp10-res,0.485
+sj-o10-kp10-res-ci,"[0.447, 0.520]"
+sj-o10-kp10-res-hi,0.520
+sj-o10-kp10-res-lo,0.447
+sj-o10-kp20-band,0.480
+sj-o10-kp20-band-ci,"[0.449, 0.510]"
+sj-o10-kp20-band-hi,0.510
+sj-o10-kp20-band-lo,0.449
+sj-o10-kp20-erp,0.498
+sj-o10-kp20-erp-ci,"[0.469, 0.528]"
+sj-o10-kp20-erp-hi,0.528
+sj-o10-kp20-erp-lo,0.469
+sj-o10-kp20-res,0.476
+sj-o10-kp20-res-ci,"[0.439, 0.510]"
+sj-o10-kp20-res-hi,0.510
+sj-o10-kp20-res-lo,0.439
+sj-o10-kp30-band,0.461
+sj-o10-kp30-band-ci,"[0.433, 0.490]"
+sj-o10-kp30-band-hi,0.490
+sj-o10-kp30-band-lo,0.433
+sj-o10-kp30-erp,0.447
+sj-o10-kp30-erp-ci,"[0.422, 0.472]"
+sj-o10-kp30-erp-hi,0.472
+sj-o10-kp30-erp-lo,0.422
+sj-o10-kp30-res,0.468
+sj-o10-kp30-res-ci,"[0.431, 0.502]"
+sj-o10-kp30-res-hi,0.502
+sj-o10-kp30-res-lo,0.431
+sj-o10-native_zero-band,0.476
+sj-o10-native_zero-band-ci,"[0.442, 0.509]"
+sj-o10-native_zero-band-hi,0.509
+sj-o10-native_zero-band-lo,0.442
+sj-o10-native_zero-erp,0.602
+sj-o10-native_zero-erp-ci,"[0.570, 0.633]"
+sj-o10-native_zero-erp-hi,0.633
+sj-o10-native_zero-erp-lo,0.570
+sj-o10-native_zero-res,0.477
+sj-o10-native_zero-res-ci,"[0.439, 0.513]"
+sj-o10-native_zero-res-hi,0.513
+sj-o10-native_zero-res-lo,0.439
+sj-o10-nativeminusmean-band,-0.014
+sj-o10-nativeminusmean-band-abs,0.014
+sj-o10-nativeminusmean-band-ci,"[-0.039, +0.009]"
+sj-o10-nativeminusmean-band-hi,+0.009
+sj-o10-nativeminusmean-band-lo,-0.039
+sj-o10-nativeminusmean-erp,+0.014
+sj-o10-nativeminusmean-erp-abs,0.014
+sj-o10-nativeminusmean-erp-ci,"[-0.005, +0.033]"
+sj-o10-nativeminusmean-erp-hi,+0.033
+sj-o10-nativeminusmean-erp-lo,-0.005
+sj-o10-nativeminusmean-res,-0.001
+sj-o10-nativeminusmean-res-abs,0.001
+sj-o10-nativeminusmean-res-ci,"[-0.011, +0.008]"
+sj-o10-nativeminusmean-res-hi,+0.008
+sj-o10-nativeminusmean-res-lo,-0.011
+sj-o30-k0minuskm05-band,+0.022
+sj-o30-k0minuskm05-band-abs,0.022
+sj-o30-k0minuskm05-band-ci,"[-0.005, +0.047]"
+sj-o30-k0minuskm05-band-hi,+0.047
+sj-o30-k0minuskm05-band-lo,-0.005
+sj-o30-k0minuskm05-erp,+0.028
+sj-o30-k0minuskm05-erp-abs,0.028
+sj-o30-k0minuskm05-erp-ci,"[-0.002, +0.058]"
+sj-o30-k0minuskm05-erp-hi,+0.058
+sj-o30-k0minuskm05-erp-lo,-0.002
+sj-o30-k0minuskm05-res,-0.018
+sj-o30-k0minuskm05-res-abs,0.018
+sj-o30-k0minuskm05-res-ci,"[-0.035, +0.000]"
+sj-o30-k0minuskm05-res-hi,+0.000
+sj-o30-k0minuskm05-res-lo,-0.035
+sj-o30-k0minuskm10-band,+0.040
+sj-o30-k0minuskm10-band-abs,0.040
+sj-o30-k0minuskm10-band-ci,"[+0.009, +0.071]"
+sj-o30-k0minuskm10-band-hi,+0.071
+sj-o30-k0minuskm10-band-lo,+0.009
+sj-o30-k0minuskm10-erp,+0.069
+sj-o30-k0minuskm10-erp-abs,0.069
+sj-o30-k0minuskm10-erp-ci,"[+0.038, +0.101]"
+sj-o30-k0minuskm10-erp-hi,+0.101
+sj-o30-k0minuskm10-erp-lo,+0.038
+sj-o30-k0minuskm10-res,-0.010
+sj-o30-k0minuskm10-res-abs,0.010
+sj-o30-k0minuskm10-res-ci,"[-0.032, +0.014]"
+sj-o30-k0minuskm10-res-hi,+0.014
+sj-o30-k0minuskm10-res-lo,-0.032
+sj-o30-k0minuskm20-band,+0.062
+sj-o30-k0minuskm20-band-abs,0.062
+sj-o30-k0minuskm20-band-ci,"[+0.027, +0.095]"
+sj-o30-k0minuskm20-band-hi,+0.095
+sj-o30-k0minuskm20-band-lo,+0.027
+sj-o30-k0minuskm20-erp,+0.168
+sj-o30-k0minuskm20-erp-abs,0.168
+sj-o30-k0minuskm20-erp-ci,"[+0.133, +0.204]"
+sj-o30-k0minuskm20-erp-hi,+0.204
+sj-o30-k0minuskm20-erp-lo,+0.133
+sj-o30-k0minuskm20-res,+0.010
+sj-o30-k0minuskm20-res-abs,0.010
+sj-o30-k0minuskm20-res-ci,"[-0.021, +0.039]"
+sj-o30-k0minuskm20-res-hi,+0.039
+sj-o30-k0minuskm20-res-lo,-0.021
+sj-o30-k0minuskm30-band,+0.081
+sj-o30-k0minuskm30-band-abs,0.081
+sj-o30-k0minuskm30-band-ci,"[+0.047, +0.114]"
+sj-o30-k0minuskm30-band-hi,+0.114
+sj-o30-k0minuskm30-band-lo,+0.047
+sj-o30-k0minuskm30-erp,+0.198
+sj-o30-k0minuskm30-erp-abs,0.198
+sj-o30-k0minuskm30-erp-ci,"[+0.163, +0.234]"
+sj-o30-k0minuskm30-erp-hi,+0.234
+sj-o30-k0minuskm30-erp-lo,+0.163
+sj-o30-k0minuskm30-res,+0.022
+sj-o30-k0minuskm30-res-abs,0.022
+sj-o30-k0minuskm30-res-ci,"[-0.009, +0.055]"
+sj-o30-k0minuskm30-res-hi,+0.055
+sj-o30-k0minuskm30-res-lo,-0.009
+sj-o30-k0minuskp05-band,-0.010
+sj-o30-k0minuskp05-band-abs,0.010
+sj-o30-k0minuskp05-band-ci,"[-0.035, +0.016]"
+sj-o30-k0minuskp05-band-hi,+0.016
+sj-o30-k0minuskp05-band-lo,-0.035
+sj-o30-k0minuskp05-erp,+0.033
+sj-o30-k0minuskp05-erp-abs,0.033
+sj-o30-k0minuskp05-erp-ci,"[+0.000, +0.065]"
+sj-o30-k0minuskp05-erp-hi,+0.065
+sj-o30-k0minuskp05-erp-lo,+0.000
+sj-o30-k0minuskp05-res,+0.006
+sj-o30-k0minuskp05-res-abs,0.006
+sj-o30-k0minuskp05-res-ci,"[-0.009, +0.022]"
+sj-o30-k0minuskp05-res-hi,+0.022
+sj-o30-k0minuskp05-res-lo,-0.009
+sj-o30-k0minuskp10-band,+0.036
+sj-o30-k0minuskp10-band-abs,0.036
+sj-o30-k0minuskp10-band-ci,"[+0.003, +0.070]"
+sj-o30-k0minuskp10-band-hi,+0.070
+sj-o30-k0minuskp10-band-lo,+0.003
+sj-o30-k0minuskp10-erp,+0.095
+sj-o30-k0minuskp10-erp-abs,0.095
+sj-o30-k0minuskp10-erp-ci,"[+0.060, +0.130]"
+sj-o30-k0minuskp10-erp-hi,+0.130
+sj-o30-k0minuskp10-erp-lo,+0.060
+sj-o30-k0minuskp10-res,+0.019
+sj-o30-k0minuskp10-res-abs,0.019
+sj-o30-k0minuskp10-res-ci,"[-0.000, +0.039]"
+sj-o30-k0minuskp10-res-hi,+0.039
+sj-o30-k0minuskp10-res-lo,-0.000
+sj-o30-k0minuskp20-band,+0.060
+sj-o30-k0minuskp20-band-abs,0.060
+sj-o30-k0minuskp20-band-ci,"[+0.024, +0.095]"
+sj-o30-k0minuskp20-band-hi,+0.095
+sj-o30-k0minuskp20-band-lo,+0.024
+sj-o30-k0minuskp20-erp,+0.166
+sj-o30-k0minuskp20-erp-abs,0.166
+sj-o30-k0minuskp20-erp-ci,"[+0.128, +0.204]"
+sj-o30-k0minuskp20-erp-hi,+0.204
+sj-o30-k0minuskp20-erp-lo,+0.128
+sj-o30-k0minuskp20-res,+0.052
+sj-o30-k0minuskp20-res-abs,0.052
+sj-o30-k0minuskp20-res-ci,"[+0.025, +0.081]"
+sj-o30-k0minuskp20-res-hi,+0.081
+sj-o30-k0minuskp20-res-lo,+0.025
+sj-o30-k0minuskp30-band,+0.064
+sj-o30-k0minuskp30-band-abs,0.064
+sj-o30-k0minuskp30-band-ci,"[+0.027, +0.100]"
+sj-o30-k0minuskp30-band-hi,+0.100
+sj-o30-k0minuskp30-band-lo,+0.027
+sj-o30-k0minuskp30-erp,+0.186
+sj-o30-k0minuskp30-erp-abs,0.186
+sj-o30-k0minuskp30-erp-ci,"[+0.148, +0.226]"
+sj-o30-k0minuskp30-erp-hi,+0.226
+sj-o30-k0minuskp30-erp-lo,+0.148
+sj-o30-k0minuskp30-res,+0.069
+sj-o30-k0minuskp30-res-abs,0.069
+sj-o30-k0minuskp30-res-ci,"[+0.039, +0.100]"
+sj-o30-k0minuskp30-res-hi,+0.100
+sj-o30-k0minuskp30-res-lo,+0.039
+sj-o30-k0minusnative_zero-band,+0.055
+sj-o30-k0minusnative_zero-band-abs,0.055
+sj-o30-k0minusnative_zero-band-ci,"[+0.024, +0.087]"
+sj-o30-k0minusnative_zero-band-hi,+0.087
+sj-o30-k0minusnative_zero-band-lo,+0.024
+sj-o30-k0minusnative_zero-erp,+0.042
+sj-o30-k0minusnative_zero-erp-abs,0.042
+sj-o30-k0minusnative_zero-erp-ci,"[+0.011, +0.074]"
+sj-o30-k0minusnative_zero-erp-hi,+0.074
+sj-o30-k0minusnative_zero-erp-lo,+0.011
+sj-o30-k0minusnative_zero-res,-0.000
+sj-o30-k0minusnative_zero-res-abs,0.000
+sj-o30-k0minusnative_zero-res-ci,"[-0.022, +0.022]"
+sj-o30-k0minusnative_zero-res-hi,+0.022
+sj-o30-k0minusnative_zero-res-lo,-0.022
+sj-o30-km05-band,0.450
+sj-o30-km05-band-ci,"[0.415, 0.487]"
+sj-o30-km05-band-hi,0.487
+sj-o30-km05-band-lo,0.415
+sj-o30-km05-erp,0.550
+sj-o30-km05-erp-ci,"[0.517, 0.583]"
+sj-o30-km05-erp-hi,0.583
+sj-o30-km05-erp-lo,0.517
+sj-o30-km05-res,0.504
+sj-o30-km05-res-ci,"[0.464, 0.543]"
+sj-o30-km05-res-hi,0.543
+sj-o30-km05-res-lo,0.464
+sj-o30-km10-band,0.433
+sj-o30-km10-band-ci,"[0.400, 0.466]"
+sj-o30-km10-band-hi,0.466
+sj-o30-km10-band-lo,0.400
+sj-o30-km10-erp,0.509
+sj-o30-km10-erp-ci,"[0.480, 0.536]"
+sj-o30-km10-erp-hi,0.536
+sj-o30-km10-erp-lo,0.480
+sj-o30-km10-res,0.496
+sj-o30-km10-res-ci,"[0.458, 0.534]"
+sj-o30-km10-res-hi,0.534
+sj-o30-km10-res-lo,0.458
+sj-o30-km20-band,0.411
+sj-o30-km20-band-ci,"[0.385, 0.436]"
+sj-o30-km20-band-hi,0.436
+sj-o30-km20-band-lo,0.385
+sj-o30-km20-erp,0.411
+sj-o30-km20-erp-ci,"[0.384, 0.438]"
+sj-o30-km20-erp-hi,0.438
+sj-o30-km20-erp-lo,0.384
+sj-o30-km20-res,0.477
+sj-o30-km20-res-ci,"[0.441, 0.512]"
+sj-o30-km20-res-hi,0.512
+sj-o30-km20-res-lo,0.441
+sj-o30-km2minuskp2-band,-0.002
+sj-o30-km2minuskp2-band-abs,0.002
+sj-o30-km2minuskp2-band-ci,"[-0.036, +0.033]"
+sj-o30-km2minuskp2-band-hi,+0.033
+sj-o30-km2minuskp2-band-lo,-0.036
+sj-o30-km2minuskp2-erp,-0.002
+sj-o30-km2minuskp2-erp-abs,0.002
+sj-o30-km2minuskp2-erp-ci,"[-0.035, +0.032]"
+sj-o30-km2minuskp2-erp-hi,+0.032
+sj-o30-km2minuskp2-erp-lo,-0.035
+sj-o30-km2minuskp2-res,+0.042
+sj-o30-km2minuskp2-res-abs,0.042
+sj-o30-km2minuskp2-res-ci,"[+0.008, +0.077]"
+sj-o30-km2minuskp2-res-hi,+0.077
+sj-o30-km2minuskp2-res-lo,+0.008
+sj-o30-km30-band,0.392
+sj-o30-km30-band-ci,"[0.368, 0.415]"
+sj-o30-km30-band-hi,0.415
+sj-o30-km30-band-lo,0.368
+sj-o30-km30-erp,0.381
+sj-o30-km30-erp-ci,"[0.359, 0.404]"
+sj-o30-km30-erp-hi,0.404
+sj-o30-km30-erp-lo,0.359
+sj-o30-km30-res,0.464
+sj-o30-km30-res-ci,"[0.431, 0.498]"
+sj-o30-km30-res-hi,0.498
+sj-o30-km30-res-lo,0.431
+sj-o30-kp00-band,0.472
+sj-o30-kp00-band-ci,"[0.441, 0.506]"
+sj-o30-kp00-band-hi,0.506
+sj-o30-kp00-band-lo,0.441
+sj-o30-kp00-erp,0.578
+sj-o30-kp00-erp-ci,"[0.545, 0.611]"
+sj-o30-kp00-erp-hi,0.611
+sj-o30-kp00-erp-lo,0.545
+sj-o30-kp00-res,0.487
+sj-o30-kp00-res-ci,"[0.447, 0.523]"
+sj-o30-kp00-res-hi,0.523
+sj-o30-kp00-res-lo,0.447
+sj-o30-kp05-band,0.482
+sj-o30-kp05-band-ci,"[0.449, 0.515]"
+sj-o30-kp05-band-hi,0.515
+sj-o30-kp05-band-lo,0.449
+sj-o30-kp05-erp,0.545
+sj-o30-kp05-erp-ci,"[0.513, 0.575]"
+sj-o30-kp05-erp-hi,0.575
+sj-o30-kp05-erp-lo,0.513
+sj-o30-kp05-res,0.480
+sj-o30-kp05-res-ci,"[0.441, 0.518]"
+sj-o30-kp05-res-hi,0.518
+sj-o30-kp05-res-lo,0.441
+sj-o30-kp10-band,0.436
+sj-o30-kp10-band-ci,"[0.404, 0.468]"
+sj-o30-kp10-band-hi,0.468
+sj-o30-kp10-band-lo,0.404
+sj-o30-kp10-erp,0.483
+sj-o30-kp10-erp-ci,"[0.455, 0.510]"
+sj-o30-kp10-erp-hi,0.510
+sj-o30-kp10-erp-lo,0.455
+sj-o30-kp10-res,0.468
+sj-o30-kp10-res-ci,"[0.428, 0.506]"
+sj-o30-kp10-res-hi,0.506
+sj-o30-kp10-res-lo,0.428
+sj-o30-kp20-band,0.412
+sj-o30-kp20-band-ci,"[0.384, 0.442]"
+sj-o30-kp20-band-hi,0.442
+sj-o30-kp20-band-lo,0.384
+sj-o30-kp20-erp,0.412
+sj-o30-kp20-erp-ci,"[0.389, 0.436]"
+sj-o30-kp20-erp-hi,0.436
+sj-o30-kp20-erp-lo,0.389
+sj-o30-kp20-res,0.434
+sj-o30-kp20-res-ci,"[0.397, 0.472]"
+sj-o30-kp20-res-hi,0.472
+sj-o30-kp20-res-lo,0.397
+sj-o30-kp30-band,0.409
+sj-o30-kp30-band-ci,"[0.384, 0.436]"
+sj-o30-kp30-band-hi,0.436
+sj-o30-kp30-band-lo,0.384
+sj-o30-kp30-erp,0.392
+sj-o30-kp30-erp-ci,"[0.373, 0.412]"
+sj-o30-kp30-erp-hi,0.412
+sj-o30-kp30-erp-lo,0.373
+sj-o30-kp30-res,0.417
+sj-o30-kp30-res-ci,"[0.382, 0.452]"
+sj-o30-kp30-res-hi,0.452
+sj-o30-kp30-res-lo,0.382
+sj-o30-native_zero-band,0.417
+sj-o30-native_zero-band-ci,"[0.387, 0.447]"
+sj-o30-native_zero-band-hi,0.447
+sj-o30-native_zero-band-lo,0.387
+sj-o30-native_zero-erp,0.536
+sj-o30-native_zero-erp-ci,"[0.504, 0.567]"
+sj-o30-native_zero-erp-hi,0.567
+sj-o30-native_zero-erp-lo,0.504
+sj-o30-native_zero-res,0.487
+sj-o30-native_zero-res-ci,"[0.449, 0.523]"
+sj-o30-native_zero-res-hi,0.523
+sj-o30-native_zero-res-lo,0.449
+sj-o30-nativeminusmean-band,-0.055
+sj-o30-nativeminusmean-band-abs,0.055
+sj-o30-nativeminusmean-band-ci,"[-0.087, -0.024]"
+sj-o30-nativeminusmean-band-hi,-0.024
+sj-o30-nativeminusmean-band-lo,-0.087
+sj-o30-nativeminusmean-erp,-0.042
+sj-o30-nativeminusmean-erp-abs,0.042
+sj-o30-nativeminusmean-erp-ci,"[-0.074, -0.011]"
+sj-o30-nativeminusmean-erp-hi,-0.011
+sj-o30-nativeminusmean-erp-lo,-0.074
+sj-o30-nativeminusmean-res,+0.000
+sj-o30-nativeminusmean-res-abs,0.000
+sj-o30-nativeminusmean-res-ci,"[-0.022, +0.022]"
+sj-o30-nativeminusmean-res-hi,+0.022
+sj-o30-nativeminusmean-res-lo,-0.022
+sj-o50-k0minuskm05-band,-0.022
+sj-o50-k0minuskm05-band-abs,0.022
+sj-o50-k0minuskm05-band-ci,"[-0.049, +0.005]"
+sj-o50-k0minuskm05-band-hi,+0.005
+sj-o50-k0minuskm05-band-lo,-0.049
+sj-o50-k0minuskm05-erp,+0.019
+sj-o50-k0minuskm05-erp-abs,0.019
+sj-o50-k0minuskm05-erp-ci,"[-0.016, +0.052]"
+sj-o50-k0minuskm05-erp-hi,+0.052
+sj-o50-k0minuskm05-erp-lo,-0.016
+sj-o50-k0minuskm05-res,+0.019
+sj-o50-k0minuskm05-res-abs,0.019
+sj-o50-k0minuskm05-res-ci,"[-0.003, +0.041]"
+sj-o50-k0minuskm05-res-hi,+0.041
+sj-o50-k0minuskm05-res-lo,-0.003
+sj-o50-k0minuskm10-band,+0.011
+sj-o50-k0minuskm10-band-abs,0.011
+sj-o50-k0minuskm10-band-ci,"[-0.021, +0.044]"
+sj-o50-k0minuskm10-band-hi,+0.044
+sj-o50-k0minuskm10-band-lo,-0.021
+sj-o50-k0minuskm10-erp,+0.060
+sj-o50-k0minuskm10-erp-abs,0.060
+sj-o50-k0minuskm10-erp-ci,"[+0.024, +0.098]"
+sj-o50-k0minuskm10-erp-hi,+0.098
+sj-o50-k0minuskm10-erp-lo,+0.024
+sj-o50-k0minuskm10-res,+0.024
+sj-o50-k0minuskm10-res-abs,0.024
+sj-o50-k0minuskm10-res-ci,"[-0.006, +0.054]"
+sj-o50-k0minuskm10-res-hi,+0.054
+sj-o50-k0minuskm10-res-lo,-0.006
+sj-o50-k0minuskm20-band,+0.049
+sj-o50-k0minuskm20-band-abs,0.049
+sj-o50-k0minuskm20-band-ci,"[+0.014, +0.085]"
+sj-o50-k0minuskm20-band-hi,+0.085
+sj-o50-k0minuskm20-band-lo,+0.014
+sj-o50-k0minuskm20-erp,+0.124
+sj-o50-k0minuskm20-erp-abs,0.124
+sj-o50-k0minuskm20-erp-ci,"[+0.087, +0.161]"
+sj-o50-k0minuskm20-erp-hi,+0.161
+sj-o50-k0minuskm20-erp-lo,+0.087
+sj-o50-k0minuskm20-res,+0.047
+sj-o50-k0minuskm20-res-abs,0.047
+sj-o50-k0minuskm20-res-ci,"[+0.014, +0.081]"
+sj-o50-k0minuskm20-res-hi,+0.081
+sj-o50-k0minuskm20-res-lo,+0.014
+sj-o50-k0minuskm30-band,+0.068
+sj-o50-k0minuskm30-band-abs,0.068
+sj-o50-k0minuskm30-band-ci,"[+0.033, +0.104]"
+sj-o50-k0minuskm30-band-hi,+0.104
+sj-o50-k0minuskm30-band-lo,+0.033
+sj-o50-k0minuskm30-erp,+0.140
+sj-o50-k0minuskm30-erp-abs,0.140
+sj-o50-k0minuskm30-erp-ci,"[+0.103, +0.175]"
+sj-o50-k0minuskm30-erp-hi,+0.175
+sj-o50-k0minuskm30-erp-lo,+0.103
+sj-o50-k0minuskm30-res,+0.057
+sj-o50-k0minuskm30-res-abs,0.057
+sj-o50-k0minuskm30-res-ci,"[+0.020, +0.093]"
+sj-o50-k0minuskm30-res-hi,+0.093
+sj-o50-k0minuskm30-res-lo,+0.020
+sj-o50-k0minuskp05-band,+0.019
+sj-o50-k0minuskp05-band-abs,0.019
+sj-o50-k0minuskp05-band-ci,"[-0.006, +0.046]"
+sj-o50-k0minuskp05-band-hi,+0.046
+sj-o50-k0minuskp05-band-lo,-0.006
+sj-o50-k0minuskp05-erp,+0.032
+sj-o50-k0minuskp05-erp-abs,0.032
+sj-o50-k0minuskp05-erp-ci,"[-0.002, +0.065]"
+sj-o50-k0minuskp05-erp-hi,+0.065
+sj-o50-k0minuskp05-erp-lo,-0.002
+sj-o50-k0minuskp05-res,+0.005
+sj-o50-k0minuskp05-res-abs,0.005
+sj-o50-k0minuskp05-res-ci,"[-0.019, +0.028]"
+sj-o50-k0minuskp05-res-hi,+0.028
+sj-o50-k0minuskp05-res-lo,-0.019
+sj-o50-k0minuskp10-band,+0.041
+sj-o50-k0minuskp10-band-abs,0.041
+sj-o50-k0minuskp10-band-ci,"[+0.011, +0.073]"
+sj-o50-k0minuskp10-band-hi,+0.073
+sj-o50-k0minuskp10-band-lo,+0.011
+sj-o50-k0minuskp10-erp,+0.082
+sj-o50-k0minuskp10-erp-abs,0.082
+sj-o50-k0minuskp10-erp-ci,"[+0.047, +0.117]"
+sj-o50-k0minuskp10-erp-hi,+0.117
+sj-o50-k0minuskp10-erp-lo,+0.047
+sj-o50-k0minuskp10-res,+0.036
+sj-o50-k0minuskp10-res-abs,0.036
+sj-o50-k0minuskp10-res-ci,"[+0.006, +0.066]"
+sj-o50-k0minuskp10-res-hi,+0.066
+sj-o50-k0minuskp10-res-lo,+0.006
+sj-o50-k0minuskp20-band,+0.061
+sj-o50-k0minuskp20-band-abs,0.061
+sj-o50-k0minuskp20-band-ci,"[+0.025, +0.098]"
+sj-o50-k0minuskp20-band-hi,+0.098
+sj-o50-k0minuskp20-band-lo,+0.025
+sj-o50-k0minuskp20-erp,+0.111
+sj-o50-k0minuskp20-erp-abs,0.111
+sj-o50-k0minuskp20-erp-ci,"[+0.074, +0.149]"
+sj-o50-k0minuskp20-erp-hi,+0.149
+sj-o50-k0minuskp20-erp-lo,+0.074
+sj-o50-k0minuskp20-res,+0.076
+sj-o50-k0minuskp20-res-abs,0.076
+sj-o50-k0minuskp20-res-ci,"[+0.039, +0.111]"
+sj-o50-k0minuskp20-res-hi,+0.111
+sj-o50-k0minuskp20-res-lo,+0.039
+sj-o50-k0minuskp30-band,+0.076
+sj-o50-k0minuskp30-band-abs,0.076
+sj-o50-k0minuskp30-band-ci,"[+0.041, +0.112]"
+sj-o50-k0minuskp30-band-hi,+0.112
+sj-o50-k0minuskp30-band-lo,+0.041
+sj-o50-k0minuskp30-erp,+0.130
+sj-o50-k0minuskp30-erp-abs,0.130
+sj-o50-k0minuskp30-erp-ci,"[+0.095, +0.167]"
+sj-o50-k0minuskp30-erp-hi,+0.167
+sj-o50-k0minuskp30-erp-lo,+0.095
+sj-o50-k0minuskp30-res,+0.095
+sj-o50-k0minuskp30-res-abs,0.095
+sj-o50-k0minuskp30-res-ci,"[+0.057, +0.131]"
+sj-o50-k0minuskp30-res-hi,+0.131
+sj-o50-k0minuskp30-res-lo,+0.057
+sj-o50-k0minusnative_zero-band,+0.024
+sj-o50-k0minusnative_zero-band-abs,0.024
+sj-o50-k0minusnative_zero-band-ci,"[-0.008, +0.058]"
+sj-o50-k0minusnative_zero-band-hi,+0.058
+sj-o50-k0minusnative_zero-band-lo,-0.008
+sj-o50-k0minusnative_zero-erp,+0.024
+sj-o50-k0minusnative_zero-erp-abs,0.024
+sj-o50-k0minusnative_zero-erp-ci,"[-0.008, +0.057]"
+sj-o50-k0minusnative_zero-erp-hi,+0.057
+sj-o50-k0minusnative_zero-erp-lo,-0.008
+sj-o50-k0minusnative_zero-res,+0.016
+sj-o50-k0minusnative_zero-res-abs,0.016
+sj-o50-k0minusnative_zero-res-ci,"[-0.009, +0.041]"
+sj-o50-k0minusnative_zero-res-hi,+0.041
+sj-o50-k0minusnative_zero-res-lo,-0.009
+sj-o50-km05-band,0.496
+sj-o50-km05-band-ci,"[0.464, 0.528]"
+sj-o50-km05-band-hi,0.528
+sj-o50-km05-band-lo,0.464
+sj-o50-km05-erp,0.479
+sj-o50-km05-erp-ci,"[0.449, 0.509]"
+sj-o50-km05-erp-hi,0.509
+sj-o50-km05-erp-lo,0.449
+sj-o50-km05-res,0.463
+sj-o50-km05-res-ci,"[0.427, 0.499]"
+sj-o50-km05-res-hi,0.499
+sj-o50-km05-res-lo,0.427
+sj-o50-km10-band,0.463
+sj-o50-km10-band-ci,"[0.433, 0.494]"
+sj-o50-km10-band-hi,0.494
+sj-o50-km10-band-lo,0.433
+sj-o50-km10-erp,0.438
+sj-o50-km10-erp-ci,"[0.412, 0.464]"
+sj-o50-km10-erp-hi,0.464
+sj-o50-km10-erp-lo,0.412
+sj-o50-km10-res,0.458
+sj-o50-km10-res-ci,"[0.425, 0.491]"
+sj-o50-km10-res-hi,0.491
+sj-o50-km10-res-lo,0.425
+sj-o50-km20-band,0.425
+sj-o50-km20-band-ci,"[0.400, 0.452]"
+sj-o50-km20-band-hi,0.452
+sj-o50-km20-band-lo,0.400
+sj-o50-km20-erp,0.374
+sj-o50-km20-erp-ci,"[0.357, 0.393]"
+sj-o50-km20-erp-hi,0.393
+sj-o50-km20-erp-lo,0.357
+sj-o50-km20-res,0.434
+sj-o50-km20-res-ci,"[0.404, 0.464]"
+sj-o50-km20-res-hi,0.464
+sj-o50-km20-res-lo,0.404
+sj-o50-km2minuskp2-band,+0.011
+sj-o50-km2minuskp2-band-abs,0.011
+sj-o50-km2minuskp2-band-ci,"[-0.022, +0.044]"
+sj-o50-km2minuskp2-band-hi,+0.044
+sj-o50-km2minuskp2-band-lo,-0.022
+sj-o50-km2minuskp2-erp,-0.013
+sj-o50-km2minuskp2-erp-abs,0.013
+sj-o50-km2minuskp2-erp-ci,"[-0.039, +0.013]"
+sj-o50-km2minuskp2-erp-hi,+0.013
+sj-o50-km2minuskp2-erp-lo,-0.039
+sj-o50-km2minuskp2-res,+0.028
+sj-o50-km2minuskp2-res-abs,0.028
+sj-o50-km2minuskp2-res-ci,"[-0.008, +0.065]"
+sj-o50-km2minuskp2-res-hi,+0.065
+sj-o50-km2minuskp2-res-lo,-0.008
+sj-o50-km30-band,0.406
+sj-o50-km30-band-ci,"[0.382, 0.428]"
+sj-o50-km30-band-hi,0.428
+sj-o50-km30-band-lo,0.382
+sj-o50-km30-erp,0.359
+sj-o50-km30-erp-ci,"[0.346, 0.373]"
+sj-o50-km30-erp-hi,0.373
+sj-o50-km30-erp-lo,0.346
+sj-o50-km30-res,0.425
+sj-o50-km30-res-ci,"[0.398, 0.452]"
+sj-o50-km30-res-hi,0.452
+sj-o50-km30-res-lo,0.398
+sj-o50-kp00-band,0.474
+sj-o50-kp00-band-ci,"[0.439, 0.509]"
+sj-o50-kp00-band-hi,0.509
+sj-o50-kp00-band-lo,0.439
+sj-o50-kp00-erp,0.498
+sj-o50-kp00-erp-ci,"[0.464, 0.532]"
+sj-o50-kp00-erp-hi,0.532
+sj-o50-kp00-erp-lo,0.464
+sj-o50-kp00-res,0.482
+sj-o50-kp00-res-ci,"[0.444, 0.520]"
+sj-o50-kp00-res-hi,0.520
+sj-o50-kp00-res-lo,0.444
+sj-o50-kp05-band,0.455
+sj-o50-kp05-band-ci,"[0.419, 0.490]"
+sj-o50-kp05-band-hi,0.490
+sj-o50-kp05-band-lo,0.419
+sj-o50-kp05-erp,0.466
+sj-o50-kp05-erp-ci,"[0.441, 0.494]"
+sj-o50-kp05-erp-hi,0.494
+sj-o50-kp05-erp-lo,0.441
+sj-o50-kp05-res,0.477
+sj-o50-kp05-res-ci,"[0.441, 0.513]"
+sj-o50-kp05-res-hi,0.513
+sj-o50-kp05-res-lo,0.441
+sj-o50-kp10-band,0.433
+sj-o50-kp10-band-ci,"[0.400, 0.464]"
+sj-o50-kp10-band-hi,0.464
+sj-o50-kp10-band-lo,0.400
+sj-o50-kp10-erp,0.415
+sj-o50-kp10-erp-ci,"[0.392, 0.441]"
+sj-o50-kp10-erp-hi,0.441
+sj-o50-kp10-erp-lo,0.392
+sj-o50-kp10-res,0.445
+sj-o50-kp10-res-ci,"[0.409, 0.482]"
+sj-o50-kp10-res-hi,0.482
+sj-o50-kp10-res-lo,0.409
+sj-o50-kp20-band,0.414
+sj-o50-kp20-band-ci,"[0.384, 0.444]"
+sj-o50-kp20-band-hi,0.444
+sj-o50-kp20-band-lo,0.384
+sj-o50-kp20-erp,0.387
+sj-o50-kp20-erp-ci,"[0.367, 0.409]"
+sj-o50-kp20-erp-hi,0.409
+sj-o50-kp20-erp-lo,0.367
+sj-o50-kp20-res,0.406
+sj-o50-kp20-res-ci,"[0.376, 0.438]"
+sj-o50-kp20-res-hi,0.438
+sj-o50-kp20-res-lo,0.376
+sj-o50-kp30-band,0.398
+sj-o50-kp30-band-ci,"[0.371, 0.423]"
+sj-o50-kp30-band-hi,0.423
+sj-o50-kp30-band-lo,0.371
+sj-o50-kp30-erp,0.368
+sj-o50-kp30-erp-ci,"[0.351, 0.385]"
+sj-o50-kp30-erp-hi,0.385
+sj-o50-kp30-erp-lo,0.351
+sj-o50-kp30-res,0.387
+sj-o50-kp30-res-ci,"[0.359, 0.417]"
+sj-o50-kp30-res-hi,0.417
+sj-o50-kp30-res-lo,0.359
+sj-o50-native_zero-band,0.450
+sj-o50-native_zero-band-ci,"[0.422, 0.479]"
+sj-o50-native_zero-band-hi,0.479
+sj-o50-native_zero-band-lo,0.422
+sj-o50-native_zero-erp,0.474
+sj-o50-native_zero-erp-ci,"[0.444, 0.506]"
+sj-o50-native_zero-erp-hi,0.506
+sj-o50-native_zero-erp-lo,0.444
+sj-o50-native_zero-res,0.466
+sj-o50-native_zero-res-ci,"[0.431, 0.501]"
+sj-o50-native_zero-res-hi,0.501
+sj-o50-native_zero-res-lo,0.431
+sj-o50-nativeminusmean-band,-0.024
+sj-o50-nativeminusmean-band-abs,0.024
+sj-o50-nativeminusmean-band-ci,"[-0.058, +0.008]"
+sj-o50-nativeminusmean-band-hi,+0.008
+sj-o50-nativeminusmean-band-lo,-0.058
+sj-o50-nativeminusmean-erp,-0.024
+sj-o50-nativeminusmean-erp-abs,0.024
+sj-o50-nativeminusmean-erp-ci,"[-0.057, +0.008]"
+sj-o50-nativeminusmean-erp-hi,+0.008
+sj-o50-nativeminusmean-erp-lo,-0.057
+sj-o50-nativeminusmean-res,-0.016
+sj-o50-nativeminusmean-res-abs,0.016
+sj-o50-nativeminusmean-res-ci,"[-0.041, +0.009]"
+sj-o50-nativeminusmean-res-hi,+0.009
+sj-o50-nativeminusmean-res-lo,-0.041
+sj-zpos-band,1.20
+sj-zpos-erp,0.78
+sj-zpos-res,0.06
+so-dlogit-band,4.13
+so-dlogit-erp,1.91
+so-dlogit-res,0.39
+so-flip-band,40.9
+so-flip-erp,21.6
+so-flip-res,6.2
+so-inv-band,1.3\times10^{-3}
+so-inv-erp,3.4\times10^{-3}
+so-inv-res,9.2\times10^{-14}
+so-invlabels-band,0.0
+so-invlabels-erp,0.0
+so-invlabels-res,0.0
+so-o10-k0minuskm05-band,-0.003
+so-o10-k0minuskm05-band-abs,0.003
+so-o10-k0minuskm05-band-ci,"[-0.021, +0.016]"
+so-o10-k0minuskm05-band-hi,+0.016
+so-o10-k0minuskm05-band-lo,-0.021
+so-o10-k0minuskm05-erp,+0.031
+so-o10-k0minuskm05-erp-abs,0.031
+so-o10-k0minuskm05-erp-ci,"[+0.013, +0.052]"
+so-o10-k0minuskm05-erp-hi,+0.052
+so-o10-k0minuskm05-erp-lo,+0.013
+so-o10-k0minuskm05-res,+0.006
+so-o10-k0minuskm05-res-abs,0.006
+so-o10-k0minuskm05-res-ci,"[-0.005, +0.017]"
+so-o10-k0minuskm05-res-hi,+0.017
+so-o10-k0minuskm05-res-lo,-0.005
+so-o10-k0minuskm10-band,-0.002
+so-o10-k0minuskm10-band-abs,0.002
+so-o10-k0minuskm10-band-ci,"[-0.024, +0.021]"
+so-o10-k0minuskm10-band-hi,+0.021
+so-o10-k0minuskm10-band-lo,-0.024
+so-o10-k0minuskm10-erp,+0.059
+so-o10-k0minuskm10-erp-abs,0.059
+so-o10-k0minuskm10-erp-ci,"[+0.028, +0.092]"
+so-o10-k0minuskm10-erp-hi,+0.092
+so-o10-k0minuskm10-erp-lo,+0.028
+so-o10-k0minuskm10-res,+0.006
+so-o10-k0minuskm10-res-abs,0.006
+so-o10-k0minuskm10-res-ci,"[-0.006, +0.019]"
+so-o10-k0minuskm10-res-hi,+0.019
+so-o10-k0minuskm10-res-lo,-0.006
+so-o10-k0minuskm20-band,+0.030
+so-o10-k0minuskm20-band-abs,0.030
+so-o10-k0minuskm20-band-ci,"[+0.000, +0.060]"
+so-o10-k0minuskm20-band-hi,+0.060
+so-o10-k0minuskm20-band-lo,+0.000
+so-o10-k0minuskm20-erp,+0.131
+so-o10-k0minuskm20-erp-abs,0.131
+so-o10-k0minuskm20-erp-ci,"[+0.092, +0.169]"
+so-o10-k0minuskm20-erp-hi,+0.169
+so-o10-k0minuskm20-erp-lo,+0.092
+so-o10-k0minuskm20-res,-0.003
+so-o10-k0minuskm20-res-abs,0.003
+so-o10-k0minuskm20-res-ci,"[-0.022, +0.014]"
+so-o10-k0minuskm20-res-hi,+0.014
+so-o10-k0minuskm20-res-lo,-0.022
+so-o10-k0minuskm30-band,+0.046
+so-o10-k0minuskm30-band-abs,0.046
+so-o10-k0minuskm30-band-ci,"[+0.013, +0.079]"
+so-o10-k0minuskm30-band-hi,+0.079
+so-o10-k0minuskm30-band-lo,+0.013
+so-o10-k0minuskm30-erp,+0.187
+so-o10-k0minuskm30-erp-abs,0.187
+so-o10-k0minuskm30-erp-ci,"[+0.145, +0.227]"
+so-o10-k0minuskm30-erp-hi,+0.227
+so-o10-k0minuskm30-erp-lo,+0.145
+so-o10-k0minuskm30-res,+0.009
+so-o10-k0minuskm30-res-abs,0.009
+so-o10-k0minuskm30-res-ci,"[-0.013, +0.030]"
+so-o10-k0minuskm30-res-hi,+0.030
+so-o10-k0minuskm30-res-lo,-0.013
+so-o10-k0minuskp05-band,+0.003
+so-o10-k0minuskp05-band-abs,0.003
+so-o10-k0minuskp05-band-ci,"[-0.014, +0.021]"
+so-o10-k0minuskp05-band-hi,+0.021
+so-o10-k0minuskp05-band-lo,-0.014
+so-o10-k0minuskp05-erp,+0.022
+so-o10-k0minuskp05-erp-abs,0.022
+so-o10-k0minuskp05-erp-ci,"[-0.003, +0.047]"
+so-o10-k0minuskp05-erp-hi,+0.047
+so-o10-k0minuskp05-erp-lo,-0.003
+so-o10-k0minuskp05-res,-0.002
+so-o10-k0minuskp05-res-abs,0.002
+so-o10-k0minuskp05-res-ci,"[-0.011, +0.008]"
+so-o10-k0minuskp05-res-hi,+0.008
+so-o10-k0minuskp05-res-lo,-0.011
+so-o10-k0minuskp10-band,+0.011
+so-o10-k0minuskp10-band-abs,0.011
+so-o10-k0minuskp10-band-ci,"[-0.014, +0.036]"
+so-o10-k0minuskp10-band-hi,+0.036
+so-o10-k0minuskp10-band-lo,-0.014
+so-o10-k0minuskp10-erp,+0.060
+so-o10-k0minuskp10-erp-abs,0.060
+so-o10-k0minuskp10-erp-ci,"[+0.028, +0.092]"
+so-o10-k0minuskp10-erp-hi,+0.092
+so-o10-k0minuskp10-erp-lo,+0.028
+so-o10-k0minuskp10-res,+0.002
+so-o10-k0minuskp10-res-abs,0.002
+so-o10-k0minuskp10-res-ci,"[-0.013, +0.016]"
+so-o10-k0minuskp10-res-hi,+0.016
+so-o10-k0minuskp10-res-lo,-0.013
+so-o10-k0minuskp20-band,+0.009
+so-o10-k0minuskp20-band-abs,0.009
+so-o10-k0minuskp20-band-ci,"[-0.021, +0.039]"
+so-o10-k0minuskp20-band-hi,+0.039
+so-o10-k0minuskp20-band-lo,-0.021
+so-o10-k0minuskp20-erp,+0.136
+so-o10-k0minuskp20-erp-abs,0.136
+so-o10-k0minuskp20-erp-ci,"[+0.100, +0.172]"
+so-o10-k0minuskp20-erp-hi,+0.172
+so-o10-k0minuskp20-erp-lo,+0.100
+so-o10-k0minuskp20-res,+0.011
+so-o10-k0minuskp20-res-abs,0.011
+so-o10-k0minuskp20-res-ci,"[-0.005, +0.027]"
+so-o10-k0minuskp20-res-hi,+0.027
+so-o10-k0minuskp20-res-lo,-0.005
+so-o10-k0minuskp30-band,+0.028
+so-o10-k0minuskp30-band-abs,0.028
+so-o10-k0minuskp30-band-ci,"[-0.005, +0.062]"
+so-o10-k0minuskp30-band-hi,+0.062
+so-o10-k0minuskp30-band-lo,-0.005
+so-o10-k0minuskp30-erp,+0.190
+so-o10-k0minuskp30-erp-abs,0.190
+so-o10-k0minuskp30-erp-ci,"[+0.152, +0.229]"
+so-o10-k0minuskp30-erp-hi,+0.229
+so-o10-k0minuskp30-erp-lo,+0.152
+so-o10-k0minuskp30-res,+0.016
+so-o10-k0minuskp30-res-abs,0.016
+so-o10-k0minuskp30-res-ci,"[-0.005, +0.036]"
+so-o10-k0minuskp30-res-hi,+0.036
+so-o10-k0minuskp30-res-lo,-0.005
+so-o10-k0minusnative_zero-band,+0.014
+so-o10-k0minusnative_zero-band-abs,0.014
+so-o10-k0minusnative_zero-band-ci,"[-0.009, +0.039]"
+so-o10-k0minusnative_zero-band-hi,+0.039
+so-o10-k0minusnative_zero-band-lo,-0.009
+so-o10-k0minusnative_zero-erp,+0.000
+so-o10-k0minusnative_zero-erp-abs,0.000
+so-o10-k0minusnative_zero-erp-ci,"[-0.021, +0.022]"
+so-o10-k0minusnative_zero-erp-hi,+0.022
+so-o10-k0minusnative_zero-erp-lo,-0.021
+so-o10-k0minusnative_zero-res,+0.003
+so-o10-k0minusnative_zero-res-abs,0.003
+so-o10-k0minusnative_zero-res-ci,"[+0.000, +0.008]"
+so-o10-k0minusnative_zero-res-hi,+0.008
+so-o10-k0minusnative_zero-res-lo,+0.000
+so-o10-km05-band,0.493
+so-o10-km05-band-ci,"[0.457, 0.528]"
+so-o10-km05-band-hi,0.528
+so-o10-km05-band-lo,0.457
+so-o10-km05-erp,0.603
+so-o10-km05-erp-ci,"[0.572, 0.637]"
+so-o10-km05-erp-hi,0.637
+so-o10-km05-erp-lo,0.572
+so-o10-km05-res,0.548
+so-o10-km05-res-ci,"[0.515, 0.581]"
+so-o10-km05-res-hi,0.581
+so-o10-km05-res-lo,0.515
+so-o10-km10-band,0.491
+so-o10-km10-band-ci,"[0.458, 0.524]"
+so-o10-km10-band-hi,0.524
+so-o10-km10-band-lo,0.458
+so-o10-km10-erp,0.577
+so-o10-km10-erp-ci,"[0.545, 0.608]"
+so-o10-km10-erp-hi,0.608
+so-o10-km10-erp-lo,0.545
+so-o10-km10-res,0.548
+so-o10-km10-res-ci,"[0.513, 0.581]"
+so-o10-km10-res-hi,0.581
+so-o10-km10-res-lo,0.513
+so-o10-km20-band,0.460
+so-o10-km20-band-ci,"[0.427, 0.493]"
+so-o10-km20-band-hi,0.493
+so-o10-km20-band-lo,0.427
+so-o10-km20-erp,0.504
+so-o10-km20-erp-ci,"[0.476, 0.531]"
+so-o10-km20-erp-hi,0.531
+so-o10-km20-erp-lo,0.476
+so-o10-km20-res,0.558
+so-o10-km20-res-ci,"[0.523, 0.592]"
+so-o10-km20-res-hi,0.592
+so-o10-km20-res-lo,0.523
+so-o10-km2minuskp2-band,-0.020
+so-o10-km2minuskp2-band-abs,0.020
+so-o10-km2minuskp2-band-ci,"[-0.055, +0.017]"
+so-o10-km2minuskp2-band-hi,+0.017
+so-o10-km2minuskp2-band-lo,-0.055
+so-o10-km2minuskp2-erp,+0.005
+so-o10-km2minuskp2-erp-abs,0.005
+so-o10-km2minuskp2-erp-ci,"[-0.032, +0.039]"
+so-o10-km2minuskp2-erp-hi,+0.039
+so-o10-km2minuskp2-erp-lo,-0.032
+so-o10-km2minuskp2-res,+0.014
+so-o10-km2minuskp2-res-abs,0.014
+so-o10-km2minuskp2-res-ci,"[-0.009, +0.039]"
+so-o10-km2minuskp2-res-hi,+0.039
+so-o10-km2minuskp2-res-lo,-0.009
+so-o10-km30-band,0.444
+so-o10-km30-band-ci,"[0.412, 0.477]"
+so-o10-km30-band-hi,0.477
+so-o10-km30-band-lo,0.412
+so-o10-km30-erp,0.449
+so-o10-km30-erp-ci,"[0.423, 0.476]"
+so-o10-km30-erp-hi,0.476
+so-o10-km30-erp-lo,0.423
+so-o10-km30-res,0.545
+so-o10-km30-res-ci,"[0.512, 0.580]"
+so-o10-km30-res-hi,0.580
+so-o10-km30-res-lo,0.512
+so-o10-kp00-band,0.490
+so-o10-kp00-band-ci,"[0.455, 0.525]"
+so-o10-kp00-band-hi,0.525
+so-o10-kp00-band-lo,0.455
+so-o10-kp00-erp,0.635
+so-o10-kp00-erp-ci,"[0.602, 0.671]"
+so-o10-kp00-erp-hi,0.671
+so-o10-kp00-erp-lo,0.602
+so-o10-kp00-res,0.555
+so-o10-kp00-res-ci,"[0.521, 0.589]"
+so-o10-kp00-res-hi,0.589
+so-o10-kp00-res-lo,0.521
+so-o10-kp05-band,0.487
+so-o10-kp05-band-ci,"[0.453, 0.521]"
+so-o10-kp05-band-hi,0.521
+so-o10-kp05-band-lo,0.453
+so-o10-kp05-erp,0.613
+so-o10-kp05-erp-ci,"[0.578, 0.648]"
+so-o10-kp05-erp-hi,0.648
+so-o10-kp05-erp-lo,0.578
+so-o10-kp05-res,0.556
+so-o10-kp05-res-ci,"[0.523, 0.589]"
+so-o10-kp05-res-hi,0.589
+so-o10-kp05-res-lo,0.523
+so-o10-kp10-band,0.479
+so-o10-kp10-band-ci,"[0.447, 0.510]"
+so-o10-kp10-band-hi,0.510
+so-o10-kp10-band-lo,0.447
+so-o10-kp10-erp,0.575
+so-o10-kp10-erp-ci,"[0.542, 0.608]"
+so-o10-kp10-erp-hi,0.608
+so-o10-kp10-erp-lo,0.542
+so-o10-kp10-res,0.553
+so-o10-kp10-res-ci,"[0.520, 0.586]"
+so-o10-kp10-res-hi,0.586
+so-o10-kp10-res-lo,0.520
+so-o10-kp20-band,0.480
+so-o10-kp20-band-ci,"[0.449, 0.510]"
+so-o10-kp20-band-hi,0.510
+so-o10-kp20-band-lo,0.449
+so-o10-kp20-erp,0.499
+so-o10-kp20-erp-ci,"[0.469, 0.529]"
+so-o10-kp20-erp-hi,0.529
+so-o10-kp20-erp-lo,0.469
+so-o10-kp20-res,0.543
+so-o10-kp20-res-ci,"[0.510, 0.575]"
+so-o10-kp20-res-hi,0.575
+so-o10-kp20-res-lo,0.510
+so-o10-kp30-band,0.461
+so-o10-kp30-band-ci,"[0.433, 0.490]"
+so-o10-kp30-band-hi,0.490
+so-o10-kp30-band-lo,0.433
+so-o10-kp30-erp,0.445
+so-o10-kp30-erp-ci,"[0.420, 0.471]"
+so-o10-kp30-erp-hi,0.471
+so-o10-kp30-erp-lo,0.420
+so-o10-kp30-res,0.539
+so-o10-kp30-res-ci,"[0.506, 0.572]"
+so-o10-kp30-res-hi,0.572
+so-o10-kp30-res-lo,0.506
+so-o10-native_zero-band,0.476
+so-o10-native_zero-band-ci,"[0.442, 0.509]"
+so-o10-native_zero-band-hi,0.509
+so-o10-native_zero-band-lo,0.442
+so-o10-native_zero-erp,0.635
+so-o10-native_zero-erp-ci,"[0.602, 0.670]"
+so-o10-native_zero-erp-hi,0.670
+so-o10-native_zero-erp-lo,0.602
+so-o10-native_zero-res,0.551
+so-o10-native_zero-res-ci,"[0.518, 0.585]"
+so-o10-native_zero-res-hi,0.585
+so-o10-native_zero-res-lo,0.518
+so-o10-nativeminusmean-band,-0.014
+so-o10-nativeminusmean-band-abs,0.014
+so-o10-nativeminusmean-band-ci,"[-0.039, +0.009]"
+so-o10-nativeminusmean-band-hi,+0.009
+so-o10-nativeminusmean-band-lo,-0.039
+so-o10-nativeminusmean-erp,-0.000
+so-o10-nativeminusmean-erp-abs,0.000
+so-o10-nativeminusmean-erp-ci,"[-0.022, +0.021]"
+so-o10-nativeminusmean-erp-hi,+0.021
+so-o10-nativeminusmean-erp-lo,-0.022
+so-o10-nativeminusmean-res,-0.003
+so-o10-nativeminusmean-res-abs,0.003
+so-o10-nativeminusmean-res-ci,"[-0.008, +0.000]"
+so-o10-nativeminusmean-res-hi,+0.000
+so-o10-nativeminusmean-res-lo,-0.008
+so-o30-k0minuskm05-band,+0.022
+so-o30-k0minuskm05-band-abs,0.022
+so-o30-k0minuskm05-band-ci,"[-0.005, +0.047]"
+so-o30-k0minuskm05-band-hi,+0.047
+so-o30-k0minuskm05-band-lo,-0.005
+so-o30-k0minuskm05-erp,+0.013
+so-o30-k0minuskm05-erp-abs,0.013
+so-o30-k0minuskm05-erp-ci,"[-0.017, +0.043]"
+so-o30-k0minuskm05-erp-hi,+0.043
+so-o30-k0minuskm05-erp-lo,-0.017
+so-o30-k0minuskm05-res,-0.013
+so-o30-k0minuskm05-res-abs,0.013
+so-o30-k0minuskm05-res-ci,"[-0.033, +0.006]"
+so-o30-k0minuskm05-res-hi,+0.006
+so-o30-k0minuskm05-res-lo,-0.033
+so-o30-k0minuskm10-band,+0.040
+so-o30-k0minuskm10-band-abs,0.040
+so-o30-k0minuskm10-band-ci,"[+0.009, +0.071]"
+so-o30-k0minuskm10-band-hi,+0.071
+so-o30-k0minuskm10-band-lo,+0.009
+so-o30-k0minuskm10-erp,+0.059
+so-o30-k0minuskm10-erp-abs,0.059
+so-o30-k0minuskm10-erp-ci,"[+0.022, +0.096]"
+so-o30-k0minuskm10-erp-hi,+0.096
+so-o30-k0minuskm10-erp-lo,+0.022
+so-o30-k0minuskm10-res,-0.002
+so-o30-k0minuskm10-res-abs,0.002
+so-o30-k0minuskm10-res-ci,"[-0.030, +0.027]"
+so-o30-k0minuskm10-res-hi,+0.027
+so-o30-k0minuskm10-res-lo,-0.030
+so-o30-k0minuskm20-band,+0.062
+so-o30-k0minuskm20-band-abs,0.062
+so-o30-k0minuskm20-band-ci,"[+0.027, +0.095]"
+so-o30-k0minuskm20-band-hi,+0.095
+so-o30-k0minuskm20-band-lo,+0.027
+so-o30-k0minuskm20-erp,+0.111
+so-o30-k0minuskm20-erp-abs,0.111
+so-o30-k0minuskm20-erp-ci,"[+0.074, +0.148]"
+so-o30-k0minuskm20-erp-hi,+0.148
+so-o30-k0minuskm20-erp-lo,+0.074
+so-o30-k0minuskm20-res,+0.042
+so-o30-k0minuskm20-res-abs,0.042
+so-o30-k0minuskm20-res-ci,"[+0.009, +0.074]"
+so-o30-k0minuskm20-res-hi,+0.074
+so-o30-k0minuskm20-res-lo,+0.009
+so-o30-k0minuskm30-band,+0.081
+so-o30-k0minuskm30-band-abs,0.081
+so-o30-k0minuskm30-band-ci,"[+0.047, +0.114]"
+so-o30-k0minuskm30-band-hi,+0.114
+so-o30-k0minuskm30-band-lo,+0.047
+so-o30-k0minuskm30-erp,+0.142
+so-o30-k0minuskm30-erp-abs,0.142
+so-o30-k0minuskm30-erp-ci,"[+0.106, +0.179]"
+so-o30-k0minuskm30-erp-hi,+0.179
+so-o30-k0minuskm30-erp-lo,+0.106
+so-o30-k0minuskm30-res,+0.080
+so-o30-k0minuskm30-res-abs,0.080
+so-o30-k0minuskm30-res-ci,"[+0.044, +0.117]"
+so-o30-k0minuskm30-res-hi,+0.117
+so-o30-k0minuskm30-res-lo,+0.044
+so-o30-k0minuskp05-band,-0.010
+so-o30-k0minuskp05-band-abs,0.010
+so-o30-k0minuskp05-band-ci,"[-0.035, +0.016]"
+so-o30-k0minuskp05-band-hi,+0.016
+so-o30-k0minuskp05-band-lo,-0.035
+so-o30-k0minuskp05-erp,+0.012
+so-o30-k0minuskp05-erp-abs,0.012
+so-o30-k0minuskp05-erp-ci,"[-0.014, +0.039]"
+so-o30-k0minuskp05-erp-hi,+0.039
+so-o30-k0minuskp05-erp-lo,-0.014
+so-o30-k0minuskp05-res,-0.005
+so-o30-k0minuskp05-res-abs,0.005
+so-o30-k0minuskp05-res-ci,"[-0.022, +0.013]"
+so-o30-k0minuskp05-res-hi,+0.013
+so-o30-k0minuskp05-res-lo,-0.022
+so-o30-k0minuskp10-band,+0.036
+so-o30-k0minuskp10-band-abs,0.036
+so-o30-k0minuskp10-band-ci,"[+0.003, +0.070]"
+so-o30-k0minuskp10-band-hi,+0.070
+so-o30-k0minuskp10-band-lo,+0.003
+so-o30-k0minuskp10-erp,+0.074
+so-o30-k0minuskp10-erp-abs,0.074
+so-o30-k0minuskp10-erp-ci,"[+0.039, +0.109]"
+so-o30-k0minuskp10-erp-hi,+0.109
+so-o30-k0minuskp10-erp-lo,+0.039
+so-o30-k0minuskp10-res,+0.005
+so-o30-k0minuskp10-res-abs,0.005
+so-o30-k0minuskp10-res-ci,"[-0.021, +0.030]"
+so-o30-k0minuskp10-res-hi,+0.030
+so-o30-k0minuskp10-res-lo,-0.021
+so-o30-k0minuskp20-band,+0.060
+so-o30-k0minuskp20-band-abs,0.060
+so-o30-k0minuskp20-band-ci,"[+0.024, +0.095]"
+so-o30-k0minuskp20-band-hi,+0.095
+so-o30-k0minuskp20-band-lo,+0.024
+so-o30-k0minuskp20-erp,+0.095
+so-o30-k0minuskp20-erp-abs,0.095
+so-o30-k0minuskp20-erp-ci,"[+0.055, +0.136]"
+so-o30-k0minuskp20-erp-hi,+0.136
+so-o30-k0minuskp20-erp-lo,+0.055
+so-o30-k0minuskp20-res,+0.022
+so-o30-k0minuskp20-res-abs,0.022
+so-o30-k0minuskp20-res-ci,"[-0.006, +0.049]"
+so-o30-k0minuskp20-res-hi,+0.049
+so-o30-k0minuskp20-res-lo,-0.006
+so-o30-k0minuskp30-band,+0.064
+so-o30-k0minuskp30-band-abs,0.064
+so-o30-k0minuskp30-band-ci,"[+0.027, +0.100]"
+so-o30-k0minuskp30-band-hi,+0.100
+so-o30-k0minuskp30-band-lo,+0.027
+so-o30-k0minuskp30-erp,+0.141
+so-o30-k0minuskp30-erp-abs,0.141
+so-o30-k0minuskp30-erp-ci,"[+0.103, +0.180]"
+so-o30-k0minuskp30-erp-hi,+0.180
+so-o30-k0minuskp30-erp-lo,+0.103
+so-o30-k0minuskp30-res,+0.062
+so-o30-k0minuskp30-res-abs,0.062
+so-o30-k0minuskp30-res-ci,"[+0.030, +0.095]"
+so-o30-k0minuskp30-res-hi,+0.095
+so-o30-k0minuskp30-res-lo,+0.030
+so-o30-k0minusnative_zero-band,+0.055
+so-o30-k0minusnative_zero-band-abs,0.055
+so-o30-k0minusnative_zero-band-ci,"[+0.024, +0.087]"
+so-o30-k0minusnative_zero-band-hi,+0.087
+so-o30-k0minusnative_zero-band-lo,+0.024
+so-o30-k0minusnative_zero-erp,-0.001
+so-o30-k0minusnative_zero-erp-abs,0.001
+so-o30-k0minusnative_zero-erp-ci,"[-0.030, +0.028]"
+so-o30-k0minusnative_zero-erp-hi,+0.028
+so-o30-k0minusnative_zero-erp-lo,-0.030
+so-o30-k0minusnative_zero-res,+0.006
+so-o30-k0minusnative_zero-res-abs,0.006
+so-o30-k0minusnative_zero-res-ci,"[-0.009, +0.022]"
+so-o30-k0minusnative_zero-res-hi,+0.022
+so-o30-k0minusnative_zero-res-lo,-0.009
+so-o30-km05-band,0.450
+so-o30-km05-band-ci,"[0.415, 0.487]"
+so-o30-km05-band-hi,0.487
+so-o30-km05-band-lo,0.415
+so-o30-km05-erp,0.567
+so-o30-km05-erp-ci,"[0.537, 0.599]"
+so-o30-km05-erp-hi,0.599
+so-o30-km05-erp-lo,0.537
+so-o30-km05-res,0.556
+so-o30-km05-res-ci,"[0.523, 0.589]"
+so-o30-km05-res-hi,0.589
+so-o30-km05-res-lo,0.523
+so-o30-km10-band,0.433
+so-o30-km10-band-ci,"[0.400, 0.466]"
+so-o30-km10-band-hi,0.466
+so-o30-km10-band-lo,0.400
+so-o30-km10-erp,0.521
+so-o30-km10-erp-ci,"[0.491, 0.550]"
+so-o30-km10-erp-hi,0.550
+so-o30-km10-erp-lo,0.491
+so-o30-km10-res,0.545
+so-o30-km10-res-ci,"[0.510, 0.578]"
+so-o30-km10-res-hi,0.578
+so-o30-km10-res-lo,0.510
+so-o30-km20-band,0.411
+so-o30-km20-band-ci,"[0.385, 0.436]"
+so-o30-km20-band-hi,0.436
+so-o30-km20-band-lo,0.385
+so-o30-km20-erp,0.469
+so-o30-km20-erp-ci,"[0.444, 0.494]"
+so-o30-km20-erp-hi,0.494
+so-o30-km20-erp-lo,0.444
+so-o30-km20-res,0.501
+so-o30-km20-res-ci,"[0.469, 0.532]"
+so-o30-km20-res-hi,0.532
+so-o30-km20-res-lo,0.469
+so-o30-km2minuskp2-band,-0.002
+so-o30-km2minuskp2-band-abs,0.002
+so-o30-km2minuskp2-band-ci,"[-0.036, +0.033]"
+so-o30-km2minuskp2-band-hi,+0.033
+so-o30-km2minuskp2-band-lo,-0.036
+so-o30-km2minuskp2-erp,-0.016
+so-o30-km2minuskp2-erp-abs,0.016
+so-o30-km2minuskp2-erp-ci,"[-0.054, +0.021]"
+so-o30-km2minuskp2-erp-hi,+0.021
+so-o30-km2minuskp2-erp-lo,-0.054
+so-o30-km2minuskp2-res,-0.020
+so-o30-km2minuskp2-res-abs,0.020
+so-o30-km2minuskp2-res-ci,"[-0.055, +0.014]"
+so-o30-km2minuskp2-res-hi,+0.014
+so-o30-km2minuskp2-res-lo,-0.055
+so-o30-km30-band,0.392
+so-o30-km30-band-ci,"[0.368, 0.415]"
+so-o30-km30-band-hi,0.415
+so-o30-km30-band-lo,0.368
+so-o30-km30-erp,0.438
+so-o30-km30-erp-ci,"[0.414, 0.460]"
+so-o30-km30-erp-hi,0.460
+so-o30-km30-erp-lo,0.414
+so-o30-km30-res,0.463
+so-o30-km30-res-ci,"[0.433, 0.493]"
+so-o30-km30-res-hi,0.493
+so-o30-km30-res-lo,0.433
+so-o30-kp00-band,0.472
+so-o30-kp00-band-ci,"[0.441, 0.506]"
+so-o30-kp00-band-hi,0.506
+so-o30-kp00-band-lo,0.441
+so-o30-kp00-erp,0.580
+so-o30-kp00-erp-ci,"[0.548, 0.613]"
+so-o30-kp00-erp-hi,0.613
+so-o30-kp00-erp-lo,0.548
+so-o30-kp00-res,0.543
+so-o30-kp00-res-ci,"[0.510, 0.577]"
+so-o30-kp00-res-hi,0.577
+so-o30-kp00-res-lo,0.510
+so-o30-kp05-band,0.482
+so-o30-kp05-band-ci,"[0.449, 0.515]"
+so-o30-kp05-band-hi,0.515
+so-o30-kp05-band-lo,0.449
+so-o30-kp05-erp,0.567
+so-o30-kp05-erp-ci,"[0.540, 0.596]"
+so-o30-kp05-erp-hi,0.596
+so-o30-kp05-erp-lo,0.540
+so-o30-kp05-res,0.548
+so-o30-kp05-res-ci,"[0.517, 0.580]"
+so-o30-kp05-res-hi,0.580
+so-o30-kp05-res-lo,0.517
+so-o30-kp10-band,0.436
+so-o30-kp10-band-ci,"[0.404, 0.468]"
+so-o30-kp10-band-hi,0.468
+so-o30-kp10-band-lo,0.404
+so-o30-kp10-erp,0.506
+so-o30-kp10-erp-ci,"[0.477, 0.534]"
+so-o30-kp10-erp-hi,0.534
+so-o30-kp10-erp-lo,0.477
+so-o30-kp10-res,0.539
+so-o30-kp10-res-ci,"[0.507, 0.570]"
+so-o30-kp10-res-hi,0.570
+so-o30-kp10-res-lo,0.507
+so-o30-kp20-band,0.412
+so-o30-kp20-band-ci,"[0.384, 0.442]"
+so-o30-kp20-band-hi,0.442
+so-o30-kp20-band-lo,0.384
+so-o30-kp20-erp,0.485
+so-o30-kp20-erp-ci,"[0.457, 0.512]"
+so-o30-kp20-erp-hi,0.512
+so-o30-kp20-erp-lo,0.457
+so-o30-kp20-res,0.521
+so-o30-kp20-res-ci,"[0.491, 0.551]"
+so-o30-kp20-res-hi,0.551
+so-o30-kp20-res-lo,0.491
+so-o30-kp30-band,0.409
+so-o30-kp30-band-ci,"[0.384, 0.436]"
+so-o30-kp30-band-hi,0.436
+so-o30-kp30-band-lo,0.384
+so-o30-kp30-erp,0.439
+so-o30-kp30-erp-ci,"[0.414, 0.466]"
+so-o30-kp30-erp-hi,0.466
+so-o30-kp30-erp-lo,0.414
+so-o30-kp30-res,0.482
+so-o30-kp30-res-ci,"[0.457, 0.509]"
+so-o30-kp30-res-hi,0.509
+so-o30-kp30-res-lo,0.457
+so-o30-native_zero-band,0.417
+so-o30-native_zero-band-ci,"[0.387, 0.447]"
+so-o30-native_zero-band-hi,0.447
+so-o30-native_zero-band-lo,0.387
+so-o30-native_zero-erp,0.581
+so-o30-native_zero-erp-ci,"[0.551, 0.611]"
+so-o30-native_zero-erp-hi,0.611
+so-o30-native_zero-erp-lo,0.551
+so-o30-native_zero-res,0.537
+so-o30-native_zero-res-ci,"[0.502, 0.570]"
+so-o30-native_zero-res-hi,0.570
+so-o30-native_zero-res-lo,0.502
+so-o30-nativeminusmean-band,-0.055
+so-o30-nativeminusmean-band-abs,0.055
+so-o30-nativeminusmean-band-ci,"[-0.087, -0.024]"
+so-o30-nativeminusmean-band-hi,-0.024
+so-o30-nativeminusmean-band-lo,-0.087
+so-o30-nativeminusmean-erp,+0.001
+so-o30-nativeminusmean-erp-abs,0.001
+so-o30-nativeminusmean-erp-ci,"[-0.028, +0.030]"
+so-o30-nativeminusmean-erp-hi,+0.030
+so-o30-nativeminusmean-erp-lo,-0.028
+so-o30-nativeminusmean-res,-0.006
+so-o30-nativeminusmean-res-abs,0.006
+so-o30-nativeminusmean-res-ci,"[-0.022, +0.009]"
+so-o30-nativeminusmean-res-hi,+0.009
+so-o30-nativeminusmean-res-lo,-0.022
+so-o50-k0minuskm05-band,-0.022
+so-o50-k0minuskm05-band-abs,0.022
+so-o50-k0minuskm05-band-ci,"[-0.049, +0.005]"
+so-o50-k0minuskm05-band-hi,+0.005
+so-o50-k0minuskm05-band-lo,-0.049
+so-o50-k0minuskm05-erp,+0.024
+so-o50-k0minuskm05-erp-abs,0.024
+so-o50-k0minuskm05-erp-ci,"[-0.006, +0.055]"
+so-o50-k0minuskm05-erp-hi,+0.055
+so-o50-k0minuskm05-erp-lo,-0.006
+so-o50-k0minuskm05-res,+0.003
+so-o50-k0minuskm05-res-abs,0.003
+so-o50-k0minuskm05-res-ci,"[-0.022, +0.030]"
+so-o50-k0minuskm05-res-hi,+0.030
+so-o50-k0minuskm05-res-lo,-0.022
+so-o50-k0minuskm10-band,+0.011
+so-o50-k0minuskm10-band-abs,0.011
+so-o50-k0minuskm10-band-ci,"[-0.021, +0.044]"
+so-o50-k0minuskm10-band-hi,+0.044
+so-o50-k0minuskm10-band-lo,-0.021
+so-o50-k0minuskm10-erp,+0.064
+so-o50-k0minuskm10-erp-abs,0.064
+so-o50-k0minuskm10-erp-ci,"[+0.028, +0.101]"
+so-o50-k0minuskm10-erp-hi,+0.101
+so-o50-k0minuskm10-erp-lo,+0.028
+so-o50-k0minuskm10-res,+0.052
+so-o50-k0minuskm10-res-abs,0.052
+so-o50-k0minuskm10-res-ci,"[+0.019, +0.087]"
+so-o50-k0minuskm10-res-hi,+0.087
+so-o50-k0minuskm10-res-lo,+0.019
+so-o50-k0minuskm20-band,+0.049
+so-o50-k0minuskm20-band-abs,0.049
+so-o50-k0minuskm20-band-ci,"[+0.014, +0.085]"
+so-o50-k0minuskm20-band-hi,+0.085
+so-o50-k0minuskm20-band-lo,+0.014
+so-o50-k0minuskm20-erp,+0.106
+so-o50-k0minuskm20-erp-abs,0.106
+so-o50-k0minuskm20-erp-ci,"[+0.071, +0.142]"
+so-o50-k0minuskm20-erp-hi,+0.142
+so-o50-k0minuskm20-erp-lo,+0.071
+so-o50-k0minuskm20-res,+0.112
+so-o50-k0minuskm20-res-abs,0.112
+so-o50-k0minuskm20-res-ci,"[+0.074, +0.150]"
+so-o50-k0minuskm20-res-hi,+0.150
+so-o50-k0minuskm20-res-lo,+0.074
+so-o50-k0minuskm30-band,+0.068
+so-o50-k0minuskm30-band-abs,0.068
+so-o50-k0minuskm30-band-ci,"[+0.033, +0.104]"
+so-o50-k0minuskm30-band-hi,+0.104
+so-o50-k0minuskm30-band-lo,+0.033
+so-o50-k0minuskm30-erp,+0.141
+so-o50-k0minuskm30-erp-abs,0.141
+so-o50-k0minuskm30-erp-ci,"[+0.104, +0.177]"
+so-o50-k0minuskm30-erp-hi,+0.177
+so-o50-k0minuskm30-erp-lo,+0.104
+so-o50-k0minuskm30-res,+0.143
+so-o50-k0minuskm30-res-abs,0.143
+so-o50-k0minuskm30-res-ci,"[+0.104, +0.183]"
+so-o50-k0minuskm30-res-hi,+0.183
+so-o50-k0minuskm30-res-lo,+0.104
+so-o50-k0minuskp05-band,+0.019
+so-o50-k0minuskp05-band-abs,0.019
+so-o50-k0minuskp05-band-ci,"[-0.006, +0.046]"
+so-o50-k0minuskp05-band-hi,+0.046
+so-o50-k0minuskp05-band-lo,-0.006
+so-o50-k0minuskp05-erp,+0.005
+so-o50-k0minuskp05-erp-abs,0.005
+so-o50-k0minuskp05-erp-ci,"[-0.024, +0.033]"
+so-o50-k0minuskp05-erp-hi,+0.033
+so-o50-k0minuskp05-erp-lo,-0.024
+so-o50-k0minuskp05-res,+0.020
+so-o50-k0minuskp05-res-abs,0.020
+so-o50-k0minuskp05-res-ci,"[-0.008, +0.049]"
+so-o50-k0minuskp05-res-hi,+0.049
+so-o50-k0minuskp05-res-lo,-0.008
+so-o50-k0minuskp10-band,+0.041
+so-o50-k0minuskp10-band-abs,0.041
+so-o50-k0minuskp10-band-ci,"[+0.011, +0.073]"
+so-o50-k0minuskp10-band-hi,+0.073
+so-o50-k0minuskp10-band-lo,+0.011
+so-o50-k0minuskp10-erp,+0.039
+so-o50-k0minuskp10-erp-abs,0.039
+so-o50-k0minuskp10-erp-ci,"[+0.006, +0.074]"
+so-o50-k0minuskp10-erp-hi,+0.074
+so-o50-k0minuskp10-erp-lo,+0.006
+so-o50-k0minuskp10-res,+0.055
+so-o50-k0minuskp10-res-abs,0.055
+so-o50-k0minuskp10-res-ci,"[+0.024, +0.087]"
+so-o50-k0minuskp10-res-hi,+0.087
+so-o50-k0minuskp10-res-lo,+0.024
+so-o50-k0minuskp20-band,+0.061
+so-o50-k0minuskp20-band-abs,0.061
+so-o50-k0minuskp20-band-ci,"[+0.025, +0.098]"
+so-o50-k0minuskp20-band-hi,+0.098
+so-o50-k0minuskp20-band-lo,+0.025
+so-o50-k0minuskp20-erp,+0.085
+so-o50-k0minuskp20-erp-abs,0.085
+so-o50-k0minuskp20-erp-ci,"[+0.051, +0.120]"
+so-o50-k0minuskp20-erp-hi,+0.120
+so-o50-k0minuskp20-erp-lo,+0.051
+so-o50-k0minuskp20-res,+0.080
+so-o50-k0minuskp20-res-abs,0.080
+so-o50-k0minuskp20-res-ci,"[+0.043, +0.115]"
+so-o50-k0minuskp20-res-hi,+0.115
+so-o50-k0minuskp20-res-lo,+0.043
+so-o50-k0minuskp30-band,+0.076
+so-o50-k0minuskp30-band-abs,0.076
+so-o50-k0minuskp30-band-ci,"[+0.041, +0.112]"
+so-o50-k0minuskp30-band-hi,+0.112
+so-o50-k0minuskp30-band-lo,+0.041
+so-o50-k0minuskp30-erp,+0.109
+so-o50-k0minuskp30-erp-abs,0.109
+so-o50-k0minuskp30-erp-ci,"[+0.073, +0.147]"
+so-o50-k0minuskp30-erp-hi,+0.147
+so-o50-k0minuskp30-erp-lo,+0.073
+so-o50-k0minuskp30-res,+0.131
+so-o50-k0minuskp30-res-abs,0.131
+so-o50-k0minuskp30-res-ci,"[+0.095, +0.166]"
+so-o50-k0minuskp30-res-hi,+0.166
+so-o50-k0minuskp30-res-lo,+0.095
+so-o50-k0minusnative_zero-band,+0.024
+so-o50-k0minusnative_zero-band-abs,0.024
+so-o50-k0minusnative_zero-band-ci,"[-0.008, +0.058]"
+so-o50-k0minusnative_zero-band-hi,+0.058
+so-o50-k0minusnative_zero-band-lo,-0.008
+so-o50-k0minusnative_zero-erp,+0.033
+so-o50-k0minusnative_zero-erp-abs,0.033
+so-o50-k0minusnative_zero-erp-ci,"[+0.002, +0.065]"
+so-o50-k0minusnative_zero-erp-hi,+0.065
+so-o50-k0minusnative_zero-erp-lo,+0.002
+so-o50-k0minusnative_zero-res,+0.016
+so-o50-k0minusnative_zero-res-abs,0.016
+so-o50-k0minusnative_zero-res-ci,"[-0.009, +0.039]"
+so-o50-k0minusnative_zero-res-hi,+0.039
+so-o50-k0minusnative_zero-res-lo,-0.009
+so-o50-km05-band,0.496
+so-o50-km05-band-ci,"[0.464, 0.528]"
+so-o50-km05-band-hi,0.528
+so-o50-km05-band-lo,0.464
+so-o50-km05-erp,0.518
+so-o50-km05-erp-ci,"[0.485, 0.551]"
+so-o50-km05-erp-hi,0.551
+so-o50-km05-erp-lo,0.485
+so-o50-km05-res,0.539
+so-o50-km05-res-ci,"[0.506, 0.570]"
+so-o50-km05-res-hi,0.570
+so-o50-km05-res-lo,0.506
+so-o50-km10-band,0.463
+so-o50-km10-band-ci,"[0.433, 0.494]"
+so-o50-km10-band-hi,0.494
+so-o50-km10-band-lo,0.433
+so-o50-km10-erp,0.479
+so-o50-km10-erp-ci,"[0.449, 0.509]"
+so-o50-km10-erp-hi,0.509
+so-o50-km10-erp-lo,0.449
+so-o50-km10-res,0.490
+so-o50-km10-res-ci,"[0.460, 0.520]"
+so-o50-km10-res-hi,0.520
+so-o50-km10-res-lo,0.460
+so-o50-km20-band,0.425
+so-o50-km20-band-ci,"[0.400, 0.452]"
+so-o50-km20-band-hi,0.452
+so-o50-km20-band-lo,0.400
+so-o50-km20-erp,0.436
+so-o50-km20-erp-ci,"[0.408, 0.464]"
+so-o50-km20-erp-hi,0.464
+so-o50-km20-erp-lo,0.408
+so-o50-km20-res,0.430
+so-o50-km20-res-ci,"[0.406, 0.453]"
+so-o50-km20-res-hi,0.453
+so-o50-km20-res-lo,0.406
+so-o50-km2minuskp2-band,+0.011
+so-o50-km2minuskp2-band-abs,0.011
+so-o50-km2minuskp2-band-ci,"[-0.022, +0.044]"
+so-o50-km2minuskp2-band-hi,+0.044
+so-o50-km2minuskp2-band-lo,-0.022
+so-o50-km2minuskp2-erp,-0.021
+so-o50-km2minuskp2-erp-abs,0.021
+so-o50-km2minuskp2-erp-ci,"[-0.054, +0.014]"
+so-o50-km2minuskp2-erp-hi,+0.014
+so-o50-km2minuskp2-erp-lo,-0.054
+so-o50-km2minuskp2-res,-0.032
+so-o50-km2minuskp2-res-abs,0.032
+so-o50-km2minuskp2-res-ci,"[-0.065, +0.000]"
+so-o50-km2minuskp2-res-hi,+0.000
+so-o50-km2minuskp2-res-lo,-0.065
+so-o50-km30-band,0.406
+so-o50-km30-band-ci,"[0.382, 0.428]"
+so-o50-km30-band-hi,0.428
+so-o50-km30-band-lo,0.382
+so-o50-km30-erp,0.401
+so-o50-km30-erp-ci,"[0.378, 0.425]"
+so-o50-km30-erp-hi,0.425
+so-o50-km30-erp-lo,0.378
+so-o50-km30-res,0.398
+so-o50-km30-res-ci,"[0.379, 0.417]"
+so-o50-km30-res-hi,0.417
+so-o50-km30-res-lo,0.379
+so-o50-kp00-band,0.474
+so-o50-kp00-band-ci,"[0.439, 0.509]"
+so-o50-kp00-band-hi,0.509
+so-o50-kp00-band-lo,0.439
+so-o50-kp00-erp,0.542
+so-o50-kp00-erp-ci,"[0.509, 0.575]"
+so-o50-kp00-erp-hi,0.575
+so-o50-kp00-erp-lo,0.509
+so-o50-kp00-res,0.542
+so-o50-kp00-res-ci,"[0.507, 0.578]"
+so-o50-kp00-res-hi,0.578
+so-o50-kp00-res-lo,0.507
+so-o50-kp05-band,0.455
+so-o50-kp05-band-ci,"[0.419, 0.490]"
+so-o50-kp05-band-hi,0.490
+so-o50-kp05-band-lo,0.419
+so-o50-kp05-erp,0.537
+so-o50-kp05-erp-ci,"[0.507, 0.567]"
+so-o50-kp05-erp-hi,0.567
+so-o50-kp05-erp-lo,0.507
+so-o50-kp05-res,0.521
+so-o50-kp05-res-ci,"[0.488, 0.556]"
+so-o50-kp05-res-hi,0.556
+so-o50-kp05-res-lo,0.488
+so-o50-kp10-band,0.433
+so-o50-kp10-band-ci,"[0.400, 0.464]"
+so-o50-kp10-band-hi,0.464
+so-o50-kp10-band-lo,0.400
+so-o50-kp10-erp,0.502
+so-o50-kp10-erp-ci,"[0.474, 0.532]"
+so-o50-kp10-erp-hi,0.532
+so-o50-kp10-erp-lo,0.474
+so-o50-kp10-res,0.487
+so-o50-kp10-res-ci,"[0.457, 0.517]"
+so-o50-kp10-res-hi,0.517
+so-o50-kp10-res-lo,0.457
+so-o50-kp20-band,0.414
+so-o50-kp20-band-ci,"[0.384, 0.444]"
+so-o50-kp20-band-hi,0.444
+so-o50-kp20-band-lo,0.384
+so-o50-kp20-erp,0.457
+so-o50-kp20-erp-ci,"[0.431, 0.483]"
+so-o50-kp20-erp-hi,0.483
+so-o50-kp20-erp-lo,0.431
+so-o50-kp20-res,0.461
+so-o50-kp20-res-ci,"[0.438, 0.485]"
+so-o50-kp20-res-hi,0.485
+so-o50-kp20-res-lo,0.438
+so-o50-kp30-band,0.398
+so-o50-kp30-band-ci,"[0.371, 0.423]"
+so-o50-kp30-band-hi,0.423
+so-o50-kp30-band-lo,0.371
+so-o50-kp30-erp,0.433
+so-o50-kp30-erp-ci,"[0.411, 0.457]"
+so-o50-kp30-erp-hi,0.457
+so-o50-kp30-erp-lo,0.411
+so-o50-kp30-res,0.411
+so-o50-kp30-res-ci,"[0.389, 0.433]"
+so-o50-kp30-res-hi,0.433
+so-o50-kp30-res-lo,0.389
+so-o50-native_zero-band,0.450
+so-o50-native_zero-band-ci,"[0.422, 0.479]"
+so-o50-native_zero-band-hi,0.479
+so-o50-native_zero-band-lo,0.422
+so-o50-native_zero-erp,0.509
+so-o50-native_zero-erp-ci,"[0.479, 0.540]"
+so-o50-native_zero-erp-hi,0.540
+so-o50-native_zero-erp-lo,0.479
+so-o50-native_zero-res,0.526
+so-o50-native_zero-res-ci,"[0.490, 0.564]"
+so-o50-native_zero-res-hi,0.564
+so-o50-native_zero-res-lo,0.490
+so-o50-nativeminusmean-band,-0.024
+so-o50-nativeminusmean-band-abs,0.024
+so-o50-nativeminusmean-band-ci,"[-0.058, +0.008]"
+so-o50-nativeminusmean-band-hi,+0.008
+so-o50-nativeminusmean-band-lo,-0.058
+so-o50-nativeminusmean-erp,-0.033
+so-o50-nativeminusmean-erp-abs,0.033
+so-o50-nativeminusmean-erp-ci,"[-0.065, -0.002]"
+so-o50-nativeminusmean-erp-hi,-0.002
+so-o50-nativeminusmean-erp-lo,-0.065
+so-o50-nativeminusmean-res,-0.016
+so-o50-nativeminusmean-res-abs,0.016
+so-o50-nativeminusmean-res-ci,"[-0.039, +0.009]"
+so-o50-nativeminusmean-res-hi,+0.009
+so-o50-nativeminusmean-res-lo,-0.039
+so-zpos-band,1.20
+so-zpos-erp,0.73
+so-zpos-res,0.07
+sz-G-conference-r-max,-0.01
+sz-G-conference-r-med,-0.08
+sz-G-conference-r-min,-0.26
+sz-G-conference-r2,0.012
+sz-G-conference-r2count,0.013
+sz-G-conference-rabs-max,+0.21
+sz-G-conference-rabs-med,+0.01
+sz-G-conference-rabs-min,-0.13
+sz-G-conference-rate,0.035
+sz-G-pre-r-max,+0.01
+sz-G-pre-r-med,-0.06
+sz-G-pre-r-min,-0.24
+sz-G-pre-r2,-0.093
+sz-G-pre-r2count,0.008
+sz-G-pre-rabs-max,+0.19
+sz-G-pre-rabs-med,+0.00
+sz-G-pre-rabs-min,-0.12
+sz-G-pre-rate,0.024
+sz-Z-conference-r-max,+0.82
+sz-Z-conference-r-med,-0.04
+sz-Z-conference-r-min,-0.47
+sz-Z-conference-r2,0.993
+sz-Z-conference-r2count,0.049
+sz-Z-conference-rabs-max,+0.89
+sz-Z-conference-rabs-med,+0.70
+sz-Z-conference-rabs-min,+0.65
+sz-Z-conference-rate,0.124
+sz-Z-pre-r-max,+0.81
+sz-Z-pre-r-med,-0.21
+sz-Z-pre-r-min,-0.58
+sz-Z-pre-r2,0.999
+sz-Z-pre-r2count,0.003
+sz-Z-pre-rabs-max,+0.92
+sz-Z-pre-rabs-med,+0.78
+sz-Z-pre-rabs-min,+0.72
+sz-Z-pre-rate,0.118
 t-between-sd,5.58
 t-channel,PO3
 t-sal-dz,0.69
@@ -5935,3 +7724,39 @@ xl-trials-median,44
 xl-zpos-band,1.20
 xl-zpos-erp,0.72
 xl-zpos-res,0.06
+xz-G-conference-r-max,+0.08
+xz-G-conference-r-med,-0.03
+xz-G-conference-r-min,-0.14
+xz-G-conference-r2,-0.173
+xz-G-conference-r2count,-0.001
+xz-G-conference-rabs-max,+0.11
+xz-G-conference-rabs-med,+0.03
+xz-G-conference-rabs-min,-0.08
+xz-G-conference-rate,0.017
+xz-G-pre-r-max,+0.07
+xz-G-pre-r-med,-0.05
+xz-G-pre-r-min,-0.13
+xz-G-pre-r2,-0.764
+xz-G-pre-r2count,-0.001
+xz-G-pre-rabs-max,+0.10
+xz-G-pre-rabs-med,+0.02
+xz-G-pre-rabs-min,-0.09
+xz-G-pre-rate,0.010
+xz-Z-conference-r-max,+0.78
+xz-Z-conference-r-med,+0.09
+xz-Z-conference-r-min,-0.14
+xz-Z-conference-r2,0.995
+xz-Z-conference-r2count,0.116
+xz-Z-conference-rabs-max,+0.87
+xz-Z-conference-rabs-med,+0.73
+xz-Z-conference-rabs-min,+0.69
+xz-Z-conference-rate,0.124
+xz-Z-pre-r-max,+0.78
+xz-Z-pre-r-med,+0.05
+xz-Z-pre-r-min,-0.19
+xz-Z-pre-r2,0.999
+xz-Z-pre-r2count,0.091
+xz-Z-pre-rabs-max,+0.90
+xz-Z-pre-rabs-med,+0.80
+xz-Z-pre-rabs-min,+0.76
+xz-Z-pre-rate,0.118

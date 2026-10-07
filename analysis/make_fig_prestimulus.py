@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Journal figure: decoding from the empty pre-stimulus interval depends on normalization.
 
-Reads outputs/aggregate/journal/j6_tcrzem_prestimulus{,_long}.json: (a) conference-matched
-epoch, (b) pre-specified long epoch (adds 0..+2484 ms windows). Subject-level BA (95% CI) for
+Reads outputs/aggregate/journal/j6_{shape,tcrzem}_prestimulus*.json: (a) SHAPE, (b) external
+cohort at the conference-matched epoch, (c) external long epoch (adds 0..+2484 ms windows). Subject-level BA (95% CI) for
 every encoder window under per-epoch z-scoring (Z, conference convention; filled markers)
 and one fixed per-channel scale (G; open markers). Windows before onset carry no
 stimulus-locked signal, so accuracy above chance there measures what the normalization
@@ -43,21 +43,24 @@ def panel(ax, d, order, title):
                     mfc=fc, mec="k", ecolor="k", elinewidth=0.7, capsize=1.5, label=lab)
     ax.axhline(1 / 3, color="0.4", lw=0.6)
     ax.axvspan(-0.5, 2.5, color="0.92", zorder=0)
-    ax.set_ylim(0.25, 0.49)
-    ax.text(1.0, 0.485, "before or at onset", ha="center", va="top", fontsize=5.5)
+    top = max(0.49, max(d["BA"][k][nm]["ci95"][1] for k, _ in order for nm in ("Z", "G")) + 0.03)
+    ax.set_ylim(0.25, top)
+    ax.text(1.0, top - 0.005, "before or at onset", ha="center", va="top", fontsize=5.5)
     ax.set_xticks(x); ax.set_xticklabels([l for _, l in order], rotation=35, ha="right", fontsize=5.5)
     ax.set_title(title, fontsize=7, loc="left", pad=3)
     ax.grid(True, axis="y", color="0.93", lw=0.5); ax.tick_params(length=2, pad=1.5)
 
 
 def main():
-    d = json.load(open(AGG / "j6_tcrzem_prestimulus.json"))
-    pl = AGG / "j6_tcrzem_prestimulus_long.json"
-    fig, axes = plt.subplots(1, 2 if pl.exists() else 1, figsize=(7.16, 2.0), squeeze=False,
-                             gridspec_kw={"width_ratios": [7, 9] if pl.exists() else [1]})
-    panel(axes[0][0], d, ORDER, "(a) conference-matched epoch")
-    if pl.exists():
-        panel(axes[0][1], json.load(open(pl)), ORDER + LONG_EXTRA, "(b) long epoch (pre-specified)")
+    panels = [(f, o, t) for f, o, t in (
+        ("j6_shape_prestimulus.json", ORDER, "(a) SHAPE"),
+        ("j6_tcrzem_prestimulus.json", ORDER, "(b) external, matched epoch"),
+        ("j6_tcrzem_prestimulus_long.json", ORDER + LONG_EXTRA, "(c) external, long epoch"))
+        if (AGG / f).exists()]
+    fig, axes = plt.subplots(1, len(panels), figsize=(7.16, 2.1), squeeze=False,
+                             gridspec_kw={"width_ratios": [len(o) for _, o, _ in panels]})
+    for ax, (f, o, t) in zip(axes[0], panels):
+        panel(ax, json.load(open(AGG / f)), o, t)
     axes[0][0].set_ylabel("clean BA", labelpad=1)
     axes[0][0].legend(frameon=False, fontsize=5.5, loc="upper left", bbox_to_anchor=(0.0, 0.92))
     fig.tight_layout(pad=0.3, w_pad=1.0)

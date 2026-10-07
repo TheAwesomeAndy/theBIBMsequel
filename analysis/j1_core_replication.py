@@ -34,7 +34,6 @@ from sklearn.metrics import balanced_accuracy_score
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import jcore as J  # noqa: E402
-import tcrzem_data as TD  # noqa: E402
 
 DROP_LEVELS = [0.1, 0.2, 0.3, 0.4, 0.5]
 FILLS = ["zero", "mean", "knn", "spatial"]
@@ -45,7 +44,7 @@ CHANCE = 1.0 / 3.0
 
 def main():
     t0 = time.time()
-    X, y, g = TD.load_cohort()
+    X, y, g = J.load_cohort()
     N, T, n_ch = X.shape
     classes = np.unique(y)
     F = J.folds(y, g)
@@ -68,9 +67,16 @@ def main():
     blocks = {"Band-power": [band] * len(F), "ERP-window": [erp] * len(F),
               "Reservoir": [e for e, _ in emb[64]]}
 
-    span = "-200..+800 ms" if TD.EPOCH == "standard" else "-200..+2496 ms (pre-specified long epoch)"
-    res = {"dataset": "TCRZEM (doi:10.34894/TCRZEM), 228 subjects x 3 valences, 32 scalp channels, "
-                      f"{span} at 256 Hz, onset sample 51, per-epoch per-channel z-score",
+    if J.DATASET == "shape":
+        desc = (f"SHAPE (conference cohort), {np.unique(g).size} subjects x 3 valences, {n_ch} channels, "
+                f"-200..+797 ms at 256 Hz (X_ds), onset sample 51, per-epoch per-channel z-score; "
+                f"windows '{J.EPOCH}': reservoir [{J.T_START},{J.T_END}), ERP {J.ERP_WINDOWS_MS} "
+                f"(sample-index ms)")
+    else:
+        span = "-200..+800 ms" if J.EPOCH == "standard" else "-200..+2496 ms (pre-specified long epoch)"
+        desc = ("TCRZEM (doi:10.34894/TCRZEM), 228 subjects x 3 valences, 32 scalp channels, "
+                f"{span} at 256 Hz, onset sample 51, per-epoch per-channel z-score")
+    res = {"dataset": desc,
            "protocol": "StratifiedGroupKFold(5,shuffle) x seeds 42-46; train-only StandardScaler; "
                        "balanced L2 logreg; reservoir rho=0.9, train-only PCA-64; OOF proba averaged "
                        "over partitions; subject-level bootstrap n_boot=%d" % J.N_BOOT,

@@ -33,10 +33,10 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import jcore as J  # noqa: E402
-import tcrzem_data as TD  # noqa: E402
 
 DRAWS = list(range(42, 52))          # order parameter: ten draws
-ACC_DRAWS = list(range(42, 47))      # accuracy sweep: five draws (cost of the long epoch)
+# accuracy sweep: five draws on TCRZEM (cost of the long epoch), all ten on SHAPE
+ACC_DRAWS = DRAWS if J.DATASET == "shape" else list(range(42, 47))
 RHO_FINE = [round(r, 2) for r in np.arange(0.0, 2.01, 0.1)]
 RHO_ACC = [0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
 RHO_CONF = [0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
@@ -61,9 +61,12 @@ def accuracy(X, y, g, F, classes, **kw):
 
 
 def standard_drives():
-    """Conference-matched drives in either epoch mode: first 256 samples, z-scored per epoch."""
-    Xuv, _, _ = TD.load_cohort(zscore=False)
-    return TD.zscore_epochs(Xuv[:, :256, :])
+    """Conference-matched drives in either epoch mode: first 256 samples, z-scored per epoch
+    (on SHAPE: the conference array X_ds itself)."""
+    if J.DATASET == "shape":
+        return J.load_cohort()[0]
+    Xuv, _, _ = J.load_cohort(zscore=False)
+    return J.zscore_epochs(Xuv[:, :256, :])
 
 
 def dmg(Xs, rho, **kw):
@@ -72,7 +75,7 @@ def dmg(Xs, rho, **kw):
 
 def main():
     t0 = time.time()
-    X, y, g = TD.load_cohort()
+    X, y, g = J.load_cohort()
     Xs = standard_drives()
     classes = np.unique(y)
     F = J.folds(y, g)
@@ -81,7 +84,8 @@ def main():
                        "drives); rho* = half-maximum crossing (linear interpolation) on rho 0..2 step 0.1; "
                        "accuracy with train-only PCA-64, StratifiedGroupKFold(5) x seeds 42-46, balanced "
                        "L2 logreg, subject-level bootstrap n_boot=%d" % J.N_BOOT,
-           "rho_fine": RHO_FINE, "rho_acc": RHO_ACC, "draws": {}}
+           "rho_fine": RHO_FINE, "rho_acc": RHO_ACC, "acc_draws": ACC_DRAWS, "draws": {}}
+    all_preds = {}
     for d in DRAWS:
         r = {"damage": {}, "rate": {}, "BA": {}, "paired_vs_rho0.9": {}}
         for rho in RHO_FINE:
@@ -100,6 +104,7 @@ def main():
                 r["paired_vs_rho0.9"][str(rho)] = {k: J.paired_ci(y, g, preds[rho][k], preds[0.9][k])
                                                    for k in ("clean", "signal30")}
         res["draws"][str(d)] = r
+        all_preds[d] = preds
         best = max(RHO_ACC, key=lambda x: r["BA"][str(x)]["clean"]["BA"])
         print(f"[J4 draw {d}] rho*={r['rho_star']:.3f} best clean rho={best} "
               + " ".join(f"{x}:{r['BA'][str(x)]['clean']['BA']:.3f}" for x in RHO_ACC)
@@ -118,6 +123,13 @@ def main():
             res["draws"][str(d)]["paired_vs_rho0.9"]["0.0"][cond]["ci95"][1] < 0 for d in ACC_DRAWS))
         S[f"n_draws_rho1.5_below_rho0.9_ci_excludes0_{cond}"] = int(sum(
             res["draws"][str(d)]["paired_vs_rho0.9"]["1.5"][cond]["ci95"][1] < 0 for d in ACC_DRAWS))
+    # draw-mean paired contrasts (same subject resamples for every draw) and sign counts
+    S["drawmean_paired_vs_rho0.9"] = {
+        str(x): {c: J.paired_ci_mean(y, g, [(all_preds[d][x][c], all_preds[d][0.9][c]) for d in ACC_DRAWS])
+                 for c in ("clean", "signal30")} for x in RHO_ACC if x != 0.9}
+    for c in ("clean", "signal30"):
+        S[f"n_draws_rho0_point_below_rho0.9_{c}"] = int(sum(
+            J.ba(y, all_preds[d][0.0][c]) < J.ba(y, all_preds[d][0.9][c]) for d in ACC_DRAWS))
     Dm = np.array([[res["draws"][str(d)]["damage"][str(x)] for x in RHO_FINE] for d in DRAWS])
     S["damage_mean"] = Dm.mean(0).tolist(); S["damage_sd"] = Dm.std(0, ddof=1).tolist()
     Rm = np.array([[res["draws"][str(d)]["rate"][str(x)] for x in RHO_ACC] for d in ACC_DRAWS])

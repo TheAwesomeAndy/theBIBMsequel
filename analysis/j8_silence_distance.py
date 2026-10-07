@@ -25,14 +25,13 @@ from sklearn.decomposition import PCA
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import jcore as J  # noqa: E402
-import tcrzem_data as TD  # noqa: E402
 
 RHOS = [0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
 
 
 def main():
     t0 = time.time()
-    X, y, g = TD.load_cohort()
+    X, y, g = J.load_cohort()
     N, T, n_ch = X.shape
     F = J.folds(y, g)
     res = {"epoch": J.EPOCH, "draw": 42, "rho": RHOS, "rate": {}, "silent_block_mean_abs_z": {},

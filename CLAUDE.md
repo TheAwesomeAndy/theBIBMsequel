@@ -14,15 +14,24 @@ at `ad79109`. **The `BIBM` repository is never edited**; all work happens here.
   operating point across reservoir draws, a direct test of Proposition 1, and the
   pre-stimulus normalization question raised by audit item A18. Graph/coupling,
   E/D/T/C, closed-loop EFE and clinical claims stay out.
-* Data: SHAPE (restricted) is **not** available in cloud sessions, so every SHAPE and
-  DEAP number is read from the conference aggregate JSON in `outputs/aggregate/`.
-  New experiments run on the public TCRZEM cohort (doi:10.34894/TCRZEM, CC BY-NC 4.0),
-  stored only under `/home/user/data_local/tcrzem/` (never in git). Loader:
-  `analysis/tcrzem_data.py`; shared code: `analysis/jcore.py` (bit-exact port of the
-  conference code, checked on synthetic data).
+* Data: SHAPE (restricted) is copied by the author from the laboratory's data share
+  into `/home/user/data_local/shape/` (`raw/` the conference pickle, `txt/` the
+  subject-average microvolt epochs) and never enters git, nor do its share links or
+  file IDs. Loader: `analysis/shape_data.py` (numpy-only unpickler; `python3
+  analysis/shape_data.py` checks X_ds == zscore(raw[0:1024:4]) for all 633
+  observations). The public TCRZEM cohort (doi:10.34894/TCRZEM, CC BY-NC 4.0) lives only
+  under `/home/user/data_local/tcrzem/`. Loader: `analysis/tcrzem_data.py`. Shared code:
+  `analysis/jcore.py` (bit-exact port of the conference code, checked on synthetic data
+  and against the conference SHAPE values). `JDATA=shape|tcrzem` selects the cohort.
+  DEAP numbers are read from the conference aggregate JSON in `outputs/aggregate/`.
 * Primary external analysis = conference-matched epoch (-200..+800 ms). The long epoch
   (-200..+2500 ms, `TCRZEM_EPOCH=long`) is a secondary analysis pre-specified in memory
   entry #36 from the dataset's published effect latencies. Report both, tune neither.
+* SHAPE windows (`SHAPE_EPOCH`, pre-specified in memory entry #43): `standard` (the
+  conference input and windows; reproduces the conference values), `onset` (reservoir
+  +39..+273 ms and ERP windows measured from true onset) and `post` (reservoir
+  0..+793 ms). Report all three, tune none. No spline repair on SHAPE (channel order
+  undocumented) and no trial-count analysis (subject averages only).
 * Journal outputs: `outputs/aggregate/journal/` (aggregate JSON only); figures under
   `manuscript/figures/journal/` from committed `analysis/make_fig_*.py` scripts.
 * Before every commit: `python3 scripts/check_restricted_data.py` (staged files) and

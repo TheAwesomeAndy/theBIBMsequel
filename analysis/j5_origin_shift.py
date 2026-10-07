@@ -32,7 +32,6 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import jcore as J  # noqa: E402
-import tcrzem_data as TD  # noqa: E402
 
 KAPPAS = [-3.0, -2.0, -1.0, -0.5, 0.0, 0.5, 1.0, 2.0, 3.0]
 LEVELS = [0.1, 0.3, 0.5]
@@ -41,7 +40,7 @@ NAMES = ("Band-power", "ERP-window", "Reservoir")
 
 def main():
     t0 = time.time()
-    X, y, g = TD.load_cohort()
+    X, y, g = J.load_cohort()
     N, T, n_ch = X.shape
     classes = np.unique(y)
     band, erp = J.bandpower(X), J.erp_windows(X)

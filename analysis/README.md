@@ -76,7 +76,7 @@ training and test reservoir codes with the same PCA transform (see `docs/CODE_AU
 
 ## Journal extension (theBIBMsequel)
 
-The journal experiments run on the public external cohort (DataVerseNL
+The journal experiments run on SHAPE (`JDATA=shape`) and on the public external cohort (DataVerseNL
 doi:10.34894/TCRZEM; set `TCRZEM_DIR` to the export directory, default
 `/home/user/data_local/tcrzem/export`; single trials are cached under `TCRZEM_CACHE`).
 `TCRZEM_EPOCH=long` selects the pre-specified long epoch (-200..+2500 ms). All scripts
@@ -96,6 +96,18 @@ TCRZEM_EPOCH=long J3_SEEDS=42 python analysis/j3_eegnet.py           # seed-42 p
 for R in default epochs40 epochs160 dropout50; do J3_RECIPE=$R J3_SEEDS=42 python analysis/j3_eegnet.py; done
 TCRZEM_EPOCH=long python analysis/j4_edge_of_stability.py            # ~2.5 h
 TCRZEM_EPOCH=long python analysis/j8_silence_distance.py             # ~25 min
+JDATA=tcrzem python analysis/j9_zscore_hypothesis.py                 # ~2 min
+# SHAPE (restricted, local only; see CLAUDE.md): verify the input, then the same analyses
+python analysis/shape_data.py                    # X_ds == zscore(raw[0:1024:4]) for all 633 observations
+export JDATA=shape
+for W in standard onset post; do                 # conference windows / windows from true onset
+  SHAPE_EPOCH=$W python analysis/j1_core_replication.py     # ~25 min
+  SHAPE_EPOCH=$W python analysis/j4_edge_of_stability.py    # ten draws, ~75 min
+  SHAPE_EPOCH=$W python analysis/j5_origin_shift.py
+  SHAPE_EPOCH=$W python analysis/j8_silence_distance.py
+done
+python analysis/j6_prestimulus.py; python analysis/j7_prestim_null.py; python analysis/j9_zscore_hypothesis.py
+unset JDATA
 python analysis/make_fig_tcrzem_erp.py; python analysis/make_fig_fills_two_cohorts.py
 python analysis/make_fig_origin.py; python analysis/make_fig_prestimulus.py
 python analysis/make_fig_edge.py; FIG_EPOCH=_long python analysis/make_fig_signal.py

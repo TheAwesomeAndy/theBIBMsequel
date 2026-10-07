@@ -47,11 +47,47 @@ OUT = Path(__file__).resolve().parents[1] / "outputs" / "aggregate" / "journal"
 # to +2496 ms; the reservoir BSC6 window covers 0..+2484 ms after onset (sample 51, six bins
 # of 106 samples) and the ERP-window encoder adds the dataset's two published effect windows
 # (500..1300 and 1500..2500 ms after onset). Output files get the suffix "_long".
-EPOCH = os.environ.get("TCRZEM_EPOCH", "standard")
+#
+# $JDATA selects the cohort: "tcrzem" (default, public external cohort) or "shape" (the
+# conference cohort, restricted, local only; see shape_data.py). On SHAPE, $SHAPE_EPOCH
+# selects the analysis windows (pre-specified in memory entry #43, none tuned):
+#   standard: the conference input and windows (reservoir t in [10, 70), about -160..+73 ms;
+#             ERP windows -120..0 / 50..250 / 250..600 ms after onset), reproduces the
+#             conference numbers;
+#   onset:    windows measured from true onset (sample 51): reservoir [61, 121) =
+#             +39..+273 ms, the window the conference text described, and ERP windows
+#             80..200 / 250..450 / 450..800 ms after onset;
+#   post:     reservoir [51, 255) = 0..+793 ms (six bins of 34), ERP windows as in onset.
+# Band-power always uses the whole epoch. Output files get the cohort name in place of
+# "tcrzem" and the epoch suffix.
+DATASET = os.environ.get("JDATA", "tcrzem")
+if DATASET == "shape":
+    EPOCH = os.environ.get("SHAPE_EPOCH", "standard")
+    if EPOCH in ("onset", "post"):
+        T_START, T_END = (61, 121) if EPOCH == "onset" else (51, 51 + 6 * 34)
+        ERP_WINDOWS_MS = [(280, 400), (450, 650), (650, 1000)]
+    elif EPOCH != "standard":
+        raise ValueError(f"SHAPE_EPOCH={EPOCH}")
+else:
+    EPOCH = os.environ.get("TCRZEM_EPOCH", "standard")
+    if EPOCH == "long":
+        T_START, T_END = 51, 51 + 6 * 106
+        ERP_WINDOWS_MS = ERP_WINDOWS_MS + [(700, 1500), (1700, 2700)]
 SUFFIX = "" if EPOCH == "standard" else f"_{EPOCH}"
-if EPOCH == "long":
-    T_START, T_END = 51, 51 + 6 * 106
-    ERP_WINDOWS_MS = ERP_WINDOWS_MS + [(700, 1500), (1700, 2700)]
+
+
+def load_cohort(zscore=True):
+    """(X, y, g) of the selected cohort: X (N, T, ch), per-epoch z-scored unless zscore=False."""
+    if DATASET == "shape":
+        import shape_data as SD
+        return SD.load_cohort(zscore)
+    import tcrzem_data as TD
+    return TD.load_cohort(zscore)
+
+
+def zscore_epochs(X):
+    mu = X.mean(axis=1, keepdims=True); sd = X.std(axis=1, keepdims=True)
+    return (X - mu) / np.where(sd > 0, sd, 1.0)
 
 
 # ----------------------------------------------------------------------------- folds / readout
@@ -140,6 +176,20 @@ def paired_ci(y, g, predA, predB, n_boot=N_BOOT, seed=999):
     d = a - b
     return {"mean_diff": float(d.mean()), "ci95": [float(np.percentile(d, 2.5)),
                                                     float(np.percentile(d, 97.5))],
+            "P(A>B)": float(np.mean(d > 0))}
+
+
+def paired_ci_mean(y, g, pairs, n_boot=N_BOOT, seed=999):
+    """Mean over reservoir draws of paired BA differences A - B. Every draw is evaluated on
+    the same subject resamples as paired_ci, so the interval is for the draw mean.
+    pairs = [(predA, predB), ...], one pair per draw."""
+    sid, W = _weights(g, n_boot, seed)
+    classes = np.unique(y)
+    d = np.mean([_ba_from_counts(W, *_per_subject_counts(y, g, a, sid, classes))
+                 - _ba_from_counts(W, *_per_subject_counts(y, g, b, sid, classes)) for a, b in pairs], axis=0)
+    point = float(np.mean([ba(y, a) - ba(y, b) for a, b in pairs]))
+    return {"point": point, "mean_diff": float(d.mean()),
+            "ci95": [float(np.percentile(d, 2.5)), float(np.percentile(d, 97.5))],
             "P(A>B)": float(np.mean(d > 0))}
 
 
@@ -303,6 +353,8 @@ def fill_block(Xte_blk, Xtr_blk, drop, fill, knn_k=10):
 # ----------------------------------------------------------------------------- io
 def dump(obj, name):
     OUT.mkdir(parents=True, exist_ok=True)
+    if DATASET != "tcrzem":
+        name = name.replace("_tcrzem_", f"_{DATASET}_")
     if SUFFIX and not name.endswith(SUFFIX + ".json"):
         name = name.replace(".json", SUFFIX + ".json")
     p = OUT / name
