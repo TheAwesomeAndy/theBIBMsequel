@@ -1,0 +1,394 @@
+{
+  "BA": {
+    "Band-power": {
+      "0.10": {
+        "zero": [
+          0.4346,
+          0.0155
+        ],
+        "mean": [
+          0.4588,
+          0.0125
+        ],
+        "knn": [
+          0.4733,
+          0.0139
+        ],
+        "spatial": [
+          0.4636,
+          0.0126
+        ]
+      },
+      "0.20": {
+        "zero": [
+          0.4021,
+          0.0216
+        ],
+        "mean": [
+          0.4439,
+          0.015
+        ],
+        "knn": [
+          0.4738,
+          0.0164
+        ],
+        "spatial": [
+          0.4573,
+          0.0185
+        ]
+      },
+      "0.30": {
+        "zero": [
+          0.4083,
+          0.0217
+        ],
+        "mean": [
+          0.4311,
+          0.0188
+        ],
+        "knn": [
+          0.4557,
+          0.0162
+        ],
+        "spatial": [
+          0.4396,
+          0.0132
+        ]
+      },
+      "0.40": {
+        "zero": [
+          0.3948,
+          0.0177
+        ],
+        "mean": [
+          0.4215,
+          0.0195
+        ],
+        "knn": [
+          0.4486,
+          0.0172
+        ],
+        "spatial": [
+          0.4378,
+          0.0196
+        ]
+      },
+      "0.50": {
+        "zero": [
+          0.3855,
+          0.0201
+        ],
+        "mean": [
+          0.4286,
+          0.0229
+        ],
+        "knn": [
+          0.4488,
+          0.0195
+        ],
+        "spatial": [
+          0.4269,
+          0.0183
+        ]
+      }
+    },
+    "ERP-window": {
+      "0.10": {
+        "zero": [
+          0.5323,
+          0.0199
+        ],
+        "mean": [
+          0.5512,
+          0.0203
+        ],
+        "knn": [
+          0.6103,
+          0.0159
+        ],
+        "spatial": [
+          0.5829,
+          0.0225
+        ]
+      },
+      "0.20": {
+        "zero": [
+          0.4993,
+          0.0187
+        ],
+        "mean": [
+          0.5218,
+          0.019
+        ],
+        "knn": [
+          0.5805,
+          0.0159
+        ],
+        "spatial": [
+          0.5258,
+          0.0185
+        ]
+      },
+      "0.30": {
+        "zero": [
+          0.4544,
+          0.026
+        ],
+        "mean": [
+          0.4887,
+          0.0212
+        ],
+        "knn": [
+          0.5625,
+          0.0149
+        ],
+        "spatial": [
+          0.5158,
+          0.0248
+        ]
+      },
+      "0.40": {
+        "zero": [
+          0.4515,
+          0.0226
+        ],
+        "mean": [
+          0.4712,
+          0.0205
+        ],
+        "knn": [
+          0.555,
+          0.0141
+        ],
+        "spatial": [
+          0.4849,
+          0.0238
+        ]
+      },
+      "0.50": {
+        "zero": [
+          0.4213,
+          0.0232
+        ],
+        "mean": [
+          0.4392,
+          0.0214
+        ],
+        "knn": [
+          0.5436,
+          0.0176
+        ],
+        "spatial": [
+          0.4533,
+          0.0213
+        ]
+      }
+    },
+    "Reservoir": {
+      "0.10": {
+        "zero": [
+          0.4604,
+          0.0124
+        ],
+        "mean": [
+          0.4591,
+          0.0119
+        ],
+        "knn": [
+          0.4676,
+          0.0117
+        ],
+        "spatial": [
+          0.4626,
+          0.013
+        ]
+      },
+      "0.20": {
+        "zero": [
+          0.454,
+          0.0116
+        ],
+        "mean": [
+          0.4511,
+          0.0147
+        ],
+        "knn": [
+          0.479,
+          0.0114
+        ],
+        "spatial": [
+          0.4581,
+          0.0127
+        ]
+      },
+      "0.30": {
+        "zero": [
+          0.4559,
+          0.0129
+        ],
+        "mean": [
+          0.4606,
+          0.0149
+        ],
+        "knn": [
+          0.4913,
+          0.014
+        ],
+        "spatial": [
+          0.4622,
+          0.013
+        ]
+      },
+      "0.40": {
+        "zero": [
+          0.4541,
+          0.0139
+        ],
+        "mean": [
+          0.449,
+          0.014
+        ],
+        "knn": [
+          0.4851,
+          0.0133
+        ],
+        "spatial": [
+          0.4585,
+          0.0147
+        ]
+      },
+      "0.50": {
+        "zero": [
+          0.43,
+          0.0156
+        ],
+        "mean": [
+          0.4426,
+          0.017
+        ],
+        "knn": [
+          0.4932,
+          0.0145
+        ],
+        "spatial": [
+          0.4451,
+          0.0129
+        ]
+      }
+    }
+  },
+  "flip_tests_ERP_vs_Reservoir": {
+    "0.10": {
+      "zero": {
+        "ERP_minus_Res_mean": 0.0719,
+        "wilcoxon_p": 3.024132806741821e-05,
+        "ERP_wins_folds": 22
+      },
+      "mean": {
+        "ERP_minus_Res_mean": 0.0921,
+        "wilcoxon_p": 1.2268056633232531e-05,
+        "ERP_wins_folds": 25
+      },
+      "knn": {
+        "ERP_minus_Res_mean": 0.1426,
+        "wilcoxon_p": 1.223471913060967e-05,
+        "ERP_wins_folds": 25
+      },
+      "spatial": {
+        "ERP_minus_Res_mean": 0.1203,
+        "wilcoxon_p": 5.960464477539063e-08,
+        "ERP_wins_folds": 25
+      }
+    },
+    "0.20": {
+      "zero": {
+        "ERP_minus_Res_mean": 0.0453,
+        "wilcoxon_p": 0.0008066085891129927,
+        "ERP_wins_folds": 21
+      },
+      "mean": {
+        "ERP_minus_Res_mean": 0.0707,
+        "wilcoxon_p": 0.0002847896193216751,
+        "ERP_wins_folds": 21
+      },
+      "knn": {
+        "ERP_minus_Res_mean": 0.1016,
+        "wilcoxon_p": 1.384828485136967e-05,
+        "ERP_wins_folds": 24
+      },
+      "spatial": {
+        "ERP_minus_Res_mean": 0.0677,
+        "wilcoxon_p": 3.833095919998887e-05,
+        "ERP_wins_folds": 23
+      }
+    },
+    "0.30": {
+      "zero": {
+        "ERP_minus_Res_mean": -0.0016,
+        "wilcoxon_p": 0.8190711567193237,
+        "ERP_wins_folds": 13
+      },
+      "mean": {
+        "ERP_minus_Res_mean": 0.028,
+        "wilcoxon_p": 0.06333548830868553,
+        "ERP_wins_folds": 17
+      },
+      "knn": {
+        "ERP_minus_Res_mean": 0.0712,
+        "wilcoxon_p": 1.5635709269691392e-05,
+        "ERP_wins_folds": 24
+      },
+      "spatial": {
+        "ERP_minus_Res_mean": 0.0536,
+        "wilcoxon_p": 0.0011292278770743667,
+        "ERP_wins_folds": 19
+      }
+    },
+    "0.40": {
+      "zero": {
+        "ERP_minus_Res_mean": -0.0026,
+        "wilcoxon_p": 0.863797304114958,
+        "ERP_wins_folds": 12
+      },
+      "mean": {
+        "ERP_minus_Res_mean": 0.0222,
+        "wilcoxon_p": 0.10030841116700882,
+        "ERP_wins_folds": 14
+      },
+      "knn": {
+        "ERP_minus_Res_mean": 0.0699,
+        "wilcoxon_p": 5.271091955203041e-05,
+        "ERP_wins_folds": 21
+      },
+      "spatial": {
+        "ERP_minus_Res_mean": 0.0263,
+        "wilcoxon_p": 0.061306680663818745,
+        "ERP_wins_folds": 15
+      }
+    },
+    "0.50": {
+      "zero": {
+        "ERP_minus_Res_mean": -0.0087,
+        "wilcoxon_p": 0.33810050021647975,
+        "ERP_wins_folds": 10
+      },
+      "mean": {
+        "ERP_minus_Res_mean": -0.0034,
+        "wilcoxon_p": 0.6270114997681258,
+        "ERP_wins_folds": 11
+      },
+      "knn": {
+        "ERP_minus_Res_mean": 0.0504,
+        "wilcoxon_p": 0.0009645299574658835,
+        "ERP_wins_folds": 20
+      },
+      "spatial": {
+        "ERP_minus_Res_mean": 0.0082,
+        "wilcoxon_p": 0.5110028168298741,
+        "ERP_wins_folds": 13
+      }
+    }
+  },
+  "notes": "mean-imputation equals the removal-equivalent for a standardized linear readout; spatial = within-sample retained-channel mean; knn k=10 train-fit.",
+  "protocol": "StratifiedGroupKFold(5,shuffle); seeds 42-46; train-only StandardScaler; balanced L2 logistic"
+}

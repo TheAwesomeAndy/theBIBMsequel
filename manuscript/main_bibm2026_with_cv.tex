@@ -1,0 +1,21 @@
+% Submission bundle: full paper followed by the one-page first-author CV.
+%
+% The BIBM 2026 Doctoral Forum requires "a one-page CV of the first author
+% appended to the end of the submission". The paper (IEEEtran, two-column)
+% and the CV (article, single-column) are different document classes, so
+% they are compiled separately and merged here with pdfpages.
+%
+% BUILD ORDER (run from manuscript/ with a TeX Live install):
+%   pdflatex main_bibm2026.tex          % run twice for cross-references
+%   pdflatex main_bibm2026.tex
+%   pdflatex cv_appendix_template.tex
+%   pdflatex main_bibm2026_with_cv.tex  % produces main_bibm2026_with_cv.pdf
+%
+% Submit the resulting main_bibm2026_with_cv.pdf.
+\documentclass{article}
+\usepackage[letterpaper,margin=0in]{geometry}
+\usepackage{pdfpages}
+\begin{document}
+\includepdf[pages=-]{main_bibm2026.pdf}
+\includepdf[pages=-]{cv_appendix_template.pdf}
+\end{document}

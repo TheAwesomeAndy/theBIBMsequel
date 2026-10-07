@@ -1,0 +1,51 @@
+# papercheck configuration (TOML, stdlib-parsed; no dependencies).
+# Copy into your paper repo at harness/papercheck.toml and adjust.
+# Every key shown here is optional; the values below are the defaults.
+
+[paper]
+main_tex = "manuscript/main_bibm2026.tex"
+# Extra .bib files; files named in \bibliography{...} are found automatically.
+bib = []
+
+[venue]
+name = "IEEE BIBM 2026 Doctoral Forum"
+# "double" (scrub identity), "single" (authors required), "none", or "unset".
+# CFP: "The review process is single-blind. Authors must include their
+# names and affiliations in the submitted manuscript."
+blinding = "single"
+# Set true for human-participant studies: enables leakage + ethics gates.
+human_subjects = false
+
+[title]
+min_words = 8
+max_words = 13
+
+[abstract]
+max_words = 200
+min_sentences = 4
+max_sentences = 4
+
+[keywords]
+min = 4
+max = 6
+required = false
+
+[language]
+allow_em_dash = false
+
+[bibliography]
+min_recent = 3
+recent_window = 5
+
+[related_work]
+prefer_postponed = true
+
+[cover_letter]
+max_words = 400
+paragraphs = 3
+
+[checks]
+# Disable check ids or dotted prefixes, e.g. ["blind", "bib.staleness"].
+disable = []
+# Downgrade errors to warnings for specific ids/prefixes.
+warn_only = []

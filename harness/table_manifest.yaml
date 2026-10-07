@@ -1,0 +1,757 @@
+{
+  "tables": [
+    {
+      "name": "tab:clean",
+      "latex_file": "manuscript/main_bibm2026.tex",
+      "csv_file": "outputs/aggregate/paper_values.csv",
+      "matches": [
+        {
+          "label": "ERP-window.BA",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "ERP-window",
+            "column": "BA"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.629",
+          "required_text": "A0$_e$ & ERP-window (102) & $0.629$ [$0.597$, $0.660$] & $0.629$ & $0.799$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "ERP-window.BA_lo",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "ERP-window",
+            "column": "BA_lo"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.597",
+          "required_text": "A0$_e$ & ERP-window (102) & $0.629$ [$0.597$, $0.660$] & $0.629$ & $0.799$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "ERP-window.BA_hi",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "ERP-window",
+            "column": "BA_hi"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.660",
+          "required_text": "A0$_e$ & ERP-window (102) & $0.629$ [$0.597$, $0.660$] & $0.629$ & $0.799$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "ERP-window.F1",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "ERP-window",
+            "column": "F1"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.629",
+          "required_text": "A0$_e$ & ERP-window (102) & $0.629$ [$0.597$, $0.660$] & $0.629$ & $0.799$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "ERP-window.AUC",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "ERP-window",
+            "column": "AUC"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.799",
+          "required_text": "A0$_e$ & ERP-window (102) & $0.629$ [$0.597$, $0.660$] & $0.629$ & $0.799$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Band-power.BA",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Band-power",
+            "column": "BA"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.494",
+          "required_text": "A0 & Band-power (170) & $0.494$ [$0.460$, $0.528$] & $0.492$ & $0.682$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Band-power.BA_lo",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Band-power",
+            "column": "BA_lo"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.460",
+          "required_text": "A0 & Band-power (170) & $0.494$ [$0.460$, $0.528$] & $0.492$ & $0.682$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Band-power.BA_hi",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Band-power",
+            "column": "BA_hi"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.528",
+          "required_text": "A0 & Band-power (170) & $0.494$ [$0.460$, $0.528$] & $0.492$ & $0.682$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Band-power.F1",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Band-power",
+            "column": "F1"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.492",
+          "required_text": "A0 & Band-power (170) & $0.494$ [$0.460$, $0.528$] & $0.492$ & $0.682$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Band-power.AUC",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Band-power",
+            "column": "AUC"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.682",
+          "required_text": "A0 & Band-power (170) & $0.494$ [$0.460$, $0.528$] & $0.492$ & $0.682$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Reservoir.BA",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Reservoir",
+            "column": "BA"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.487",
+          "required_text": "A1 & Reservoir \\BSC{} (2176) & $0.487$ [$0.447$, $0.523$] & $0.485$ & $0.658$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Reservoir.BA_lo",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Reservoir",
+            "column": "BA_lo"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.447",
+          "required_text": "A1 & Reservoir \\BSC{} (2176) & $0.487$ [$0.447$, $0.523$] & $0.485$ & $0.658$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Reservoir.BA_hi",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Reservoir",
+            "column": "BA_hi"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.523",
+          "required_text": "A1 & Reservoir \\BSC{} (2176) & $0.487$ [$0.447$, $0.523$] & $0.485$ & $0.658$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Reservoir.F1",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Reservoir",
+            "column": "F1"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.485",
+          "required_text": "A1 & Reservoir \\BSC{} (2176) & $0.487$ [$0.447$, $0.523$] & $0.485$ & $0.658$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "Reservoir.AUC",
+          "csv_row": {
+            "table": "tab:clean",
+            "row": "Reservoir",
+            "column": "AUC"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.658",
+          "required_text": "A1 & Reservoir \\BSC{} (2176) & $0.487$ [$0.447$, $0.523$] & $0.485$ & $0.658$ \\\\",
+          "tolerance": 0.0006
+        }
+      ]
+    },
+    {
+      "name": "tab:dropconf",
+      "latex_file": "manuscript/main_bibm2026.tex",
+      "csv_file": "outputs/aggregate/paper_values.csv",
+      "matches": [
+        {
+          "label": "zero.Band-power",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "zero",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.417",
+          "required_text": "Zero & $0.417$ & $0.536$ & $0.487$ & $+0.049$ [$+0.003,+0.095$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "zero.ERP-window",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "zero",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.536",
+          "required_text": "Zero & $0.417$ & $0.536$ & $0.487$ & $+0.049$ [$+0.003,+0.095$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "zero.Reservoir",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "zero",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.487",
+          "required_text": "Zero & $0.417$ & $0.536$ & $0.487$ & $+0.049$ [$+0.003,+0.095$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "zero.ERP_minus_Res",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "zero",
+            "column": "ERP_minus_Res"
+          },
+          "csv_column": "value",
+          "manuscript_value": "+0.049",
+          "required_text": "Zero & $0.417$ & $0.536$ & $0.487$ & $+0.049$ [$+0.003,+0.095$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "mean.Band-power",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "mean",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.472",
+          "required_text": "Mean & $0.472$ & $0.578$ & $0.487$ & $+0.092$ [$+0.049,+0.134$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "mean.ERP-window",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "mean",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.578",
+          "required_text": "Mean & $0.472$ & $0.578$ & $0.487$ & $+0.092$ [$+0.049,+0.134$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "mean.Reservoir",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "mean",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.487",
+          "required_text": "Mean & $0.472$ & $0.578$ & $0.487$ & $+0.092$ [$+0.049,+0.134$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "mean.ERP_minus_Res",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "mean",
+            "column": "ERP_minus_Res"
+          },
+          "csv_column": "value",
+          "manuscript_value": "+0.092",
+          "required_text": "Mean & $0.472$ & $0.578$ & $0.487$ & $+0.092$ [$+0.049,+0.134$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "knn.Band-power",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "knn",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.483",
+          "required_text": "$k$NN & $0.483$ & $0.610$ & $0.507$ & $+0.103$ [$+0.062,+0.147$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "knn.ERP-window",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "knn",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.610",
+          "required_text": "$k$NN & $0.483$ & $0.610$ & $0.507$ & $+0.103$ [$+0.062,+0.147$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "knn.Reservoir",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "knn",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.507",
+          "required_text": "$k$NN & $0.483$ & $0.610$ & $0.507$ & $+0.103$ [$+0.062,+0.147$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "knn.ERP_minus_Res",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "knn",
+            "column": "ERP_minus_Res"
+          },
+          "csv_column": "value",
+          "manuscript_value": "+0.103",
+          "required_text": "$k$NN & $0.483$ & $0.610$ & $0.507$ & $+0.103$ [$+0.062,+0.147$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "spatial.Band-power",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "spatial",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.488",
+          "required_text": "Spatial & $0.488$ & $0.589$ & $0.482$ & $+0.107$ [$+0.063,+0.150$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "spatial.ERP-window",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "spatial",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.589",
+          "required_text": "Spatial & $0.488$ & $0.589$ & $0.482$ & $+0.107$ [$+0.063,+0.150$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "spatial.Reservoir",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "spatial",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.482",
+          "required_text": "Spatial & $0.488$ & $0.589$ & $0.482$ & $+0.107$ [$+0.063,+0.150$] \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "spatial.ERP_minus_Res",
+          "csv_row": {
+            "table": "tab:dropconf",
+            "row": "spatial",
+            "column": "ERP_minus_Res"
+          },
+          "csv_column": "value",
+          "manuscript_value": "+0.107",
+          "required_text": "Spatial & $0.488$ & $0.589$ & $0.482$ & $+0.107$ [$+0.063,+0.150$] \\\\",
+          "tolerance": 0.0006
+        }
+      ]
+    },
+    {
+      "name": "tab:rawsignal",
+      "latex_file": "manuscript/main_bibm2026.tex",
+      "csv_file": "outputs/aggregate/paper_values.csv",
+      "matches": [
+        {
+          "label": "clean.Band-power",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "clean",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.494",
+          "required_text": "Clean & $0.494$ & $0.629$ & $0.487$ & $0.731$ & $0.731$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "clean.ERP-window",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "clean",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.629",
+          "required_text": "Clean & $0.494$ & $0.629$ & $0.487$ & $0.731$ & $0.731$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "clean.Reservoir",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "clean",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.487",
+          "required_text": "Clean & $0.494$ & $0.629$ & $0.487$ & $0.731$ & $0.731$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "clean.EEGNet",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "clean",
+            "column": "EEGNet"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.731",
+          "required_text": "Clean & $0.494$ & $0.629$ & $0.487$ & $0.731$ & $0.731$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "clean.EEGNet+aug",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "clean",
+            "column": "EEGNet+aug"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.731",
+          "required_text": "Clean & $0.494$ & $0.629$ & $0.487$ & $0.731$ & $0.731$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.1.Band-power",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.1",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.476",
+          "required_text": "$10\\%$ removed & $0.476$ & $0.602$ & $0.469$ & $0.719$ & $0.722$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.1.ERP-window",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.1",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.602",
+          "required_text": "$10\\%$ removed & $0.476$ & $0.602$ & $0.469$ & $0.719$ & $0.722$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.1.Reservoir",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.1",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.469",
+          "required_text": "$10\\%$ removed & $0.476$ & $0.602$ & $0.469$ & $0.719$ & $0.722$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.1.EEGNet",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.1",
+            "column": "EEGNet"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.719",
+          "required_text": "$10\\%$ removed & $0.476$ & $0.602$ & $0.469$ & $0.719$ & $0.722$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.1.EEGNet+aug",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.1",
+            "column": "EEGNet+aug"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.722",
+          "required_text": "$10\\%$ removed & $0.476$ & $0.602$ & $0.469$ & $0.719$ & $0.722$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.3.Band-power",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.3",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.417",
+          "required_text": "$30\\%$ removed & $0.417$ & $0.536$ & $0.474$ & $0.660$ & $0.703$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.3.ERP-window",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.3",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.536",
+          "required_text": "$30\\%$ removed & $0.417$ & $0.536$ & $0.474$ & $0.660$ & $0.703$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.3.Reservoir",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.3",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.474",
+          "required_text": "$30\\%$ removed & $0.417$ & $0.536$ & $0.474$ & $0.660$ & $0.703$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.3.EEGNet",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.3",
+            "column": "EEGNet"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.660",
+          "required_text": "$30\\%$ removed & $0.417$ & $0.536$ & $0.474$ & $0.660$ & $0.703$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.3.EEGNet+aug",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.3",
+            "column": "EEGNet+aug"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.703",
+          "required_text": "$30\\%$ removed & $0.417$ & $0.536$ & $0.474$ & $0.660$ & $0.703$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.5.Band-power",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.5",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.450",
+          "required_text": "$50\\%$ removed & $0.450$ & $0.474$ & $0.393$ & $0.588$ & $0.670$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.5.ERP-window",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.5",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.474",
+          "required_text": "$50\\%$ removed & $0.450$ & $0.474$ & $0.393$ & $0.588$ & $0.670$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.5.Reservoir",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.5",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.393",
+          "required_text": "$50\\%$ removed & $0.450$ & $0.474$ & $0.393$ & $0.588$ & $0.670$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.5.EEGNet",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.5",
+            "column": "EEGNet"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.588",
+          "required_text": "$50\\%$ removed & $0.450$ & $0.474$ & $0.393$ & $0.588$ & $0.670$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "remove_0.5.EEGNet+aug",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "remove_0.5",
+            "column": "EEGNet+aug"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.670",
+          "required_text": "$50\\%$ removed & $0.450$ & $0.474$ & $0.393$ & $0.588$ & $0.670$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "amp_5dB.Band-power",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "amp_5dB",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.436",
+          "required_text": "Noise $5$~dB & $0.436$ & $0.619$ & $0.479$ & $0.738$ & $0.727$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "amp_5dB.ERP-window",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "amp_5dB",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.619",
+          "required_text": "Noise $5$~dB & $0.436$ & $0.619$ & $0.479$ & $0.738$ & $0.727$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "amp_5dB.Reservoir",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "amp_5dB",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.479",
+          "required_text": "Noise $5$~dB & $0.436$ & $0.619$ & $0.479$ & $0.738$ & $0.727$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "amp_5dB.EEGNet",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "amp_5dB",
+            "column": "EEGNet"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.738",
+          "required_text": "Noise $5$~dB & $0.436$ & $0.619$ & $0.479$ & $0.738$ & $0.727$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "amp_5dB.EEGNet+aug",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "amp_5dB",
+            "column": "EEGNet+aug"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.727",
+          "required_text": "Noise $5$~dB & $0.436$ & $0.619$ & $0.479$ & $0.738$ & $0.727$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "jitter_50ms.Band-power",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "jitter_50ms",
+            "column": "Band-power"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.496",
+          "required_text": "Jitter $\\pm50$~ms & $0.496$ & $0.626$ & $0.493$ & $0.719$ & $0.708$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "jitter_50ms.ERP-window",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "jitter_50ms",
+            "column": "ERP-window"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.626",
+          "required_text": "Jitter $\\pm50$~ms & $0.496$ & $0.626$ & $0.493$ & $0.719$ & $0.708$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "jitter_50ms.Reservoir",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "jitter_50ms",
+            "column": "Reservoir"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.493",
+          "required_text": "Jitter $\\pm50$~ms & $0.496$ & $0.626$ & $0.493$ & $0.719$ & $0.708$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "jitter_50ms.EEGNet",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "jitter_50ms",
+            "column": "EEGNet"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.719",
+          "required_text": "Jitter $\\pm50$~ms & $0.496$ & $0.626$ & $0.493$ & $0.719$ & $0.708$ \\\\",
+          "tolerance": 0.0006
+        },
+        {
+          "label": "jitter_50ms.EEGNet+aug",
+          "csv_row": {
+            "table": "tab:rawsignal",
+            "row": "jitter_50ms",
+            "column": "EEGNet+aug"
+          },
+          "csv_column": "value",
+          "manuscript_value": "0.708",
+          "required_text": "Jitter $\\pm50$~ms & $0.496$ & $0.626$ & $0.493$ & $0.719$ & $0.708$ \\\\",
+          "tolerance": 0.0006
+        }
+      ]
+    }
+  ]
+}

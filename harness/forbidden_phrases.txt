@@ -1,0 +1,7 @@
+# One phrase per line. Empty lines and comment lines are ignored.
+groundbreaking
+state-of-the-art
+state of the art
+revolutionary
+novel biomarker
+diagnostic tool

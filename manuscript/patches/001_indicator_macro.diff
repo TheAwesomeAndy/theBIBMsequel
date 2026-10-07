@@ -1,0 +1,9 @@
+diff --git a/manuscript/main_bibm2026.tex b/manuscript/main_bibm2026.tex
+--- a/manuscript/main_bibm2026.tex
++++ b/manuscript/main_bibm2026.tex
+@@
+-\newcommand{\1}{\mathbf{1}}
++\newcommand{\Ind}{\mathbf{1}}
+@@
+-    z_{t+1} &= \1[v_{t+1}\geq \vartheta],
++    z_{t+1} &= \Ind[v_{t+1}\geq \vartheta],

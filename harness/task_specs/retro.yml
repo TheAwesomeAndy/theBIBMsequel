@@ -1,0 +1,10 @@
+name: retro
+version: 0.1
+inputs:
+  - history
+  - memory
+outputs:
+  - improvement_report
+checks:
+  - self_improve
+  - open_memory_reviewed

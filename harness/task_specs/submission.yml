@@ -1,0 +1,13 @@
+name: submission
+version: 0.1
+inputs:
+  - manuscript
+  - cover_letter
+  - config
+outputs:
+  - submission_package
+checks:
+  - papercheck_submission
+  - cover_letter
+  - blinding_config
+  - table_manifest

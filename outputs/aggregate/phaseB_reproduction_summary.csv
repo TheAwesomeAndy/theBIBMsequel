@@ -1,0 +1,6 @@
+config,BA_mean,BA_sd,macroF1_mean,macroOVR_AUC_pooledOOF,n_seeds,n_folds,cv
+A0_clean,0.4851,0.0364,0.483,0.6649,5,5,StratifiedGroupKFold
+A1_clean_globalPCA,0.4626,0.0321,0.4603,0.644,5,5,StratifiedGroupKFold
+A1_amp5dB_globalPCA,0.4493,0.0308,0.4475,0.6334,5,5,StratifiedGroupKFold
+A1_drop0.3_globalPCA,0.4559,0.0322,0.4489,0.6368,5,5,StratifiedGroupKFold
+A1_clean_foldlocalPCA,0.4652,0.0319,0.4619,0.6485,5,5,StratifiedGroupKFold

@@ -1,0 +1,46 @@
+{
+  "clean": {
+    "BA": [
+      0.711,
+      0.014
+    ],
+    "F1": [
+      0.7096,
+      0.0145
+    ],
+    "AUC": 0.8677
+  },
+  "amp": {
+    "BA": [
+      0.7056,
+      0.0137
+    ],
+    "F1": [
+      0.7033,
+      0.0144
+    ],
+    "AUC": 0.8553
+  },
+  "drop": {
+    "BA": [
+      0.5544,
+      0.0247
+    ],
+    "F1": [
+      0.5346,
+      0.0292
+    ],
+    "AUC": 0.7406
+  },
+  "retention": {
+    "amp": 0.9924,
+    "drop": 0.7797
+  },
+  "config": {
+    "model": "EEGNet-8,2",
+    "epochs": 80,
+    "batch": 64,
+    "lr": 0.001,
+    "protocol": "StratifiedGroupKFold(5,shuffle); seeds 42-46; train-only per-channel z-score; train clean/test perturbed"
+  }
+}

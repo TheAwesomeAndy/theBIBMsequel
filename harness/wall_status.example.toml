@@ -1,0 +1,13 @@
+# Wall drafting-order status (Module 3).
+# Copy to harness/wall_status.toml and update declared_phase as you build
+# the paper from the concrete core outward. The phase_gate refuses to let
+# a later phase run ahead of an earlier one.
+#
+# Phases in build order:
+#   figures -> methods -> results -> discussion -> conclusion ->
+#   introduction -> front_matter
+
+[wall]
+# The phase you are currently drafting. Every phase strictly before it
+# must already be "done" (substantial) or the gate fails.
+declared_phase = "results"

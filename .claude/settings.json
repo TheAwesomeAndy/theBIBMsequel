@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make harness-verify)",
+      "Bash(make harness-fixtures)",
+      "Bash(make -f makefiles/ManuscriptHarness.mk *)",
+      "Bash(make -f makefiles/AcademicHarness.mk *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(python -m papercheck *)",
+      "Bash(python3 -m papercheck *)",
+      "Bash(python -m unittest *)",
+      "Bash(python3 -m unittest *)",
+      "Bash(python scripts/paper_check.py *)",
+      "Bash(python3 scripts/paper_check.py *)",
+      "Bash(python scripts/phase_gate.py *)",
+      "Bash(python3 scripts/phase_gate.py *)",
+      "Bash(python scripts/check_cover_letter.py *)",
+      "Bash(python3 scripts/check_cover_letter.py *)",
+      "Bash(python scripts/check_rebuttal.py *)",
+      "Bash(python3 scripts/check_rebuttal.py *)",
+      "Bash(python scripts/memory.py *)",
+      "Bash(python3 scripts/memory.py *)",
+      "Bash(python scripts/self_improve.py *)",
+      "Bash(python3 scripts/self_improve.py *)",
+      "Bash(python scripts/check_forbidden_phrases.py *)",
+      "Bash(python tools/check_path_markers.py *)",
+      "Bash(python scripts/verify_latex.py *)",
+      "Bash(python scripts/check_citations.py *)",
+      "Bash(python scripts/check_table_values.py *)",
+      "Bash(python scripts/check_table_manifest.py *)",
+      "Bash(python scripts/run_fixture_tests.py *)",
+      "Bash(python scripts/run_report.py *)",
+      "Bash(python scripts/qgate.py *)",
+      "Bash(python scripts/check_heading.py *)",
+      "Bash(python scripts/check_summary.py *)",
+      "Bash(python scripts/check_signals.py *)",
+      "Bash(make -f makefiles/AcademicHarness.mk academic-check *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push *)"
+    ]
+  }
+}

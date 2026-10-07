@@ -1,0 +1,11 @@
+name: draft
+version: 0.1
+inputs:
+  - phase
+  - manuscript
+outputs:
+  - draft_section
+checks:
+  - phase_gate
+  - papercheck_draft
+  - memory_lesson_recorded

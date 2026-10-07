@@ -1,0 +1,32 @@
+{
+  "pca_sweep_BA": {
+    "16": [
+      0.4674,
+      0.0157
+    ],
+    "32": [
+      0.4607,
+      0.0141
+    ],
+    "64": [
+      0.4626,
+      0.0128
+    ],
+    "128": [
+      0.4907,
+      0.0168
+    ]
+  },
+  "perm_null_E_mean_sd_max": [
+    0.3381,
+    0.0218,
+    0.3934
+  ],
+  "perm_null_A0_mean_sd_max": [
+    0.3312,
+    0.0228,
+    0.3807
+  ],
+  "protocol": "StratifiedGroupKFold(5,shuffle); seeds 42-46; train-only StandardScaler; balanced L2 logistic",
+  "n_per_fold_metric": 25
+}

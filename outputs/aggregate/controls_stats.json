@@ -1,0 +1,43 @@
+{
+  "mean_BA": {
+    "ERP-window": {
+      "clean": 0.6162,
+      "amp": 0.4608,
+      "drop": 0.4544
+    },
+    "Band-power": {
+      "clean": 0.4851,
+      "amp": 0.3953,
+      "drop": 0.4083
+    },
+    "Reservoir": {
+      "clean": 0.4626,
+      "amp": 0.4493,
+      "drop": 0.4559
+    }
+  },
+  "mean_drop": {
+    "amp": {
+      "Reservoir": 0.0133,
+      "ERP-window": 0.1554,
+      "Band-power": 0.0897
+    },
+    "drop": {
+      "Reservoir": 0.0067,
+      "ERP-window": 0.1619,
+      "Band-power": 0.0767
+    }
+  },
+  "wilcoxon_p": {
+    "amp": {
+      "Reservoir_vs_ERP": 1.2279185361336645e-05,
+      "Reservoir_vs_Bandpower": 1.569120219955584e-05
+    },
+    "drop": {
+      "Reservoir_vs_ERP": 1.5677314219469213e-05,
+      "Reservoir_vs_Bandpower": 0.00026612974873106547
+    }
+  },
+  "n_folds": 25,
+  "protocol": "StratifiedGroupKFold(5,shuffle); seeds 42-46; paired per-fold; Wilcoxon signed-rank"
+}

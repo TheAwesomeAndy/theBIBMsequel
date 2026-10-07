@@ -1,0 +1,19 @@
+{
+  "tables": [
+    {
+      "name": "example_accuracy_table",
+      "latex_file": "manuscript/main.tex",
+      "csv_file": "outputs/results.csv",
+      "matches": [
+        {
+          "label": "clean_accuracy",
+          "csv_row": {"metric": "accuracy", "condition": "clean"},
+          "csv_column": "value",
+          "manuscript_value": "0.711",
+          "required_text": "0.711",
+          "tolerance": 0.001
+        }
+      ]
+    }
+  ]
+}

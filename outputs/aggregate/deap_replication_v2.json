@@ -1,0 +1,101 @@
+{
+  "protocol": "* the first 3 s (384 samples, pre-trial baseline) are dropped; EEG = first 32 channels;\n  * band power per channel: Welch (nperseg 256), mean PSD in 4-8, 8-12, 12-30, 30-45 Hz,\n    log-transformed -> 128 features;\n  * task: binary valence (rating >= 5);\n  * WITHIN-subject evaluation (cross-subject band power is at chance on DEAP): for every\n    subject with >= 5 trials per class, StratifiedKFold(5, shuffle) x seeds 42-46;\n    train-only StandardScaler + balanced L2 logistic readout;\n  * channel dropout of 10/30/50% of electrodes in the test fold, filled by zero,\n    train-mean, or kNN (k = 10, fit on the training fold).",
+  "BandPower": {
+    "clean": {
+      "BA_mean_over_folds": 0.63896875,
+      "subject_mean_BA": 0.63896875,
+      "subject_ci95": [
+        0.609,
+        0.6669729166666667
+      ],
+      "n_subjects": 32
+    },
+    "0.10": {
+      "zero": {
+        "BA_mean_over_folds": 0.5808020833333333,
+        "subject_mean_BA": 0.5808020833333334,
+        "subject_ci95": [
+          0.5604164062499999,
+          0.6003138020833333
+        ],
+        "n_subjects": 32
+      },
+      "mean": {
+        "BA_mean_over_folds": 0.6319479166666667,
+        "subject_mean_BA": 0.6319479166666667,
+        "subject_ci95": [
+          0.6023739583333334,
+          0.6590625
+        ],
+        "n_subjects": 32
+      },
+      "knn": {
+        "BA_mean_over_folds": 0.6376875,
+        "subject_mean_BA": 0.6376875000000001,
+        "subject_ci95": [
+          0.60813203125,
+          0.6654289062500001
+        ],
+        "n_subjects": 32
+      }
+    },
+    "0.30": {
+      "zero": {
+        "BA_mean_over_folds": 0.5397083333333333,
+        "subject_mean_BA": 0.5397083333333332,
+        "subject_ci95": [
+          0.5275302083333333,
+          0.5519700520833333
+        ],
+        "n_subjects": 32
+      },
+      "mean": {
+        "BA_mean_over_folds": 0.6206979166666666,
+        "subject_mean_BA": 0.6206979166666666,
+        "subject_ci95": [
+          0.59139296875,
+          0.64799140625
+        ],
+        "n_subjects": 32
+      },
+      "knn": {
+        "BA_mean_over_folds": 0.63809375,
+        "subject_mean_BA": 0.63809375,
+        "subject_ci95": [
+          0.6067268229166667,
+          0.6680880208333334
+        ],
+        "n_subjects": 32
+      }
+    },
+    "0.50": {
+      "zero": {
+        "BA_mean_over_folds": 0.5245833333333333,
+        "subject_mean_BA": 0.5245833333333334,
+        "subject_ci95": [
+          0.5153854166666667,
+          0.5339166666666666
+        ],
+        "n_subjects": 32
+      },
+      "mean": {
+        "BA_mean_over_folds": 0.60928125,
+        "subject_mean_BA": 0.60928125,
+        "subject_ci95": [
+          0.5805190104166668,
+          0.6365010416666668
+        ],
+        "n_subjects": 32
+      },
+      "knn": {
+        "BA_mean_over_folds": 0.6298958333333333,
+        "subject_mean_BA": 0.6298958333333333,
+        "subject_ci95": [
+          0.5991924479166666,
+          0.6594281249999999
+        ],
+        "n_subjects": 32
+      }
+    }
+  }
+}

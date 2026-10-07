@@ -1,0 +1,28 @@
+% Figure source: BSC6 temporal-bin schematic for BIBM 2026.
+% The waveform is schematic; it illustrates binning, not a subject-specific ERP trace.
+\begin{tikzpicture}[font=\footnotesize, >=Latex]
+\begin{scope}[xscale=0.065, yscale=0.72]
+    % Six equal post-onset bins.
+    \foreach \x/\lab in {0/$\mathcal{B}_1$,10/$\mathcal{B}_2$,20/$\mathcal{B}_3$,30/$\mathcal{B}_4$,40/$\mathcal{B}_5$,50/$\mathcal{B}_6$}{
+        \fill[gray!12] (\x,-1.25) rectangle +(10,2.65);
+        \draw[gray!45] (\x,-1.25) -- (\x,1.40);
+        \node[anchor=north] at (\x+5,-1.30) {\lab};
+    }
+    \draw[gray!45] (60,-1.25) -- (60,1.40);
+    % Axes.
+    \draw[-{Latex[length=1.8mm]}] (-1,0) -- (63,0) node[right] {post-onset time};
+    \draw[-{Latex[length=1.8mm]}] (0,-1.30) -- (0,1.45) node[above] {amplitude / drive};
+    % Schematic ERP / reservoir drive curve.
+    \draw[thick, smooth] plot coordinates {
+        (0,0.00) (4,0.10) (8,0.32) (12,0.48) (16,0.18)
+        (20,-0.18) (24,-0.35) (28,-0.10) (32,0.30) (36,0.72)
+        (40,0.58) (44,0.28) (48,0.02) (52,-0.12) (56,-0.04) (60,0.08)
+    };
+    % Example spikes.
+    \foreach \x in {7,9,11,12,18,31,34,36,37,39,42,45,57}{
+        \draw[thick] (\x,1.05) -- (\x,1.32);
+    }
+    \node[anchor=west] at (41,1.12) {spikes};
+    \node[align=center, anchor=north] at (30,-1.78) {$\displaystyle b_{j,k}=\sum_{t\in\mathcal{B}_k} z_j(t)$};
+\end{scope}
+\end{tikzpicture}

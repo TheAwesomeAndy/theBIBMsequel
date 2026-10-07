@@ -1,0 +1,11 @@
+name: rebuttal
+version: 0.1
+inputs:
+  - reviews
+  - rebuttal
+outputs:
+  - rebuttal_document
+checks:
+  - rebuttal_gate
+  - memory_reviewer_entries
+  - page_line_refs

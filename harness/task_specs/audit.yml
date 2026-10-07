@@ -1,0 +1,13 @@
+name: audit
+version: 0.2
+inputs:
+  - manuscript
+  - config
+outputs:
+  - report
+checks:
+  - papercheck_submission
+  - fixture_suite
+  - forbidden_phrases
+  - path_markers
+  - latex_build

@@ -1,0 +1,13 @@
+# IEEE BIBM 2026 — Doctoral Forum Cover Note
+
+Dear Dr. Yi He and Dr. Xingquan Zhu,
+
+I am pleased to submit "On the Edge of Stability: Spiking Reservoir State-Space Encoding of Affective EEG" for the IEEE BIBM 2026 Doctoral Forum. Robustness of EEG models to noise and electrode loss is increasingly reported, yet the paper shows that channel-dropout robustness *rankings* of affective-ERP representations can be artifacts of *how* robustness is measured rather than properties of the representations. Treating channel dropout and amplitude noise as perturbations of a representation, it evaluates four encoders under subject-grouped validation — spectral band-power, ERP-window amplitudes, a fixed training-free leaky integrate-and-fire reservoir, and a trained EEGNet — and isolates two evaluation confounds: an *accuracy-floor* confound (relative-retention scores reward near-chance representations) and a *zero-imputation* confound (zeroing dropped channels shifts standardized non-centered features away from the origin).
+
+The central result is that correcting these confounds changes the measured comparison. We prove that zero-imputation robustness is not invariant to an information-preserving re-centering of the features, and confirm it empirically across dropout rates and imputation rules: under the standard protocol a near-chance fixed reservoir appears the most channel-robust, but with above-chance retention and any in-distribution imputation, ERP-window features are the most accurate fixed encoder, and a trained EEGNet recovers more than half of its loss to electrode removal once standard augmentation is added — separating robustness contributed by the representation from robustness contributed by training. The fixed reservoir, treated here as a spiking dynamical system operating near the edge of stability, serves as a near-centered, training-free reference whose embedding exposes the artifact affecting the other encoders. The confound replicates on an independent affective dataset (DEAP), and we close with a short corrected reporting protocol for EEG robustness studies.
+
+The work fits the Doctoral Forum: it engages the current EEG robustness-evaluation literature, uses conservative subject-grouped validation with confidence intervals, a permutation null, and external replication, and reports negative results and protocol-dependent rankings honestly. The first author is presently enrolled in the Ph.D. program in Electrical and Computer Engineering at Stony Brook University, is the primary contributor, and will present the work if accepted; a one-page CV of the first author is appended as required by the call.
+
+Sincerely,
+
+Andrew Lane
