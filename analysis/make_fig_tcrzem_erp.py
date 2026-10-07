@@ -87,6 +87,23 @@ def main():
         a.tick_params(length=2, pad=1.5)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT, bbox_inches="tight", pad_inches=0.01)
+    # aggregate effect-size summary (no subject-level values are written)
+    import json
+    Xs = {c: X[y == c][:, :, ch] for c in (0, 1, 2)}   # rows in subject order (tcrzem_data.average)
+    sal_amp = {c: Xs[c][:, sal].mean(1) for c in (0, 1, 2)}
+    late_m = (t >= 1500) & (t <= 2500)
+    d_sal = (sal_amp[0] + sal_amp[2]) / 2 - sal_amp[1]
+    d_val = Xs[0][:, late_m].mean(1) - Xs[2][:, late_m].mean(1)
+    summ = {"channel": names[ch],
+            "salience_500_1300ms_uV": float(d_sal.mean()),
+            "salience_within_subject_dz": float(d_sal.mean() / d_sal.std(ddof=1)),
+            "neutral_amplitude_between_subject_sd_uV": float(sal_amp[1].std(ddof=1)),
+            "valence_1500_2500ms_uV": float(d_val.mean()),
+            "valence_within_subject_dz": float(d_val.mean() / d_val.std(ddof=1)),
+            "n_subjects": int(len(d_sal))}
+    jp = ROOT / "outputs" / "aggregate" / "journal" / "tcrzem_erp_summary.json"
+    json.dump(summ, open(jp, "w"), indent=2)
+    print(summ)
     print(f"[fig] wrote {OUT}; salience channel = {names[ch]}; "
           f"emotional-neutral 500-1300 ms = {(emo - ga[1])[sal, ch].mean():.2f} uV; "
           f"negative-pleasant 1500-2500 ms = {neg_pos[late, ch].mean():.2f} uV")

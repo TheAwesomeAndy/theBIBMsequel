@@ -1,0 +1,9 @@
+{
+  "channel": "PO3",
+  "salience_500_1300ms_uV": 2.1190091476170116,
+  "salience_within_subject_dz": 0.6876558815879201,
+  "neutral_amplitude_between_subject_sd_uV": 5.576001319871691,
+  "valence_1500_2500ms_uV": 1.3159082321323208,
+  "valence_within_subject_dz": 0.25084421025094417,
+  "n_subjects": 228
+}

@@ -39,6 +39,8 @@ def get(d, cond, n):
 def main():
     s = json.load(open(AGG / f"j2_tcrzem_signal{SUF}.json"))
     p3 = AGG / f"j3_tcrzem_eegnet{SUF}.json"
+    if not p3.exists():                       # long-epoch EEGNet runs on the seed-42 partition
+        p3 = AGG / f"j3_tcrzem_eegnet_s42{SUF}.json"
     e = json.load(open(p3)) if p3.exists() else None
     med = s["trials_per_observation"]["median"]
     fig, ax = plt.subplots(1, 2, figsize=(7.16, 1.85), gridspec_kw={"wspace": 0.28, "width_ratios": [1, 1.5]})
@@ -75,11 +77,11 @@ def main():
             ticks.append(x0 + i * 0.9 + 0.16); labels.append(f"{int(float(lv) * 100)}%")
         cb = get(src, "clean", n)[0]
         ax[1].hlines(cb, x0 - 0.2, x0 + (len(levels) - 1) * 0.9 + 0.5, color=col, lw=0.6, ls=":")
-        ax[1].text(x0 + (len(levels) - 1) * 0.45 + 0.16, 0.255, n, ha="center", fontsize=5.2)
+        ax[1].text(x0 + (len(levels) - 1) * 0.45 + 0.16, 0.307, n, ha="center", fontsize=5.2)
         x0 += len(levels) * 0.9 + 0.6
     ax[1].set_xticks(ticks); ax[1].set_xticklabels(labels, fontsize=5)
     ax[1].axhline(1 / 3, color="0.4", lw=0.6)
-    ax[1].set_ylim(bottom=0.24)
+    ax[1].set_ylim(bottom=0.30)
     ax[1].set_ylabel("BA", labelpad=1)
     ax[1].set_title("(b) electrodes removed: zero trace (open) vs spline repair (filled); dotted = clean",
                     fontsize=6.5, loc="left", pad=3)

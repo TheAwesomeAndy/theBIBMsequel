@@ -70,17 +70,20 @@ def main():
     ax[1].axvline(np.mean(rs), color="#009E73", lw=0.8); ax[1].axvline(1.0, color="k", lw=0.6, ls=":")
     ax[1].set_xlabel("spectral radius $\\rho$", labelpad=1); ax[1].set_ylabel("clean BA", labelpad=1)
     ax[1].set_title("(b) accuracy versus $\\rho$", fontsize=7, loc="left", pad=3)
-    ax[1].legend(frameon=False, fontsize=5, loc="upper right")
+    ax[1].set_ylim(0.32, 0.56)
+    ax[1].legend(frameon=False, fontsize=5, loc="upper right", ncol=1)
 
     em = std.get("edge_maps_draw42", {}).get("theta", {})
     for (th, ent), ls in zip(sorted(em.items(), key=lambda kv: float(kv[0])), ("-", "--", ":")):
         dm = [ent["damage"][str(r)] for r in rf]
-        ax[2].plot(rf, dm, color="k", lw=1.0, ls=ls, label=f"$\\vartheta$={th}: $\\rho^*$={ent['rho_star']:.2f}")
-        ax[2].plot([ent["rho_star"]], [0.5 * max(dm)], marker="o", ms=3, color="k")
+        rsx = ent["rho_star"]
+        ax[2].plot(rf, dm, color="k", lw=1.0, ls=ls, label=f"$\\vartheta$={th}: $\\rho^*$={rsx:.2f}")
+        ax[2].plot([rsx], [0.5 * max(dm)], marker="o", ms=3, color="k")
+    ax[2].legend(frameon=False, fontsize=5.2, loc="upper center", bbox_to_anchor=(0.5, -0.27), ncol=2,
+                 handlelength=2.2, columnspacing=0.8)
     ax[2].axvline(1.0, color="k", lw=0.6, ls=":")
     ax[2].set_xlabel("spectral radius $\\rho$", labelpad=1); ax[2].set_ylabel("damage (Hamming)", labelpad=1)
     ax[2].set_title("(c) edge versus threshold", fontsize=7, loc="left", pad=3)
-    ax[2].legend(frameon=False, fontsize=5.5, loc="lower right")
     for a in ax:
         a.grid(True, color="0.93", lw=0.5); a.tick_params(length=2, pad=1.5)
     OUT.parent.mkdir(parents=True, exist_ok=True)

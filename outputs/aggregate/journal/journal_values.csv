@@ -1,4 +1,96 @@
 key,value
+d-10-knn,0.638
+d-10-knn-ci,"[0.608, 0.665]"
+d-10-knn-hi,0.665
+d-10-knn-lo,0.608
+d-10-mean,0.632
+d-10-mean-ci,"[0.602, 0.659]"
+d-10-mean-hi,0.659
+d-10-mean-lo,0.602
+d-10-zero,0.581
+d-10-zero-ci,"[0.560, 0.600]"
+d-10-zero-hi,0.600
+d-10-zero-lo,0.560
+d-30-knn,0.638
+d-30-knn-ci,"[0.607, 0.668]"
+d-30-knn-hi,0.668
+d-30-knn-lo,0.607
+d-30-mean,0.621
+d-30-mean-ci,"[0.591, 0.648]"
+d-30-mean-hi,0.648
+d-30-mean-lo,0.591
+d-30-zero,0.540
+d-30-zero-ci,"[0.528, 0.552]"
+d-30-zero-hi,0.552
+d-30-zero-lo,0.528
+d-50-knn,0.630
+d-50-knn-ci,"[0.599, 0.659]"
+d-50-knn-hi,0.659
+d-50-knn-lo,0.599
+d-50-mean,0.609
+d-50-mean-ci,"[0.581, 0.637]"
+d-50-mean-hi,0.637
+d-50-mean-lo,0.581
+d-50-zero,0.525
+d-50-zero-ci,"[0.515, 0.534]"
+d-50-zero-hi,0.534
+d-50-zero-lo,0.515
+d-clean,0.639
+d-clean-ci,"[0.609, 0.667]"
+d-clean-hi,0.667
+d-clean-lo,0.609
+d-margin,0.14
+d-maxgap,0.11
+e-argmax-clean,"1.2, 1.2, 1.2, 0.3, 1.2"
+e-argmax-signal30,"0.6, 0.3, 0.3, 0.3, 0.6"
+e-ba-0.0-mean,0.372
+e-ba-0.0-sd,0.008
+e-ba-0.3-mean,0.397
+e-ba-0.3-sd,0.014
+e-ba-0.6-mean,0.401
+e-ba-0.6-sd,0.017
+e-ba-0.9-mean,0.385
+e-ba-0.9-sd,0.015
+e-ba-1.2-mean,0.413
+e-ba-1.2-sd,0.016
+e-ba-1.5-mean,0.373
+e-ba-1.5-sd,0.019
+e-ba30-0.0-mean,0.357
+e-ba30-0.3-mean,0.386
+e-ba30-0.6-mean,0.389
+e-ba30-0.9-mean,0.339
+e-ba30-1.2-mean,0.339
+e-ba30-1.5-mean,0.340
+e-loss30-0.0,0.015
+e-loss30-0.3,0.011
+e-loss30-0.6,0.012
+e-loss30-0.9,0.045
+e-loss30-1.2,0.074
+e-loss30-1.5,0.033
+e-n-rho0-sig-clean,0
+e-n-rho0-sig-signal30,0
+e-n-rho15-sig-clean,0
+e-n-rho15-sig-signal30,0
+e-naccdraws,5
+e-ndraws,10
+e-rate-0.0,0.04
+e-rate-0.3,0.04
+e-rate-0.6,0.05
+e-rate-0.9,0.14
+e-rate-1.2,0.23
+e-rate-1.5,0.29
+e-rhostar-42,0.82
+e-rhostar-beta0.02,0.79
+e-rhostar-beta0.05,0.82
+e-rhostar-beta0.1,0.87
+e-rhostar-beta0.2,0.95
+e-rhostar-max,0.84
+e-rhostar-mean,0.76
+e-rhostar-min,0.69
+e-rhostar-sd,0.04
+e-rhostar-theta0.25,0.35
+e-rhostar-theta0.5,0.82
+e-rhostar-theta1.0,1.57
 s-auc-band,0.682
 s-auc-erp,0.799
 s-auc-res,0.658
@@ -437,6 +529,12 @@ s-sig-remove0.5-res,0.393
 s-sig-remove0.5-res-ci,"[0.367, 0.420]"
 s-sig-remove0.5-res-hi,0.420
 s-sig-remove0.5-res-lo,0.367
+t-between-sd,5.58
+t-channel,PO3
+t-sal-dz,0.69
+t-sal-uv,2.12
+t-val-dz,0.25
+t-val-uv,1.32
 x-auc-band,0.531
 x-auc-erp,0.561
 x-auc-res,0.482
@@ -2964,6 +3062,171 @@ xl-fmz-spatial50-res-lo,-0.019
 xl-inv-band,3.2\times10^{-3}
 xl-inv-erp,5.8\times10^{-3}
 xl-inv-res,4.2\times10^{-14}
+xl-loss-amp5dB-band,+0.047
+xl-loss-amp5dB-band-abs,0.047
+xl-loss-amp5dB-band-ci,"[+0.015, +0.079]"
+xl-loss-amp5dB-band-hi,+0.079
+xl-loss-amp5dB-band-lo,+0.015
+xl-loss-amp5dB-erp,+0.007
+xl-loss-amp5dB-erp-abs,0.007
+xl-loss-amp5dB-erp-ci,"[-0.010, +0.026]"
+xl-loss-amp5dB-erp-hi,+0.026
+xl-loss-amp5dB-erp-lo,-0.010
+xl-loss-amp5dB-res,-0.008
+xl-loss-amp5dB-res-abs,0.008
+xl-loss-amp5dB-res-ci,"[-0.051, +0.037]"
+xl-loss-amp5dB-res-hi,+0.037
+xl-loss-amp5dB-res-lo,-0.051
+xl-loss-jitter50ms-band,+0.000
+xl-loss-jitter50ms-band-abs,0.000
+xl-loss-jitter50ms-band-ci,"[-0.009, +0.009]"
+xl-loss-jitter50ms-band-hi,+0.009
+xl-loss-jitter50ms-band-lo,-0.009
+xl-loss-jitter50ms-erp,+0.009
+xl-loss-jitter50ms-erp-abs,0.009
+xl-loss-jitter50ms-erp-ci,"[-0.009, +0.026]"
+xl-loss-jitter50ms-erp-hi,+0.026
+xl-loss-jitter50ms-erp-lo,-0.009
+xl-loss-jitter50ms-res,-0.024
+xl-loss-jitter50ms-res-abs,0.024
+xl-loss-jitter50ms-res-ci,"[-0.064, +0.015]"
+xl-loss-jitter50ms-res-hi,+0.015
+xl-loss-jitter50ms-res-lo,-0.064
+xl-loss-remove0.1-band,+0.003
+xl-loss-remove0.1-band-abs,0.003
+xl-loss-remove0.1-band-ci,"[-0.022, +0.028]"
+xl-loss-remove0.1-band-hi,+0.028
+xl-loss-remove0.1-band-lo,-0.022
+xl-loss-remove0.1-erp,+0.023
+xl-loss-remove0.1-erp-abs,0.023
+xl-loss-remove0.1-erp-ci,"[+0.000, +0.047]"
+xl-loss-remove0.1-erp-hi,+0.047
+xl-loss-remove0.1-erp-lo,+0.000
+xl-loss-remove0.1-res,+0.029
+xl-loss-remove0.1-res-abs,0.029
+xl-loss-remove0.1-res-ci,"[-0.004, +0.063]"
+xl-loss-remove0.1-res-hi,+0.063
+xl-loss-remove0.1-res-lo,-0.004
+xl-loss-remove0.3-band,-0.009
+xl-loss-remove0.3-band-abs,0.009
+xl-loss-remove0.3-band-ci,"[-0.041, +0.023]"
+xl-loss-remove0.3-band-hi,+0.023
+xl-loss-remove0.3-band-lo,-0.041
+xl-loss-remove0.3-erp,+0.033
+xl-loss-remove0.3-erp-abs,0.033
+xl-loss-remove0.3-erp-ci,"[+0.004, +0.061]"
+xl-loss-remove0.3-erp-hi,+0.061
+xl-loss-remove0.3-erp-lo,+0.004
+xl-loss-remove0.3-res,+0.038
+xl-loss-remove0.3-res-abs,0.038
+xl-loss-remove0.3-res-ci,"[+0.004, +0.073]"
+xl-loss-remove0.3-res-hi,+0.073
+xl-loss-remove0.3-res-lo,+0.004
+xl-loss-remove0.5-band,+0.043
+xl-loss-remove0.5-band-abs,0.043
+xl-loss-remove0.5-band-ci,"[+0.012, +0.073]"
+xl-loss-remove0.5-band-hi,+0.073
+xl-loss-remove0.5-band-lo,+0.012
+xl-loss-remove0.5-erp,+0.011
+xl-loss-remove0.5-erp-abs,0.011
+xl-loss-remove0.5-erp-ci,"[-0.018, +0.041]"
+xl-loss-remove0.5-erp-hi,+0.041
+xl-loss-remove0.5-erp-lo,-0.018
+xl-loss-remove0.5-res,+0.051
+xl-loss-remove0.5-res-abs,0.051
+xl-loss-remove0.5-res-ci,"[+0.015, +0.088]"
+xl-loss-remove0.5-res-hi,+0.088
+xl-loss-remove0.5-res-lo,+0.015
+xl-loss-spline0.1-band,+0.013
+xl-loss-spline0.1-band-abs,0.013
+xl-loss-spline0.1-band-ci,"[-0.004, +0.031]"
+xl-loss-spline0.1-band-hi,+0.031
+xl-loss-spline0.1-band-lo,-0.004
+xl-loss-spline0.1-erp,+0.022
+xl-loss-spline0.1-erp-abs,0.022
+xl-loss-spline0.1-erp-ci,"[+0.006, +0.039]"
+xl-loss-spline0.1-erp-hi,+0.039
+xl-loss-spline0.1-erp-lo,+0.006
+xl-loss-spline0.1-res,-0.007
+xl-loss-spline0.1-res-abs,0.007
+xl-loss-spline0.1-res-ci,"[-0.025, +0.010]"
+xl-loss-spline0.1-res-hi,+0.010
+xl-loss-spline0.1-res-lo,-0.025
+xl-loss-spline0.3-band,+0.003
+xl-loss-spline0.3-band-abs,0.003
+xl-loss-spline0.3-band-ci,"[-0.022, +0.029]"
+xl-loss-spline0.3-band-hi,+0.029
+xl-loss-spline0.3-band-lo,-0.022
+xl-loss-spline0.3-erp,+0.028
+xl-loss-spline0.3-erp-abs,0.028
+xl-loss-spline0.3-erp-ci,"[+0.004, +0.053]"
+xl-loss-spline0.3-erp-hi,+0.053
+xl-loss-spline0.3-erp-lo,+0.004
+xl-loss-spline0.3-res,+0.003
+xl-loss-spline0.3-res-abs,0.003
+xl-loss-spline0.3-res-ci,"[-0.023, +0.029]"
+xl-loss-spline0.3-res-hi,+0.029
+xl-loss-spline0.3-res-lo,-0.023
+xl-loss-spline0.5-band,-0.007
+xl-loss-spline0.5-band-abs,0.007
+xl-loss-spline0.5-band-ci,"[-0.038, +0.025]"
+xl-loss-spline0.5-band-hi,+0.025
+xl-loss-spline0.5-band-lo,-0.038
+xl-loss-spline0.5-erp,+0.010
+xl-loss-spline0.5-erp-abs,0.010
+xl-loss-spline0.5-erp-ci,"[-0.020, +0.039]"
+xl-loss-spline0.5-erp-hi,+0.039
+xl-loss-spline0.5-erp-lo,-0.020
+xl-loss-spline0.5-res,-0.010
+xl-loss-spline0.5-res-abs,0.010
+xl-loss-spline0.5-res-ci,"[-0.042, +0.022]"
+xl-loss-spline0.5-res-hi,+0.022
+xl-loss-spline0.5-res-lo,-0.042
+xl-loss-trials1-band,+0.023
+xl-loss-trials1-band-abs,0.023
+xl-loss-trials1-band-ci,"[-0.019, +0.064]"
+xl-loss-trials1-band-hi,+0.064
+xl-loss-trials1-band-lo,-0.019
+xl-loss-trials1-erp,+0.060
+xl-loss-trials1-erp-abs,0.060
+xl-loss-trials1-erp-ci,"[+0.018, +0.102]"
+xl-loss-trials1-erp-hi,+0.102
+xl-loss-trials1-erp-lo,+0.018
+xl-loss-trials1-res,-0.000
+xl-loss-trials1-res-abs,0.000
+xl-loss-trials1-res-ci,"[-0.045, +0.045]"
+xl-loss-trials1-res-hi,+0.045
+xl-loss-trials1-res-lo,-0.045
+xl-loss-trials16-band,+0.021
+xl-loss-trials16-band-abs,0.021
+xl-loss-trials16-band-ci,"[-0.012, +0.054]"
+xl-loss-trials16-band-hi,+0.054
+xl-loss-trials16-band-lo,-0.012
+xl-loss-trials16-erp,+0.028
+xl-loss-trials16-erp-abs,0.028
+xl-loss-trials16-erp-ci,"[+0.001, +0.053]"
+xl-loss-trials16-erp-hi,+0.053
+xl-loss-trials16-erp-lo,+0.001
+xl-loss-trials16-res,+0.003
+xl-loss-trials16-res-abs,0.003
+xl-loss-trials16-res-ci,"[-0.042, +0.048]"
+xl-loss-trials16-res-hi,+0.048
+xl-loss-trials16-res-lo,-0.042
+xl-loss-trials4-band,+0.040
+xl-loss-trials4-band-abs,0.040
+xl-loss-trials4-band-ci,"[+0.001, +0.077]"
+xl-loss-trials4-band-hi,+0.077
+xl-loss-trials4-band-lo,+0.001
+xl-loss-trials4-erp,+0.020
+xl-loss-trials4-erp-abs,0.020
+xl-loss-trials4-erp-ci,"[-0.018, +0.056]"
+xl-loss-trials4-erp-hi,+0.056
+xl-loss-trials4-erp-lo,-0.018
+xl-loss-trials4-res,+0.019
+xl-loss-trials4-res-abs,0.019
+xl-loss-trials4-res-ci,"[-0.028, +0.066]"
+xl-loss-trials4-res-hi,+0.066
+xl-loss-trials4-res-lo,-0.028
 xl-margin-band,0.056
 xl-margin-erp,0.094
 xl-margin-res,0.063
@@ -3595,9 +3858,298 @@ xl-pre-res-pre-ZminusG-ci,"[+0.010, +0.095]"
 xl-pre-res-pre-ZminusG-hi,+0.095
 xl-pre-res-pre-ZminusG-lo,+0.010
 xl-prestim-corr,-0.91
+xl-rawret-amp5dB-band,0.88
+xl-rawret-amp5dB-erp,0.98
+xl-rawret-amp5dB-res,1.02
+xl-rawret-clean-band,1.00
+xl-rawret-clean-erp,1.00
+xl-rawret-clean-res,1.00
+xl-rawret-jitter50ms-band,1.00
+xl-rawret-jitter50ms-erp,0.98
+xl-rawret-jitter50ms-res,1.06
+xl-rawret-remove0.1-band,0.99
+xl-rawret-remove0.1-erp,0.95
+xl-rawret-remove0.1-res,0.93
+xl-rawret-remove0.3-band,1.02
+xl-rawret-remove0.3-erp,0.92
+xl-rawret-remove0.3-res,0.90
+xl-rawret-remove0.5-band,0.89
+xl-rawret-remove0.5-erp,0.97
+xl-rawret-remove0.5-res,0.87
+xl-rawret-spline0.1-band,0.97
+xl-rawret-spline0.1-erp,0.95
+xl-rawret-spline0.1-res,1.02
+xl-rawret-spline0.3-band,0.99
+xl-rawret-spline0.3-erp,0.93
+xl-rawret-spline0.3-res,0.99
+xl-rawret-spline0.5-band,1.02
+xl-rawret-spline0.5-erp,0.98
+xl-rawret-spline0.5-res,1.03
+xl-rawret-trials1-band,0.94
+xl-rawret-trials1-erp,0.86
+xl-rawret-trials1-res,1.00
+xl-rawret-trials16-band,0.95
+xl-rawret-trials16-erp,0.93
+xl-rawret-trials16-res,0.99
+xl-rawret-trials4-band,0.90
+xl-rawret-trials4-erp,0.95
+xl-rawret-trials4-res,0.95
 xl-resfill-maxabs,0.009
 xl-resfill-wmax,0.026
 xl-resfill-wmin,0.009
+xl-sig-amp5dB-band,0.342
+xl-sig-amp5dB-band-ci,"[0.313, 0.370]"
+xl-sig-amp5dB-band-hi,0.370
+xl-sig-amp5dB-band-lo,0.313
+xl-sig-amp5dB-erp,0.420
+xl-sig-amp5dB-erp-ci,"[0.390, 0.449]"
+xl-sig-amp5dB-erp-hi,0.449
+xl-sig-amp5dB-erp-lo,0.390
+xl-sig-amp5dB-erpres,+0.015
+xl-sig-amp5dB-erpres-abs,0.015
+xl-sig-amp5dB-erpres-ci,"[-0.025, +0.057]"
+xl-sig-amp5dB-erpres-hi,+0.057
+xl-sig-amp5dB-erpres-lo,-0.025
+xl-sig-amp5dB-res,0.405
+xl-sig-amp5dB-res-ci,"[0.373, 0.436]"
+xl-sig-amp5dB-res-hi,0.436
+xl-sig-amp5dB-res-lo,0.373
+xl-sig-clean-band,0.389
+xl-sig-clean-band-ci,"[0.360, 0.418]"
+xl-sig-clean-band-hi,0.418
+xl-sig-clean-band-lo,0.360
+xl-sig-clean-erp,0.427
+xl-sig-clean-erp-ci,"[0.398, 0.455]"
+xl-sig-clean-erp-hi,0.455
+xl-sig-clean-erp-lo,0.398
+xl-sig-clean-erpres,+0.030
+xl-sig-clean-erpres-abs,0.030
+xl-sig-clean-erpres-ci,"[-0.012, +0.072]"
+xl-sig-clean-erpres-hi,+0.072
+xl-sig-clean-erpres-lo,-0.012
+xl-sig-clean-res,0.396
+xl-sig-clean-res-ci,"[0.361, 0.428]"
+xl-sig-clean-res-hi,0.428
+xl-sig-clean-res-lo,0.361
+xl-sig-jitter50ms-band,0.389
+xl-sig-jitter50ms-band-ci,"[0.360, 0.420]"
+xl-sig-jitter50ms-band-hi,0.420
+xl-sig-jitter50ms-band-lo,0.360
+xl-sig-jitter50ms-erp,0.418
+xl-sig-jitter50ms-erp-ci,"[0.390, 0.446]"
+xl-sig-jitter50ms-erp-hi,0.446
+xl-sig-jitter50ms-erp-lo,0.390
+xl-sig-jitter50ms-erpres,-0.003
+xl-sig-jitter50ms-erpres-abs,0.003
+xl-sig-jitter50ms-erpres-ci,"[-0.045, +0.038]"
+xl-sig-jitter50ms-erpres-hi,+0.038
+xl-sig-jitter50ms-erpres-lo,-0.045
+xl-sig-jitter50ms-res,0.421
+xl-sig-jitter50ms-res-ci,"[0.389, 0.453]"
+xl-sig-jitter50ms-res-hi,0.453
+xl-sig-jitter50ms-res-lo,0.389
+xl-sig-remove0.1-band,0.386
+xl-sig-remove0.1-band-ci,"[0.358, 0.414]"
+xl-sig-remove0.1-band-hi,0.414
+xl-sig-remove0.1-band-lo,0.358
+xl-sig-remove0.1-erp,0.404
+xl-sig-remove0.1-erp-ci,"[0.377, 0.431]"
+xl-sig-remove0.1-erp-hi,0.431
+xl-sig-remove0.1-erp-lo,0.377
+xl-sig-remove0.1-erpres,+0.036
+xl-sig-remove0.1-erpres-abs,0.036
+xl-sig-remove0.1-erpres-ci,"[-0.000, +0.073]"
+xl-sig-remove0.1-erpres-hi,+0.073
+xl-sig-remove0.1-erpres-lo,-0.000
+xl-sig-remove0.1-res,0.367
+xl-sig-remove0.1-res-ci,"[0.341, 0.393]"
+xl-sig-remove0.1-res-hi,0.393
+xl-sig-remove0.1-res-lo,0.341
+xl-sig-remove0.3-band,0.398
+xl-sig-remove0.3-band-ci,"[0.370, 0.425]"
+xl-sig-remove0.3-band-hi,0.425
+xl-sig-remove0.3-band-lo,0.370
+xl-sig-remove0.3-erp,0.393
+xl-sig-remove0.3-erp-ci,"[0.368, 0.418]"
+xl-sig-remove0.3-erp-hi,0.418
+xl-sig-remove0.3-erp-lo,0.368
+xl-sig-remove0.3-erpres,+0.035
+xl-sig-remove0.3-erpres-abs,0.035
+xl-sig-remove0.3-erpres-ci,"[+0.004, +0.066]"
+xl-sig-remove0.3-erpres-hi,+0.066
+xl-sig-remove0.3-erpres-lo,+0.004
+xl-sig-remove0.3-res,0.358
+xl-sig-remove0.3-res-ci,"[0.336, 0.380]"
+xl-sig-remove0.3-res-hi,0.380
+xl-sig-remove0.3-res-lo,0.336
+xl-sig-remove0.5-band,0.346
+xl-sig-remove0.5-band-ci,"[0.325, 0.368]"
+xl-sig-remove0.5-band-hi,0.368
+xl-sig-remove0.5-band-lo,0.325
+xl-sig-remove0.5-erp,0.415
+xl-sig-remove0.5-erp-ci,"[0.390, 0.440]"
+xl-sig-remove0.5-erp-hi,0.440
+xl-sig-remove0.5-erp-lo,0.390
+xl-sig-remove0.5-erpres,+0.070
+xl-sig-remove0.5-erpres-abs,0.070
+xl-sig-remove0.5-erpres-ci,"[+0.041, +0.101]"
+xl-sig-remove0.5-erpres-hi,+0.101
+xl-sig-remove0.5-erpres-lo,+0.041
+xl-sig-remove0.5-res,0.345
+xl-sig-remove0.5-res-ci,"[0.326, 0.364]"
+xl-sig-remove0.5-res-hi,0.364
+xl-sig-remove0.5-res-lo,0.326
+xl-sig-spline0.1-band,0.376
+xl-sig-spline0.1-band-ci,"[0.348, 0.405]"
+xl-sig-spline0.1-band-hi,0.405
+xl-sig-spline0.1-band-lo,0.348
+xl-sig-spline0.1-erp,0.405
+xl-sig-spline0.1-erp-ci,"[0.377, 0.433]"
+xl-sig-spline0.1-erp-hi,0.433
+xl-sig-spline0.1-erp-lo,0.377
+xl-sig-spline0.1-erpres,+0.002
+xl-sig-spline0.1-erpres-abs,0.002
+xl-sig-spline0.1-erpres-ci,"[-0.041, +0.044]"
+xl-sig-spline0.1-erpres-hi,+0.044
+xl-sig-spline0.1-erpres-lo,-0.041
+xl-sig-spline0.1-res,0.404
+xl-sig-spline0.1-res-ci,"[0.370, 0.439]"
+xl-sig-spline0.1-res-hi,0.439
+xl-sig-spline0.1-res-lo,0.370
+xl-sig-spline0.3-band,0.386
+xl-sig-spline0.3-band-ci,"[0.360, 0.412]"
+xl-sig-spline0.3-band-hi,0.412
+xl-sig-spline0.3-band-lo,0.360
+xl-sig-spline0.3-erp,0.399
+xl-sig-spline0.3-erp-ci,"[0.373, 0.425]"
+xl-sig-spline0.3-erp-hi,0.425
+xl-sig-spline0.3-erp-lo,0.373
+xl-sig-spline0.3-erpres,+0.006
+xl-sig-spline0.3-erpres-abs,0.006
+xl-sig-spline0.3-erpres-ci,"[-0.038, +0.050]"
+xl-sig-spline0.3-erpres-hi,+0.050
+xl-sig-spline0.3-erpres-lo,-0.038
+xl-sig-spline0.3-res,0.393
+xl-sig-spline0.3-res-ci,"[0.357, 0.428]"
+xl-sig-spline0.3-res-hi,0.428
+xl-sig-spline0.3-res-lo,0.357
+xl-sig-spline0.5-band,0.396
+xl-sig-spline0.5-band-ci,"[0.368, 0.424]"
+xl-sig-spline0.5-band-hi,0.424
+xl-sig-spline0.5-band-lo,0.368
+xl-sig-spline0.5-erp,0.417
+xl-sig-spline0.5-erp-ci,"[0.390, 0.443]"
+xl-sig-spline0.5-erp-hi,0.443
+xl-sig-spline0.5-erp-lo,0.390
+xl-sig-spline0.5-erpres,+0.010
+xl-sig-spline0.5-erpres-abs,0.010
+xl-sig-spline0.5-erpres-ci,"[-0.032, +0.051]"
+xl-sig-spline0.5-erpres-hi,+0.051
+xl-sig-spline0.5-erpres-lo,-0.032
+xl-sig-spline0.5-res,0.406
+xl-sig-spline0.5-res-ci,"[0.373, 0.440]"
+xl-sig-spline0.5-res-hi,0.440
+xl-sig-spline0.5-res-lo,0.373
+xl-sig-trials1-band,0.367
+xl-sig-trials1-band-ci,"[0.338, 0.396]"
+xl-sig-trials1-band-hi,0.396
+xl-sig-trials1-band-lo,0.338
+xl-sig-trials1-erp,0.367
+xl-sig-trials1-erp-ci,"[0.335, 0.399]"
+xl-sig-trials1-erp-hi,0.399
+xl-sig-trials1-erp-lo,0.335
+xl-sig-trials1-erpres,-0.029
+xl-sig-trials1-erpres-abs,0.029
+xl-sig-trials1-erpres-ci,"[-0.072, +0.015]"
+xl-sig-trials1-erpres-hi,+0.015
+xl-sig-trials1-erpres-lo,-0.072
+xl-sig-trials1-res,0.396
+xl-sig-trials1-res-ci,"[0.364, 0.428]"
+xl-sig-trials1-res-hi,0.428
+xl-sig-trials1-res-lo,0.364
+xl-sig-trials16-band,0.368
+xl-sig-trials16-band-ci,"[0.339, 0.396]"
+xl-sig-trials16-band-hi,0.396
+xl-sig-trials16-band-lo,0.339
+xl-sig-trials16-erp,0.399
+xl-sig-trials16-erp-ci,"[0.373, 0.425]"
+xl-sig-trials16-erp-hi,0.425
+xl-sig-trials16-erp-lo,0.373
+xl-sig-trials16-erpres,+0.006
+xl-sig-trials16-erpres-abs,0.006
+xl-sig-trials16-erpres-ci,"[-0.032, +0.048]"
+xl-sig-trials16-erpres-hi,+0.048
+xl-sig-trials16-erpres-lo,-0.032
+xl-sig-trials16-res,0.393
+xl-sig-trials16-res-ci,"[0.361, 0.424]"
+xl-sig-trials16-res-hi,0.424
+xl-sig-trials16-res-lo,0.361
+xl-sig-trials4-band,0.349
+xl-sig-trials4-band-ci,"[0.322, 0.379]"
+xl-sig-trials4-band-hi,0.379
+xl-sig-trials4-band-lo,0.322
+xl-sig-trials4-erp,0.406
+xl-sig-trials4-erp-ci,"[0.374, 0.439]"
+xl-sig-trials4-erp-hi,0.439
+xl-sig-trials4-erp-lo,0.374
+xl-sig-trials4-erpres,+0.030
+xl-sig-trials4-erpres-abs,0.030
+xl-sig-trials4-erpres-ci,"[-0.015, +0.073]"
+xl-sig-trials4-erpres-hi,+0.073
+xl-sig-trials4-erpres-lo,-0.015
+xl-sig-trials4-res,0.377
+xl-sig-trials4-res-ci,"[0.346, 0.411]"
+xl-sig-trials4-res-hi,0.411
+xl-sig-trials4-res-lo,0.346
+xl-splinecorr-10,0.87
+xl-splinecorr-30,0.86
+xl-splinecorr-50,0.84
+xl-splminuszero10-band,-0.010
+xl-splminuszero10-band-abs,0.010
+xl-splminuszero10-band-ci,"[-0.035, +0.015]"
+xl-splminuszero10-band-hi,+0.015
+xl-splminuszero10-band-lo,-0.035
+xl-splminuszero10-erp,+0.002
+xl-splminuszero10-erp-abs,0.002
+xl-splminuszero10-erp-ci,"[-0.022, +0.023]"
+xl-splminuszero10-erp-hi,+0.023
+xl-splminuszero10-erp-lo,-0.022
+xl-splminuszero10-res,+0.036
+xl-splminuszero10-res-abs,0.036
+xl-splminuszero10-res-ci,"[+0.001, +0.070]"
+xl-splminuszero10-res-hi,+0.070
+xl-splminuszero10-res-lo,+0.001
+xl-splminuszero30-band,-0.012
+xl-splminuszero30-band-abs,0.012
+xl-splminuszero30-band-ci,"[-0.042, +0.019]"
+xl-splminuszero30-band-hi,+0.019
+xl-splminuszero30-band-lo,-0.042
+xl-splminuszero30-erp,+0.006
+xl-splminuszero30-erp-abs,0.006
+xl-splminuszero30-erp-ci,"[-0.023, +0.034]"
+xl-splminuszero30-erp-hi,+0.034
+xl-splminuszero30-erp-lo,-0.023
+xl-splminuszero30-res,+0.035
+xl-splminuszero30-res-abs,0.035
+xl-splminuszero30-res-ci,"[-0.001, +0.072]"
+xl-splminuszero30-res-hi,+0.072
+xl-splminuszero30-res-lo,-0.001
+xl-splminuszero50-band,+0.050
+xl-splminuszero50-band-abs,0.050
+xl-splminuszero50-band-ci,"[+0.018, +0.082]"
+xl-splminuszero50-band-hi,+0.082
+xl-splminuszero50-band-lo,+0.018
+xl-splminuszero50-erp,+0.001
+xl-splminuszero50-erp-abs,0.001
+xl-splminuszero50-erp-ci,"[-0.032, +0.035]"
+xl-splminuszero50-erp-hi,+0.035
+xl-splminuszero50-erp-lo,-0.032
+xl-splminuszero50-res,+0.062
+xl-splminuszero50-res-abs,0.062
+xl-splminuszero50-res-ci,"[+0.025, +0.101]"
+xl-splminuszero50-res-hi,+0.101
+xl-splminuszero50-res-lo,+0.025
+xl-trials-median,44
 xl-zpos-band,1.20
 xl-zpos-erp,0.72
 xl-zpos-res,0.06

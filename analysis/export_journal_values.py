@@ -278,6 +278,14 @@ def recipe_values():
         (GEN / "tab_recipes.rows").write_text("\n".join(rows) + "\n")
 
 
+def erp_summary():
+    e = load(JAG / "tcrzem_erp_summary.json")
+    if e:
+        put("t-sal-uv", f"{e['salience_500_1300ms_uV']:.2f}"); put("t-sal-dz", f"{e['salience_within_subject_dz']:.2f}")
+        put("t-val-uv", f"{e['valence_1500_2500ms_uV']:.2f}"); put("t-val-dz", f"{e['valence_within_subject_dz']:.2f}")
+        put("t-between-sd", f"{e['neutral_amplitude_between_subject_sd_uV']:.2f}"); put("t-channel", e["channel"])
+
+
 def edge_values():
     j4 = load(JAG / "j4_tcrzem_edge_long.json") or load(JAG / "j4_tcrzem_edge.json")
     if not j4 or "summary" not in j4:
@@ -291,6 +299,8 @@ def edge_values():
     for i, r in enumerate(j4["rho_acc"]):
         put(f"e-ba-{r}-mean", f3(S["BA_clean_mean"][i])); put(f"e-ba-{r}-sd", f3(S["BA_clean_sd"][i]))
         put(f"e-ba30-{r}-mean", f3(S["BA_signal30_mean"][i]))
+        put(f"e-loss30-{r}", f3(S["BA_clean_mean"][i] - S["BA_signal30_mean"][i]))
+        put(f"e-rate-{r}", f"{S['rate_mean'][i]:.2f}")
     for c in ("clean", "signal30"):
         put(f"e-n-rho0-sig-{c}", str(S[f"n_draws_rho0_below_rho0.9_ci_excludes0_{c}"]))
         put(f"e-n-rho15-sig-{c}", str(S[f"n_draws_rho1.5_below_rho0.9_ci_excludes0_{c}"]))
@@ -301,6 +311,11 @@ def edge_values():
     for be, e in em.get("beta", {}).items():
         put(f"e-rhostar-beta{be}", f"{e['rho_star']:.2f}")
     put("e-rhostar-42", f"{j4['draws']['42']['rho_star']:.2f}")
+    j8 = load(JAG / "j8_tcrzem_silence_long.json")
+    if j8:
+        for r in j8["rho"]:
+            put(f"e-z0-{r}", f"{j8['silent_block_mean_abs_z'][str(r)]:.2f}")
+            put(f"e-rawcent-{r}", f"{j8['raw_counts_mean_abs_mu_over_sigma'][str(r)]:.2f}")
     return j4
 
 
@@ -456,6 +471,7 @@ def main():
     xl = ext_values("xl", "_long")
     derived(e5, x[0], xl[0])
     recipe_values()
+    erp_summary()
     j4 = edge_values()
     table_clean(e5, e3, x[0], xl[0], x[2], xl[2])
     table_fills(e2, x[0], xl[0])
