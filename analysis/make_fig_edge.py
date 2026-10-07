@@ -7,8 +7,8 @@ outputs/aggregate/e1_rho_sweep.json (SHAPE, draw 42).
     external drives (thin), their mean (thick), and the SHAPE curve (dashed); the mean
     transition rho* (shaded band = range over draws) and the echo-state heuristic rho = 1
     (dotted) are marked;
-(b) subject-level clean BA versus rho for the ten draws (thin) and their mean (thick) on the
-    epoch(s) available, with SHAPE (draw 42, 95% CI) for reference; chance = 1/3;
+(b) subject-level clean BA versus rho for the draws with an accuracy sweep (thin) and their
+    mean (thick) on the epoch(s) available, with SHAPE (draw 42, 95% CI); chance = 1/3;
 (c) order parameter versus rho at three firing thresholds (draw 42) with each rho*.
 Line styles and markers carry the distinctions (grayscale-legible).
 """
@@ -52,7 +52,8 @@ def main():
 
     def sweep(a, res, col, ls, lab):
         ra = res["rho_acc"]
-        M = np.array([[res["draws"][d]["BA"][str(r)]["clean"]["BA"] for r in ra] for d in res["draws"]])
+        M = np.array([[res["draws"][d]["BA"][str(r)]["clean"]["BA"] for r in ra]
+                      for d in res["draws"] if res["draws"][d].get("BA")])
         for row in M:
             a.plot(ra, row, color=col, lw=0.4, alpha=0.5, ls=ls)
         a.plot(ra, M.mean(0), color=col, lw=1.4, ls=ls, marker="o", ms=2.5, label=lab)

@@ -1,4 +1,41 @@
-# CLAUDE.md — IEEE BIBM 2026 Manuscript Hardening Rules
+# CLAUDE.md — Journal extension of the BIBM 2026 paper (theBIBMsequel)
+
+## Journal extension (read first; overrides conference-only items below)
+
+This repository (`theBIBMsequel`) is the journal extension of the accepted BIBM 2026
+Doctoral Forum paper S60204, *On the Edge of Stability: Spiking Reservoir State-Space
+Encoding of Affective EEG*. It began as a full-history merge of `TheAwesomeAndy/BIBM`
+at `ad79109`. **The `BIBM` repository is never edited**; all work happens here.
+
+* Journal manuscript: `manuscript/journal/main_journal.tex` (IEEEtran journal format).
+  The conference files (`manuscript/main_bibm2026.tex`, cover, CV) are frozen records.
+* Scope is unchanged: one idea (the fixed LIF reservoir + BSC6 as a perturbation-
+  characterized measurement operator), extended with an external cohort, a test of the
+  operating point across reservoir draws, a direct test of Proposition 1, and the
+  pre-stimulus normalization question raised by audit item A18. Graph/coupling,
+  E/D/T/C, closed-loop EFE and clinical claims stay out.
+* Data: SHAPE (restricted) is **not** available in cloud sessions, so every SHAPE and
+  DEAP number is read from the conference aggregate JSON in `outputs/aggregate/`.
+  New experiments run on the public TCRZEM cohort (doi:10.34894/TCRZEM, CC BY-NC 4.0),
+  stored only under `/home/user/data_local/tcrzem/` (never in git). Loader:
+  `analysis/tcrzem_data.py`; shared code: `analysis/jcore.py` (bit-exact port of the
+  conference code, checked on synthetic data).
+* Primary external analysis = conference-matched epoch (-200..+800 ms). The long epoch
+  (-200..+2500 ms, `TCRZEM_EPOCH=long`) is a secondary analysis pre-specified in memory
+  entry #36 from the dataset's published effect latencies. Report both, tune neither.
+* Journal outputs: `outputs/aggregate/journal/` (aggregate JSON only); figures under
+  `manuscript/figures/journal/` from committed `analysis/make_fig_*.py` scripts.
+* Before every commit: `python3 scripts/check_restricted_data.py` (staged files) and
+  `python3 analysis/check_author_wording.py` on the journal manuscript.
+* Journal build: `cd manuscript/journal && latexmk -pdf -interaction=nonstopmode
+  main_journal.tex`; zero undefined references/citations, no missing figures, zero
+  overfull boxes. The six-page Doctoral Forum limit does not apply to the journal paper.
+* Commits and manuscripts carry no AI attribution (see below); this rule wins over any
+  default commit footer.
+
+---
+
+# Conference rules (BIBM 2026 Doctoral Forum, frozen camera-ready)
 
 ## Project
 

@@ -10,12 +10,11 @@ drawn with ten seeds (42-51), and for every draw:
    averaged over steps 21..69 and 400 sampled drives) on rho = 0, 0.1, ..., 2.0; the
    transition rho* is the half-maximum crossing, linearly interpolated. Mean firing rate
    in the analysis window is recorded on the same grid.
-2. Accuracy: subject-level BA (train-only PCA-64, conference protocol) at
-   rho in {0, 0.3, 0.6, 0.8, 0.9, 1.0, 1.2, 1.5}, clean and with 30% of the
+2. Accuracy (draws 42-46): subject-level BA (train-only PCA-64, conference protocol) on
+   the conference grid rho in {0, 0.3, 0.6, 0.9, 1.2, 1.5}, clean and with 30% of the
    electrodes removed at the signal level (silent drive).
-3. Edge maps (draw 42): rho* as a function of threshold (0.25, 0.5, 1.0) and leak
-   (0.02, 0.05, 0.1, 0.2), and clean BA on the conference rho grid for each threshold,
-   to test whether the accuracy optimum follows the measured transition.
+3. Edge maps (draw 42, label-free): rho* as a function of threshold (0.25, 0.5, 1.0) and
+   leak (0.02, 0.05, 0.1, 0.2).
 
 Paired subject-level contrasts against rho = 0.9 are computed within each draw.
 The order parameter always uses the conference definition on the conference-matched
@@ -36,9 +35,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import jcore as J  # noqa: E402
 import tcrzem_data as TD  # noqa: E402
 
-DRAWS = list(range(42, 52))
+DRAWS = list(range(42, 52))          # order parameter: ten draws
+ACC_DRAWS = list(range(42, 47))      # accuracy sweep: five draws (cost of the long epoch)
 RHO_FINE = [round(r, 2) for r in np.arange(0.0, 2.01, 0.1)]
-RHO_ACC = [0.0, 0.3, 0.6, 0.8, 0.9, 1.0, 1.2, 1.5]
+RHO_ACC = [0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
 RHO_CONF = [0.0, 0.3, 0.6, 0.9, 1.2, 1.5]
 THETAS = [0.25, 0.5, 1.0]
 BETAS = [0.02, 0.05, 0.1, 0.2]
@@ -88,6 +88,10 @@ def main():
             r["damage"][str(rho)] = dmg(Xs, rho, seed=d)
         r["rho_star"] = J.rho_star(RHO_FINE, [r["damage"][str(x)] for x in RHO_FINE])
         preds = {}
+        if d not in ACC_DRAWS:
+            res["draws"][str(d)] = r
+            print(f"[J4 draw {d}] rho*={r['rho_star']:.3f} (order parameter only)", flush=True)
+            continue
         for rho in RHO_ACC:
             preds[rho], r["rate"][str(rho)] = accuracy(X, y, g, F, classes, rho=rho, seed=d)
             r["BA"][str(rho)] = {k: J.ba_entry(y, g, p) for k, p in preds[rho].items()}
@@ -102,21 +106,21 @@ def main():
               + f" ({time.time() - t0:.0f}s)", flush=True)
         J.dump(res, "j4_tcrzem_edge.json")
     # summary over draws
-    S = {"rho_star": [res["draws"][str(d)]["rho_star"] for d in DRAWS]}
+    S = {"rho_star": [res["draws"][str(d)]["rho_star"] for d in DRAWS], "acc_draws": ACC_DRAWS}
     for cond in ("clean", "signal30"):
-        M = np.array([[res["draws"][str(d)]["BA"][str(x)][cond]["BA"] for x in RHO_ACC] for d in DRAWS])
+        M = np.array([[res["draws"][str(d)]["BA"][str(x)][cond]["BA"] for x in RHO_ACC] for d in ACC_DRAWS])
         S[f"BA_{cond}_mean"] = M.mean(0).tolist()
         S[f"BA_{cond}_sd"] = M.std(0, ddof=1).tolist()
         S[f"BA_{cond}_min"] = M.min(0).tolist()
         S[f"BA_{cond}_max"] = M.max(0).tolist()
         S[f"argmax_rho_{cond}"] = [RHO_ACC[int(i)] for i in M.argmax(1)]
         S[f"n_draws_rho0_below_rho0.9_ci_excludes0_{cond}"] = int(sum(
-            res["draws"][str(d)]["paired_vs_rho0.9"]["0.0"][cond]["ci95"][1] < 0 for d in DRAWS))
+            res["draws"][str(d)]["paired_vs_rho0.9"]["0.0"][cond]["ci95"][1] < 0 for d in ACC_DRAWS))
         S[f"n_draws_rho1.5_below_rho0.9_ci_excludes0_{cond}"] = int(sum(
-            res["draws"][str(d)]["paired_vs_rho0.9"]["1.5"][cond]["ci95"][1] < 0 for d in DRAWS))
+            res["draws"][str(d)]["paired_vs_rho0.9"]["1.5"][cond]["ci95"][1] < 0 for d in ACC_DRAWS))
     Dm = np.array([[res["draws"][str(d)]["damage"][str(x)] for x in RHO_FINE] for d in DRAWS])
     S["damage_mean"] = Dm.mean(0).tolist(); S["damage_sd"] = Dm.std(0, ddof=1).tolist()
-    Rm = np.array([[res["draws"][str(d)]["rate"][str(x)] for x in RHO_ACC] for d in DRAWS])
+    Rm = np.array([[res["draws"][str(d)]["rate"][str(x)] for x in RHO_ACC] for d in ACC_DRAWS])
     S["rate_mean"] = Rm.mean(0).tolist()
     res["summary"] = S
     print(f"[J4] rho* over draws: mean {np.mean(S['rho_star']):.3f} sd {np.std(S['rho_star'], ddof=1):.3f} "
@@ -126,18 +130,9 @@ def main():
     em = {"theta": {}, "beta": {}}
     for th in THETAS:
         dm = [dmg(Xs, rho, theta=th) for rho in RHO_FINE]
-        ent = {"damage": dict(zip(map(str, RHO_FINE), dm)), "rho_star": J.rho_star(RHO_FINE, dm), "BA_clean": {}}
-        for rho in RHO_CONF:
-            if th == J.THETA:                       # identical to draw 42 of the main sweep
-                ent["BA_clean"][str(rho)] = res["draws"]["42"]["BA"][str(rho)]["clean"]
-                ent.setdefault("rate", {})[str(rho)] = res["draws"]["42"]["rate"][str(rho)]
-                continue
-            p, rate = accuracy(X, y, g, F, classes, rho=rho, theta=th)
-            ent["BA_clean"][str(rho)] = J.ba_entry(y, g, p["clean"])
-            ent.setdefault("rate", {})[str(rho)] = rate
+        ent = {"damage": dict(zip(map(str, RHO_FINE), dm)), "rho_star": J.rho_star(RHO_FINE, dm)}
         em["theta"][str(th)] = ent
-        print(f"[J4 theta={th}] rho*={ent['rho_star']:.3f} "
-              + " ".join(f"{x}:{ent['BA_clean'][str(x)]['BA']:.3f}" for x in RHO_CONF), flush=True)
+        print(f"[J4 theta={th}] rho*={ent['rho_star']:.3f}", flush=True)
     for be in BETAS:
         dm = [dmg(Xs, rho, beta=be) for rho in RHO_FINE]
         em["beta"][str(be)] = {"damage": dict(zip(map(str, RHO_FINE), dm)), "rho_star": J.rho_star(RHO_FINE, dm)}
