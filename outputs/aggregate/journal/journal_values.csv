@@ -106,6 +106,13 @@ e-z0-1.2,6.23
 e-z0-1.5,6.23
 e-z0-low-max,1.36
 e-z0-low-min,1.21
+rc-aug50-max,+0.063
+rc-aug50-min,+0.020
+rc-aug50-nsig,3
+rc-augclean-max,+0.046
+rc-augclean-min,+0.013
+rc-clean-max,0.463
+rc-clean-min,0.431
 rc-default-amp_5dB-aug,0.465
 rc-default-amp_5dB-aug-ci,"[0.433, 0.497]"
 rc-default-amp_5dB-aug-hi,0.497
@@ -114,6 +121,11 @@ rc-default-amp_5dB-eegnet,0.434
 rc-default-amp_5dB-eegnet-ci,"[0.404, 0.465]"
 rc-default-amp_5dB-eegnet-hi,0.465
 rc-default-amp_5dB-eegnet-lo,0.404
+rc-default-augminus-clean,+0.022
+rc-default-augminus-clean-abs,0.022
+rc-default-augminus-clean-ci,"[-0.009, +0.053]"
+rc-default-augminus-clean-hi,+0.053
+rc-default-augminus-clean-lo,-0.009
 rc-default-augminus-remove_0.3,+0.039
 rc-default-augminus-remove_0.3-abs,0.039
 rc-default-augminus-remove_0.3-ci,"[+0.003, +0.073]"
@@ -148,6 +160,100 @@ rc-default-remove_0.5-eegnet,0.399
 rc-default-remove_0.5-eegnet-ci,"[0.370, 0.430]"
 rc-default-remove_0.5-eegnet-hi,0.430
 rc-default-remove_0.5-eegnet-lo,0.370
+rc-dropout50-amp_5dB-aug,0.477
+rc-dropout50-amp_5dB-aug-ci,"[0.444, 0.509]"
+rc-dropout50-amp_5dB-aug-hi,0.509
+rc-dropout50-amp_5dB-aug-lo,0.444
+rc-dropout50-amp_5dB-eegnet,0.459
+rc-dropout50-amp_5dB-eegnet-ci,"[0.427, 0.493]"
+rc-dropout50-amp_5dB-eegnet-hi,0.493
+rc-dropout50-amp_5dB-eegnet-lo,0.427
+rc-dropout50-augminus-clean,+0.022
+rc-dropout50-augminus-clean-abs,0.022
+rc-dropout50-augminus-clean-ci,"[-0.009, +0.053]"
+rc-dropout50-augminus-clean-hi,+0.053
+rc-dropout50-augminus-clean-lo,-0.009
+rc-dropout50-augminus-remove_0.3,+0.047
+rc-dropout50-augminus-remove_0.3-abs,0.047
+rc-dropout50-augminus-remove_0.3-ci,"[+0.013, +0.080]"
+rc-dropout50-augminus-remove_0.3-hi,+0.080
+rc-dropout50-augminus-remove_0.3-lo,+0.013
+rc-dropout50-augminus-remove_0.5,+0.031
+rc-dropout50-augminus-remove_0.5-abs,0.031
+rc-dropout50-augminus-remove_0.5-ci,"[+0.001, +0.060]"
+rc-dropout50-augminus-remove_0.5-hi,+0.060
+rc-dropout50-augminus-remove_0.5-lo,+0.001
+rc-dropout50-clean-aug,0.485
+rc-dropout50-clean-aug-ci,"[0.455, 0.516]"
+rc-dropout50-clean-aug-hi,0.516
+rc-dropout50-clean-aug-lo,0.455
+rc-dropout50-clean-eegnet,0.463
+rc-dropout50-clean-eegnet-ci,"[0.430, 0.496]"
+rc-dropout50-clean-eegnet-hi,0.496
+rc-dropout50-clean-eegnet-lo,0.430
+rc-dropout50-remove_0.3-aug,0.456
+rc-dropout50-remove_0.3-aug-ci,"[0.423, 0.490]"
+rc-dropout50-remove_0.3-aug-hi,0.490
+rc-dropout50-remove_0.3-aug-lo,0.423
+rc-dropout50-remove_0.3-eegnet,0.409
+rc-dropout50-remove_0.3-eegnet-ci,"[0.379, 0.442]"
+rc-dropout50-remove_0.3-eegnet-hi,0.442
+rc-dropout50-remove_0.3-eegnet-lo,0.379
+rc-dropout50-remove_0.5-aug,0.442
+rc-dropout50-remove_0.5-aug-ci,"[0.412, 0.471]"
+rc-dropout50-remove_0.5-aug-hi,0.471
+rc-dropout50-remove_0.5-aug-lo,0.412
+rc-dropout50-remove_0.5-eegnet,0.411
+rc-dropout50-remove_0.5-eegnet-ci,"[0.383, 0.440]"
+rc-dropout50-remove_0.5-eegnet-hi,0.440
+rc-dropout50-remove_0.5-eegnet-lo,0.383
+rc-epochs160-amp_5dB-aug,0.484
+rc-epochs160-amp_5dB-aug-ci,"[0.452, 0.516]"
+rc-epochs160-amp_5dB-aug-hi,0.516
+rc-epochs160-amp_5dB-aug-lo,0.452
+rc-epochs160-amp_5dB-eegnet,0.421
+rc-epochs160-amp_5dB-eegnet-ci,"[0.392, 0.450]"
+rc-epochs160-amp_5dB-eegnet-hi,0.450
+rc-epochs160-amp_5dB-eegnet-lo,0.392
+rc-epochs160-augminus-clean,+0.046
+rc-epochs160-augminus-clean-abs,0.046
+rc-epochs160-augminus-clean-ci,"[+0.013, +0.077]"
+rc-epochs160-augminus-clean-hi,+0.077
+rc-epochs160-augminus-clean-lo,+0.013
+rc-epochs160-augminus-remove_0.3,+0.029
+rc-epochs160-augminus-remove_0.3-abs,0.029
+rc-epochs160-augminus-remove_0.3-ci,"[-0.007, +0.064]"
+rc-epochs160-augminus-remove_0.3-hi,+0.064
+rc-epochs160-augminus-remove_0.3-lo,-0.007
+rc-epochs160-augminus-remove_0.5,+0.063
+rc-epochs160-augminus-remove_0.5-abs,0.063
+rc-epochs160-augminus-remove_0.5-ci,"[+0.026, +0.096]"
+rc-epochs160-augminus-remove_0.5-hi,+0.096
+rc-epochs160-augminus-remove_0.5-lo,+0.026
+rc-epochs160-clean-aug,0.477
+rc-epochs160-clean-aug-ci,"[0.444, 0.509]"
+rc-epochs160-clean-aug-hi,0.509
+rc-epochs160-clean-aug-lo,0.444
+rc-epochs160-clean-eegnet,0.431
+rc-epochs160-clean-eegnet-ci,"[0.399, 0.465]"
+rc-epochs160-clean-eegnet-hi,0.465
+rc-epochs160-clean-eegnet-lo,0.399
+rc-epochs160-remove_0.3-aug,0.437
+rc-epochs160-remove_0.3-aug-ci,"[0.405, 0.468]"
+rc-epochs160-remove_0.3-aug-hi,0.468
+rc-epochs160-remove_0.3-aug-lo,0.405
+rc-epochs160-remove_0.3-eegnet,0.408
+rc-epochs160-remove_0.3-eegnet-ci,"[0.377, 0.439]"
+rc-epochs160-remove_0.3-eegnet-hi,0.439
+rc-epochs160-remove_0.3-eegnet-lo,0.377
+rc-epochs160-remove_0.5-aug,0.440
+rc-epochs160-remove_0.5-aug-ci,"[0.411, 0.471]"
+rc-epochs160-remove_0.5-aug-hi,0.471
+rc-epochs160-remove_0.5-aug-lo,0.411
+rc-epochs160-remove_0.5-eegnet,0.377
+rc-epochs160-remove_0.5-eegnet-ci,"[0.345, 0.409]"
+rc-epochs160-remove_0.5-eegnet-hi,0.409
+rc-epochs160-remove_0.5-eegnet-lo,0.345
 rc-epochs40-amp_5dB-aug,0.468
 rc-epochs40-amp_5dB-aug-ci,"[0.437, 0.499]"
 rc-epochs40-amp_5dB-aug-hi,0.499
@@ -156,6 +262,11 @@ rc-epochs40-amp_5dB-eegnet,0.430
 rc-epochs40-amp_5dB-eegnet-ci,"[0.398, 0.461]"
 rc-epochs40-amp_5dB-eegnet-hi,0.461
 rc-epochs40-amp_5dB-eegnet-lo,0.398
+rc-epochs40-augminus-clean,+0.013
+rc-epochs40-augminus-clean-abs,0.013
+rc-epochs40-augminus-clean-ci,"[-0.016, +0.042]"
+rc-epochs40-augminus-clean-hi,+0.042
+rc-epochs40-augminus-clean-lo,-0.016
 rc-epochs40-augminus-remove_0.3,+0.025
 rc-epochs40-augminus-remove_0.3-abs,0.025
 rc-epochs40-augminus-remove_0.3-ci,"[-0.007, +0.058]"
@@ -190,6 +301,13 @@ rc-epochs40-remove_0.5-eegnet,0.404
 rc-epochs40-remove_0.5-eegnet-ci,"[0.376, 0.433]"
 rc-epochs40-remove_0.5-eegnet-hi,0.433
 rc-epochs40-remove_0.5-eegnet-lo,0.376
+rc-loss50-aug-max,0.048
+rc-loss50-aug-min,0.037
+rc-loss50-unaug-max,0.064
+rc-loss50-unaug-min,0.052
+rc-lossred-max,0.025
+rc-lossred-min,0.007
+rc-n,4
 s-auc-band,0.682
 s-auc-erp,0.799
 s-auc-res,0.658

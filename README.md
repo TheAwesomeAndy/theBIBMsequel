@@ -24,6 +24,7 @@ untouched; all journal work happens here.
 | Edge of stability across ten reservoir draws, thresholds, leaks | `analysis/j4_edge_of_stability.py` | `j4_tcrzem_edge_long.json` |
 | Direct test of Proposition 1 (origin sweep) | `analysis/j5_origin_shift.py` | `j5_tcrzem_origin{,_long}.json` |
 | Pre-stimulus windows and normalization (Proposition 2) | `analysis/j6_prestimulus.py`, `analysis/j7_prestim_null.py` | `j6_*`, `j7_*` |
+| Distance of a silent electrode from typical reservoir activity, per spectral radius | `analysis/j8_silence_distance.py` | `j8_tcrzem_silence_long.json` |
 | Every number, table body, and inline value of the journal manuscript | `analysis/export_journal_values.py` | `manuscript/journal/generated/`, `journal_values.csv` |
 
 Long-epoch runs set `TCRZEM_EPOCH=long`. SHAPE (restricted) and DEAP were not
@@ -31,11 +32,11 @@ reanalyzed; their numbers come from the conference aggregate outputs. See
 `CLAUDE.md` (journal section) for the working rules and `analysis/README.md`
 for the run order.
 
-Build the journal manuscript:
+Build and check the journal manuscript:
 
 ```sh
-python analysis/export_journal_values.py
-cd manuscript/journal && latexmk -pdf -interaction=nonstopmode main_journal.tex
+python scripts/check_journal.py      # export values, build, run the journal gates
+python analysis/verify_jcore.py      # journal code vs conference code on synthetic data
 ```
 
 The conference README follows unchanged for provenance.

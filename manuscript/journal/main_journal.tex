@@ -291,7 +291,7 @@ At the signal level every encoder sees the same corrupted test signal (Tables~\r
 
 \emph{Recorded observation noise.} Re-averaging each test observation from fewer of its own trials lowers ERP-window BA from $\V{xl-sig-clean-erp}$ to $\V{xl-sig-trials1-erp}$ at one trial (loss $\V{xl-loss-trials1-erp-abs}$, CI $\V{xl-loss-trials1-erp-ci}$), whereas the reservoir is unchanged at one trial ($\V{xl-sig-trials1-res}$, loss $\V{xl-loss-trials1-res-abs}$, CI $\V{xl-loss-trials1-res-ci}$) and band-power loses $\V{xl-loss-trials1-band-abs}$ ($\V{xl-loss-trials1-band-ci}$) (Fig.~\ref{fig:signal}a). The paired ERP-window minus reservoir difference moves from $\V{xl-sig-clean-erpres}$ on clean data to $\V{xl-sig-trials1-erpres}$ at one trial (CI $\V{xl-sig-trials1-erpres-ci}$), so the encoders are not separable on single trials. Training used the full averages throughout, so these numbers measure how each fixed representation transfers from trial averages to noisier observations.
 
-\emph{Training effect.} EEGNet, trained end to end on the signal, is the most accurate encoder on the external cohort as on SHAPE. At the conference-matched epoch, where every fixed encoder is near chance, it reaches $\V{x-clean-eegnet}$ (CI $\V{x-clean-eegnet-ci}$) without and $\V{x-clean-aug}$ with augmentation, $\V{x-eegnetminuserp-clean}$ above ERP-window (CI $\V{x-eegnetminuserp-clean-ci}$), and its paired lead over ERP-window has a lower bound at or above zero in every condition (Table~\ref{tab:signal-x}). The SHAPE training effect does not replicate. On SHAPE, channel-dropout and noise augmentation cut EEGNet's loss to electrode removal by more than half ($\V{s-loss-remove0.5-eegnet-abs}$ to $\V{s-loss-remove0.5-aug-abs}$ BA at $50\%$). Here the loss is $\V{x-loss-remove0.3-eegnet-abs}$ and $\V{x-loss-remove0.5-eegnet-abs}$ at $30$ and $50\%$ without augmentation and $\V{x-loss-remove0.3-aug-abs}$ and $\V{x-loss-remove0.5-aug-abs}$ with it. Augmentation instead adds at most $\V{x-augminus-max}$ BA in any condition, with intervals that exclude zero only under $10\%$ removal, $30\%$ spline repair, and $5$~dB noise ($\V{x-augminus-amp5dB}$, CI $\V{x-augminus-amp5dB-ci}$). Spline repair recovers most of the removal loss for EEGNet as for the fixed encoders (loss $\V{x-loss-spline0.5-eegnet-abs}$ at $50\%$, CI $\V{x-loss-spline0.5-eegnet-ci}$). The trained network is also the encoder most affected by recorded observation noise: re-averaging test observations from one trial costs it $\V{x-loss-trials1-eegnet-abs}$ BA (CI $\V{x-loss-trials1-eegnet-ci}$), against $\V{x-loss-trials1-erp-abs}$ for ERP-window, consistent with a network fitted to trial averages. On the long epoch (seed-$42$ partition), EEGNet reaches $\V{xl-clean-eegnet}$ without and $\V{xl-clean-aug}$ with augmentation, against $\V{rc-default-clean-eegnet}$ and $\V{rc-default-clean-aug}$ at the matched epoch on the same partition, so with this recipe the late effects that help the fixed encoders do not raise its accuracy. Augmentation again adds accuracy across conditions ($\V{xl-augminus-clean}$ on clean data, CI $\V{xl-augminus-clean-ci}$) without reducing the loss to $50\%$ removal ($\V{xl-loss-remove0.5-eegnet-abs}$ without and $\V{xl-loss-remove0.5-aug-abs}$ with augmentation), and spline repair again recovers most of that loss ($\V{xl-loss-spline0.5-eegnet-abs}$).
+\emph{Training effect.} EEGNet, trained end to end on the signal, is the most accurate encoder on the external cohort as on SHAPE. At the conference-matched epoch, where every fixed encoder is near chance, it reaches $\V{x-clean-eegnet}$ (CI $\V{x-clean-eegnet-ci}$) without and $\V{x-clean-aug}$ with augmentation, $\V{x-eegnetminuserp-clean}$ above ERP-window (CI $\V{x-eegnetminuserp-clean-ci}$), and its paired lead over ERP-window has a lower bound at or above zero in every condition (Table~\ref{tab:signal-x}). The SHAPE training effect does not replicate in size. On SHAPE, channel-dropout and noise augmentation cut EEGNet's loss to electrode removal by more than half ($\V{s-loss-remove0.5-eegnet-abs}$ to $\V{s-loss-remove0.5-aug-abs}$ BA at $50\%$). Here, over all five partitions with the default recipe, the loss is $\V{x-loss-remove0.3-eegnet-abs}$ and $\V{x-loss-remove0.5-eegnet-abs}$ at $30$ and $50\%$ without augmentation and $\V{x-loss-remove0.3-aug-abs}$ and $\V{x-loss-remove0.5-aug-abs}$ with it. Across $\V{rc-n}$ training recipes on the seed-$42$ partition (Table~\ref{tab:recipes}), augmentation raised BA at $50\%$ removal by $\V{rc-aug50-min}$ to $\V{rc-aug50-max}$ (intervals excluding zero for $\V{rc-aug50-nsig}$ of $\V{rc-n}$ recipes) but also raised clean BA by $\V{rc-augclean-min}$ to $\V{rc-augclean-max}$, so it reduced the loss to removal by only $\V{rc-lossred-min}$ to $\V{rc-lossred-max}$ BA, never by half. Augmentation instead adds at most $\V{x-augminus-max}$ BA in any condition, with intervals that exclude zero only under $10\%$ removal, $30\%$ spline repair, and $5$~dB noise ($\V{x-augminus-amp5dB}$, CI $\V{x-augminus-amp5dB-ci}$). Spline repair recovers most of the removal loss for EEGNet as for the fixed encoders (loss $\V{x-loss-spline0.5-eegnet-abs}$ at $50\%$, CI $\V{x-loss-spline0.5-eegnet-ci}$). The trained network is also the encoder most affected by recorded observation noise: re-averaging test observations from one trial costs it $\V{x-loss-trials1-eegnet-abs}$ BA (CI $\V{x-loss-trials1-eegnet-ci}$), against $\V{x-loss-trials1-erp-abs}$ for ERP-window, consistent with a network fitted to trial averages. On the long epoch (seed-$42$ partition), EEGNet reaches $\V{xl-clean-eegnet}$ without and $\V{xl-clean-aug}$ with augmentation, against $\V{rc-default-clean-eegnet}$ and $\V{rc-default-clean-aug}$ at the matched epoch on the same partition, so with this recipe the late effects that help the fixed encoders do not raise its accuracy. Augmentation again adds accuracy across conditions ($\V{xl-augminus-clean}$ on clean data, CI $\V{xl-augminus-clean-ci}$) without reducing the loss to $50\%$ removal ($\V{xl-loss-remove0.5-eegnet-abs}$ without and $\V{xl-loss-remove0.5-aug-abs}$ with augmentation), and spline repair again recovers most of that loss ($\V{xl-loss-spline0.5-eegnet-abs}$).
 
 \begin{table}[t]
 \caption{SHAPE, signal-level perturbations (conference results~\cite{lane2026edge}): subject-level BA with every representation recomputed from the corrupted test signal. Per-cell $95\%$ CIs are $\pm0.03$ to $\pm0.04$.}
@@ -327,7 +327,7 @@ At the signal level every encoder sees the same corrupted test signal (Tables~\r
 
 \emph{The edge of stability.} The conference reported a transition near $\rho^\ast\approx0.82$ for one reservoir draw. Ten draws on a second cohort's drives place it at $\V{e-rhostar-mean}\pm\V{e-rhostar-sd}$, always below $\rho=1$, but the firing threshold moves it from $\V{e-rhostar-theta0.25}$ to at least $\V{e-rhostar-theta1.0}$. For a thresholded spiking reservoir the edge is therefore a measured property of the unit and its drive rather than a value fixed by the spectral radius, in line with edge-of-chaos analyses of other reservoirs~\cite{bertschinger2004realtime,legenstein2007edge,boedecker2012information} and with the result that $\rho<1$ is neither necessary nor sufficient for the echo-state property~\cite{yildiz2012revisiting}. Clean accuracy was broad around the transition on both cohorts. Its sharpest dependence on the operating point appeared under electrode removal: past the transition a silent electrode lies far from the reservoir's typical code, and on the external long epoch accuracy with $30\%$ of the electrodes silent fell close to chance on average, although SHAPE's short window showed no such separation. An operating point chosen near the edge for clean accuracy may thus be the one least tolerant of absent inputs, and measuring both is cheap.
 
-\emph{Training and physical repair.} Two conference conclusions about electrode loss change with the second cohort. First, augmentation did not reduce EEGNet's loss to electrode removal on the external cohort, so the conference finding that the training procedure sets this architecture's accuracy under electrode loss holds for SHAPE and the recipe used there, not in general (Table~\ref{tab:recipes} varies the recipe). Second, physical repair changed the ranking that the zero trace produced. With spline-repaired electrodes no fixed encoder lost more than $\V{xl-spline50-maxloss}$ BA at $50\%$ removal on the long epoch, EEGNet recovered most of its removal loss, and the ERP-window lead over the reservoir disappeared, although at the conference-matched epoch, where the encoders are near chance, the lead persisted after repair. A zero trace is itself a fill, the signal-level counterpart of zero-fill, and the same advice applies: state it, and compare it with a physically motivated repair~\cite{perrin1989spherical} before ranking representations by their tolerance of missing electrodes.
+\emph{Training and physical repair.} Two conference conclusions about electrode loss change with the second cohort. First, augmentation reduced EEGNet's loss to electrode removal on the external cohort by at most $\V{rc-lossred-max}$ BA across four recipes on one partition, and not at all over five partitions with the default recipe. The conference finding that the training procedure sets this architecture's accuracy under electrode loss therefore holds for SHAPE, where augmentation halved the loss, and not as a general property of the architecture. On the external cohort augmentation acted mostly as a general gain in accuracy. Second, physical repair changed the ranking that the zero trace produced. With spline-repaired electrodes no fixed encoder lost more than $\V{xl-spline50-maxloss}$ BA at $50\%$ removal on the long epoch, EEGNet recovered most of its removal loss, and the ERP-window lead over the reservoir disappeared, although at the conference-matched epoch, where the encoders are near chance, the lead persisted after repair. A zero trace is itself a fill, the signal-level counterpart of zero-fill, and the same advice applies: state it, and compare it with a physically motivated repair~\cite{perrin1989spherical} before ranking representations by their tolerance of missing electrodes.
 
 \emph{A reporting standard.} The results support five reporting items for EEG representation studies under perturbation. First, absolute accuracy with subject-level uncertainty and an empirical permutation floor~\cite{combrisson2015exceeding,varoquaux2018cross}, never retention ratios alone. Second, the fill rule, varied, together with the mean $|\mu|/\sigma$ of the features and the above-chance margin, since together they bound how much the rule can matter. Third, the normalization, and whether any window used for decoding precedes onset. Fourth, trained-model results with and without augmentation~\cite{rommel2022augment}. Fifth, for reservoirs, the measured transition $\rho^\ast$ and more than one weight draw.
 
@@ -372,49 +372,13 @@ Table~\ref{tab:signal-x} gives the signal-level results of the external cohort a
 \label{tab:recipes}
 \centering
 \footnotesize
-\IfFileExists{generated/tab_recipes.tex}{\input{generated/tab_recipes.tex}}{\textbf{DRAFT: pending recipe runs}}
+\input{generated/tab_recipes.tex}
 \end{table*}
 
 \begin{thebibliography}{99}
 
-\bibitem{maass2002real}
-W. Maass, T. Natschl\"ager, and H. Markram, ``Real-time computing without stable states: A new framework for neural computation based on perturbations,'' \emph{Neural Computation}, vol. 14, no. 11, pp. 2531--2560, 2002.
-
-\bibitem{jaeger2001echo}
-H. Jaeger, ``The echo state approach to analysing and training recurrent neural networks,'' German National Research Center for Information Technology, GMD Report 148, 2001.
-
-\bibitem{jaeger2004harnessing}
-H. Jaeger and H. Haas, ``Harnessing nonlinearity: Predicting chaotic systems and saving energy in wireless communication,'' \emph{Science}, vol. 304, no. 5667, pp. 78--80, 2004.
-
-\bibitem{lukosevicius2009reservoir}
-M. Luko\v{s}evi\v{c}ius and H. Jaeger, ``Reservoir computing approaches to recurrent neural network training,'' \emph{Computer Science Review}, vol. 3, no. 3, pp. 127--149, 2009.
-
-\bibitem{bertschinger2004realtime}
-N. Bertschinger and T. Natschl\"ager, ``Real-time computation at the edge of chaos in recurrent neural networks,'' \emph{Neural Computation}, vol. 16, no. 7, pp. 1413--1436, 2004.
-
-\bibitem{legenstein2007edge}
-R. Legenstein and W. Maass, ``Edge of chaos and prediction of computational performance for neural circuit models,'' \emph{Neural Networks}, vol. 20, no. 3, pp. 323--334, 2007.
-
-\bibitem{diehl2015unsupervised}
-P. U. Diehl and M. Cook, ``Unsupervised learning of digit recognition using spike-timing-dependent plasticity,'' \emph{Frontiers in Computational Neuroscience}, vol. 9, Art. no. 99, 2015.
-
-\bibitem{roy2019towards}
-K. Roy, A. Jaiswal, and P. Panda, ``Towards spike-based machine intelligence with neuromorphic computing,'' \emph{Nature}, vol. 575, no. 7784, pp. 607--617, 2019.
-
-\bibitem{lane2023arspi}
-A. Lane, W. Tang, and B. Nelson, ``Towards ARSPI-Net: Development of an efficient hybrid deep learning framework,'' in \emph{Proc. IEEE Long Island Systems, Applications and Technology Conf. (LISAT)}, Old Westbury, NY, USA, 2023, pp. 1--8.
-
-\bibitem{lane2024arspi}
-A. Lane, W. Tang, and B. Nelson, ``Towards ARSPI-Net: Advancing EEG feature extraction with neuromorphic algorithms,'' in \emph{Proc. IEEE Long Island Systems, Applications and Technology Conf. (LISAT)}, Holtsville, NY, USA, 2024, pp. 1--8.
-
-\bibitem{gong2023sglnet}
-P. Gong, P. Wang, Y. Zhou, and D. Zhang, ``A spiking neural network with adaptive graph convolution and LSTM for EEG-based brain-computer interfaces,'' \emph{IEEE Trans. Neural Syst. Rehabil. Eng.}, vol. 31, pp. 1440--1450, 2023.
-
-\bibitem{hjorth1970eeg}
-B. Hjorth, ``EEG analysis based on time domain properties,'' \emph{Electroencephalography and Clinical Neurophysiology}, vol. 29, no. 3, pp. 306--310, 1970.
-
-\bibitem{subasi2007eeg}
-A. Subasi, ``EEG signal classification using wavelet feature extraction and a mixture of expert model,'' \emph{Expert Systems with Applications}, vol. 32, no. 4, pp. 1084--1093, 2007.
+\bibitem{lane2026edge}
+A. A. Lane, W. Tang, and B. D. Nelson, ``On the edge of stability: Spiking reservoir state-space encoding of affective EEG,'' in \emph{Proc. IEEE Int. Conf. Bioinformatics and Biomedicine (BIBM)}, 2026, to appear.
 
 \bibitem{makeig2002dynamic}
 S. Makeig, M. Westerfield, T.-P. Jung, S. Enghoff, J. Townsend, E. Courchesne, and T. J. Sejnowski, ``Dynamic brain sources of visual evoked responses,'' \emph{Science}, vol. 295, no. 5555, pp. 690--694, 2002.
@@ -422,11 +386,47 @@ S. Makeig, M. Westerfield, T.-P. Jung, S. Enghoff, J. Townsend, E. Courchesne, a
 \bibitem{blankertz2011singletrial}
 B. Blankertz, S. Lemm, M. Treder, S. Haufe, and K.-R. M\"uller, ``Single-trial analysis and classification of ERP components: a tutorial,'' \emph{NeuroImage}, vol. 56, no. 2, pp. 814--825, 2011.
 
-\bibitem{lawhern2018eegnet}
-V. J. Lawhern, A. J. Solon, N. R. Waytowich, S. M. Gordon, C. P. Hung, and B. J. Lance, ``EEGNet: A compact convolutional neural network for EEG-based brain-computer interfaces,'' \emph{Journal of Neural Engineering}, vol. 15, no. 5, 056013, 2018.
+\bibitem{maass2002real}
+W. Maass, T. Natschl\"ager, and H. Markram, ``Real-time computing without stable states: A new framework for neural computation based on perturbations,'' \emph{Neural Computation}, vol. 14, no. 11, pp. 2531--2560, 2002.
+
+\bibitem{lukosevicius2009reservoir}
+M. Luko\v{s}evi\v{c}ius and H. Jaeger, ``Reservoir computing approaches to recurrent neural network training,'' \emph{Computer Science Review}, vol. 3, no. 3, pp. 127--149, 2009.
+
+\bibitem{gong2023sglnet}
+P. Gong, P. Wang, Y. Zhou, and D. Zhang, ``A spiking neural network with adaptive graph convolution and LSTM for EEG-based brain-computer interfaces,'' \emph{IEEE Trans. Neural Syst. Rehabil. Eng.}, vol. 31, pp. 1440--1450, 2023.
 
 \bibitem{craik2019deep}
 A. Craik, Y. He, and J. L. Contreras-Vidal, ``Deep learning for electroencephalogram (EEG) classification tasks: A review,'' \emph{Journal of Neural Engineering}, vol. 16, no. 3, 031001, 2019.
+
+\bibitem{cuthbert2000brain}
+B. N. Cuthbert, H. T. Schupp, M. M. Bradley, N. Birbaumer, and P. J. Lang, ``Brain potentials in affective picture processing: Covariation with autonomic arousal and affective report,'' \emph{Biological Psychology}, vol. 52, no. 2, pp. 95--111, 2000.
+
+\bibitem{schupp2006emotion}
+H. T. Schupp, T. Flaisch, J. Stockburger, and M. Jungh\"ofer, ``Emotion and attention: Event-related brain potential studies,'' \emph{Progress in Brain Research}, vol. 156, pp. 31--51, 2006.
+
+\bibitem{hajcak2010erp}
+G. Hajcak, A. MacNamara, and D. M. Olvet, ``Event-related potentials, emotion, and emotion regulation: An integrative review,'' \emph{Developmental Neuropsychology}, vol. 35, no. 2, pp. 129--155, 2010.
+
+\bibitem{revers2025dissociating}
+H. Revers, J. J. Stekelenburg, J. Vroomen, K. Van Deun, and M. Bastiaansen, ``Dissociating affective salience and valence in (very) long-latency ERPs,'' \emph{Psychophysiology}, vol. 62, no. 3, Art. no. e70030, 2025.
+
+\bibitem{hjorth1970eeg}
+B. Hjorth, ``EEG analysis based on time domain properties,'' \emph{Electroencephalography and Clinical Neurophysiology}, vol. 29, no. 3, pp. 306--310, 1970.
+
+\bibitem{subasi2007eeg}
+A. Subasi, ``EEG signal classification using wavelet feature extraction and a mixture of expert model,'' \emph{Expert Systems with Applications}, vol. 32, no. 4, pp. 1084--1093, 2007.
+
+\bibitem{grootswagers2017decoding}
+T. Grootswagers, S. G. Wardle, and T. A. Carlson, ``Decoding dynamic brain patterns from evoked responses: A tutorial on multivariate pattern analysis applied to time series neuroimaging data,'' \emph{Journal of Cognitive Neuroscience}, vol. 29, no. 4, pp. 677--697, 2017.
+
+\bibitem{lawhern2018eegnet}
+V. J. Lawhern, A. J. Solon, N. R. Waytowich, S. M. Gordon, C. P. Hung, and B. J. Lance, ``EEGNet: A compact convolutional neural network for EEG-based brain-computer interfaces,'' \emph{Journal of Neural Engineering}, vol. 15, no. 5, 056013, 2018.
+
+\bibitem{roy2019deep}
+Y. Roy, H. Banville, I. Albuquerque, A. Gramfort, T. H. Falk, and J. Faubert, ``Deep learning-based electroencephalography analysis: A systematic review,'' \emph{Journal of Neural Engineering}, vol. 16, no. 5, Art. no. 051001, 2019.
+
+\bibitem{delpup2025preprocessing}
+F. Del Pup, A. Zanola, L. F. Tshimanga, A. Bertoldo, and M. Atzori, ``The more, the better? Evaluating the role of EEG preprocessing for deep learning applications,'' \emph{IEEE Trans. Neural Syst. Rehabil. Eng.}, vol. 33, pp. 1061--1070, 2025.
 
 \bibitem{chiang2023depression}
 H.-S. Chiang, M.-Y. Chen, and L.-S. Liao, ``Cognitive depression detection cyber-medical system based on EEG analysis and deep learning approaches,'' \emph{IEEE J. Biomed. Health Inform.}, vol. 27, no. 2, pp. 608--616, 2023.
@@ -434,20 +434,44 @@ H.-S. Chiang, M.-Y. Chen, and L.-S. Liao, ``Cognitive depression detection cyber
 \bibitem{guo2025mma}
 Y. Guo, K. Yang, and Y. Wu, ``A multi-modality attention network for driver fatigue detection based on frontal EEG, EDA and PPG signals,'' \emph{IEEE J. Biomed. Health Inform.}, vol. 29, no. 6, pp. 4009--4022, 2025.
 
-\bibitem{delpup2025preprocessing}
-F. Del Pup, A. Zanola, L. F. Tshimanga, A. Bertoldo, and M. Atzori, ``The more, the better? Evaluating the role of EEG preprocessing for deep learning applications,'' \emph{IEEE Trans. Neural Syst. Rehabil. Eng.}, vol. 33, pp. 1061--1070, 2025.
+\bibitem{jaeger2001echo}
+H. Jaeger, ``The echo state approach to analysing and training recurrent neural networks,'' German National Research Center for Information Technology, GMD Report 148, 2001.
 
-\bibitem{kornblith2019similarity}
-S. Kornblith, M. Norouzi, H. Lee, and G. Hinton, ``Similarity of neural network representations revisited,'' in \emph{Proc. Int. Conf. Machine Learning}, 2019, pp. 3519--3529.
+\bibitem{jaeger2004harnessing}
+H. Jaeger and H. Haas, ``Harnessing nonlinearity: Predicting chaotic systems and saving energy in wireless communication,'' \emph{Science}, vol. 304, no. 5667, pp. 78--80, 2004.
 
-\bibitem{sirca2026beyond}
-U. \v{S}irca, M. Alimardani, S. Zafeiriou, and K. Barmpas, ``Beyond accuracy: Robustness, interpretability and expressiveness of EEG foundation models,'' \emph{arXiv:2605.17562}, 2026.
+\bibitem{diehl2015unsupervised}
+P. U. Diehl and M. Cook, ``Unsupervised learning of digit recognition using spike-timing-dependent plasticity,'' \emph{Frontiers in Computational Neuroscience}, vol. 9, Art. no. 99, 2015.
+
+\bibitem{roy2019towards}
+K. Roy, A. Jaiswal, and P. Panda, ``Towards spike-based machine intelligence with neuromorphic computing,'' \emph{Nature}, vol. 575, no. 7784, pp. 607--617, 2019.
+
+\bibitem{bertschinger2004realtime}
+N. Bertschinger and T. Natschl\"ager, ``Real-time computation at the edge of chaos in recurrent neural networks,'' \emph{Neural Computation}, vol. 16, no. 7, pp. 1413--1436, 2004.
+
+\bibitem{legenstein2007edge}
+R. Legenstein and W. Maass, ``Edge of chaos and prediction of computational performance for neural circuit models,'' \emph{Neural Networks}, vol. 20, no. 3, pp. 323--334, 2007.
+
+\bibitem{boedecker2012information}
+J. Boedecker, O. Obst, J. T. Lizier, N. M. Mayer, and M. Asada, ``Information processing in echo state networks at the edge of chaos,'' \emph{Theory in Biosciences}, vol. 131, no. 3, pp. 205--213, 2012.
+
+\bibitem{yildiz2012revisiting}
+I. B. Yildiz, H. Jaeger, and S. J. Kiebel, ``Re-visiting the echo state property,'' \emph{Neural Networks}, vol. 35, pp. 1--9, 2012.
+
+\bibitem{lane2023arspi}
+A. Lane, W. Tang, and B. Nelson, ``Towards ARSPI-Net: Development of an efficient hybrid deep learning framework,'' in \emph{Proc. IEEE Long Island Systems, Applications and Technology Conf. (LISAT)}, Old Westbury, NY, USA, 2023, pp. 1--8.
+
+\bibitem{lane2024arspi}
+A. Lane, W. Tang, and B. Nelson, ``Towards ARSPI-Net: Advancing EEG feature extraction with neuromorphic algorithms,'' in \emph{Proc. IEEE Long Island Systems, Applications and Technology Conf. (LISAT)}, Holtsville, NY, USA, 2024, pp. 1--8.
 
 \bibitem{banville2022dsf}
 H. Banville, S. U. N. Wood, C. Aimone, D.-A. Engemann, and A. Gramfort, ``Robust learning from corrupted EEG with dynamic spatial filtering,'' \emph{NeuroImage}, vol. 251, 118994, 2022.
 
 \bibitem{rommel2022augment}
 C. Rommel, J. Paillard, T. Moreau, and A. Gramfort, ``Data augmentation for learning predictive models on EEG: A systematic comparison,'' \emph{Journal of Neural Engineering}, vol. 19, no. 6, 066020, 2022.
+
+\bibitem{sirca2026beyond}
+U. \v{S}irca, M. Alimardani, S. Zafeiriou, and K. Barmpas, ``Beyond accuracy: Robustness, interpretability and expressiveness of EEG foundation models,'' \emph{arXiv:2605.17562}, 2026.
 
 \bibitem{perrin1989spherical}
 F. Perrin, J. Pernier, O. Bertrand, and J. F. Echallier, ``Spherical splines for scalp potential and current density mapping,'' \emph{Electroencephalography and Clinical Neurophysiology}, vol. 72, no. 2, pp. 184--187, 1989.
@@ -458,36 +482,6 @@ Y. Bi, A. Abrol, S. Jia, J. Sui, and V. D. Calhoun, ``Gray matters: ViT-GAN fram
 \bibitem{hu2025gmldm}
 X. Hu, J. Yang, S. Jia, Y. Bi, and V. D. Calhoun, ``GM-LDM: Latent diffusion model for brain biomarker identification through functional data-driven gray matter synthesis,'' arXiv:2506.12719, 2025.
 
-\bibitem{koelstra2012deap}
-S. Koelstra \emph{et al.}, ``DEAP: A database for emotion analysis using physiological signals,'' \emph{IEEE Trans. Affective Computing}, vol. 3, no. 1, pp. 18--31, 2012.
-
-\bibitem{shape}
-Laboratory for Clinical Affective Neuroscience, ``The Stress, Health, and the Psychophysiology of Emotion (SHAPE) project,'' Stony Brook University, Stony Brook, NY, USA. [Online]. Available: \url{https://lab-can.com}
-
-\bibitem{lane2026edge}
-A. A. Lane, W. Tang, and B. D. Nelson, ``On the edge of stability: Spiking reservoir state-space encoding of affective EEG,'' in \emph{Proc. IEEE Int. Conf. Bioinformatics and Biomedicine (BIBM)}, 2026, to appear.
-
-\bibitem{lane2026entanglement}
-A. A. Lane, K. W. Tang, and B. D. Nelson, ``Subject-covariance entanglement in affective EEG embeddings,'' \emph{IEEE Signal Processing Letters}, submitted, 2026.
-
-\bibitem{revers2025dissociating}
-H. Revers, J. J. Stekelenburg, J. Vroomen, K. Van Deun, and M. Bastiaansen, ``Dissociating affective salience and valence in (very) long-latency ERPs,'' \emph{Psychophysiology}, vol. 62, no. 3, Art. no. e70030, 2025.
-
-\bibitem{tcrzem2025data}
-H. Revers, J. J. Stekelenburg, J. Vroomen, K. Van Deun, and M. Bastiaansen, ``EEG data of 239 participants during passive viewing of IAPS images in clearly distinct valence categories (positive, neutral, negative) with MatLab scripts,'' DataverseNL, V1, 2025, doi: 10.34894/TCRZEM.
-
-\bibitem{boedecker2012information}
-J. Boedecker, O. Obst, J. T. Lizier, N. M. Mayer, and M. Asada, ``Information processing in echo state networks at the edge of chaos,'' \emph{Theory in Biosciences}, vol. 131, no. 3, pp. 205--213, 2012.
-
-\bibitem{yildiz2012revisiting}
-I. B. Yildiz, H. Jaeger, and S. J. Kiebel, ``Re-visiting the echo state property,'' \emph{Neural Networks}, vol. 35, pp. 1--9, 2012.
-
-\bibitem{combrisson2015exceeding}
-E. Combrisson and K. Jerbi, ``Exceeding chance level by chance: The caveat of theoretical chance levels in brain signal classification and statistical assessment of decoding accuracy,'' \emph{Journal of Neuroscience Methods}, vol. 250, pp. 126--136, 2015.
-
-\bibitem{varoquaux2018cross}
-G. Varoquaux, ``Cross-validation failure: Small sample sizes lead to large error bars,'' \emph{NeuroImage}, vol. 180, pp. 68--77, 2018.
-
 \bibitem{acunzo2012systematic}
 D. J. Acunzo, G. MacKenzie, and M. C. W. van Rossum, ``Systematic biases in early ERP and ERF components as a result of high-pass filtering,'' \emph{Journal of Neuroscience Methods}, vol. 209, no. 1, pp. 212--218, 2012.
 
@@ -497,26 +491,29 @@ D. Tanner, K. Morgan-Short, and S. J. Luck, ``How inappropriate high-pass filter
 \bibitem{vanrullen2011four}
 R. VanRullen, ``Four common conceptual fallacies in mapping the time course of recognition,'' \emph{Frontiers in Psychology}, vol. 2, Art. no. 365, 2011.
 
-\bibitem{kapoor2023leakage}
-S. Kapoor and A. Narayanan, ``Leakage and the reproducibility crisis in machine-learning-based science,'' \emph{Patterns}, vol. 4, no. 9, Art. no. 100804, 2023.
-
 \bibitem{kriegeskorte2009circular}
 N. Kriegeskorte, W. K. Simmons, P. S. F. Bellgowan, and C. I. Baker, ``Circular analysis in systems neuroscience: The dangers of double dipping,'' \emph{Nature Neuroscience}, vol. 12, no. 5, pp. 535--540, 2009.
 
-\bibitem{hajcak2010erp}
-G. Hajcak, A. MacNamara, and D. M. Olvet, ``Event-related potentials, emotion, and emotion regulation: An integrative review,'' \emph{Developmental Neuropsychology}, vol. 35, no. 2, pp. 129--155, 2010.
+\bibitem{kapoor2023leakage}
+S. Kapoor and A. Narayanan, ``Leakage and the reproducibility crisis in machine-learning-based science,'' \emph{Patterns}, vol. 4, no. 9, Art. no. 100804, 2023.
 
-\bibitem{grootswagers2017decoding}
-T. Grootswagers, S. G. Wardle, and T. A. Carlson, ``Decoding dynamic brain patterns from evoked responses: A tutorial on multivariate pattern analysis applied to time series neuroimaging data,'' \emph{Journal of Cognitive Neuroscience}, vol. 29, no. 4, pp. 677--697, 2017.
+\bibitem{combrisson2015exceeding}
+E. Combrisson and K. Jerbi, ``Exceeding chance level by chance: The caveat of theoretical chance levels in brain signal classification and statistical assessment of decoding accuracy,'' \emph{Journal of Neuroscience Methods}, vol. 250, pp. 126--136, 2015.
 
-\bibitem{roy2019deep}
-Y. Roy, H. Banville, I. Albuquerque, A. Gramfort, T. H. Falk, and J. Faubert, ``Deep learning-based electroencephalography analysis: A systematic review,'' \emph{Journal of Neural Engineering}, vol. 16, no. 5, Art. no. 051001, 2019.
+\bibitem{varoquaux2018cross}
+G. Varoquaux, ``Cross-validation failure: Small sample sizes lead to large error bars,'' \emph{NeuroImage}, vol. 180, pp. 68--77, 2018.
 
-\bibitem{schupp2006emotion}
-H. T. Schupp, T. Flaisch, J. Stockburger, and M. Jungh\"ofer, ``Emotion and attention: Event-related brain potential studies,'' \emph{Progress in Brain Research}, vol. 156, pp. 31--51, 2006.
+\bibitem{lane2026entanglement}
+A. A. Lane, K. W. Tang, and B. D. Nelson, ``Subject-covariance entanglement in affective EEG embeddings,'' \emph{IEEE Signal Processing Letters}, submitted, 2026.
 
-\bibitem{cuthbert2000brain}
-B. N. Cuthbert, H. T. Schupp, M. M. Bradley, N. Birbaumer, and P. J. Lang, ``Brain potentials in affective picture processing: Covariation with autonomic arousal and affective report,'' \emph{Biological Psychology}, vol. 52, no. 2, pp. 95--111, 2000.
+\bibitem{shape}
+Laboratory for Clinical Affective Neuroscience, ``The Stress, Health, and the Psychophysiology of Emotion (SHAPE) project,'' Stony Brook University, Stony Brook, NY, USA. [Online]. Available: \url{https://lab-can.com}
+
+\bibitem{tcrzem2025data}
+H. Revers, J. J. Stekelenburg, J. Vroomen, K. Van Deun, and M. Bastiaansen, ``EEG data of 239 participants during passive viewing of IAPS images in clearly distinct valence categories (positive, neutral, negative) with MatLab scripts,'' DataverseNL, V1, 2025, doi: 10.34894/TCRZEM.
+
+\bibitem{koelstra2012deap}
+S. Koelstra \emph{et al.}, ``DEAP: A database for emotion analysis using physiological signals,'' \emph{IEEE Trans. Affective Computing}, vol. 3, no. 1, pp. 18--31, 2012.
 
 \end{thebibliography}
 

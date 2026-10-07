@@ -108,6 +108,13 @@
 \expandafter\def\csname jv@e-z0-1.5\endcsname{6.23}
 \expandafter\def\csname jv@e-z0-low-max\endcsname{1.36}
 \expandafter\def\csname jv@e-z0-low-min\endcsname{1.21}
+\expandafter\def\csname jv@rc-aug50-max\endcsname{+0.063}
+\expandafter\def\csname jv@rc-aug50-min\endcsname{+0.020}
+\expandafter\def\csname jv@rc-aug50-nsig\endcsname{3}
+\expandafter\def\csname jv@rc-augclean-max\endcsname{+0.046}
+\expandafter\def\csname jv@rc-augclean-min\endcsname{+0.013}
+\expandafter\def\csname jv@rc-clean-max\endcsname{0.463}
+\expandafter\def\csname jv@rc-clean-min\endcsname{0.431}
 \expandafter\def\csname jv@rc-default-amp_5dB-aug\endcsname{0.465}
 \expandafter\def\csname jv@rc-default-amp_5dB-aug-ci\endcsname{[0.433, 0.497]}
 \expandafter\def\csname jv@rc-default-amp_5dB-aug-hi\endcsname{0.497}
@@ -116,6 +123,11 @@
 \expandafter\def\csname jv@rc-default-amp_5dB-eegnet-ci\endcsname{[0.404, 0.465]}
 \expandafter\def\csname jv@rc-default-amp_5dB-eegnet-hi\endcsname{0.465}
 \expandafter\def\csname jv@rc-default-amp_5dB-eegnet-lo\endcsname{0.404}
+\expandafter\def\csname jv@rc-default-augminus-clean\endcsname{+0.022}
+\expandafter\def\csname jv@rc-default-augminus-clean-abs\endcsname{0.022}
+\expandafter\def\csname jv@rc-default-augminus-clean-ci\endcsname{[-0.009, +0.053]}
+\expandafter\def\csname jv@rc-default-augminus-clean-hi\endcsname{+0.053}
+\expandafter\def\csname jv@rc-default-augminus-clean-lo\endcsname{-0.009}
 \expandafter\def\csname jv@rc-default-augminus-remove_0.3\endcsname{+0.039}
 \expandafter\def\csname jv@rc-default-augminus-remove_0.3-abs\endcsname{0.039}
 \expandafter\def\csname jv@rc-default-augminus-remove_0.3-ci\endcsname{[+0.003, +0.073]}
@@ -150,6 +162,100 @@
 \expandafter\def\csname jv@rc-default-remove_0.5-eegnet-ci\endcsname{[0.370, 0.430]}
 \expandafter\def\csname jv@rc-default-remove_0.5-eegnet-hi\endcsname{0.430}
 \expandafter\def\csname jv@rc-default-remove_0.5-eegnet-lo\endcsname{0.370}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-aug\endcsname{0.477}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-aug-ci\endcsname{[0.444, 0.509]}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-aug-hi\endcsname{0.509}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-aug-lo\endcsname{0.444}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-eegnet\endcsname{0.459}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-eegnet-ci\endcsname{[0.427, 0.493]}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-eegnet-hi\endcsname{0.493}
+\expandafter\def\csname jv@rc-dropout50-amp_5dB-eegnet-lo\endcsname{0.427}
+\expandafter\def\csname jv@rc-dropout50-augminus-clean\endcsname{+0.022}
+\expandafter\def\csname jv@rc-dropout50-augminus-clean-abs\endcsname{0.022}
+\expandafter\def\csname jv@rc-dropout50-augminus-clean-ci\endcsname{[-0.009, +0.053]}
+\expandafter\def\csname jv@rc-dropout50-augminus-clean-hi\endcsname{+0.053}
+\expandafter\def\csname jv@rc-dropout50-augminus-clean-lo\endcsname{-0.009}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.3\endcsname{+0.047}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.3-abs\endcsname{0.047}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.3-ci\endcsname{[+0.013, +0.080]}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.3-hi\endcsname{+0.080}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.3-lo\endcsname{+0.013}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.5\endcsname{+0.031}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.5-abs\endcsname{0.031}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.5-ci\endcsname{[+0.001, +0.060]}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.5-hi\endcsname{+0.060}
+\expandafter\def\csname jv@rc-dropout50-augminus-remove_0.5-lo\endcsname{+0.001}
+\expandafter\def\csname jv@rc-dropout50-clean-aug\endcsname{0.485}
+\expandafter\def\csname jv@rc-dropout50-clean-aug-ci\endcsname{[0.455, 0.516]}
+\expandafter\def\csname jv@rc-dropout50-clean-aug-hi\endcsname{0.516}
+\expandafter\def\csname jv@rc-dropout50-clean-aug-lo\endcsname{0.455}
+\expandafter\def\csname jv@rc-dropout50-clean-eegnet\endcsname{0.463}
+\expandafter\def\csname jv@rc-dropout50-clean-eegnet-ci\endcsname{[0.430, 0.496]}
+\expandafter\def\csname jv@rc-dropout50-clean-eegnet-hi\endcsname{0.496}
+\expandafter\def\csname jv@rc-dropout50-clean-eegnet-lo\endcsname{0.430}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-aug\endcsname{0.456}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-aug-ci\endcsname{[0.423, 0.490]}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-aug-hi\endcsname{0.490}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-aug-lo\endcsname{0.423}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-eegnet\endcsname{0.409}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-eegnet-ci\endcsname{[0.379, 0.442]}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-eegnet-hi\endcsname{0.442}
+\expandafter\def\csname jv@rc-dropout50-remove_0.3-eegnet-lo\endcsname{0.379}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-aug\endcsname{0.442}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-aug-ci\endcsname{[0.412, 0.471]}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-aug-hi\endcsname{0.471}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-aug-lo\endcsname{0.412}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-eegnet\endcsname{0.411}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-eegnet-ci\endcsname{[0.383, 0.440]}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-eegnet-hi\endcsname{0.440}
+\expandafter\def\csname jv@rc-dropout50-remove_0.5-eegnet-lo\endcsname{0.383}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-aug\endcsname{0.484}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-aug-ci\endcsname{[0.452, 0.516]}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-aug-hi\endcsname{0.516}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-aug-lo\endcsname{0.452}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-eegnet\endcsname{0.421}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-eegnet-ci\endcsname{[0.392, 0.450]}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-eegnet-hi\endcsname{0.450}
+\expandafter\def\csname jv@rc-epochs160-amp_5dB-eegnet-lo\endcsname{0.392}
+\expandafter\def\csname jv@rc-epochs160-augminus-clean\endcsname{+0.046}
+\expandafter\def\csname jv@rc-epochs160-augminus-clean-abs\endcsname{0.046}
+\expandafter\def\csname jv@rc-epochs160-augminus-clean-ci\endcsname{[+0.013, +0.077]}
+\expandafter\def\csname jv@rc-epochs160-augminus-clean-hi\endcsname{+0.077}
+\expandafter\def\csname jv@rc-epochs160-augminus-clean-lo\endcsname{+0.013}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.3\endcsname{+0.029}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.3-abs\endcsname{0.029}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.3-ci\endcsname{[-0.007, +0.064]}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.3-hi\endcsname{+0.064}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.3-lo\endcsname{-0.007}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.5\endcsname{+0.063}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.5-abs\endcsname{0.063}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.5-ci\endcsname{[+0.026, +0.096]}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.5-hi\endcsname{+0.096}
+\expandafter\def\csname jv@rc-epochs160-augminus-remove_0.5-lo\endcsname{+0.026}
+\expandafter\def\csname jv@rc-epochs160-clean-aug\endcsname{0.477}
+\expandafter\def\csname jv@rc-epochs160-clean-aug-ci\endcsname{[0.444, 0.509]}
+\expandafter\def\csname jv@rc-epochs160-clean-aug-hi\endcsname{0.509}
+\expandafter\def\csname jv@rc-epochs160-clean-aug-lo\endcsname{0.444}
+\expandafter\def\csname jv@rc-epochs160-clean-eegnet\endcsname{0.431}
+\expandafter\def\csname jv@rc-epochs160-clean-eegnet-ci\endcsname{[0.399, 0.465]}
+\expandafter\def\csname jv@rc-epochs160-clean-eegnet-hi\endcsname{0.465}
+\expandafter\def\csname jv@rc-epochs160-clean-eegnet-lo\endcsname{0.399}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-aug\endcsname{0.437}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-aug-ci\endcsname{[0.405, 0.468]}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-aug-hi\endcsname{0.468}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-aug-lo\endcsname{0.405}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-eegnet\endcsname{0.408}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-eegnet-ci\endcsname{[0.377, 0.439]}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-eegnet-hi\endcsname{0.439}
+\expandafter\def\csname jv@rc-epochs160-remove_0.3-eegnet-lo\endcsname{0.377}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-aug\endcsname{0.440}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-aug-ci\endcsname{[0.411, 0.471]}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-aug-hi\endcsname{0.471}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-aug-lo\endcsname{0.411}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-eegnet\endcsname{0.377}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-eegnet-ci\endcsname{[0.345, 0.409]}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-eegnet-hi\endcsname{0.409}
+\expandafter\def\csname jv@rc-epochs160-remove_0.5-eegnet-lo\endcsname{0.345}
 \expandafter\def\csname jv@rc-epochs40-amp_5dB-aug\endcsname{0.468}
 \expandafter\def\csname jv@rc-epochs40-amp_5dB-aug-ci\endcsname{[0.437, 0.499]}
 \expandafter\def\csname jv@rc-epochs40-amp_5dB-aug-hi\endcsname{0.499}
@@ -158,6 +264,11 @@
 \expandafter\def\csname jv@rc-epochs40-amp_5dB-eegnet-ci\endcsname{[0.398, 0.461]}
 \expandafter\def\csname jv@rc-epochs40-amp_5dB-eegnet-hi\endcsname{0.461}
 \expandafter\def\csname jv@rc-epochs40-amp_5dB-eegnet-lo\endcsname{0.398}
+\expandafter\def\csname jv@rc-epochs40-augminus-clean\endcsname{+0.013}
+\expandafter\def\csname jv@rc-epochs40-augminus-clean-abs\endcsname{0.013}
+\expandafter\def\csname jv@rc-epochs40-augminus-clean-ci\endcsname{[-0.016, +0.042]}
+\expandafter\def\csname jv@rc-epochs40-augminus-clean-hi\endcsname{+0.042}
+\expandafter\def\csname jv@rc-epochs40-augminus-clean-lo\endcsname{-0.016}
 \expandafter\def\csname jv@rc-epochs40-augminus-remove_0.3\endcsname{+0.025}
 \expandafter\def\csname jv@rc-epochs40-augminus-remove_0.3-abs\endcsname{0.025}
 \expandafter\def\csname jv@rc-epochs40-augminus-remove_0.3-ci\endcsname{[-0.007, +0.058]}
@@ -192,6 +303,13 @@
 \expandafter\def\csname jv@rc-epochs40-remove_0.5-eegnet-ci\endcsname{[0.376, 0.433]}
 \expandafter\def\csname jv@rc-epochs40-remove_0.5-eegnet-hi\endcsname{0.433}
 \expandafter\def\csname jv@rc-epochs40-remove_0.5-eegnet-lo\endcsname{0.376}
+\expandafter\def\csname jv@rc-loss50-aug-max\endcsname{0.048}
+\expandafter\def\csname jv@rc-loss50-aug-min\endcsname{0.037}
+\expandafter\def\csname jv@rc-loss50-unaug-max\endcsname{0.064}
+\expandafter\def\csname jv@rc-loss50-unaug-min\endcsname{0.052}
+\expandafter\def\csname jv@rc-lossred-max\endcsname{0.025}
+\expandafter\def\csname jv@rc-lossred-min\endcsname{0.007}
+\expandafter\def\csname jv@rc-n\endcsname{4}
 \expandafter\def\csname jv@s-auc-band\endcsname{0.682}
 \expandafter\def\csname jv@s-auc-erp\endcsname{0.799}
 \expandafter\def\csname jv@s-auc-res\endcsname{0.658}

@@ -277,12 +277,28 @@ def recipe_values():
             for c in ("clean", "remove_0.3", "remove_0.5", "amp_5dB"):
                 put_ba(f"rc-{r}-{c}-{ENC[m]}", d["BA"][c][m]["BA"], d["BA"][c][m]["ci95"])
                 cells.append(f"${f3(d['BA'][c][m]['BA'])}$")
-        for c in ("remove_0.3", "remove_0.5"):
+        for c in ("clean", "remove_0.3", "remove_0.5"):
             put_diff(f"rc-{r}-augminus-{c}", d["paired_aug_minus_unaug"][c])
         a = d["paired_aug_minus_unaug"]["remove_0.5"]
         rows.append(f"{lab} & " + " & ".join(cells) + f" & {dcell(a)} \\\\")
     if rows:
         (GEN / "tab_recipes.rows").write_text("\n".join(rows) + "\n")
+    got = [r for r in names if load(JAG / ("j3_tcrzem_eegnet_s42.json" if r == "default" else f"j3_tcrzem_eegnet_{r}_s42.json"))]
+    if got:
+        aug50 = [float(VALUES[f"rc-{r}-augminus-remove_0.5"]) for r in got]
+        put("rc-aug50-min", s3(min(aug50))); put("rc-aug50-max", s3(max(aug50)))
+        sig = [r for r in got if float(VALUES[f"rc-{r}-augminus-remove_0.5-lo"]) > 0]
+        put("rc-aug50-nsig", str(len(sig))); put("rc-n", str(len(got)))
+        cl = [float(VALUES[f"rc-{r}-clean-eegnet"]) for r in got]
+        put("rc-clean-min", f3(min(cl))); put("rc-clean-max", f3(max(cl)))
+        augc = [float(VALUES[f"rc-{r}-augminus-clean"]) for r in got]
+        put("rc-augclean-min", s3(min(augc))); put("rc-augclean-max", s3(max(augc)))
+        lu = [float(VALUES[f"rc-{r}-clean-eegnet"]) - float(VALUES[f"rc-{r}-remove_0.5-eegnet"]) for r in got]
+        la = [float(VALUES[f"rc-{r}-clean-aug"]) - float(VALUES[f"rc-{r}-remove_0.5-aug"]) for r in got]
+        put("rc-loss50-unaug-min", f3(min(lu))); put("rc-loss50-unaug-max", f3(max(lu)))
+        put("rc-loss50-aug-min", f3(min(la))); put("rc-loss50-aug-max", f3(max(la)))
+        red = [a - b for a, b in zip(lu, la)]
+        put("rc-lossred-min", f3(min(red))); put("rc-lossred-max", ceil3(max(red)))
 
 
 def erp_summary():
