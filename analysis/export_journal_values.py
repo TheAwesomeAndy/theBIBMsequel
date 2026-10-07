@@ -102,6 +102,17 @@ def shape_values():
         if c != "remove_0.0":
             for m in ("EEGNet", "EEGNet+aug"):
                 put_diff(f"s-loss-{cc}-{ENC[m]}", e3["paired_clean_minus_condition"][c][m])
+    deap = load(AGG / "deap_replication_v2.json")
+    if deap:
+        bp = deap["BandPower"]
+        put_ba("d-clean", bp["clean"]["subject_mean_BA"], bp["clean"]["subject_ci95"])
+        for lv in ("0.10", "0.30", "0.50"):
+            for fill, r in bp[lv].items():
+                put_ba(f"d-{int(float(lv) * 100)}-{fill}", r["subject_mean_BA"], r["subject_ci95"])
+        gap = max(max(bp[lv]["mean"]["subject_mean_BA"], bp[lv]["knn"]["subject_mean_BA"]) - bp[lv]["zero"]["subject_mean_BA"]
+                  for lv in ("0.10", "0.30", "0.50"))
+        put("d-maxgap", f"{gap:.2f}")
+        put("d-margin", f"{bp['clean']['subject_mean_BA'] - 0.5:.2f}")
     put(f"s-rhostar", "0.82")
     put_ba("s-rho09-clean", e1["BA"]["0.9"]["clean"]["BA"], e1["BA"]["0.9"]["clean"]["ci95"])
     put_diff("s-rho0-minus-09", e1["paired_vs_rho0.9"]["0.0"]["clean"])
@@ -264,7 +275,7 @@ def recipe_values():
         a = d["paired_aug_minus_unaug"]["remove_0.5"]
         rows.append(f"{lab} & " + " & ".join(cells) + f" & {dcell(a)} \\\\")
     if rows:
-        (GEN / "tab_recipes.tex").write_text("\n".join(rows) + "\n")
+        (GEN / "tab_recipes.rows").write_text("\n".join(rows) + "\n")
 
 
 def edge_values():
@@ -323,7 +334,7 @@ def table_clean(e5, e3, x, xl, x3, xl3):
         rows[start] = f"\\multirow{{{n}}}{{*}}{{\\shortstack[l]{{{lab}}}}}" + rows[start]
         if i < len(blocks) - 1:
             rows.append("\\midrule")
-    (GEN / "tab_clean.tex").write_text("\n".join(rows) + "\n")
+    (GEN / "tab_clean.rows").write_text("\n".join(rows) + "\n")
 
 
 def table_fills(e2, x, xl):
@@ -348,7 +359,7 @@ def table_fills(e2, x, xl):
             rows.append(f"{pre} & {name} & " + " & ".join(f"${f3(v)}$" for v in vals) + f" & {dcell(d)} \\\\")
         if bi < len(blocks) - 1:
             rows.append("\\midrule")
-    (GEN / "tab_fills.tex").write_text("\n".join(rows) + "\n")
+    (GEN / "tab_fills.rows").write_text("\n".join(rows) + "\n")
 
 
 def table_signal_ext(tag, j2, j3):
@@ -367,7 +378,7 @@ def table_signal_ext(tag, j2, j3):
         rows.append(f"{l} & " + " & ".join(cells) + " \\\\")
         if c in ("clean", "remove_0.5", "spline_0.5", "jitter_50ms"):
             rows.append("\\midrule")
-    (GEN / f"tab_signal_{tag}.tex").write_text("\n".join(rows) + "\n")
+    (GEN / f"tab_signal_{tag}.rows").write_text("\n".join(rows) + "\n")
 
 
 def table_signal_shape(e4, e3):
@@ -381,7 +392,7 @@ def table_signal_shape(e4, e3):
         cells = [f"${f3(r[n]['BA'])}$" for n in ("Band-power", "ERP-window", "Reservoir")]
         cells += [f"${f3(e3['BA'][c3][m]['BA'])}$" for m in ("EEGNet", "EEGNet+aug")]
         rows.append(f"{l} & " + " & ".join(cells) + " \\\\")
-    (GEN / "tab_signal_shape.tex").write_text("\n".join(rows) + "\n")
+    (GEN / "tab_signal_shape.rows").write_text("\n".join(rows) + "\n")
 
 
 def table_edge(j4):
@@ -398,7 +409,7 @@ def table_edge(j4):
     S = j4["summary"]
     rows.append("\\midrule")
     rows.append(f"Mean & ${sum(S['rho_star']) / len(S['rho_star']):.2f}$ & " + " & ".join(f"${f3(v)}$" for v in S["BA_clean_mean"]) + " & & \\\\")
-    (GEN / "tab_edge.tex").write_text("\n".join(rows) + "\n")
+    (GEN / "tab_edge.rows").write_text("\n".join(rows) + "\n")
 
 
 def table_origin(tag, j5, j1):
@@ -412,7 +423,30 @@ def table_origin(tag, j5, j1):
                     f"${f3(e['native_zero']['BA'])}$ & ${f3(e['kappa_-2.0']['BA'])}$ & ${f3(e['kappa_+0.0']['BA'])}$ & "
                     f"${f3(e['kappa_+2.0']['BA'])}$ & ${p['mean_class_centered_norm']:.2f}$ & "
                     f"${100 * p['fraction_predictions_flipped_zero_vs_mean']:.1f}$ \\\\")
-    (GEN / f"tab_origin_{tag}.tex").write_text("\n".join(rows) + "\n")
+    (GEN / f"tab_origin_{tag}.rows").write_text("\n".join(rows) + "\n")
+
+
+HEADERS = {
+    "tab_clean": ("llcccc", "Cohort & Encoder & BA [95\\% CI] & F1 & AUC & Null max \\\\"),
+    "tab_fills": ("llcccc", "Cohort & Fill & Band & ERP & Res. & ERP$-$Res [95\\% CI] \\\\"),
+    "tab_signal_shape": ("lccccc", "Condition & Band & ERP & Res. & EEGNet & +aug. \\\\"),
+    "tab_signal_x": ("lccccc", "Condition & Band & ERP & Res. & EEGNet & +aug. \\\\"),
+    "tab_signal_xl": ("lccccc", "Condition & Band & ERP & Res. & EEGNet & +aug. \\\\"),
+    "tab_edge": ("lccccccccc", "Draw & $\\rho^\\ast$ & $0$ & $0.3$ & $0.6$ & $0.9$ & $1.2$ & $1.5$ & Best & $\\rho{=}0$ $-$ $0.9$ [95\\% CI] \\\\"),
+    "tab_origin_x": ("lcccccccc", "Encoder & $\\frac{|\\mu|}{\\sigma}$ & Clean & Zero & $\\kappa{=}{-2}$ & $\\kappa{=}0$ & $\\kappa{=}{+2}$ & $\\lVert\\Delta\\ell\\rVert$ & Flip \\% \\\\"),
+    "tab_origin_xl": ("lcccccccc", "Encoder & $\\frac{|\\mu|}{\\sigma}$ & Clean & Zero & $\\kappa{=}{-2}$ & $\\kappa{=}0$ & $\\kappa{=}{+2}$ & $\\lVert\\Delta\\ell\\rVert$ & Flip \\% \\\\"),
+    "tab_recipes": ("lccccccccc", "Recipe & \\multicolumn{4}{c}{EEGNet} & \\multicolumn{4}{c}{EEGNet + aug.} & Aug.$-$unaug., $50\\%$ \\\\ & Clean & $30\\%$ & $50\\%$ & Noise & Clean & $30\\%$ & $50\\%$ & Noise & [95\\% CI] \\\\"),
+}
+
+
+def wrap_tables():
+    """Turn every generated row file into a complete tabular (\\input outside the tabular)."""
+    for name, (spec, head) in HEADERS.items():
+        f = GEN / f"{name}.rows"
+        if f.exists():
+            body = f.read_text()
+            (GEN / f"{name}.tex").write_text(
+                f"\\begin{{tabular}}{{{spec}}}\n\\toprule\n{head}\n\\midrule\n{body}\\bottomrule\n\\end{{tabular}}\n")
 
 
 def main():
@@ -431,6 +465,7 @@ def main():
     table_edge(j4)
     table_origin("x", x[3], x[0])
     table_origin("xl", xl[3], xl[0])
+    wrap_tables()
     lines = ["% Generated by analysis/export_journal_values.py; do not edit by hand.",
              "\\makeatletter",
              "\\newcommand{\\V}[1]{\\ifcsname jv@#1\\endcsname\\csname jv@#1\\endcsname"

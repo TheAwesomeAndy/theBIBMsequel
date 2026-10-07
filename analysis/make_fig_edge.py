@@ -30,9 +30,10 @@ plt.rcParams.update({"font.size": 7, "axes.linewidth": 0.6, "pdf.fonttype": 42, 
 
 
 def main():
-    std = json.load(open(AGG / "journal" / "j4_tcrzem_edge.json"))
-    lng_p = AGG / "journal" / "j4_tcrzem_edge_long.json"
-    lng = json.load(open(lng_p)) if lng_p.exists() else None
+    # J4 ran with the long epoch: the order parameter uses the conference-matched drives and
+    # the conference definition; the accuracy sweep uses the pre-specified long epoch.
+    std = json.load(open(AGG / "journal" / "j4_tcrzem_edge_long.json"))
+    lng = None
     e1 = json.load(open(AGG / "e1_rho_sweep.json"))
     rf = std["rho_fine"]; draws = list(std["draws"])
     fig, ax = plt.subplots(1, 3, figsize=(7.16, 1.75), gridspec_kw={"wspace": 0.38})
@@ -40,7 +41,7 @@ def main():
     D = np.array([[std["draws"][d]["damage"][str(r)] for r in rf] for d in draws])
     for row in D:
         ax[0].plot(rf, row, color="0.75", lw=0.5)
-    ax[0].plot(rf, D.mean(0), color="#009E73", lw=1.4, label="external, 10 draws")
+    ax[0].plot(rf, D.mean(0), color="#009E73", lw=1.4, label=f"external, {len(draws)} draws")
     ax[0].plot(rf, [e1["damage"][str(r)] for r in rf], color="k", lw=1.0, ls="--", label="SHAPE, draw 42")
     rs = [std["draws"][d]["rho_star"] for d in draws]
     ax[0].axvspan(min(rs), max(rs), color="#009E73", alpha=0.15, lw=0)
@@ -57,7 +58,7 @@ def main():
         for row in M:
             a.plot(ra, row, color=col, lw=0.4, alpha=0.5, ls=ls)
         a.plot(ra, M.mean(0), color=col, lw=1.4, ls=ls, marker="o", ms=2.5, label=lab)
-    sweep(ax[1], std, "#009E73", "-", "external, $-$200..800 ms")
+    sweep(ax[1], std, "#009E73", "-", "external, long epoch")
     if lng is not None:
         sweep(ax[1], lng, "#0072B2", "-.", "external, long epoch")
     rg = e1["rho_grid"]

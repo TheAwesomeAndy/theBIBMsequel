@@ -3,11 +3,42 @@
 Journal extension of the IEEE BIBM 2026 paper *On the Edge of Stability: Spiking
 Reservoir State-Space Encoding of Affective EEG* (Doctoral Forum S60204).
 
+Working journal title: **Encoding Nothing at the Edge of Stability: Missing
+Electrodes, Coordinate Origins, and Empty Baselines in Spiking Reservoir
+Representations of Affective EEG** (`manuscript/journal/main_journal.tex`).
+
 This repository started as a full-history merge of
 [`TheAwesomeAndy/BIBM`](https://github.com/TheAwesomeAndy/BIBM) at commit
 `ad79109` (the accepted camera-ready). The conference repository is left
-untouched; all journal work happens here. The conference README follows
-unchanged for provenance.
+untouched; all journal work happens here.
+
+## What the journal version adds
+
+| Addition | Script | Output (`outputs/aggregate/journal/`) |
+|---|---|---|
+| External cohort loader (public IAPS ERP data, doi:10.34894/TCRZEM, 228 subjects), conference-matched epoch and a pre-specified long epoch | `analysis/tcrzem_data.py` | (data stay in `/home/user/data_local/tcrzem/`) |
+| Bit-exact, dataset-agnostic port of the conference code | `analysis/jcore.py` | |
+| Clean metrics, permutation null, PCA controls, BSC1 vs BSC6, centeredness, four fills at 10-50% | `analysis/j1_core_replication.py` | `j1_tcrzem_core{,_long}.json` |
+| Signal-level removal, spherical-spline repair, noise, jitter, trial-count re-averaging | `analysis/j2_signal_level.py`, `analysis/spline.py` | `j2_tcrzem_signal{,_long}.json` |
+| EEGNet with and without augmentation; recipe variants | `analysis/j3_eegnet.py` | `j3_tcrzem_eegnet*.json` |
+| Edge of stability across ten reservoir draws, thresholds, leaks | `analysis/j4_edge_of_stability.py` | `j4_tcrzem_edge_long.json` |
+| Direct test of Proposition 1 (origin sweep) | `analysis/j5_origin_shift.py` | `j5_tcrzem_origin{,_long}.json` |
+| Pre-stimulus windows and normalization (Proposition 2) | `analysis/j6_prestimulus.py`, `analysis/j7_prestim_null.py` | `j6_*`, `j7_*` |
+| Every number, table body, and inline value of the journal manuscript | `analysis/export_journal_values.py` | `manuscript/journal/generated/`, `journal_values.csv` |
+
+Long-epoch runs set `TCRZEM_EPOCH=long`. SHAPE (restricted) and DEAP were not
+reanalyzed; their numbers come from the conference aggregate outputs. See
+`CLAUDE.md` (journal section) for the working rules and `analysis/README.md`
+for the run order.
+
+Build the journal manuscript:
+
+```sh
+python analysis/export_journal_values.py
+cd manuscript/journal && latexmk -pdf -interaction=nonstopmode main_journal.tex
+```
+
+The conference README follows unchanged for provenance.
 
 ---
 

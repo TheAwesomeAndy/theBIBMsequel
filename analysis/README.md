@@ -72,3 +72,46 @@ were never committed. They are kept for provenance only; no number in the
 camera-ready manuscript depends on them. `experiment2_rawsignal.json` (the
 pre-camera-ready signal-level table) is superseded by `e4_signal_perturbations.json`, which embeds
 training and test reservoir codes with the same PCA transform (see `docs/CODE_AUDIT.md`, A10).
+
+
+## Journal extension (theBIBMsequel)
+
+The journal experiments run on the public external cohort (DataVerseNL
+doi:10.34894/TCRZEM; set `TCRZEM_DIR` to the export directory, default
+`/home/user/data_local/tcrzem/export`; single trials are cached under `TCRZEM_CACHE`).
+`TCRZEM_EPOCH=long` selects the pre-specified long epoch (-200..+2500 ms). All scripts
+write aggregate JSON to `outputs/aggregate/journal/`.
+
+```sh
+python analysis/tcrzem_data.py                         # build the trial cache, print the cohort
+for E in standard long; do
+  TCRZEM_EPOCH=$E python analysis/j1_core_replication.py   # ~20 min
+  TCRZEM_EPOCH=$E python analysis/j2_signal_level.py       # 15 min (standard) to 2 h (long)
+  TCRZEM_EPOCH=$E python analysis/j5_origin_shift.py
+  TCRZEM_EPOCH=$E python analysis/j6_prestimulus.py
+  TCRZEM_EPOCH=$E python analysis/j7_prestim_null.py
+done
+python analysis/j3_eegnet.py                                         # all seeds, ~2 h CPU
+TCRZEM_EPOCH=long J3_SEEDS=42 python analysis/j3_eegnet.py           # seed-42 partition
+for R in default epochs40 epochs160 dropout50; do J3_RECIPE=$R J3_SEEDS=42 python analysis/j3_eegnet.py; done
+TCRZEM_EPOCH=long python analysis/j4_edge_of_stability.py            # ~2.5 h
+python analysis/make_fig_tcrzem_erp.py; python analysis/make_fig_fills_two_cohorts.py
+python analysis/make_fig_origin.py; python analysis/make_fig_prestimulus.py
+python analysis/make_fig_edge.py; FIG_EPOCH=_long python analysis/make_fig_signal.py
+python analysis/export_journal_values.py
+```
+
+| Journal element | Script | Output |
+|---|---|---|
+| Table I (clean, both cohorts) | J1, J3 (+ conference E3, E5) | `generated/tab_clean.tex` |
+| Table II (fills at 30%) | J1 (+ conference E2) | `generated/tab_fills.tex` |
+| Table III (origin test) | J5 | `generated/tab_origin_xl.tex` |
+| Tables IV-V (signal level, SHAPE and external) | conference E3/E4; J2, J3 | `generated/tab_signal_*.tex` |
+| Table VI (edge across draws) | J4 | `generated/tab_edge.tex` |
+| Table VII (EEGNet recipes) | J3 recipe runs | `generated/tab_recipes.tex` |
+| Fig. external ERPs | `make_fig_tcrzem_erp.py` | `manuscript/figures/journal/fig_tcrzem_erp.pdf` |
+| Fig. fills, two cohorts | `make_fig_fills_two_cohorts.py` | `fig_fills.pdf` |
+| Fig. origin sweep | `make_fig_origin.py` | `fig_origin.pdf` |
+| Fig. pre-stimulus windows | `make_fig_prestimulus.py` | `fig_prestimulus.pdf` |
+| Fig. edge of stability | `make_fig_edge.py` | `fig_edge.pdf` |
+| Fig. signal level and trial count | `make_fig_signal.py` | `fig_signal_long.pdf` |
