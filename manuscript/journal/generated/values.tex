@@ -82,6 +82,10 @@
 \expandafter\def\csname jv@e-loss30-0.9\endcsname{0.045}
 \expandafter\def\csname jv@e-loss30-1.2\endcsname{0.074}
 \expandafter\def\csname jv@e-loss30-1.5\endcsname{0.033}
+\expandafter\def\csname jv@e-loss30-high-max\endcsname{0.074}
+\expandafter\def\csname jv@e-loss30-high-min\endcsname{0.033}
+\expandafter\def\csname jv@e-loss30-low-max\endcsname{0.015}
+\expandafter\def\csname jv@e-loss30-max\endcsname{0.074}
 \expandafter\def\csname jv@e-n-rho0-sig-clean\endcsname{0}
 \expandafter\def\csname jv@e-n-rho0-sig-signal30\endcsname{0}
 \expandafter\def\csname jv@e-n-rho15-sig-clean\endcsname{0}
@@ -118,6 +122,9 @@
 \expandafter\def\csname jv@e-z0-0.9\endcsname{4.95}
 \expandafter\def\csname jv@e-z0-1.2\endcsname{6.23}
 \expandafter\def\csname jv@e-z0-1.5\endcsname{6.23}
+\expandafter\def\csname jv@e-z0-all-max\endcsname{6.23}
+\expandafter\def\csname jv@e-z0-high-max\endcsname{6.23}
+\expandafter\def\csname jv@e-z0-high-min\endcsname{4.95}
 \expandafter\def\csname jv@e-z0-low-max\endcsname{1.36}
 \expandafter\def\csname jv@e-z0-low-min\endcsname{1.21}
 \expandafter\def\csname jv@rc-aug50-max\endcsname{+0.063}
@@ -773,6 +780,296 @@
 \expandafter\def\csname jv@s-sig-remove0.5-res-ci\endcsname{[0.367, 0.420]}
 \expandafter\def\csname jv@s-sig-remove0.5-res-hi\endcsname{0.420}
 \expandafter\def\csname jv@s-sig-remove0.5-res-lo\endcsname{0.367}
+\expandafter\def\csname jv@se-argmax-clean\endcsname{0.9, 0.9, 0.3, 0.6, 1.5, 0.6, 0.9, 0.6, 0.9, 0.0}
+\expandafter\def\csname jv@se-argmax-signal30\endcsname{0.9, 0.9, 0.9, 0.3, 1.5, 0.9, 0.6, 0.3, 0.9, 0.3}
+\expandafter\def\csname jv@se-ba-0.0-max\endcsname{0.466}
+\expandafter\def\csname jv@se-ba-0.0-mean\endcsname{0.446}
+\expandafter\def\csname jv@se-ba-0.0-min\endcsname{0.401}
+\expandafter\def\csname jv@se-ba-0.0-sd\endcsname{0.019}
+\expandafter\def\csname jv@se-ba-0.3-max\endcsname{0.485}
+\expandafter\def\csname jv@se-ba-0.3-mean\endcsname{0.467}
+\expandafter\def\csname jv@se-ba-0.3-min\endcsname{0.449}
+\expandafter\def\csname jv@se-ba-0.3-sd\endcsname{0.012}
+\expandafter\def\csname jv@se-ba-0.6-max\endcsname{0.493}
+\expandafter\def\csname jv@se-ba-0.6-mean\endcsname{0.465}
+\expandafter\def\csname jv@se-ba-0.6-min\endcsname{0.442}
+\expandafter\def\csname jv@se-ba-0.6-sd\endcsname{0.016}
+\expandafter\def\csname jv@se-ba-0.9-max\endcsname{0.496}
+\expandafter\def\csname jv@se-ba-0.9-mean\endcsname{0.469}
+\expandafter\def\csname jv@se-ba-0.9-min\endcsname{0.450}
+\expandafter\def\csname jv@se-ba-0.9-sd\endcsname{0.014}
+\expandafter\def\csname jv@se-ba-1.2-max\endcsname{0.482}
+\expandafter\def\csname jv@se-ba-1.2-mean\endcsname{0.448}
+\expandafter\def\csname jv@se-ba-1.2-min\endcsname{0.420}
+\expandafter\def\csname jv@se-ba-1.2-sd\endcsname{0.018}
+\expandafter\def\csname jv@se-ba-1.5-max\endcsname{0.499}
+\expandafter\def\csname jv@se-ba-1.5-mean\endcsname{0.446}
+\expandafter\def\csname jv@se-ba-1.5-min\endcsname{0.430}
+\expandafter\def\csname jv@se-ba-1.5-sd\endcsname{0.020}
+\expandafter\def\csname jv@se-ba30-0.0-mean\endcsname{0.433}
+\expandafter\def\csname jv@se-ba30-0.3-mean\endcsname{0.457}
+\expandafter\def\csname jv@se-ba30-0.6-mean\endcsname{0.459}
+\expandafter\def\csname jv@se-ba30-0.9-mean\endcsname{0.458}
+\expandafter\def\csname jv@se-ba30-1.2-mean\endcsname{0.436}
+\expandafter\def\csname jv@se-ba30-1.5-mean\endcsname{0.445}
+\expandafter\def\csname jv@se-dm-0.0minus09-clean\endcsname{-0.023}
+\expandafter\def\csname jv@se-dm-0.0minus09-clean-abs\endcsname{0.023}
+\expandafter\def\csname jv@se-dm-0.0minus09-clean-ci\endcsname{[-0.047, +0.000]}
+\expandafter\def\csname jv@se-dm-0.0minus09-clean-hi\endcsname{+0.000}
+\expandafter\def\csname jv@se-dm-0.0minus09-clean-lo\endcsname{-0.047}
+\expandafter\def\csname jv@se-dm-0.0minus09-clean-point\endcsname{-0.023}
+\expandafter\def\csname jv@se-dm-0.0minus09-signal30\endcsname{-0.025}
+\expandafter\def\csname jv@se-dm-0.0minus09-signal30-abs\endcsname{0.025}
+\expandafter\def\csname jv@se-dm-0.0minus09-signal30-ci\endcsname{[-0.048, -0.002]}
+\expandafter\def\csname jv@se-dm-0.0minus09-signal30-hi\endcsname{-0.002}
+\expandafter\def\csname jv@se-dm-0.0minus09-signal30-lo\endcsname{-0.048}
+\expandafter\def\csname jv@se-dm-0.0minus09-signal30-point\endcsname{-0.025}
+\expandafter\def\csname jv@se-dm-0.3minus09-clean\endcsname{-0.002}
+\expandafter\def\csname jv@se-dm-0.3minus09-clean-abs\endcsname{0.002}
+\expandafter\def\csname jv@se-dm-0.3minus09-clean-ci\endcsname{[-0.022, +0.018]}
+\expandafter\def\csname jv@se-dm-0.3minus09-clean-hi\endcsname{+0.018}
+\expandafter\def\csname jv@se-dm-0.3minus09-clean-lo\endcsname{-0.022}
+\expandafter\def\csname jv@se-dm-0.3minus09-clean-point\endcsname{-0.002}
+\expandafter\def\csname jv@se-dm-0.3minus09-signal30\endcsname{-0.001}
+\expandafter\def\csname jv@se-dm-0.3minus09-signal30-abs\endcsname{0.001}
+\expandafter\def\csname jv@se-dm-0.3minus09-signal30-ci\endcsname{[-0.022, +0.020]}
+\expandafter\def\csname jv@se-dm-0.3minus09-signal30-hi\endcsname{+0.020}
+\expandafter\def\csname jv@se-dm-0.3minus09-signal30-lo\endcsname{-0.022}
+\expandafter\def\csname jv@se-dm-0.3minus09-signal30-point\endcsname{-0.001}
+\expandafter\def\csname jv@se-dm-0.6minus09-clean\endcsname{-0.005}
+\expandafter\def\csname jv@se-dm-0.6minus09-clean-abs\endcsname{0.005}
+\expandafter\def\csname jv@se-dm-0.6minus09-clean-ci\endcsname{[-0.021, +0.012]}
+\expandafter\def\csname jv@se-dm-0.6minus09-clean-hi\endcsname{+0.012}
+\expandafter\def\csname jv@se-dm-0.6minus09-clean-lo\endcsname{-0.021}
+\expandafter\def\csname jv@se-dm-0.6minus09-clean-point\endcsname{-0.005}
+\expandafter\def\csname jv@se-dm-0.6minus09-signal30\endcsname{+0.002}
+\expandafter\def\csname jv@se-dm-0.6minus09-signal30-abs\endcsname{0.002}
+\expandafter\def\csname jv@se-dm-0.6minus09-signal30-ci\endcsname{[-0.014, +0.018]}
+\expandafter\def\csname jv@se-dm-0.6minus09-signal30-hi\endcsname{+0.018}
+\expandafter\def\csname jv@se-dm-0.6minus09-signal30-lo\endcsname{-0.014}
+\expandafter\def\csname jv@se-dm-0.6minus09-signal30-point\endcsname{+0.002}
+\expandafter\def\csname jv@se-dm-1.2minus09-clean\endcsname{-0.022}
+\expandafter\def\csname jv@se-dm-1.2minus09-clean-abs\endcsname{0.022}
+\expandafter\def\csname jv@se-dm-1.2minus09-clean-ci\endcsname{[-0.036, -0.007]}
+\expandafter\def\csname jv@se-dm-1.2minus09-clean-hi\endcsname{-0.007}
+\expandafter\def\csname jv@se-dm-1.2minus09-clean-lo\endcsname{-0.036}
+\expandafter\def\csname jv@se-dm-1.2minus09-clean-point\endcsname{-0.022}
+\expandafter\def\csname jv@se-dm-1.2minus09-signal30\endcsname{-0.022}
+\expandafter\def\csname jv@se-dm-1.2minus09-signal30-abs\endcsname{0.022}
+\expandafter\def\csname jv@se-dm-1.2minus09-signal30-ci\endcsname{[-0.036, -0.008]}
+\expandafter\def\csname jv@se-dm-1.2minus09-signal30-hi\endcsname{-0.008}
+\expandafter\def\csname jv@se-dm-1.2minus09-signal30-lo\endcsname{-0.036}
+\expandafter\def\csname jv@se-dm-1.2minus09-signal30-point\endcsname{-0.022}
+\expandafter\def\csname jv@se-dm-1.5minus09-clean\endcsname{-0.024}
+\expandafter\def\csname jv@se-dm-1.5minus09-clean-abs\endcsname{0.024}
+\expandafter\def\csname jv@se-dm-1.5minus09-clean-ci\endcsname{[-0.041, -0.006]}
+\expandafter\def\csname jv@se-dm-1.5minus09-clean-hi\endcsname{-0.006}
+\expandafter\def\csname jv@se-dm-1.5minus09-clean-lo\endcsname{-0.041}
+\expandafter\def\csname jv@se-dm-1.5minus09-clean-point\endcsname{-0.023}
+\expandafter\def\csname jv@se-dm-1.5minus09-signal30\endcsname{-0.012}
+\expandafter\def\csname jv@se-dm-1.5minus09-signal30-abs\endcsname{0.012}
+\expandafter\def\csname jv@se-dm-1.5minus09-signal30-ci\endcsname{[-0.028, +0.004]}
+\expandafter\def\csname jv@se-dm-1.5minus09-signal30-hi\endcsname{+0.004}
+\expandafter\def\csname jv@se-dm-1.5minus09-signal30-lo\endcsname{-0.028}
+\expandafter\def\csname jv@se-dm-1.5minus09-signal30-point\endcsname{-0.012}
+\expandafter\def\csname jv@se-loss30-0.0\endcsname{0.013}
+\expandafter\def\csname jv@se-loss30-0.3\endcsname{0.011}
+\expandafter\def\csname jv@se-loss30-0.6\endcsname{0.006}
+\expandafter\def\csname jv@se-loss30-0.9\endcsname{0.012}
+\expandafter\def\csname jv@se-loss30-1.2\endcsname{0.012}
+\expandafter\def\csname jv@se-loss30-1.5\endcsname{0.001}
+\expandafter\def\csname jv@se-loss30-high-max\endcsname{0.012}
+\expandafter\def\csname jv@se-loss30-high-min\endcsname{0.001}
+\expandafter\def\csname jv@se-loss30-low-max\endcsname{0.014}
+\expandafter\def\csname jv@se-loss30-max\endcsname{0.014}
+\expandafter\def\csname jv@se-n-rho0-below-clean\endcsname{8}
+\expandafter\def\csname jv@se-n-rho0-below-signal30\endcsname{8}
+\expandafter\def\csname jv@se-n-rho0-sig-clean\endcsname{2}
+\expandafter\def\csname jv@se-n-rho0-sig-signal30\endcsname{1}
+\expandafter\def\csname jv@se-n-rho15-sig-clean\endcsname{2}
+\expandafter\def\csname jv@se-n-rho15-sig-signal30\endcsname{2}
+\expandafter\def\csname jv@se-naccdraws\endcsname{10}
+\expandafter\def\csname jv@se-ndraws\endcsname{10}
+\expandafter\def\csname jv@se-rate-0.0\endcsname{0.05}
+\expandafter\def\csname jv@se-rate-0.3\endcsname{0.05}
+\expandafter\def\csname jv@se-rate-0.6\endcsname{0.06}
+\expandafter\def\csname jv@se-rate-0.9\endcsname{0.14}
+\expandafter\def\csname jv@se-rate-1.2\endcsname{0.22}
+\expandafter\def\csname jv@se-rate-1.5\endcsname{0.28}
+\expandafter\def\csname jv@se-rawcent-0.0\endcsname{0.69}
+\expandafter\def\csname jv@se-rawcent-0.3\endcsname{0.69}
+\expandafter\def\csname jv@se-rawcent-0.6\endcsname{0.68}
+\expandafter\def\csname jv@se-rawcent-0.9\endcsname{1.15}
+\expandafter\def\csname jv@se-rawcent-1.2\endcsname{1.59}
+\expandafter\def\csname jv@se-rawcent-1.5\endcsname{1.85}
+\expandafter\def\csname jv@se-rhostar-42\endcsname{0.82}
+\expandafter\def\csname jv@se-rhostar-beta0.02\endcsname{0.79}
+\expandafter\def\csname jv@se-rhostar-beta0.05\endcsname{0.82}
+\expandafter\def\csname jv@se-rhostar-beta0.1\endcsname{0.88}
+\expandafter\def\csname jv@se-rhostar-beta0.2\endcsname{0.96}
+\expandafter\def\csname jv@se-rhostar-max\endcsname{0.83}
+\expandafter\def\csname jv@se-rhostar-mean\endcsname{0.76}
+\expandafter\def\csname jv@se-rhostar-min\endcsname{0.69}
+\expandafter\def\csname jv@se-rhostar-sd\endcsname{0.05}
+\expandafter\def\csname jv@se-rhostar-theta0.25\endcsname{0.36}
+\expandafter\def\csname jv@se-rhostar-theta0.5\endcsname{0.82}
+\expandafter\def\csname jv@se-rhostar-theta1.0\endcsname{1.58}
+\expandafter\def\csname jv@se-z0-0.0\endcsname{0.16}
+\expandafter\def\csname jv@se-z0-0.3\endcsname{0.21}
+\expandafter\def\csname jv@se-z0-0.6\endcsname{0.20}
+\expandafter\def\csname jv@se-z0-0.9\endcsname{0.73}
+\expandafter\def\csname jv@se-z0-1.2\endcsname{0.91}
+\expandafter\def\csname jv@se-z0-1.5\endcsname{0.97}
+\expandafter\def\csname jv@se-z0-all-max\endcsname{0.97}
+\expandafter\def\csname jv@se-z0-high-max\endcsname{0.97}
+\expandafter\def\csname jv@se-z0-high-min\endcsname{0.73}
+\expandafter\def\csname jv@se-z0-low-max\endcsname{0.21}
+\expandafter\def\csname jv@se-z0-low-min\endcsname{0.16}
+\expandafter\def\csname jv@seo-argmax-clean\endcsname{1.5, 1.5, 0.0, 0.9, 0.6, 1.5, 0.0, 1.2, 1.5, 0.9}
+\expandafter\def\csname jv@seo-argmax-signal30\endcsname{0.3, 0.3, 0.6, 0.3, 0.6, 0.3, 0.0, 0.6, 0.0, 0.0}
+\expandafter\def\csname jv@seo-ba-0.0-max\endcsname{0.555}
+\expandafter\def\csname jv@seo-ba-0.0-mean\endcsname{0.533}
+\expandafter\def\csname jv@seo-ba-0.0-min\endcsname{0.499}
+\expandafter\def\csname jv@seo-ba-0.0-sd\endcsname{0.020}
+\expandafter\def\csname jv@seo-ba-0.3-max\endcsname{0.559}
+\expandafter\def\csname jv@seo-ba-0.3-mean\endcsname{0.538}
+\expandafter\def\csname jv@seo-ba-0.3-min\endcsname{0.506}
+\expandafter\def\csname jv@seo-ba-0.3-sd\endcsname{0.017}
+\expandafter\def\csname jv@seo-ba-0.6-max\endcsname{0.567}
+\expandafter\def\csname jv@seo-ba-0.6-mean\endcsname{0.555}
+\expandafter\def\csname jv@seo-ba-0.6-min\endcsname{0.542}
+\expandafter\def\csname jv@seo-ba-0.6-sd\endcsname{0.008}
+\expandafter\def\csname jv@seo-ba-0.9-max\endcsname{0.577}
+\expandafter\def\csname jv@seo-ba-0.9-mean\endcsname{0.556}
+\expandafter\def\csname jv@seo-ba-0.9-min\endcsname{0.539}
+\expandafter\def\csname jv@seo-ba-0.9-sd\endcsname{0.012}
+\expandafter\def\csname jv@seo-ba-1.2-max\endcsname{0.559}
+\expandafter\def\csname jv@seo-ba-1.2-mean\endcsname{0.546}
+\expandafter\def\csname jv@seo-ba-1.2-min\endcsname{0.524}
+\expandafter\def\csname jv@seo-ba-1.2-sd\endcsname{0.014}
+\expandafter\def\csname jv@seo-ba-1.5-max\endcsname{0.581}
+\expandafter\def\csname jv@seo-ba-1.5-mean\endcsname{0.550}
+\expandafter\def\csname jv@seo-ba-1.5-min\endcsname{0.499}
+\expandafter\def\csname jv@seo-ba-1.5-sd\endcsname{0.028}
+\expandafter\def\csname jv@seo-ba30-0.0-mean\endcsname{0.519}
+\expandafter\def\csname jv@seo-ba30-0.3-mean\endcsname{0.524}
+\expandafter\def\csname jv@seo-ba30-0.6-mean\endcsname{0.524}
+\expandafter\def\csname jv@seo-ba30-0.9-mean\endcsname{0.434}
+\expandafter\def\csname jv@seo-ba30-1.2-mean\endcsname{0.435}
+\expandafter\def\csname jv@seo-ba30-1.5-mean\endcsname{0.442}
+\expandafter\def\csname jv@seo-dm-0.0minus09-clean\endcsname{-0.023}
+\expandafter\def\csname jv@seo-dm-0.0minus09-clean-abs\endcsname{0.023}
+\expandafter\def\csname jv@seo-dm-0.0minus09-clean-ci\endcsname{[-0.044, -0.002]}
+\expandafter\def\csname jv@seo-dm-0.0minus09-clean-hi\endcsname{-0.002}
+\expandafter\def\csname jv@seo-dm-0.0minus09-clean-lo\endcsname{-0.044}
+\expandafter\def\csname jv@seo-dm-0.0minus09-clean-point\endcsname{-0.023}
+\expandafter\def\csname jv@seo-dm-0.0minus09-signal30\endcsname{+0.085}
+\expandafter\def\csname jv@seo-dm-0.0minus09-signal30-abs\endcsname{0.085}
+\expandafter\def\csname jv@seo-dm-0.0minus09-signal30-ci\endcsname{[+0.061, +0.109]}
+\expandafter\def\csname jv@seo-dm-0.0minus09-signal30-hi\endcsname{+0.109}
+\expandafter\def\csname jv@seo-dm-0.0minus09-signal30-lo\endcsname{+0.061}
+\expandafter\def\csname jv@seo-dm-0.0minus09-signal30-point\endcsname{+0.085}
+\expandafter\def\csname jv@seo-dm-0.3minus09-clean\endcsname{-0.018}
+\expandafter\def\csname jv@seo-dm-0.3minus09-clean-abs\endcsname{0.018}
+\expandafter\def\csname jv@seo-dm-0.3minus09-clean-ci\endcsname{[-0.037, +0.001]}
+\expandafter\def\csname jv@seo-dm-0.3minus09-clean-hi\endcsname{+0.001}
+\expandafter\def\csname jv@seo-dm-0.3minus09-clean-lo\endcsname{-0.037}
+\expandafter\def\csname jv@seo-dm-0.3minus09-clean-point\endcsname{-0.018}
+\expandafter\def\csname jv@seo-dm-0.3minus09-signal30\endcsname{+0.091}
+\expandafter\def\csname jv@seo-dm-0.3minus09-signal30-abs\endcsname{0.091}
+\expandafter\def\csname jv@seo-dm-0.3minus09-signal30-ci\endcsname{[+0.070, +0.111]}
+\expandafter\def\csname jv@seo-dm-0.3minus09-signal30-hi\endcsname{+0.111}
+\expandafter\def\csname jv@seo-dm-0.3minus09-signal30-lo\endcsname{+0.070}
+\expandafter\def\csname jv@seo-dm-0.3minus09-signal30-point\endcsname{+0.091}
+\expandafter\def\csname jv@seo-dm-0.6minus09-clean\endcsname{-0.001}
+\expandafter\def\csname jv@seo-dm-0.6minus09-clean-abs\endcsname{0.001}
+\expandafter\def\csname jv@seo-dm-0.6minus09-clean-ci\endcsname{[-0.016, +0.014]}
+\expandafter\def\csname jv@seo-dm-0.6minus09-clean-hi\endcsname{+0.014}
+\expandafter\def\csname jv@seo-dm-0.6minus09-clean-lo\endcsname{-0.016}
+\expandafter\def\csname jv@seo-dm-0.6minus09-clean-point\endcsname{-0.001}
+\expandafter\def\csname jv@seo-dm-0.6minus09-signal30\endcsname{+0.091}
+\expandafter\def\csname jv@seo-dm-0.6minus09-signal30-abs\endcsname{0.091}
+\expandafter\def\csname jv@seo-dm-0.6minus09-signal30-ci\endcsname{[+0.073, +0.108]}
+\expandafter\def\csname jv@seo-dm-0.6minus09-signal30-hi\endcsname{+0.108}
+\expandafter\def\csname jv@seo-dm-0.6minus09-signal30-lo\endcsname{+0.073}
+\expandafter\def\csname jv@seo-dm-0.6minus09-signal30-point\endcsname{+0.091}
+\expandafter\def\csname jv@seo-dm-1.2minus09-clean\endcsname{-0.010}
+\expandafter\def\csname jv@seo-dm-1.2minus09-clean-abs\endcsname{0.010}
+\expandafter\def\csname jv@seo-dm-1.2minus09-clean-ci\endcsname{[-0.025, +0.005]}
+\expandafter\def\csname jv@seo-dm-1.2minus09-clean-hi\endcsname{+0.005}
+\expandafter\def\csname jv@seo-dm-1.2minus09-clean-lo\endcsname{-0.025}
+\expandafter\def\csname jv@seo-dm-1.2minus09-clean-point\endcsname{-0.010}
+\expandafter\def\csname jv@seo-dm-1.2minus09-signal30\endcsname{+0.001}
+\expandafter\def\csname jv@seo-dm-1.2minus09-signal30-abs\endcsname{0.001}
+\expandafter\def\csname jv@seo-dm-1.2minus09-signal30-ci\endcsname{[-0.010, +0.013]}
+\expandafter\def\csname jv@seo-dm-1.2minus09-signal30-hi\endcsname{+0.013}
+\expandafter\def\csname jv@seo-dm-1.2minus09-signal30-lo\endcsname{-0.010}
+\expandafter\def\csname jv@seo-dm-1.2minus09-signal30-point\endcsname{+0.001}
+\expandafter\def\csname jv@seo-dm-1.5minus09-clean\endcsname{-0.006}
+\expandafter\def\csname jv@seo-dm-1.5minus09-clean-abs\endcsname{0.006}
+\expandafter\def\csname jv@seo-dm-1.5minus09-clean-ci\endcsname{[-0.022, +0.009]}
+\expandafter\def\csname jv@seo-dm-1.5minus09-clean-hi\endcsname{+0.009}
+\expandafter\def\csname jv@seo-dm-1.5minus09-clean-lo\endcsname{-0.022}
+\expandafter\def\csname jv@seo-dm-1.5minus09-clean-point\endcsname{-0.006}
+\expandafter\def\csname jv@seo-dm-1.5minus09-signal30\endcsname{+0.008}
+\expandafter\def\csname jv@seo-dm-1.5minus09-signal30-abs\endcsname{0.008}
+\expandafter\def\csname jv@seo-dm-1.5minus09-signal30-ci\endcsname{[-0.005, +0.021]}
+\expandafter\def\csname jv@seo-dm-1.5minus09-signal30-hi\endcsname{+0.021}
+\expandafter\def\csname jv@seo-dm-1.5minus09-signal30-lo\endcsname{-0.005}
+\expandafter\def\csname jv@seo-dm-1.5minus09-signal30-point\endcsname{+0.008}
+\expandafter\def\csname jv@seo-loss30-0.0\endcsname{0.014}
+\expandafter\def\csname jv@seo-loss30-0.3\endcsname{0.014}
+\expandafter\def\csname jv@seo-loss30-0.6\endcsname{0.031}
+\expandafter\def\csname jv@seo-loss30-0.9\endcsname{0.122}
+\expandafter\def\csname jv@seo-loss30-1.2\endcsname{0.111}
+\expandafter\def\csname jv@seo-loss30-1.5\endcsname{0.108}
+\expandafter\def\csname jv@seo-loss30-high-max\endcsname{0.122}
+\expandafter\def\csname jv@seo-loss30-high-min\endcsname{0.108}
+\expandafter\def\csname jv@seo-loss30-low-max\endcsname{0.031}
+\expandafter\def\csname jv@seo-loss30-max\endcsname{0.123}
+\expandafter\def\csname jv@seo-n-rho0-below-clean\endcsname{7}
+\expandafter\def\csname jv@seo-n-rho0-below-signal30\endcsname{0}
+\expandafter\def\csname jv@seo-n-rho0-sig-clean\endcsname{3}
+\expandafter\def\csname jv@seo-n-rho0-sig-signal30\endcsname{0}
+\expandafter\def\csname jv@seo-n-rho15-sig-clean\endcsname{0}
+\expandafter\def\csname jv@seo-n-rho15-sig-signal30\endcsname{1}
+\expandafter\def\csname jv@seo-naccdraws\endcsname{10}
+\expandafter\def\csname jv@seo-ndraws\endcsname{10}
+\expandafter\def\csname jv@seo-rate-0.0\endcsname{0.05}
+\expandafter\def\csname jv@seo-rate-0.3\endcsname{0.05}
+\expandafter\def\csname jv@seo-rate-0.6\endcsname{0.06}
+\expandafter\def\csname jv@seo-rate-0.9\endcsname{0.14}
+\expandafter\def\csname jv@seo-rate-1.2\endcsname{0.23}
+\expandafter\def\csname jv@seo-rate-1.5\endcsname{0.29}
+\expandafter\def\csname jv@seo-rawcent-0.0\endcsname{0.63}
+\expandafter\def\csname jv@seo-rawcent-0.3\endcsname{0.64}
+\expandafter\def\csname jv@seo-rawcent-0.6\endcsname{0.65}
+\expandafter\def\csname jv@seo-rawcent-0.9\endcsname{1.21}
+\expandafter\def\csname jv@seo-rawcent-1.2\endcsname{1.76}
+\expandafter\def\csname jv@seo-rawcent-1.5\endcsname{2.13}
+\expandafter\def\csname jv@seo-rhostar-42\endcsname{0.82}
+\expandafter\def\csname jv@seo-rhostar-beta0.02\endcsname{0.79}
+\expandafter\def\csname jv@seo-rhostar-beta0.05\endcsname{0.82}
+\expandafter\def\csname jv@seo-rhostar-beta0.1\endcsname{0.88}
+\expandafter\def\csname jv@seo-rhostar-beta0.2\endcsname{0.96}
+\expandafter\def\csname jv@seo-rhostar-max\endcsname{0.83}
+\expandafter\def\csname jv@seo-rhostar-mean\endcsname{0.76}
+\expandafter\def\csname jv@seo-rhostar-min\endcsname{0.69}
+\expandafter\def\csname jv@seo-rhostar-sd\endcsname{0.05}
+\expandafter\def\csname jv@seo-rhostar-theta0.25\endcsname{0.36}
+\expandafter\def\csname jv@seo-rhostar-theta0.5\endcsname{0.82}
+\expandafter\def\csname jv@seo-rhostar-theta1.0\endcsname{1.58}
+\expandafter\def\csname jv@seo-z0-0.0\endcsname{0.34}
+\expandafter\def\csname jv@seo-z0-0.3\endcsname{0.43}
+\expandafter\def\csname jv@seo-z0-0.6\endcsname{0.34}
+\expandafter\def\csname jv@seo-z0-0.9\endcsname{1.57}
+\expandafter\def\csname jv@seo-z0-1.2\endcsname{2.46}
+\expandafter\def\csname jv@seo-z0-1.5\endcsname{2.26}
+\expandafter\def\csname jv@seo-z0-all-max\endcsname{2.46}
+\expandafter\def\csname jv@seo-z0-high-max\endcsname{2.46}
+\expandafter\def\csname jv@seo-z0-high-min\endcsname{1.57}
+\expandafter\def\csname jv@seo-z0-low-max\endcsname{0.43}
+\expandafter\def\csname jv@seo-z0-low-min\endcsname{0.34}
 \expandafter\def\csname jv@sj-auc-band\endcsname{0.682}
 \expandafter\def\csname jv@sj-auc-erp\endcsname{0.799}
 \expandafter\def\csname jv@sj-auc-res\endcsname{0.658}
@@ -2517,7 +2814,7 @@
 \expandafter\def\csname jv@sj-pre-res-pre-ZminusG-lo\endcsname{+0.046}
 \expandafter\def\csname jv@sj-prestim-corr\endcsname{-0.92}
 \expandafter\def\csname jv@sj-repro-maxdiff\endcsname{0}
-\expandafter\def\csname jv@sj-repro-n\endcsname{21}
+\expandafter\def\csname jv@sj-repro-n\endcsname{54}
 \expandafter\def\csname jv@sj-resfill-maxabs\endcsname{0.016}
 \expandafter\def\csname jv@sj-resfill-wmax\endcsname{0.051}
 \expandafter\def\csname jv@sj-resfill-wmin\endcsname{0.019}
@@ -4158,18 +4455,754 @@
 \expandafter\def\csname jv@so-zpos-band\endcsname{1.20}
 \expandafter\def\csname jv@so-zpos-erp\endcsname{0.73}
 \expandafter\def\csname jv@so-zpos-res\endcsname{0.07}
+\expandafter\def\csname jv@sp-auc-band\endcsname{0.682}
+\expandafter\def\csname jv@sp-auc-erp\endcsname{0.817}
+\expandafter\def\csname jv@sp-auc-res\endcsname{0.779}
+\expandafter\def\csname jv@sp-bsc6minus1-clean\endcsname{+0.120}
+\expandafter\def\csname jv@sp-bsc6minus1-clean-abs\endcsname{0.120}
+\expandafter\def\csname jv@sp-bsc6minus1-clean-ci\endcsname{[+0.076, +0.164]}
+\expandafter\def\csname jv@sp-bsc6minus1-clean-hi\endcsname{+0.164}
+\expandafter\def\csname jv@sp-bsc6minus1-clean-lo\endcsname{+0.076}
+\expandafter\def\csname jv@sp-bsc6minus1-signal30\endcsname{-0.038}
+\expandafter\def\csname jv@sp-bsc6minus1-signal30-abs\endcsname{0.038}
+\expandafter\def\csname jv@sp-bsc6minus1-signal30-ci\endcsname{[-0.070, -0.006]}
+\expandafter\def\csname jv@sp-bsc6minus1-signal30-hi\endcsname{-0.006}
+\expandafter\def\csname jv@sp-bsc6minus1-signal30-lo\endcsname{-0.070}
+\expandafter\def\csname jv@sp-cent-band\endcsname{1.20}
+\expandafter\def\csname jv@sp-cent-erp\endcsname{0.73}
+\expandafter\def\csname jv@sp-cent-rawcounts\endcsname{1.88}
+\expandafter\def\csname jv@sp-cent-res\endcsname{0.07}
+\expandafter\def\csname jv@sp-clean-band\endcsname{0.494}
+\expandafter\def\csname jv@sp-clean-band-ci\endcsname{[0.460, 0.528]}
+\expandafter\def\csname jv@sp-clean-band-hi\endcsname{0.528}
+\expandafter\def\csname jv@sp-clean-band-lo\endcsname{0.460}
+\expandafter\def\csname jv@sp-clean-erp\endcsname{0.645}
+\expandafter\def\csname jv@sp-clean-erp-ci\endcsname{[0.611, 0.678]}
+\expandafter\def\csname jv@sp-clean-erp-hi\endcsname{0.678}
+\expandafter\def\csname jv@sp-clean-erp-lo\endcsname{0.611}
+\expandafter\def\csname jv@sp-clean-erpres\endcsname{+0.030}
+\expandafter\def\csname jv@sp-clean-erpres-abs\endcsname{0.030}
+\expandafter\def\csname jv@sp-clean-erpres-ci\endcsname{[-0.013, +0.074]}
+\expandafter\def\csname jv@sp-clean-erpres-hi\endcsname{+0.074}
+\expandafter\def\csname jv@sp-clean-erpres-lo\endcsname{-0.013}
+\expandafter\def\csname jv@sp-clean-res\endcsname{0.615}
+\expandafter\def\csname jv@sp-clean-res-ci\endcsname{[0.581, 0.648]}
+\expandafter\def\csname jv@sp-clean-res-hi\endcsname{0.648}
+\expandafter\def\csname jv@sp-clean-res-lo\endcsname{0.581}
 \expandafter\def\csname jv@sp-dlogit-band\endcsname{4.13}
 \expandafter\def\csname jv@sp-dlogit-erp\endcsname{1.91}
 \expandafter\def\csname jv@sp-dlogit-res\endcsname{0.32}
+\expandafter\def\csname jv@sp-f1-band\endcsname{0.492}
+\expandafter\def\csname jv@sp-f1-erp\endcsname{0.644}
+\expandafter\def\csname jv@sp-f1-res\endcsname{0.611}
+\expandafter\def\csname jv@sp-fc10-knn-band\endcsname{0.494}
+\expandafter\def\csname jv@sp-fc10-knn-band-acret\endcsname{1.00}
+\expandafter\def\csname jv@sp-fc10-knn-band-ci\endcsname{[0.461, 0.529]}
+\expandafter\def\csname jv@sp-fc10-knn-band-hi\endcsname{0.529}
+\expandafter\def\csname jv@sp-fc10-knn-band-lo\endcsname{0.461}
+\expandafter\def\csname jv@sp-fc10-knn-band-rawret\endcsname{1.00}
+\expandafter\def\csname jv@sp-fc10-knn-erp\endcsname{0.659}
+\expandafter\def\csname jv@sp-fc10-knn-erp-acret\endcsname{1.05}
+\expandafter\def\csname jv@sp-fc10-knn-erp-ci\endcsname{[0.626, 0.692]}
+\expandafter\def\csname jv@sp-fc10-knn-erp-hi\endcsname{0.692}
+\expandafter\def\csname jv@sp-fc10-knn-erp-lo\endcsname{0.626}
+\expandafter\def\csname jv@sp-fc10-knn-erp-rawret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc10-knn-erpres\endcsname{+0.033}
+\expandafter\def\csname jv@sp-fc10-knn-erpres-abs\endcsname{0.033}
+\expandafter\def\csname jv@sp-fc10-knn-erpres-ci\endcsname{[-0.008, +0.076]}
+\expandafter\def\csname jv@sp-fc10-knn-erpres-hi\endcsname{+0.076}
+\expandafter\def\csname jv@sp-fc10-knn-erpres-lo\endcsname{-0.008}
+\expandafter\def\csname jv@sp-fc10-knn-res\endcsname{0.626}
+\expandafter\def\csname jv@sp-fc10-knn-res-acret\endcsname{1.04}
+\expandafter\def\csname jv@sp-fc10-knn-res-ci\endcsname{[0.592, 0.659]}
+\expandafter\def\csname jv@sp-fc10-knn-res-hi\endcsname{0.659}
+\expandafter\def\csname jv@sp-fc10-knn-res-lo\endcsname{0.592}
+\expandafter\def\csname jv@sp-fc10-knn-res-rawret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc10-mean-band\endcsname{0.490}
+\expandafter\def\csname jv@sp-fc10-mean-band-acret\endcsname{0.97}
+\expandafter\def\csname jv@sp-fc10-mean-band-ci\endcsname{[0.455, 0.525]}
+\expandafter\def\csname jv@sp-fc10-mean-band-hi\endcsname{0.525}
+\expandafter\def\csname jv@sp-fc10-mean-band-lo\endcsname{0.455}
+\expandafter\def\csname jv@sp-fc10-mean-band-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc10-mean-erp\endcsname{0.635}
+\expandafter\def\csname jv@sp-fc10-mean-erp-acret\endcsname{0.97}
+\expandafter\def\csname jv@sp-fc10-mean-erp-ci\endcsname{[0.602, 0.671]}
+\expandafter\def\csname jv@sp-fc10-mean-erp-hi\endcsname{0.671}
+\expandafter\def\csname jv@sp-fc10-mean-erp-lo\endcsname{0.602}
+\expandafter\def\csname jv@sp-fc10-mean-erp-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc10-mean-erpres\endcsname{+0.021}
+\expandafter\def\csname jv@sp-fc10-mean-erpres-abs\endcsname{0.021}
+\expandafter\def\csname jv@sp-fc10-mean-erpres-ci\endcsname{[-0.021, +0.063]}
+\expandafter\def\csname jv@sp-fc10-mean-erpres-hi\endcsname{+0.063}
+\expandafter\def\csname jv@sp-fc10-mean-erpres-lo\endcsname{-0.021}
+\expandafter\def\csname jv@sp-fc10-mean-res\endcsname{0.615}
+\expandafter\def\csname jv@sp-fc10-mean-res-acret\endcsname{1.00}
+\expandafter\def\csname jv@sp-fc10-mean-res-ci\endcsname{[0.581, 0.646]}
+\expandafter\def\csname jv@sp-fc10-mean-res-hi\endcsname{0.646}
+\expandafter\def\csname jv@sp-fc10-mean-res-lo\endcsname{0.581}
+\expandafter\def\csname jv@sp-fc10-mean-res-rawret\endcsname{1.00}
+\expandafter\def\csname jv@sp-fc10-spatial-band\endcsname{0.507}
+\expandafter\def\csname jv@sp-fc10-spatial-band-acret\endcsname{1.08}
+\expandafter\def\csname jv@sp-fc10-spatial-band-ci\endcsname{[0.474, 0.542]}
+\expandafter\def\csname jv@sp-fc10-spatial-band-hi\endcsname{0.542}
+\expandafter\def\csname jv@sp-fc10-spatial-band-lo\endcsname{0.474}
+\expandafter\def\csname jv@sp-fc10-spatial-band-rawret\endcsname{1.03}
+\expandafter\def\csname jv@sp-fc10-spatial-erp\endcsname{0.648}
+\expandafter\def\csname jv@sp-fc10-spatial-erp-acret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc10-spatial-erp-ci\endcsname{[0.615, 0.682]}
+\expandafter\def\csname jv@sp-fc10-spatial-erp-hi\endcsname{0.682}
+\expandafter\def\csname jv@sp-fc10-spatial-erp-lo\endcsname{0.615}
+\expandafter\def\csname jv@sp-fc10-spatial-erp-rawret\endcsname{1.00}
+\expandafter\def\csname jv@sp-fc10-spatial-erpres\endcsname{+0.027}
+\expandafter\def\csname jv@sp-fc10-spatial-erpres-abs\endcsname{0.027}
+\expandafter\def\csname jv@sp-fc10-spatial-erpres-ci\endcsname{[-0.014, +0.070]}
+\expandafter\def\csname jv@sp-fc10-spatial-erpres-hi\endcsname{+0.070}
+\expandafter\def\csname jv@sp-fc10-spatial-erpres-lo\endcsname{-0.014}
+\expandafter\def\csname jv@sp-fc10-spatial-res\endcsname{0.621}
+\expandafter\def\csname jv@sp-fc10-spatial-res-acret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc10-spatial-res-ci\endcsname{[0.586, 0.654]}
+\expandafter\def\csname jv@sp-fc10-spatial-res-hi\endcsname{0.654}
+\expandafter\def\csname jv@sp-fc10-spatial-res-lo\endcsname{0.586}
+\expandafter\def\csname jv@sp-fc10-spatial-res-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc10-zero-band\endcsname{0.476}
+\expandafter\def\csname jv@sp-fc10-zero-band-acret\endcsname{0.88}
+\expandafter\def\csname jv@sp-fc10-zero-band-ci\endcsname{[0.442, 0.509]}
+\expandafter\def\csname jv@sp-fc10-zero-band-hi\endcsname{0.509}
+\expandafter\def\csname jv@sp-fc10-zero-band-lo\endcsname{0.442}
+\expandafter\def\csname jv@sp-fc10-zero-band-rawret\endcsname{0.96}
+\expandafter\def\csname jv@sp-fc10-zero-erp\endcsname{0.635}
+\expandafter\def\csname jv@sp-fc10-zero-erp-acret\endcsname{0.97}
+\expandafter\def\csname jv@sp-fc10-zero-erp-ci\endcsname{[0.602, 0.670]}
+\expandafter\def\csname jv@sp-fc10-zero-erp-hi\endcsname{0.670}
+\expandafter\def\csname jv@sp-fc10-zero-erp-lo\endcsname{0.602}
+\expandafter\def\csname jv@sp-fc10-zero-erp-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc10-zero-erpres\endcsname{+0.025}
+\expandafter\def\csname jv@sp-fc10-zero-erpres-abs\endcsname{0.025}
+\expandafter\def\csname jv@sp-fc10-zero-erpres-ci\endcsname{[-0.019, +0.071]}
+\expandafter\def\csname jv@sp-fc10-zero-erpres-hi\endcsname{+0.071}
+\expandafter\def\csname jv@sp-fc10-zero-erpres-lo\endcsname{-0.019}
+\expandafter\def\csname jv@sp-fc10-zero-res\endcsname{0.610}
+\expandafter\def\csname jv@sp-fc10-zero-res-acret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc10-zero-res-ci\endcsname{[0.575, 0.641]}
+\expandafter\def\csname jv@sp-fc10-zero-res-hi\endcsname{0.641}
+\expandafter\def\csname jv@sp-fc10-zero-res-lo\endcsname{0.575}
+\expandafter\def\csname jv@sp-fc10-zero-res-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc20-knn-band\endcsname{0.498}
+\expandafter\def\csname jv@sp-fc20-knn-band-acret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc20-knn-band-ci\endcsname{[0.463, 0.534]}
+\expandafter\def\csname jv@sp-fc20-knn-band-hi\endcsname{0.534}
+\expandafter\def\csname jv@sp-fc20-knn-band-lo\endcsname{0.463}
+\expandafter\def\csname jv@sp-fc20-knn-band-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc20-knn-erp\endcsname{0.629}
+\expandafter\def\csname jv@sp-fc20-knn-erp-acret\endcsname{0.95}
+\expandafter\def\csname jv@sp-fc20-knn-erp-ci\endcsname{[0.594, 0.662]}
+\expandafter\def\csname jv@sp-fc20-knn-erp-hi\endcsname{0.662}
+\expandafter\def\csname jv@sp-fc20-knn-erp-lo\endcsname{0.594}
+\expandafter\def\csname jv@sp-fc20-knn-erp-rawret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc20-knn-erpres\endcsname{-0.000}
+\expandafter\def\csname jv@sp-fc20-knn-erpres-abs\endcsname{0.000}
+\expandafter\def\csname jv@sp-fc20-knn-erpres-ci\endcsname{[-0.039, +0.039]}
+\expandafter\def\csname jv@sp-fc20-knn-erpres-hi\endcsname{+0.039}
+\expandafter\def\csname jv@sp-fc20-knn-erpres-lo\endcsname{-0.039}
+\expandafter\def\csname jv@sp-fc20-knn-res\endcsname{0.629}
+\expandafter\def\csname jv@sp-fc20-knn-res-acret\endcsname{1.05}
+\expandafter\def\csname jv@sp-fc20-knn-res-ci\endcsname{[0.596, 0.662]}
+\expandafter\def\csname jv@sp-fc20-knn-res-hi\endcsname{0.662}
+\expandafter\def\csname jv@sp-fc20-knn-res-lo\endcsname{0.596}
+\expandafter\def\csname jv@sp-fc20-knn-res-rawret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc20-mean-band\endcsname{0.485}
+\expandafter\def\csname jv@sp-fc20-mean-band-acret\endcsname{0.94}
+\expandafter\def\csname jv@sp-fc20-mean-band-ci\endcsname{[0.449, 0.521]}
+\expandafter\def\csname jv@sp-fc20-mean-band-hi\endcsname{0.521}
+\expandafter\def\csname jv@sp-fc20-mean-band-lo\endcsname{0.449}
+\expandafter\def\csname jv@sp-fc20-mean-band-rawret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc20-mean-erp\endcsname{0.594}
+\expandafter\def\csname jv@sp-fc20-mean-erp-acret\endcsname{0.84}
+\expandafter\def\csname jv@sp-fc20-mean-erp-ci\endcsname{[0.562, 0.627]}
+\expandafter\def\csname jv@sp-fc20-mean-erp-hi\endcsname{0.627}
+\expandafter\def\csname jv@sp-fc20-mean-erp-lo\endcsname{0.562}
+\expandafter\def\csname jv@sp-fc20-mean-erp-rawret\endcsname{0.92}
+\expandafter\def\csname jv@sp-fc20-mean-erpres\endcsname{-0.030}
+\expandafter\def\csname jv@sp-fc20-mean-erpres-abs\endcsname{0.030}
+\expandafter\def\csname jv@sp-fc20-mean-erpres-ci\endcsname{[-0.074, +0.014]}
+\expandafter\def\csname jv@sp-fc20-mean-erpres-hi\endcsname{+0.014}
+\expandafter\def\csname jv@sp-fc20-mean-erpres-lo\endcsname{-0.074}
+\expandafter\def\csname jv@sp-fc20-mean-res\endcsname{0.624}
+\expandafter\def\csname jv@sp-fc20-mean-res-acret\endcsname{1.03}
+\expandafter\def\csname jv@sp-fc20-mean-res-ci\endcsname{[0.588, 0.659]}
+\expandafter\def\csname jv@sp-fc20-mean-res-hi\endcsname{0.659}
+\expandafter\def\csname jv@sp-fc20-mean-res-lo\endcsname{0.588}
+\expandafter\def\csname jv@sp-fc20-mean-res-rawret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc20-spatial-band\endcsname{0.485}
+\expandafter\def\csname jv@sp-fc20-spatial-band-acret\endcsname{0.94}
+\expandafter\def\csname jv@sp-fc20-spatial-band-ci\endcsname{[0.452, 0.520]}
+\expandafter\def\csname jv@sp-fc20-spatial-band-hi\endcsname{0.520}
+\expandafter\def\csname jv@sp-fc20-spatial-band-lo\endcsname{0.452}
+\expandafter\def\csname jv@sp-fc20-spatial-band-rawret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc20-spatial-erp\endcsname{0.608}
+\expandafter\def\csname jv@sp-fc20-spatial-erp-acret\endcsname{0.88}
+\expandafter\def\csname jv@sp-fc20-spatial-erp-ci\endcsname{[0.575, 0.638]}
+\expandafter\def\csname jv@sp-fc20-spatial-erp-hi\endcsname{0.638}
+\expandafter\def\csname jv@sp-fc20-spatial-erp-lo\endcsname{0.575}
+\expandafter\def\csname jv@sp-fc20-spatial-erp-rawret\endcsname{0.94}
+\expandafter\def\csname jv@sp-fc20-spatial-erpres\endcsname{-0.013}
+\expandafter\def\csname jv@sp-fc20-spatial-erpres-abs\endcsname{0.013}
+\expandafter\def\csname jv@sp-fc20-spatial-erpres-ci\endcsname{[-0.055, +0.030]}
+\expandafter\def\csname jv@sp-fc20-spatial-erpres-hi\endcsname{+0.030}
+\expandafter\def\csname jv@sp-fc20-spatial-erpres-lo\endcsname{-0.055}
+\expandafter\def\csname jv@sp-fc20-spatial-res\endcsname{0.621}
+\expandafter\def\csname jv@sp-fc20-spatial-res-acret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc20-spatial-res-ci\endcsname{[0.585, 0.656]}
+\expandafter\def\csname jv@sp-fc20-spatial-res-hi\endcsname{0.656}
+\expandafter\def\csname jv@sp-fc20-spatial-res-lo\endcsname{0.585}
+\expandafter\def\csname jv@sp-fc20-spatial-res-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc20-zero-band\endcsname{0.447}
+\expandafter\def\csname jv@sp-fc20-zero-band-acret\endcsname{0.71}
+\expandafter\def\csname jv@sp-fc20-zero-band-ci\endcsname{[0.412, 0.482]}
+\expandafter\def\csname jv@sp-fc20-zero-band-hi\endcsname{0.482}
+\expandafter\def\csname jv@sp-fc20-zero-band-lo\endcsname{0.412}
+\expandafter\def\csname jv@sp-fc20-zero-band-rawret\endcsname{0.90}
+\expandafter\def\csname jv@sp-fc20-zero-erp\endcsname{0.600}
+\expandafter\def\csname jv@sp-fc20-zero-erp-acret\endcsname{0.86}
+\expandafter\def\csname jv@sp-fc20-zero-erp-ci\endcsname{[0.570, 0.630]}
+\expandafter\def\csname jv@sp-fc20-zero-erp-hi\endcsname{0.630}
+\expandafter\def\csname jv@sp-fc20-zero-erp-lo\endcsname{0.570}
+\expandafter\def\csname jv@sp-fc20-zero-erp-rawret\endcsname{0.93}
+\expandafter\def\csname jv@sp-fc20-zero-erpres\endcsname{-0.008}
+\expandafter\def\csname jv@sp-fc20-zero-erpres-abs\endcsname{0.008}
+\expandafter\def\csname jv@sp-fc20-zero-erpres-ci\endcsname{[-0.054, +0.038]}
+\expandafter\def\csname jv@sp-fc20-zero-erpres-hi\endcsname{+0.038}
+\expandafter\def\csname jv@sp-fc20-zero-erpres-lo\endcsname{-0.054}
+\expandafter\def\csname jv@sp-fc20-zero-res\endcsname{0.608}
+\expandafter\def\csname jv@sp-fc20-zero-res-acret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc20-zero-res-ci\endcsname{[0.570, 0.643]}
+\expandafter\def\csname jv@sp-fc20-zero-res-hi\endcsname{0.643}
+\expandafter\def\csname jv@sp-fc20-zero-res-lo\endcsname{0.570}
+\expandafter\def\csname jv@sp-fc20-zero-res-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc30-knn-band\endcsname{0.483}
+\expandafter\def\csname jv@sp-fc30-knn-band-acret\endcsname{0.93}
+\expandafter\def\csname jv@sp-fc30-knn-band-ci\endcsname{[0.450, 0.518]}
+\expandafter\def\csname jv@sp-fc30-knn-band-hi\endcsname{0.518}
+\expandafter\def\csname jv@sp-fc30-knn-band-lo\endcsname{0.450}
+\expandafter\def\csname jv@sp-fc30-knn-band-rawret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc30-knn-erp\endcsname{0.652}
+\expandafter\def\csname jv@sp-fc30-knn-erp-acret\endcsname{1.03}
+\expandafter\def\csname jv@sp-fc30-knn-erp-ci\endcsname{[0.618, 0.686]}
+\expandafter\def\csname jv@sp-fc30-knn-erp-hi\endcsname{0.686}
+\expandafter\def\csname jv@sp-fc30-knn-erp-lo\endcsname{0.618}
+\expandafter\def\csname jv@sp-fc30-knn-erp-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc30-knn-erpres\endcsname{+0.030}
+\expandafter\def\csname jv@sp-fc30-knn-erpres-abs\endcsname{0.030}
+\expandafter\def\csname jv@sp-fc30-knn-erpres-ci\endcsname{[-0.013, +0.071]}
+\expandafter\def\csname jv@sp-fc30-knn-erpres-hi\endcsname{+0.071}
+\expandafter\def\csname jv@sp-fc30-knn-erpres-lo\endcsname{-0.013}
+\expandafter\def\csname jv@sp-fc30-knn-res\endcsname{0.622}
+\expandafter\def\csname jv@sp-fc30-knn-res-acret\endcsname{1.03}
+\expandafter\def\csname jv@sp-fc30-knn-res-ci\endcsname{[0.589, 0.656]}
+\expandafter\def\csname jv@sp-fc30-knn-res-hi\endcsname{0.656}
+\expandafter\def\csname jv@sp-fc30-knn-res-lo\endcsname{0.589}
+\expandafter\def\csname jv@sp-fc30-knn-res-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc30-mean-band\endcsname{0.472}
+\expandafter\def\csname jv@sp-fc30-mean-band-acret\endcsname{0.86}
+\expandafter\def\csname jv@sp-fc30-mean-band-ci\endcsname{[0.441, 0.506]}
+\expandafter\def\csname jv@sp-fc30-mean-band-hi\endcsname{0.506}
+\expandafter\def\csname jv@sp-fc30-mean-band-lo\endcsname{0.441}
+\expandafter\def\csname jv@sp-fc30-mean-band-rawret\endcsname{0.96}
+\expandafter\def\csname jv@sp-fc30-mean-erp\endcsname{0.580}
+\expandafter\def\csname jv@sp-fc30-mean-erp-acret\endcsname{0.79}
+\expandafter\def\csname jv@sp-fc30-mean-erp-ci\endcsname{[0.548, 0.613]}
+\expandafter\def\csname jv@sp-fc30-mean-erp-hi\endcsname{0.613}
+\expandafter\def\csname jv@sp-fc30-mean-erp-lo\endcsname{0.548}
+\expandafter\def\csname jv@sp-fc30-mean-erp-rawret\endcsname{0.90}
+\expandafter\def\csname jv@sp-fc30-mean-erpres\endcsname{-0.021}
+\expandafter\def\csname jv@sp-fc30-mean-erpres-abs\endcsname{0.021}
+\expandafter\def\csname jv@sp-fc30-mean-erpres-ci\endcsname{[-0.066, +0.025]}
+\expandafter\def\csname jv@sp-fc30-mean-erpres-hi\endcsname{+0.025}
+\expandafter\def\csname jv@sp-fc30-mean-erpres-lo\endcsname{-0.066}
+\expandafter\def\csname jv@sp-fc30-mean-res\endcsname{0.600}
+\expandafter\def\csname jv@sp-fc30-mean-res-acret\endcsname{0.95}
+\expandafter\def\csname jv@sp-fc30-mean-res-ci\endcsname{[0.567, 0.633]}
+\expandafter\def\csname jv@sp-fc30-mean-res-hi\endcsname{0.633}
+\expandafter\def\csname jv@sp-fc30-mean-res-lo\endcsname{0.567}
+\expandafter\def\csname jv@sp-fc30-mean-res-rawret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc30-spatial-band\endcsname{0.488}
+\expandafter\def\csname jv@sp-fc30-spatial-band-acret\endcsname{0.96}
+\expandafter\def\csname jv@sp-fc30-spatial-band-ci\endcsname{[0.453, 0.523]}
+\expandafter\def\csname jv@sp-fc30-spatial-band-hi\endcsname{0.523}
+\expandafter\def\csname jv@sp-fc30-spatial-band-lo\endcsname{0.453}
+\expandafter\def\csname jv@sp-fc30-spatial-band-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc30-spatial-erp\endcsname{0.615}
+\expandafter\def\csname jv@sp-fc30-spatial-erp-acret\endcsname{0.90}
+\expandafter\def\csname jv@sp-fc30-spatial-erp-ci\endcsname{[0.583, 0.648]}
+\expandafter\def\csname jv@sp-fc30-spatial-erp-hi\endcsname{0.648}
+\expandafter\def\csname jv@sp-fc30-spatial-erp-lo\endcsname{0.583}
+\expandafter\def\csname jv@sp-fc30-spatial-erp-rawret\endcsname{0.95}
+\expandafter\def\csname jv@sp-fc30-spatial-erpres\endcsname{-0.005}
+\expandafter\def\csname jv@sp-fc30-spatial-erpres-abs\endcsname{0.005}
+\expandafter\def\csname jv@sp-fc30-spatial-erpres-ci\endcsname{[-0.049, +0.038]}
+\expandafter\def\csname jv@sp-fc30-spatial-erpres-hi\endcsname{+0.038}
+\expandafter\def\csname jv@sp-fc30-spatial-erpres-lo\endcsname{-0.049}
+\expandafter\def\csname jv@sp-fc30-spatial-res\endcsname{0.619}
+\expandafter\def\csname jv@sp-fc30-spatial-res-acret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc30-spatial-res-ci\endcsname{[0.585, 0.652]}
+\expandafter\def\csname jv@sp-fc30-spatial-res-hi\endcsname{0.652}
+\expandafter\def\csname jv@sp-fc30-spatial-res-lo\endcsname{0.585}
+\expandafter\def\csname jv@sp-fc30-spatial-res-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc30-zero-band\endcsname{0.417}
+\expandafter\def\csname jv@sp-fc30-zero-band-acret\endcsname{0.52}
+\expandafter\def\csname jv@sp-fc30-zero-band-ci\endcsname{[0.387, 0.447]}
+\expandafter\def\csname jv@sp-fc30-zero-band-hi\endcsname{0.447}
+\expandafter\def\csname jv@sp-fc30-zero-band-lo\endcsname{0.387}
+\expandafter\def\csname jv@sp-fc30-zero-band-rawret\endcsname{0.84}
+\expandafter\def\csname jv@sp-fc30-zero-erp\endcsname{0.581}
+\expandafter\def\csname jv@sp-fc30-zero-erp-acret\endcsname{0.80}
+\expandafter\def\csname jv@sp-fc30-zero-erp-ci\endcsname{[0.551, 0.611]}
+\expandafter\def\csname jv@sp-fc30-zero-erp-hi\endcsname{0.611}
+\expandafter\def\csname jv@sp-fc30-zero-erp-lo\endcsname{0.551}
+\expandafter\def\csname jv@sp-fc30-zero-erp-rawret\endcsname{0.90}
+\expandafter\def\csname jv@sp-fc30-zero-erpres\endcsname{-0.027}
+\expandafter\def\csname jv@sp-fc30-zero-erpres-abs\endcsname{0.027}
+\expandafter\def\csname jv@sp-fc30-zero-erpres-ci\endcsname{[-0.074, +0.019]}
+\expandafter\def\csname jv@sp-fc30-zero-erpres-hi\endcsname{+0.019}
+\expandafter\def\csname jv@sp-fc30-zero-erpres-lo\endcsname{-0.074}
+\expandafter\def\csname jv@sp-fc30-zero-res\endcsname{0.608}
+\expandafter\def\csname jv@sp-fc30-zero-res-acret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc30-zero-res-ci\endcsname{[0.573, 0.641]}
+\expandafter\def\csname jv@sp-fc30-zero-res-hi\endcsname{0.641}
+\expandafter\def\csname jv@sp-fc30-zero-res-lo\endcsname{0.573}
+\expandafter\def\csname jv@sp-fc30-zero-res-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc40-knn-band\endcsname{0.498}
+\expandafter\def\csname jv@sp-fc40-knn-band-acret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc40-knn-band-ci\endcsname{[0.466, 0.531]}
+\expandafter\def\csname jv@sp-fc40-knn-band-hi\endcsname{0.531}
+\expandafter\def\csname jv@sp-fc40-knn-band-lo\endcsname{0.466}
+\expandafter\def\csname jv@sp-fc40-knn-band-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc40-knn-erp\endcsname{0.624}
+\expandafter\def\csname jv@sp-fc40-knn-erp-acret\endcsname{0.93}
+\expandafter\def\csname jv@sp-fc40-knn-erp-ci\endcsname{[0.591, 0.657]}
+\expandafter\def\csname jv@sp-fc40-knn-erp-hi\endcsname{0.657}
+\expandafter\def\csname jv@sp-fc40-knn-erp-lo\endcsname{0.591}
+\expandafter\def\csname jv@sp-fc40-knn-erp-rawret\endcsname{0.97}
+\expandafter\def\csname jv@sp-fc40-knn-erpres\endcsname{+0.003}
+\expandafter\def\csname jv@sp-fc40-knn-erpres-abs\endcsname{0.003}
+\expandafter\def\csname jv@sp-fc40-knn-erpres-ci\endcsname{[-0.038, +0.043]}
+\expandafter\def\csname jv@sp-fc40-knn-erpres-hi\endcsname{+0.043}
+\expandafter\def\csname jv@sp-fc40-knn-erpres-lo\endcsname{-0.038}
+\expandafter\def\csname jv@sp-fc40-knn-res\endcsname{0.621}
+\expandafter\def\csname jv@sp-fc40-knn-res-acret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc40-knn-res-ci\endcsname{[0.586, 0.656]}
+\expandafter\def\csname jv@sp-fc40-knn-res-hi\endcsname{0.656}
+\expandafter\def\csname jv@sp-fc40-knn-res-lo\endcsname{0.586}
+\expandafter\def\csname jv@sp-fc40-knn-res-rawret\endcsname{1.01}
+\expandafter\def\csname jv@sp-fc40-mean-band\endcsname{0.453}
+\expandafter\def\csname jv@sp-fc40-mean-band-acret\endcsname{0.75}
+\expandafter\def\csname jv@sp-fc40-mean-band-ci\endcsname{[0.420, 0.487]}
+\expandafter\def\csname jv@sp-fc40-mean-band-hi\endcsname{0.487}
+\expandafter\def\csname jv@sp-fc40-mean-band-lo\endcsname{0.420}
+\expandafter\def\csname jv@sp-fc40-mean-band-rawret\endcsname{0.92}
+\expandafter\def\csname jv@sp-fc40-mean-erp\endcsname{0.569}
+\expandafter\def\csname jv@sp-fc40-mean-erp-acret\endcsname{0.76}
+\expandafter\def\csname jv@sp-fc40-mean-erp-ci\endcsname{[0.537, 0.600]}
+\expandafter\def\csname jv@sp-fc40-mean-erp-hi\endcsname{0.600}
+\expandafter\def\csname jv@sp-fc40-mean-erp-lo\endcsname{0.537}
+\expandafter\def\csname jv@sp-fc40-mean-erp-rawret\endcsname{0.88}
+\expandafter\def\csname jv@sp-fc40-mean-erpres\endcsname{-0.030}
+\expandafter\def\csname jv@sp-fc40-mean-erpres-abs\endcsname{0.030}
+\expandafter\def\csname jv@sp-fc40-mean-erpres-ci\endcsname{[-0.073, +0.011]}
+\expandafter\def\csname jv@sp-fc40-mean-erpres-hi\endcsname{+0.011}
+\expandafter\def\csname jv@sp-fc40-mean-erpres-lo\endcsname{-0.073}
+\expandafter\def\csname jv@sp-fc40-mean-res\endcsname{0.599}
+\expandafter\def\csname jv@sp-fc40-mean-res-acret\endcsname{0.94}
+\expandafter\def\csname jv@sp-fc40-mean-res-ci\endcsname{[0.562, 0.635]}
+\expandafter\def\csname jv@sp-fc40-mean-res-hi\endcsname{0.635}
+\expandafter\def\csname jv@sp-fc40-mean-res-lo\endcsname{0.562}
+\expandafter\def\csname jv@sp-fc40-mean-res-rawret\endcsname{0.97}
+\expandafter\def\csname jv@sp-fc40-spatial-band\endcsname{0.442}
+\expandafter\def\csname jv@sp-fc40-spatial-band-acret\endcsname{0.68}
+\expandafter\def\csname jv@sp-fc40-spatial-band-ci\endcsname{[0.409, 0.476]}
+\expandafter\def\csname jv@sp-fc40-spatial-band-hi\endcsname{0.476}
+\expandafter\def\csname jv@sp-fc40-spatial-band-lo\endcsname{0.409}
+\expandafter\def\csname jv@sp-fc40-spatial-band-rawret\endcsname{0.89}
+\expandafter\def\csname jv@sp-fc40-spatial-erp\endcsname{0.589}
+\expandafter\def\csname jv@sp-fc40-spatial-erp-acret\endcsname{0.82}
+\expandafter\def\csname jv@sp-fc40-spatial-erp-ci\endcsname{[0.562, 0.618]}
+\expandafter\def\csname jv@sp-fc40-spatial-erp-hi\endcsname{0.618}
+\expandafter\def\csname jv@sp-fc40-spatial-erp-lo\endcsname{0.562}
+\expandafter\def\csname jv@sp-fc40-spatial-erp-rawret\endcsname{0.91}
+\expandafter\def\csname jv@sp-fc40-spatial-erpres\endcsname{-0.019}
+\expandafter\def\csname jv@sp-fc40-spatial-erpres-abs\endcsname{0.019}
+\expandafter\def\csname jv@sp-fc40-spatial-erpres-ci\endcsname{[-0.063, +0.024]}
+\expandafter\def\csname jv@sp-fc40-spatial-erpres-hi\endcsname{+0.024}
+\expandafter\def\csname jv@sp-fc40-spatial-erpres-lo\endcsname{-0.063}
+\expandafter\def\csname jv@sp-fc40-spatial-res\endcsname{0.608}
+\expandafter\def\csname jv@sp-fc40-spatial-res-acret\endcsname{0.98}
+\expandafter\def\csname jv@sp-fc40-spatial-res-ci\endcsname{[0.573, 0.643]}
+\expandafter\def\csname jv@sp-fc40-spatial-res-hi\endcsname{0.643}
+\expandafter\def\csname jv@sp-fc40-spatial-res-lo\endcsname{0.573}
+\expandafter\def\csname jv@sp-fc40-spatial-res-rawret\endcsname{0.99}
+\expandafter\def\csname jv@sp-fc40-zero-band\endcsname{0.447}
+\expandafter\def\csname jv@sp-fc40-zero-band-acret\endcsname{0.71}
+\expandafter\def\csname jv@sp-fc40-zero-band-ci\endcsname{[0.419, 0.479]}
+\expandafter\def\csname jv@sp-fc40-zero-band-hi\endcsname{0.479}
+\expandafter\def\csname jv@sp-fc40-zero-band-lo\endcsname{0.419}
+\expandafter\def\csname jv@sp-fc40-zero-band-rawret\endcsname{0.90}
+\expandafter\def\csname jv@sp-fc40-zero-erp\endcsname{0.512}
+\expandafter\def\csname jv@sp-fc40-zero-erp-acret\endcsname{0.57}
+\expandafter\def\csname jv@sp-fc40-zero-erp-ci\endcsname{[0.483, 0.542]}
+\expandafter\def\csname jv@sp-fc40-zero-erp-hi\endcsname{0.542}
+\expandafter\def\csname jv@sp-fc40-zero-erp-lo\endcsname{0.483}
+\expandafter\def\csname jv@sp-fc40-zero-erp-rawret\endcsname{0.79}
+\expandafter\def\csname jv@sp-fc40-zero-erpres\endcsname{-0.087}
+\expandafter\def\csname jv@sp-fc40-zero-erpres-abs\endcsname{0.087}
+\expandafter\def\csname jv@sp-fc40-zero-erpres-ci\endcsname{[-0.128, -0.046]}
+\expandafter\def\csname jv@sp-fc40-zero-erpres-hi\endcsname{-0.046}
+\expandafter\def\csname jv@sp-fc40-zero-erpres-lo\endcsname{-0.128}
+\expandafter\def\csname jv@sp-fc40-zero-res\endcsname{0.599}
+\expandafter\def\csname jv@sp-fc40-zero-res-acret\endcsname{0.94}
+\expandafter\def\csname jv@sp-fc40-zero-res-ci\endcsname{[0.564, 0.633]}
+\expandafter\def\csname jv@sp-fc40-zero-res-hi\endcsname{0.633}
+\expandafter\def\csname jv@sp-fc40-zero-res-lo\endcsname{0.564}
+\expandafter\def\csname jv@sp-fc40-zero-res-rawret\endcsname{0.97}
+\expandafter\def\csname jv@sp-fc50-knn-band\endcsname{0.504}
+\expandafter\def\csname jv@sp-fc50-knn-band-acret\endcsname{1.06}
+\expandafter\def\csname jv@sp-fc50-knn-band-ci\endcsname{[0.471, 0.537]}
+\expandafter\def\csname jv@sp-fc50-knn-band-hi\endcsname{0.537}
+\expandafter\def\csname jv@sp-fc50-knn-band-lo\endcsname{0.471}
+\expandafter\def\csname jv@sp-fc50-knn-band-rawret\endcsname{1.02}
+\expandafter\def\csname jv@sp-fc50-knn-erp\endcsname{0.615}
+\expandafter\def\csname jv@sp-fc50-knn-erp-acret\endcsname{0.90}
+\expandafter\def\csname jv@sp-fc50-knn-erp-ci\endcsname{[0.581, 0.649]}
+\expandafter\def\csname jv@sp-fc50-knn-erp-hi\endcsname{0.649}
+\expandafter\def\csname jv@sp-fc50-knn-erp-lo\endcsname{0.581}
+\expandafter\def\csname jv@sp-fc50-knn-erp-rawret\endcsname{0.95}
+\expandafter\def\csname jv@sp-fc50-knn-erpres\endcsname{+0.000}
+\expandafter\def\csname jv@sp-fc50-knn-erpres-abs\endcsname{0.000}
+\expandafter\def\csname jv@sp-fc50-knn-erpres-ci\endcsname{[-0.041, +0.041]}
+\expandafter\def\csname jv@sp-fc50-knn-erpres-hi\endcsname{+0.041}
+\expandafter\def\csname jv@sp-fc50-knn-erpres-lo\endcsname{-0.041}
+\expandafter\def\csname jv@sp-fc50-knn-res\endcsname{0.615}
+\expandafter\def\csname jv@sp-fc50-knn-res-acret\endcsname{1.00}
+\expandafter\def\csname jv@sp-fc50-knn-res-ci\endcsname{[0.580, 0.648]}
+\expandafter\def\csname jv@sp-fc50-knn-res-hi\endcsname{0.648}
+\expandafter\def\csname jv@sp-fc50-knn-res-lo\endcsname{0.580}
+\expandafter\def\csname jv@sp-fc50-knn-res-rawret\endcsname{1.00}
+\expandafter\def\csname jv@sp-fc50-mean-band\endcsname{0.474}
+\expandafter\def\csname jv@sp-fc50-mean-band-acret\endcsname{0.87}
+\expandafter\def\csname jv@sp-fc50-mean-band-ci\endcsname{[0.439, 0.509]}
+\expandafter\def\csname jv@sp-fc50-mean-band-hi\endcsname{0.509}
+\expandafter\def\csname jv@sp-fc50-mean-band-lo\endcsname{0.439}
+\expandafter\def\csname jv@sp-fc50-mean-band-rawret\endcsname{0.96}
+\expandafter\def\csname jv@sp-fc50-mean-erp\endcsname{0.542}
+\expandafter\def\csname jv@sp-fc50-mean-erp-acret\endcsname{0.67}
+\expandafter\def\csname jv@sp-fc50-mean-erp-ci\endcsname{[0.509, 0.575]}
+\expandafter\def\csname jv@sp-fc50-mean-erp-hi\endcsname{0.575}
+\expandafter\def\csname jv@sp-fc50-mean-erp-lo\endcsname{0.509}
+\expandafter\def\csname jv@sp-fc50-mean-erp-rawret\endcsname{0.84}
+\expandafter\def\csname jv@sp-fc50-mean-erpres\endcsname{-0.046}
+\expandafter\def\csname jv@sp-fc50-mean-erpres-abs\endcsname{0.046}
+\expandafter\def\csname jv@sp-fc50-mean-erpres-ci\endcsname{[-0.088, -0.003]}
+\expandafter\def\csname jv@sp-fc50-mean-erpres-hi\endcsname{-0.003}
+\expandafter\def\csname jv@sp-fc50-mean-erpres-lo\endcsname{-0.088}
+\expandafter\def\csname jv@sp-fc50-mean-res\endcsname{0.588}
+\expandafter\def\csname jv@sp-fc50-mean-res-acret\endcsname{0.90}
+\expandafter\def\csname jv@sp-fc50-mean-res-ci\endcsname{[0.553, 0.621]}
+\expandafter\def\csname jv@sp-fc50-mean-res-hi\endcsname{0.621}
+\expandafter\def\csname jv@sp-fc50-mean-res-lo\endcsname{0.553}
+\expandafter\def\csname jv@sp-fc50-mean-res-rawret\endcsname{0.96}
+\expandafter\def\csname jv@sp-fc50-spatial-band\endcsname{0.453}
+\expandafter\def\csname jv@sp-fc50-spatial-band-acret\endcsname{0.75}
+\expandafter\def\csname jv@sp-fc50-spatial-band-ci\endcsname{[0.419, 0.488]}
+\expandafter\def\csname jv@sp-fc50-spatial-band-hi\endcsname{0.488}
+\expandafter\def\csname jv@sp-fc50-spatial-band-lo\endcsname{0.419}
+\expandafter\def\csname jv@sp-fc50-spatial-band-rawret\endcsname{0.92}
+\expandafter\def\csname jv@sp-fc50-spatial-erp\endcsname{0.542}
+\expandafter\def\csname jv@sp-fc50-spatial-erp-acret\endcsname{0.67}
+\expandafter\def\csname jv@sp-fc50-spatial-erp-ci\endcsname{[0.510, 0.573]}
+\expandafter\def\csname jv@sp-fc50-spatial-erp-hi\endcsname{0.573}
+\expandafter\def\csname jv@sp-fc50-spatial-erp-lo\endcsname{0.510}
+\expandafter\def\csname jv@sp-fc50-spatial-erp-rawret\endcsname{0.84}
+\expandafter\def\csname jv@sp-fc50-spatial-erpres\endcsname{-0.057}
+\expandafter\def\csname jv@sp-fc50-spatial-erpres-abs\endcsname{0.057}
+\expandafter\def\csname jv@sp-fc50-spatial-erpres-ci\endcsname{[-0.100, -0.016]}
+\expandafter\def\csname jv@sp-fc50-spatial-erpres-hi\endcsname{-0.016}
+\expandafter\def\csname jv@sp-fc50-spatial-erpres-lo\endcsname{-0.100}
+\expandafter\def\csname jv@sp-fc50-spatial-res\endcsname{0.599}
+\expandafter\def\csname jv@sp-fc50-spatial-res-acret\endcsname{0.94}
+\expandafter\def\csname jv@sp-fc50-spatial-res-ci\endcsname{[0.564, 0.632]}
+\expandafter\def\csname jv@sp-fc50-spatial-res-hi\endcsname{0.632}
+\expandafter\def\csname jv@sp-fc50-spatial-res-lo\endcsname{0.564}
+\expandafter\def\csname jv@sp-fc50-spatial-res-rawret\endcsname{0.97}
+\expandafter\def\csname jv@sp-fc50-zero-band\endcsname{0.450}
+\expandafter\def\csname jv@sp-fc50-zero-band-acret\endcsname{0.73}
+\expandafter\def\csname jv@sp-fc50-zero-band-ci\endcsname{[0.422, 0.479]}
+\expandafter\def\csname jv@sp-fc50-zero-band-hi\endcsname{0.479}
+\expandafter\def\csname jv@sp-fc50-zero-band-lo\endcsname{0.422}
+\expandafter\def\csname jv@sp-fc50-zero-band-rawret\endcsname{0.91}
+\expandafter\def\csname jv@sp-fc50-zero-erp\endcsname{0.509}
+\expandafter\def\csname jv@sp-fc50-zero-erp-acret\endcsname{0.56}
+\expandafter\def\csname jv@sp-fc50-zero-erp-ci\endcsname{[0.479, 0.540]}
+\expandafter\def\csname jv@sp-fc50-zero-erp-hi\endcsname{0.540}
+\expandafter\def\csname jv@sp-fc50-zero-erp-lo\endcsname{0.479}
+\expandafter\def\csname jv@sp-fc50-zero-erp-rawret\endcsname{0.79}
+\expandafter\def\csname jv@sp-fc50-zero-erpres\endcsname{-0.065}
+\expandafter\def\csname jv@sp-fc50-zero-erpres-abs\endcsname{0.065}
+\expandafter\def\csname jv@sp-fc50-zero-erpres-ci\endcsname{[-0.107, -0.024]}
+\expandafter\def\csname jv@sp-fc50-zero-erpres-hi\endcsname{-0.024}
+\expandafter\def\csname jv@sp-fc50-zero-erpres-lo\endcsname{-0.107}
+\expandafter\def\csname jv@sp-fc50-zero-res\endcsname{0.573}
+\expandafter\def\csname jv@sp-fc50-zero-res-acret\endcsname{0.85}
+\expandafter\def\csname jv@sp-fc50-zero-res-ci\endcsname{[0.539, 0.607]}
+\expandafter\def\csname jv@sp-fc50-zero-res-hi\endcsname{0.607}
+\expandafter\def\csname jv@sp-fc50-zero-res-lo\endcsname{0.539}
+\expandafter\def\csname jv@sp-fc50-zero-res-rawret\endcsname{0.93}
 \expandafter\def\csname jv@sp-flip-band\endcsname{40.9}
 \expandafter\def\csname jv@sp-flip-erp\endcsname{21.6}
 \expandafter\def\csname jv@sp-flip-res\endcsname{4.9}
+\expandafter\def\csname jv@sp-fmz-knn10-band\endcsname{+0.019}
+\expandafter\def\csname jv@sp-fmz-knn10-band-abs\endcsname{0.019}
+\expandafter\def\csname jv@sp-fmz-knn10-band-ci\endcsname{[-0.006, +0.044]}
+\expandafter\def\csname jv@sp-fmz-knn10-band-hi\endcsname{+0.044}
+\expandafter\def\csname jv@sp-fmz-knn10-band-lo\endcsname{-0.006}
+\expandafter\def\csname jv@sp-fmz-knn10-erp\endcsname{+0.024}
+\expandafter\def\csname jv@sp-fmz-knn10-erp-abs\endcsname{0.024}
+\expandafter\def\csname jv@sp-fmz-knn10-erp-ci\endcsname{[-0.003, +0.049]}
+\expandafter\def\csname jv@sp-fmz-knn10-erp-hi\endcsname{+0.049}
+\expandafter\def\csname jv@sp-fmz-knn10-erp-lo\endcsname{-0.003}
+\expandafter\def\csname jv@sp-fmz-knn10-res\endcsname{+0.016}
+\expandafter\def\csname jv@sp-fmz-knn10-res-abs\endcsname{0.016}
+\expandafter\def\csname jv@sp-fmz-knn10-res-ci\endcsname{[+0.003, +0.028]}
+\expandafter\def\csname jv@sp-fmz-knn10-res-hi\endcsname{+0.028}
+\expandafter\def\csname jv@sp-fmz-knn10-res-lo\endcsname{+0.003}
+\expandafter\def\csname jv@sp-fmz-knn20-band\endcsname{+0.051}
+\expandafter\def\csname jv@sp-fmz-knn20-band-abs\endcsname{0.051}
+\expandafter\def\csname jv@sp-fmz-knn20-band-ci\endcsname{[+0.016, +0.087]}
+\expandafter\def\csname jv@sp-fmz-knn20-band-hi\endcsname{+0.087}
+\expandafter\def\csname jv@sp-fmz-knn20-band-lo\endcsname{+0.016}
+\expandafter\def\csname jv@sp-fmz-knn20-erp\endcsname{+0.029}
+\expandafter\def\csname jv@sp-fmz-knn20-erp-abs\endcsname{0.029}
+\expandafter\def\csname jv@sp-fmz-knn20-erp-ci\endcsname{[-0.003, +0.060]}
+\expandafter\def\csname jv@sp-fmz-knn20-erp-hi\endcsname{+0.060}
+\expandafter\def\csname jv@sp-fmz-knn20-erp-lo\endcsname{-0.003}
+\expandafter\def\csname jv@sp-fmz-knn20-res\endcsname{+0.021}
+\expandafter\def\csname jv@sp-fmz-knn20-res-abs\endcsname{0.021}
+\expandafter\def\csname jv@sp-fmz-knn20-res-ci\endcsname{[+0.002, +0.043]}
+\expandafter\def\csname jv@sp-fmz-knn20-res-hi\endcsname{+0.043}
+\expandafter\def\csname jv@sp-fmz-knn20-res-lo\endcsname{+0.002}
+\expandafter\def\csname jv@sp-fmz-knn30-band\endcsname{+0.067}
+\expandafter\def\csname jv@sp-fmz-knn30-band-abs\endcsname{0.067}
+\expandafter\def\csname jv@sp-fmz-knn30-band-ci\endcsname{[+0.033, +0.100]}
+\expandafter\def\csname jv@sp-fmz-knn30-band-hi\endcsname{+0.100}
+\expandafter\def\csname jv@sp-fmz-knn30-band-lo\endcsname{+0.033}
+\expandafter\def\csname jv@sp-fmz-knn30-erp\endcsname{+0.071}
+\expandafter\def\csname jv@sp-fmz-knn30-erp-abs\endcsname{0.071}
+\expandafter\def\csname jv@sp-fmz-knn30-erp-ci\endcsname{[+0.036, +0.107]}
+\expandafter\def\csname jv@sp-fmz-knn30-erp-hi\endcsname{+0.107}
+\expandafter\def\csname jv@sp-fmz-knn30-erp-lo\endcsname{+0.036}
+\expandafter\def\csname jv@sp-fmz-knn30-res\endcsname{+0.014}
+\expandafter\def\csname jv@sp-fmz-knn30-res-abs\endcsname{0.014}
+\expandafter\def\csname jv@sp-fmz-knn30-res-ci\endcsname{[-0.006, +0.036]}
+\expandafter\def\csname jv@sp-fmz-knn30-res-hi\endcsname{+0.036}
+\expandafter\def\csname jv@sp-fmz-knn30-res-lo\endcsname{-0.006}
+\expandafter\def\csname jv@sp-fmz-knn40-band\endcsname{+0.051}
+\expandafter\def\csname jv@sp-fmz-knn40-band-abs\endcsname{0.051}
+\expandafter\def\csname jv@sp-fmz-knn40-band-ci\endcsname{[+0.017, +0.084]}
+\expandafter\def\csname jv@sp-fmz-knn40-band-hi\endcsname{+0.084}
+\expandafter\def\csname jv@sp-fmz-knn40-band-lo\endcsname{+0.017}
+\expandafter\def\csname jv@sp-fmz-knn40-erp\endcsname{+0.112}
+\expandafter\def\csname jv@sp-fmz-knn40-erp-abs\endcsname{0.112}
+\expandafter\def\csname jv@sp-fmz-knn40-erp-ci\endcsname{[+0.076, +0.147]}
+\expandafter\def\csname jv@sp-fmz-knn40-erp-hi\endcsname{+0.147}
+\expandafter\def\csname jv@sp-fmz-knn40-erp-lo\endcsname{+0.076}
+\expandafter\def\csname jv@sp-fmz-knn40-res\endcsname{+0.022}
+\expandafter\def\csname jv@sp-fmz-knn40-res-abs\endcsname{0.022}
+\expandafter\def\csname jv@sp-fmz-knn40-res-ci\endcsname{[-0.006, +0.051]}
+\expandafter\def\csname jv@sp-fmz-knn40-res-hi\endcsname{+0.051}
+\expandafter\def\csname jv@sp-fmz-knn40-res-lo\endcsname{-0.006}
+\expandafter\def\csname jv@sp-fmz-knn50-band\endcsname{+0.054}
+\expandafter\def\csname jv@sp-fmz-knn50-band-abs\endcsname{0.054}
+\expandafter\def\csname jv@sp-fmz-knn50-band-ci\endcsname{[+0.021, +0.087]}
+\expandafter\def\csname jv@sp-fmz-knn50-band-hi\endcsname{+0.087}
+\expandafter\def\csname jv@sp-fmz-knn50-band-lo\endcsname{+0.021}
+\expandafter\def\csname jv@sp-fmz-knn50-erp\endcsname{+0.106}
+\expandafter\def\csname jv@sp-fmz-knn50-erp-abs\endcsname{0.106}
+\expandafter\def\csname jv@sp-fmz-knn50-erp-ci\endcsname{[+0.070, +0.144]}
+\expandafter\def\csname jv@sp-fmz-knn50-erp-hi\endcsname{+0.144}
+\expandafter\def\csname jv@sp-fmz-knn50-erp-lo\endcsname{+0.070}
+\expandafter\def\csname jv@sp-fmz-knn50-res\endcsname{+0.041}
+\expandafter\def\csname jv@sp-fmz-knn50-res-abs\endcsname{0.041}
+\expandafter\def\csname jv@sp-fmz-knn50-res-ci\endcsname{[+0.009, +0.073]}
+\expandafter\def\csname jv@sp-fmz-knn50-res-hi\endcsname{+0.073}
+\expandafter\def\csname jv@sp-fmz-knn50-res-lo\endcsname{+0.009}
+\expandafter\def\csname jv@sp-fmz-mean10-band\endcsname{+0.014}
+\expandafter\def\csname jv@sp-fmz-mean10-band-abs\endcsname{0.014}
+\expandafter\def\csname jv@sp-fmz-mean10-band-ci\endcsname{[-0.009, +0.039]}
+\expandafter\def\csname jv@sp-fmz-mean10-band-hi\endcsname{+0.039}
+\expandafter\def\csname jv@sp-fmz-mean10-band-lo\endcsname{-0.009}
+\expandafter\def\csname jv@sp-fmz-mean10-erp\endcsname{+0.000}
+\expandafter\def\csname jv@sp-fmz-mean10-erp-abs\endcsname{0.000}
+\expandafter\def\csname jv@sp-fmz-mean10-erp-ci\endcsname{[-0.021, +0.022]}
+\expandafter\def\csname jv@sp-fmz-mean10-erp-hi\endcsname{+0.022}
+\expandafter\def\csname jv@sp-fmz-mean10-erp-lo\endcsname{-0.021}
+\expandafter\def\csname jv@sp-fmz-mean10-res\endcsname{+0.005}
+\expandafter\def\csname jv@sp-fmz-mean10-res-abs\endcsname{0.005}
+\expandafter\def\csname jv@sp-fmz-mean10-res-ci\endcsname{[-0.003, +0.013]}
+\expandafter\def\csname jv@sp-fmz-mean10-res-hi\endcsname{+0.013}
+\expandafter\def\csname jv@sp-fmz-mean10-res-lo\endcsname{-0.003}
+\expandafter\def\csname jv@sp-fmz-mean20-band\endcsname{+0.038}
+\expandafter\def\csname jv@sp-fmz-mean20-band-abs\endcsname{0.038}
+\expandafter\def\csname jv@sp-fmz-mean20-band-ci\endcsname{[+0.003, +0.073]}
+\expandafter\def\csname jv@sp-fmz-mean20-band-hi\endcsname{+0.073}
+\expandafter\def\csname jv@sp-fmz-mean20-band-lo\endcsname{+0.003}
+\expandafter\def\csname jv@sp-fmz-mean20-erp\endcsname{-0.006}
+\expandafter\def\csname jv@sp-fmz-mean20-erp-abs\endcsname{0.006}
+\expandafter\def\csname jv@sp-fmz-mean20-erp-ci\endcsname{[-0.032, +0.019]}
+\expandafter\def\csname jv@sp-fmz-mean20-erp-hi\endcsname{+0.019}
+\expandafter\def\csname jv@sp-fmz-mean20-erp-lo\endcsname{-0.032}
+\expandafter\def\csname jv@sp-fmz-mean20-res\endcsname{+0.016}
+\expandafter\def\csname jv@sp-fmz-mean20-res-abs\endcsname{0.016}
+\expandafter\def\csname jv@sp-fmz-mean20-res-ci\endcsname{[+0.000, +0.032]}
+\expandafter\def\csname jv@sp-fmz-mean20-res-hi\endcsname{+0.032}
+\expandafter\def\csname jv@sp-fmz-mean20-res-lo\endcsname{+0.000}
+\expandafter\def\csname jv@sp-fmz-mean30-band\endcsname{+0.055}
+\expandafter\def\csname jv@sp-fmz-mean30-band-abs\endcsname{0.055}
+\expandafter\def\csname jv@sp-fmz-mean30-band-ci\endcsname{[+0.024, +0.087]}
+\expandafter\def\csname jv@sp-fmz-mean30-band-hi\endcsname{+0.087}
+\expandafter\def\csname jv@sp-fmz-mean30-band-lo\endcsname{+0.024}
+\expandafter\def\csname jv@sp-fmz-mean30-erp\endcsname{-0.001}
+\expandafter\def\csname jv@sp-fmz-mean30-erp-abs\endcsname{0.001}
+\expandafter\def\csname jv@sp-fmz-mean30-erp-ci\endcsname{[-0.030, +0.028]}
+\expandafter\def\csname jv@sp-fmz-mean30-erp-hi\endcsname{+0.028}
+\expandafter\def\csname jv@sp-fmz-mean30-erp-lo\endcsname{-0.030}
+\expandafter\def\csname jv@sp-fmz-mean30-res\endcsname{-0.008}
+\expandafter\def\csname jv@sp-fmz-mean30-res-abs\endcsname{0.008}
+\expandafter\def\csname jv@sp-fmz-mean30-res-ci\endcsname{[-0.024, +0.008]}
+\expandafter\def\csname jv@sp-fmz-mean30-res-hi\endcsname{+0.008}
+\expandafter\def\csname jv@sp-fmz-mean30-res-lo\endcsname{-0.024}
+\expandafter\def\csname jv@sp-fmz-mean40-band\endcsname{+0.006}
+\expandafter\def\csname jv@sp-fmz-mean40-band-abs\endcsname{0.006}
+\expandafter\def\csname jv@sp-fmz-mean40-band-ci\endcsname{[-0.027, +0.038]}
+\expandafter\def\csname jv@sp-fmz-mean40-band-hi\endcsname{+0.038}
+\expandafter\def\csname jv@sp-fmz-mean40-band-lo\endcsname{-0.027}
+\expandafter\def\csname jv@sp-fmz-mean40-erp\endcsname{+0.057}
+\expandafter\def\csname jv@sp-fmz-mean40-erp-abs\endcsname{0.057}
+\expandafter\def\csname jv@sp-fmz-mean40-erp-ci\endcsname{[+0.030, +0.085]}
+\expandafter\def\csname jv@sp-fmz-mean40-erp-hi\endcsname{+0.085}
+\expandafter\def\csname jv@sp-fmz-mean40-erp-lo\endcsname{+0.030}
+\expandafter\def\csname jv@sp-fmz-mean40-res\endcsname{+0.000}
+\expandafter\def\csname jv@sp-fmz-mean40-res-abs\endcsname{0.000}
+\expandafter\def\csname jv@sp-fmz-mean40-res-ci\endcsname{[-0.021, +0.021]}
+\expandafter\def\csname jv@sp-fmz-mean40-res-hi\endcsname{+0.021}
+\expandafter\def\csname jv@sp-fmz-mean40-res-lo\endcsname{-0.021}
+\expandafter\def\csname jv@sp-fmz-mean50-band\endcsname{+0.024}
+\expandafter\def\csname jv@sp-fmz-mean50-band-abs\endcsname{0.024}
+\expandafter\def\csname jv@sp-fmz-mean50-band-ci\endcsname{[-0.008, +0.058]}
+\expandafter\def\csname jv@sp-fmz-mean50-band-hi\endcsname{+0.058}
+\expandafter\def\csname jv@sp-fmz-mean50-band-lo\endcsname{-0.008}
+\expandafter\def\csname jv@sp-fmz-mean50-erp\endcsname{+0.033}
+\expandafter\def\csname jv@sp-fmz-mean50-erp-abs\endcsname{0.033}
+\expandafter\def\csname jv@sp-fmz-mean50-erp-ci\endcsname{[+0.002, +0.065]}
+\expandafter\def\csname jv@sp-fmz-mean50-erp-hi\endcsname{+0.065}
+\expandafter\def\csname jv@sp-fmz-mean50-erp-lo\endcsname{+0.002}
+\expandafter\def\csname jv@sp-fmz-mean50-res\endcsname{+0.014}
+\expandafter\def\csname jv@sp-fmz-mean50-res-abs\endcsname{0.014}
+\expandafter\def\csname jv@sp-fmz-mean50-res-ci\endcsname{[-0.013, +0.041]}
+\expandafter\def\csname jv@sp-fmz-mean50-res-hi\endcsname{+0.041}
+\expandafter\def\csname jv@sp-fmz-mean50-res-lo\endcsname{-0.013}
+\expandafter\def\csname jv@sp-fmz-spatial10-band\endcsname{+0.032}
+\expandafter\def\csname jv@sp-fmz-spatial10-band-abs\endcsname{0.032}
+\expandafter\def\csname jv@sp-fmz-spatial10-band-ci\endcsname{[+0.006, +0.058]}
+\expandafter\def\csname jv@sp-fmz-spatial10-band-hi\endcsname{+0.058}
+\expandafter\def\csname jv@sp-fmz-spatial10-band-lo\endcsname{+0.006}
+\expandafter\def\csname jv@sp-fmz-spatial10-erp\endcsname{+0.013}
+\expandafter\def\csname jv@sp-fmz-spatial10-erp-abs\endcsname{0.013}
+\expandafter\def\csname jv@sp-fmz-spatial10-erp-ci\endcsname{[-0.011, +0.036]}
+\expandafter\def\csname jv@sp-fmz-spatial10-erp-hi\endcsname{+0.036}
+\expandafter\def\csname jv@sp-fmz-spatial10-erp-lo\endcsname{-0.011}
+\expandafter\def\csname jv@sp-fmz-spatial10-res\endcsname{+0.011}
+\expandafter\def\csname jv@sp-fmz-spatial10-res-abs\endcsname{0.011}
+\expandafter\def\csname jv@sp-fmz-spatial10-res-ci\endcsname{[+0.002, +0.021]}
+\expandafter\def\csname jv@sp-fmz-spatial10-res-hi\endcsname{+0.021}
+\expandafter\def\csname jv@sp-fmz-spatial10-res-lo\endcsname{+0.002}
+\expandafter\def\csname jv@sp-fmz-spatial20-band\endcsname{+0.038}
+\expandafter\def\csname jv@sp-fmz-spatial20-band-abs\endcsname{0.038}
+\expandafter\def\csname jv@sp-fmz-spatial20-band-ci\endcsname{[+0.000, +0.076]}
+\expandafter\def\csname jv@sp-fmz-spatial20-band-hi\endcsname{+0.076}
+\expandafter\def\csname jv@sp-fmz-spatial20-band-lo\endcsname{+0.000}
+\expandafter\def\csname jv@sp-fmz-spatial20-erp\endcsname{+0.008}
+\expandafter\def\csname jv@sp-fmz-spatial20-erp-abs\endcsname{0.008}
+\expandafter\def\csname jv@sp-fmz-spatial20-erp-ci\endcsname{[-0.021, +0.036]}
+\expandafter\def\csname jv@sp-fmz-spatial20-erp-hi\endcsname{+0.036}
+\expandafter\def\csname jv@sp-fmz-spatial20-erp-lo\endcsname{-0.021}
+\expandafter\def\csname jv@sp-fmz-spatial20-res\endcsname{+0.013}
+\expandafter\def\csname jv@sp-fmz-spatial20-res-abs\endcsname{0.013}
+\expandafter\def\csname jv@sp-fmz-spatial20-res-ci\endcsname{[-0.003, +0.028]}
+\expandafter\def\csname jv@sp-fmz-spatial20-res-hi\endcsname{+0.028}
+\expandafter\def\csname jv@sp-fmz-spatial20-res-lo\endcsname{-0.003}
+\expandafter\def\csname jv@sp-fmz-spatial30-band\endcsname{+0.071}
+\expandafter\def\csname jv@sp-fmz-spatial30-band-abs\endcsname{0.071}
+\expandafter\def\csname jv@sp-fmz-spatial30-band-ci\endcsname{[+0.038, +0.106]}
+\expandafter\def\csname jv@sp-fmz-spatial30-band-hi\endcsname{+0.106}
+\expandafter\def\csname jv@sp-fmz-spatial30-band-lo\endcsname{+0.038}
+\expandafter\def\csname jv@sp-fmz-spatial30-erp\endcsname{+0.033}
+\expandafter\def\csname jv@sp-fmz-spatial30-erp-abs\endcsname{0.033}
+\expandafter\def\csname jv@sp-fmz-spatial30-erp-ci\endcsname{[+0.003, +0.063]}
+\expandafter\def\csname jv@sp-fmz-spatial30-erp-hi\endcsname{+0.063}
+\expandafter\def\csname jv@sp-fmz-spatial30-erp-lo\endcsname{+0.003}
+\expandafter\def\csname jv@sp-fmz-spatial30-res\endcsname{+0.011}
+\expandafter\def\csname jv@sp-fmz-spatial30-res-abs\endcsname{0.011}
+\expandafter\def\csname jv@sp-fmz-spatial30-res-ci\endcsname{[-0.006, +0.028]}
+\expandafter\def\csname jv@sp-fmz-spatial30-res-hi\endcsname{+0.028}
+\expandafter\def\csname jv@sp-fmz-spatial30-res-lo\endcsname{-0.006}
+\expandafter\def\csname jv@sp-fmz-spatial40-band\endcsname{-0.005}
+\expandafter\def\csname jv@sp-fmz-spatial40-band-abs\endcsname{0.005}
+\expandafter\def\csname jv@sp-fmz-spatial40-band-ci\endcsname{[-0.043, +0.032]}
+\expandafter\def\csname jv@sp-fmz-spatial40-band-hi\endcsname{+0.032}
+\expandafter\def\csname jv@sp-fmz-spatial40-band-lo\endcsname{-0.043}
+\expandafter\def\csname jv@sp-fmz-spatial40-erp\endcsname{+0.077}
+\expandafter\def\csname jv@sp-fmz-spatial40-erp-abs\endcsname{0.077}
+\expandafter\def\csname jv@sp-fmz-spatial40-erp-ci\endcsname{[+0.046, +0.109]}
+\expandafter\def\csname jv@sp-fmz-spatial40-erp-hi\endcsname{+0.109}
+\expandafter\def\csname jv@sp-fmz-spatial40-erp-lo\endcsname{+0.046}
+\expandafter\def\csname jv@sp-fmz-spatial40-res\endcsname{+0.009}
+\expandafter\def\csname jv@sp-fmz-spatial40-res-abs\endcsname{0.009}
+\expandafter\def\csname jv@sp-fmz-spatial40-res-ci\endcsname{[-0.014, +0.033]}
+\expandafter\def\csname jv@sp-fmz-spatial40-res-hi\endcsname{+0.033}
+\expandafter\def\csname jv@sp-fmz-spatial40-res-lo\endcsname{-0.014}
+\expandafter\def\csname jv@sp-fmz-spatial50-band\endcsname{+0.003}
+\expandafter\def\csname jv@sp-fmz-spatial50-band-abs\endcsname{0.003}
+\expandafter\def\csname jv@sp-fmz-spatial50-band-ci\endcsname{[-0.030, +0.036]}
+\expandafter\def\csname jv@sp-fmz-spatial50-band-hi\endcsname{+0.036}
+\expandafter\def\csname jv@sp-fmz-spatial50-band-lo\endcsname{-0.030}
+\expandafter\def\csname jv@sp-fmz-spatial50-erp\endcsname{+0.033}
+\expandafter\def\csname jv@sp-fmz-spatial50-erp-abs\endcsname{0.033}
+\expandafter\def\csname jv@sp-fmz-spatial50-erp-ci\endcsname{[+0.002, +0.063]}
+\expandafter\def\csname jv@sp-fmz-spatial50-erp-hi\endcsname{+0.063}
+\expandafter\def\csname jv@sp-fmz-spatial50-erp-lo\endcsname{+0.002}
+\expandafter\def\csname jv@sp-fmz-spatial50-res\endcsname{+0.025}
+\expandafter\def\csname jv@sp-fmz-spatial50-res-abs\endcsname{0.025}
+\expandafter\def\csname jv@sp-fmz-spatial50-res-ci\endcsname{[-0.003, +0.054]}
+\expandafter\def\csname jv@sp-fmz-spatial50-res-hi\endcsname{+0.054}
+\expandafter\def\csname jv@sp-fmz-spatial50-res-lo\endcsname{-0.003}
 \expandafter\def\csname jv@sp-inv-band\endcsname{1.3\times10^{-3}}
 \expandafter\def\csname jv@sp-inv-erp\endcsname{3.4\times10^{-3}}
 \expandafter\def\csname jv@sp-inv-res\endcsname{2.7\times10^{-13}}
 \expandafter\def\csname jv@sp-invlabels-band\endcsname{0.0}
 \expandafter\def\csname jv@sp-invlabels-erp\endcsname{0.0}
 \expandafter\def\csname jv@sp-invlabels-res\endcsname{0.0}
+\expandafter\def\csname jv@sp-margin-band\endcsname{0.161}
+\expandafter\def\csname jv@sp-margin-erp\endcsname{0.311}
+\expandafter\def\csname jv@sp-margin-res\endcsname{0.281}
+\expandafter\def\csname jv@sp-marginratio-band\endcsname{1.00}
+\expandafter\def\csname jv@sp-marginratio-erp\endcsname{1.05}
+\expandafter\def\csname jv@sp-marginratio-res\endcsname{1.84}
+\expandafter\def\csname jv@sp-nonfill-wmax\endcsname{0.070}
+\expandafter\def\csname jv@sp-nonfill-wmin\endcsname{0.043}
+\expandafter\def\csname jv@sp-nullmax-band\endcsname{0.378}
+\expandafter\def\csname jv@sp-nullmax-erp\endcsname{0.363}
+\expandafter\def\csname jv@sp-nullmax-res\endcsname{0.367}
+\expandafter\def\csname jv@sp-nullmean-band\endcsname{0.345}
+\expandafter\def\csname jv@sp-nullmean-erp\endcsname{0.333}
+\expandafter\def\csname jv@sp-nullmean-res\endcsname{0.332}
 \expandafter\def\csname jv@sp-o10-k0minuskm05-band\endcsname{-0.003}
 \expandafter\def\csname jv@sp-o10-k0minuskm05-band-abs\endcsname{0.003}
 \expandafter\def\csname jv@sp-o10-k0minuskm05-band-ci\endcsname{[-0.021, +0.016]}
@@ -5025,6 +6058,34 @@
 \expandafter\def\csname jv@sp-o50-nativeminusmean-res-ci\endcsname{[-0.041, +0.013]}
 \expandafter\def\csname jv@sp-o50-nativeminusmean-res-hi\endcsname{+0.013}
 \expandafter\def\csname jv@sp-o50-nativeminusmean-res-lo\endcsname{-0.041}
+\expandafter\def\csname jv@sp-pcak128\endcsname{0.592}
+\expandafter\def\csname jv@sp-pcak128-ci\endcsname{[0.559, 0.624]}
+\expandafter\def\csname jv@sp-pcak128-hi\endcsname{0.624}
+\expandafter\def\csname jv@sp-pcak128-lo\endcsname{0.559}
+\expandafter\def\csname jv@sp-pcak16\endcsname{0.622}
+\expandafter\def\csname jv@sp-pcak16-ci\endcsname{[0.589, 0.654]}
+\expandafter\def\csname jv@sp-pcak16-hi\endcsname{0.654}
+\expandafter\def\csname jv@sp-pcak16-lo\endcsname{0.589}
+\expandafter\def\csname jv@sp-pcak32\endcsname{0.627}
+\expandafter\def\csname jv@sp-pcak32-ci\endcsname{[0.592, 0.662]}
+\expandafter\def\csname jv@sp-pcak32-hi\endcsname{0.662}
+\expandafter\def\csname jv@sp-pcak32-lo\endcsname{0.592}
+\expandafter\def\csname jv@sp-pcak64\endcsname{0.615}
+\expandafter\def\csname jv@sp-pcak64-ci\endcsname{[0.581, 0.648]}
+\expandafter\def\csname jv@sp-pcak64-hi\endcsname{0.648}
+\expandafter\def\csname jv@sp-pcak64-lo\endcsname{0.581}
+\expandafter\def\csname jv@sp-pooled-minus-train\endcsname{-0.002}
+\expandafter\def\csname jv@sp-pooled-minus-train-abs\endcsname{0.002}
+\expandafter\def\csname jv@sp-pooled-minus-train-ci\endcsname{[-0.008, +0.005]}
+\expandafter\def\csname jv@sp-pooled-minus-train-hi\endcsname{+0.005}
+\expandafter\def\csname jv@sp-pooled-minus-train-lo\endcsname{-0.008}
+\expandafter\def\csname jv@sp-pooledpca\endcsname{0.613}
+\expandafter\def\csname jv@sp-pooledpca-ci\endcsname{[0.578, 0.646]}
+\expandafter\def\csname jv@sp-pooledpca-hi\endcsname{0.646}
+\expandafter\def\csname jv@sp-pooledpca-lo\endcsname{0.578}
+\expandafter\def\csname jv@sp-resfill-maxabs\endcsname{0.016}
+\expandafter\def\csname jv@sp-resfill-wmax\endcsname{0.054}
+\expandafter\def\csname jv@sp-resfill-wmin\endcsname{0.016}
 \expandafter\def\csname jv@sp-zpos-band\endcsname{1.20}
 \expandafter\def\csname jv@sp-zpos-erp\endcsname{0.73}
 \expandafter\def\csname jv@sp-zpos-res\endcsname{0.07}

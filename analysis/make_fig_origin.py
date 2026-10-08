@@ -54,9 +54,11 @@ def main():
         ax.set_title(title, fontsize=7, loc="left", pad=3)
         ax.grid(True, color="0.93", lw=0.5)
         ax.tick_params(length=2, pad=1.5)
-    axes[0][0].legend(frameon=False, fontsize=5.5, loc="lower center", ncol=3, handlelength=2.2)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout(pad=0.3)
+    h, lab = axes[0][0].get_legend_handles_labels()
+    fig.legend(h, lab, frameon=False, fontsize=6, loc="upper center", ncol=3, handlelength=2.2,
+               bbox_to_anchor=(0.5, 0.0))
     fig.savefig(OUT, bbox_inches="tight", pad_inches=0.01)
     print(f"[fig] wrote {OUT}")
 

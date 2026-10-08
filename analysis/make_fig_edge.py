@@ -8,8 +8,9 @@ accuracy on the long epoch).
 (a) damage-spreading order parameter versus spectral radius: the ten SHAPE draws (thin),
     their mean (thick), and the mean of the ten external draws (dashed); shaded bands span
     the transitions rho* of each cohort's draws, dotted = the echo-state heuristic rho = 1;
-(b) subject-level BA versus rho, mean over draws: SHAPE clean (thin = single draws) and with
-    30% of electrodes silent, SHAPE with the post-onset window, and the external long epoch;
+(b) subject-level BA versus rho, mean over draws: SHAPE clean with the conference window
+    (thin = single draws), with the onset window clean and with 30% of electrodes silent,
+    with the post window, and the external long epoch; shaded = range of rho* (SHAPE);
     chance = 1/3;
 (c) order parameter versus rho at three firing thresholds (SHAPE drives, draw 42), with
     each rho*.
@@ -65,20 +66,25 @@ def main():
                     fontsize=7, loc="left", pad=3)
     ax[0].legend(frameon=False, fontsize=5.3, loc="lower right")
 
+    sho = load("j4_shape_edge_onset.json")
     ra, Mc = acc_matrix(sh, "clean")
-    _, Ms = acc_matrix(sh, "signal30")
     for row in Mc:
-        ax[1].plot(ra, row, color="0.7", lw=0.4)
-    ax[1].plot(ra, Mc.mean(0), color="k", lw=1.4, marker="o", ms=2.5, label="SHAPE clean")
-    ax[1].plot(ra, Ms.mean(0), color="k", lw=1.0, ls="--", marker="v", ms=2.5, mfc="white",
-               label="SHAPE, 30% silent")
+        ax[1].plot(ra, row, color="0.75", lw=0.4)
+    ax[1].plot(ra, Mc.mean(0), color="k", lw=1.4, marker="o", ms=2.5, label="SHAPE, conference window")
+    if sho is not None and sho.get("summary"):
+        _, Moc = acc_matrix(sho, "clean")
+        _, Mos = acc_matrix(sho, "signal30")
+        ax[1].plot(ra, Moc.mean(0), color="#0072B2", lw=1.2, marker="s", ms=2.5, label="SHAPE, onset window")
+        ax[1].plot(ra, Mos.mean(0), color="#0072B2", lw=1.0, ls="--", marker="s", ms=2.5, mfc="white",
+                   label="onset window, 30% silent")
     if shp is not None and shp.get("summary"):
         _, Mp = acc_matrix(shp, "clean")
-        ax[1].plot(ra, Mp.mean(0), color="#0072B2", lw=1.1, ls="-.", marker="s", ms=2.5,
-                   label="SHAPE, post-onset window")
+        ax[1].plot(ra, Mp.mean(0), color="#CC79A7", lw=1.1, ls="-.", marker="D", ms=2.3,
+                   label="SHAPE, post window")
     _, Me = acc_matrix(ext, "clean")
     ax[1].plot(ext["rho_acc"], Me.mean(0), color="#009E73", lw=1.1, ls=":", marker="^", ms=2.5,
                label="external, long epoch")
+    ax[1].axvspan(min(rs_s), max(rs_s), color="0.5", alpha=0.18, lw=0)
     ax[1].axhline(1 / 3, color="0.4", lw=0.6)
     ax[1].axvline(1.0, color="k", lw=0.6, ls=":")
     ax[1].set_xlabel("spectral radius $\\rho$", labelpad=1); ax[1].set_ylabel("BA (mean over draws)", labelpad=1)

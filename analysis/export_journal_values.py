@@ -345,6 +345,12 @@ def edge_values(pre="e", j4name="j4_tcrzem_edge_long.json", j8name="j8_tcrzem_si
         put(f"{pre}-ba30-{r}-mean", f3(S["BA_signal30_mean"][i]))
         put(f"{pre}-loss30-{r}", f3(S["BA_clean_mean"][i] - S["BA_signal30_mean"][i]))
         put(f"{pre}-rate-{r}", f"{S['rate_mean'][i]:.2f}")
+    losses = [S["BA_clean_mean"][i] - S["BA_signal30_mean"][i] for i in range(len(j4["rho_acc"]))]
+    put(f"{pre}-loss30-max", ceil3(max(losses)))
+    lo_i = [i for i, r in enumerate(j4["rho_acc"]) if r <= 0.6]; hi_i = [i for i, r in enumerate(j4["rho_acc"]) if r >= 0.9]
+    put(f"{pre}-loss30-low-max", ceil3(max(losses[i] for i in lo_i)))
+    put(f"{pre}-loss30-high-min", f3(min(losses[i] for i in hi_i)))
+    put(f"{pre}-loss30-high-max", f3(max(losses[i] for i in hi_i)))
     for c in ("clean", "signal30"):
         put(f"{pre}-n-rho0-sig-{c}", str(S[f"n_draws_rho0_below_rho0.9_ci_excludes0_{c}"]))
         put(f"{pre}-n-rho15-sig-{c}", str(S[f"n_draws_rho1.5_below_rho0.9_ci_excludes0_{c}"]))
@@ -368,6 +374,9 @@ def edge_values(pre="e", j4name="j4_tcrzem_edge_long.json", j8name="j8_tcrzem_si
             put(f"{pre}-rawcent-{r}", f"{j8['raw_counts_mean_abs_mu_over_sigma'][str(r)]:.2f}")
         low = [j8["silent_block_mean_abs_z"][str(r)] for r in j8["rho"] if r <= 0.6]
         put(f"{pre}-z0-low-min", f"{min(low):.2f}"); put(f"{pre}-z0-low-max", f"{max(low):.2f}")
+        high = [j8["silent_block_mean_abs_z"][str(r)] for r in j8["rho"] if r >= 0.9]
+        put(f"{pre}-z0-high-min", f"{min(high):.2f}"); put(f"{pre}-z0-high-max", f"{max(high):.2f}")
+        put(f"{pre}-z0-all-max", f"{max(j8['silent_block_mean_abs_z'].values()):.2f}")
     return j4
 
 
