@@ -771,18 +771,754 @@ s-sig-remove0.5-res,0.393
 s-sig-remove0.5-res-ci,"[0.367, 0.420]"
 s-sig-remove0.5-res-hi,0.420
 s-sig-remove0.5-res-lo,0.367
+sj-auc-band,0.682
+sj-auc-erp,0.799
+sj-auc-res,0.658
+sj-bsc6minus1-clean,+0.001
+sj-bsc6minus1-clean-abs,0.001
+sj-bsc6minus1-clean-ci,"[-0.044, +0.047]"
+sj-bsc6minus1-clean-hi,+0.047
+sj-bsc6minus1-clean-lo,-0.044
+sj-bsc6minus1-signal30,-0.001
+sj-bsc6minus1-signal30-abs,0.001
+sj-bsc6minus1-signal30-ci,"[-0.046, +0.041]"
+sj-bsc6minus1-signal30-hi,+0.041
+sj-bsc6minus1-signal30-lo,-0.046
+sj-cent-band,1.20
+sj-cent-erp,0.75
+sj-cent-rawcounts,1.15
+sj-cent-res,0.06
+sj-clean-band,0.494
+sj-clean-band-ci,"[0.460, 0.528]"
+sj-clean-band-hi,0.528
+sj-clean-band-lo,0.460
+sj-clean-erp,0.629
+sj-clean-erp-ci,"[0.597, 0.660]"
+sj-clean-erp-hi,0.660
+sj-clean-erp-lo,0.597
+sj-clean-erpres,+0.142
+sj-clean-erpres-abs,0.142
+sj-clean-erpres-ci,"[+0.098, +0.188]"
+sj-clean-erpres-hi,+0.188
+sj-clean-erpres-lo,+0.098
+sj-clean-res,0.487
+sj-clean-res-ci,"[0.447, 0.523]"
+sj-clean-res-hi,0.523
+sj-clean-res-lo,0.447
 sj-dlogit-band,4.13
 sj-dlogit-erp,1.75
 sj-dlogit-res,0.43
+sj-f1-band,0.492
+sj-f1-erp,0.629
+sj-f1-res,0.485
+sj-fc10-knn-band,0.494
+sj-fc10-knn-band-acret,1.00
+sj-fc10-knn-band-ci,"[0.461, 0.529]"
+sj-fc10-knn-band-hi,0.529
+sj-fc10-knn-band-lo,0.461
+sj-fc10-knn-band-rawret,1.00
+sj-fc10-knn-erp,0.627
+sj-fc10-knn-erp-acret,0.99
+sj-fc10-knn-erp-ci,"[0.596, 0.660]"
+sj-fc10-knn-erp-hi,0.660
+sj-fc10-knn-erp-lo,0.596
+sj-fc10-knn-erp-rawret,1.00
+sj-fc10-knn-erpres,+0.146
+sj-fc10-knn-erpres-abs,0.146
+sj-fc10-knn-erpres-ci,"[+0.104, +0.188]"
+sj-fc10-knn-erpres-hi,+0.188
+sj-fc10-knn-erpres-lo,+0.104
+sj-fc10-knn-res,0.482
+sj-fc10-knn-res-acret,0.97
+sj-fc10-knn-res-ci,"[0.445, 0.517]"
+sj-fc10-knn-res-hi,0.517
+sj-fc10-knn-res-lo,0.445
+sj-fc10-knn-res-rawret,0.99
+sj-fc10-mean-band,0.490
+sj-fc10-mean-band-acret,0.97
+sj-fc10-mean-band-ci,"[0.455, 0.525]"
+sj-fc10-mean-band-hi,0.525
+sj-fc10-mean-band-lo,0.455
+sj-fc10-mean-band-rawret,0.99
+sj-fc10-mean-erp,0.588
+sj-fc10-mean-erp-acret,0.86
+sj-fc10-mean-erp-ci,"[0.556, 0.619]"
+sj-fc10-mean-erp-hi,0.619
+sj-fc10-mean-erp-lo,0.556
+sj-fc10-mean-erp-rawret,0.93
+sj-fc10-mean-erpres,+0.109
+sj-fc10-mean-erpres-abs,0.109
+sj-fc10-mean-erpres-ci,"[+0.066, +0.153]"
+sj-fc10-mean-erpres-hi,+0.153
+sj-fc10-mean-erpres-lo,+0.066
+sj-fc10-mean-res,0.479
+sj-fc10-mean-res-acret,0.95
+sj-fc10-mean-res-ci,"[0.441, 0.515]"
+sj-fc10-mean-res-hi,0.515
+sj-fc10-mean-res-lo,0.441
+sj-fc10-mean-res-rawret,0.98
+sj-fc10-spatial-band,0.507
+sj-fc10-spatial-band-acret,1.08
+sj-fc10-spatial-band-ci,"[0.474, 0.542]"
+sj-fc10-spatial-band-hi,0.542
+sj-fc10-spatial-band-lo,0.474
+sj-fc10-spatial-band-rawret,1.03
+sj-fc10-spatial-erp,0.626
+sj-fc10-spatial-erp-acret,0.99
+sj-fc10-spatial-erp-ci,"[0.594, 0.657]"
+sj-fc10-spatial-erp-hi,0.657
+sj-fc10-spatial-erp-lo,0.594
+sj-fc10-spatial-erp-rawret,0.99
+sj-fc10-spatial-erpres,+0.145
+sj-fc10-spatial-erpres-abs,0.145
+sj-fc10-spatial-erpres-ci,"[+0.100, +0.190]"
+sj-fc10-spatial-erpres-hi,+0.190
+sj-fc10-spatial-erpres-lo,+0.100
+sj-fc10-spatial-res,0.480
+sj-fc10-spatial-res-acret,0.96
+sj-fc10-spatial-res-ci,"[0.442, 0.517]"
+sj-fc10-spatial-res-hi,0.517
+sj-fc10-spatial-res-lo,0.442
+sj-fc10-spatial-res-rawret,0.99
+sj-fc10-zero-band,0.476
+sj-fc10-zero-band-acret,0.88
+sj-fc10-zero-band-ci,"[0.442, 0.509]"
+sj-fc10-zero-band-hi,0.509
+sj-fc10-zero-band-lo,0.442
+sj-fc10-zero-band-rawret,0.96
+sj-fc10-zero-erp,0.602
+sj-fc10-zero-erp-acret,0.91
+sj-fc10-zero-erp-ci,"[0.570, 0.633]"
+sj-fc10-zero-erp-hi,0.633
+sj-fc10-zero-erp-lo,0.570
+sj-fc10-zero-erp-rawret,0.96
+sj-fc10-zero-erpres,+0.125
+sj-fc10-zero-erpres-abs,0.125
+sj-fc10-zero-erpres-ci,"[+0.081, +0.171]"
+sj-fc10-zero-erpres-hi,+0.171
+sj-fc10-zero-erpres-lo,+0.081
+sj-fc10-zero-res,0.477
+sj-fc10-zero-res-acret,0.94
+sj-fc10-zero-res-ci,"[0.439, 0.513]"
+sj-fc10-zero-res-hi,0.513
+sj-fc10-zero-res-lo,0.439
+sj-fc10-zero-res-rawret,0.98
+sj-fc20-knn-band,0.498
+sj-fc20-knn-band-acret,1.02
+sj-fc20-knn-band-ci,"[0.463, 0.534]"
+sj-fc20-knn-band-hi,0.534
+sj-fc20-knn-band-lo,0.463
+sj-fc20-knn-band-rawret,1.01
+sj-fc20-knn-erp,0.627
+sj-fc20-knn-erp-acret,0.99
+sj-fc20-knn-erp-ci,"[0.596, 0.660]"
+sj-fc20-knn-erp-hi,0.660
+sj-fc20-knn-erp-lo,0.596
+sj-fc20-knn-erp-rawret,1.00
+sj-fc20-knn-erpres,+0.120
+sj-fc20-knn-erpres-abs,0.120
+sj-fc20-knn-erpres-ci,"[+0.077, +0.164]"
+sj-fc20-knn-erpres-hi,+0.164
+sj-fc20-knn-erpres-lo,+0.077
+sj-fc20-knn-res,0.507
+sj-fc20-knn-res-acret,1.13
+sj-fc20-knn-res-ci,"[0.471, 0.542]"
+sj-fc20-knn-res-hi,0.542
+sj-fc20-knn-res-lo,0.471
+sj-fc20-knn-res-rawret,1.04
+sj-fc20-mean-band,0.485
+sj-fc20-mean-band-acret,0.94
+sj-fc20-mean-band-ci,"[0.449, 0.521]"
+sj-fc20-mean-band-hi,0.521
+sj-fc20-mean-band-lo,0.449
+sj-fc20-mean-band-rawret,0.98
+sj-fc20-mean-erp,0.586
+sj-fc20-mean-erp-acret,0.86
+sj-fc20-mean-erp-ci,"[0.553, 0.619]"
+sj-fc20-mean-erp-hi,0.619
+sj-fc20-mean-erp-lo,0.553
+sj-fc20-mean-erp-rawret,0.93
+sj-fc20-mean-erpres,+0.111
+sj-fc20-mean-erpres-abs,0.111
+sj-fc20-mean-erpres-ci,"[+0.065, +0.156]"
+sj-fc20-mean-erpres-hi,+0.156
+sj-fc20-mean-erpres-lo,+0.065
+sj-fc20-mean-res,0.476
+sj-fc20-mean-res-acret,0.93
+sj-fc20-mean-res-ci,"[0.438, 0.512]"
+sj-fc20-mean-res-hi,0.512
+sj-fc20-mean-res-lo,0.438
+sj-fc20-mean-res-rawret,0.98
+sj-fc20-spatial-band,0.485
+sj-fc20-spatial-band-acret,0.94
+sj-fc20-spatial-band-ci,"[0.452, 0.520]"
+sj-fc20-spatial-band-hi,0.520
+sj-fc20-spatial-band-lo,0.452
+sj-fc20-spatial-band-rawret,0.98
+sj-fc20-spatial-erp,0.608
+sj-fc20-spatial-erp-acret,0.93
+sj-fc20-spatial-erp-ci,"[0.577, 0.640]"
+sj-fc20-spatial-erp-hi,0.640
+sj-fc20-spatial-erp-lo,0.577
+sj-fc20-spatial-erp-rawret,0.97
+sj-fc20-spatial-erpres,+0.122
+sj-fc20-spatial-erpres-abs,0.122
+sj-fc20-spatial-erpres-ci,"[+0.081, +0.163]"
+sj-fc20-spatial-erpres-hi,+0.163
+sj-fc20-spatial-erpres-lo,+0.081
+sj-fc20-spatial-res,0.487
+sj-fc20-spatial-res-acret,1.00
+sj-fc20-spatial-res-ci,"[0.452, 0.521]"
+sj-fc20-spatial-res-hi,0.521
+sj-fc20-spatial-res-lo,0.452
+sj-fc20-spatial-res-rawret,1.00
+sj-fc20-zero-band,0.447
+sj-fc20-zero-band-acret,0.71
+sj-fc20-zero-band-ci,"[0.412, 0.482]"
+sj-fc20-zero-band-hi,0.482
+sj-fc20-zero-band-lo,0.412
+sj-fc20-zero-band-rawret,0.90
+sj-fc20-zero-erp,0.589
+sj-fc20-zero-erp-acret,0.87
+sj-fc20-zero-erp-ci,"[0.556, 0.622]"
+sj-fc20-zero-erp-hi,0.622
+sj-fc20-zero-erp-lo,0.556
+sj-fc20-zero-erp-rawret,0.94
+sj-fc20-zero-erpres,+0.108
+sj-fc20-zero-erpres-abs,0.108
+sj-fc20-zero-erpres-ci,"[+0.063, +0.150]"
+sj-fc20-zero-erpres-hi,+0.150
+sj-fc20-zero-erpres-lo,+0.063
+sj-fc20-zero-res,0.482
+sj-fc20-zero-res-acret,0.97
+sj-fc20-zero-res-ci,"[0.445, 0.518]"
+sj-fc20-zero-res-hi,0.518
+sj-fc20-zero-res-lo,0.445
+sj-fc20-zero-res-rawret,0.99
+sj-fc30-knn-band,0.483
+sj-fc30-knn-band-acret,0.93
+sj-fc30-knn-band-ci,"[0.450, 0.518]"
+sj-fc30-knn-band-hi,0.518
+sj-fc30-knn-band-lo,0.450
+sj-fc30-knn-band-rawret,0.98
+sj-fc30-knn-erp,0.610
+sj-fc30-knn-erp-acret,0.94
+sj-fc30-knn-erp-ci,"[0.577, 0.645]"
+sj-fc30-knn-erp-hi,0.645
+sj-fc30-knn-erp-lo,0.577
+sj-fc30-knn-erp-rawret,0.97
+sj-fc30-knn-erpres,+0.103
+sj-fc30-knn-erpres-abs,0.103
+sj-fc30-knn-erpres-ci,"[+0.062, +0.147]"
+sj-fc30-knn-erpres-hi,+0.147
+sj-fc30-knn-erpres-lo,+0.062
+sj-fc30-knn-res,0.507
+sj-fc30-knn-res-acret,1.13
+sj-fc30-knn-res-ci,"[0.468, 0.543]"
+sj-fc30-knn-res-hi,0.543
+sj-fc30-knn-res-lo,0.468
+sj-fc30-knn-res-rawret,1.04
+sj-fc30-mean-band,0.472
+sj-fc30-mean-band-acret,0.86
+sj-fc30-mean-band-ci,"[0.441, 0.506]"
+sj-fc30-mean-band-hi,0.506
+sj-fc30-mean-band-lo,0.441
+sj-fc30-mean-band-rawret,0.96
+sj-fc30-mean-erp,0.578
+sj-fc30-mean-erp-acret,0.83
+sj-fc30-mean-erp-ci,"[0.545, 0.611]"
+sj-fc30-mean-erp-hi,0.611
+sj-fc30-mean-erp-lo,0.545
+sj-fc30-mean-erp-rawret,0.92
+sj-fc30-mean-erpres,+0.092
+sj-fc30-mean-erpres-abs,0.092
+sj-fc30-mean-erpres-ci,"[+0.049, +0.134]"
+sj-fc30-mean-erpres-hi,+0.134
+sj-fc30-mean-erpres-lo,+0.049
+sj-fc30-mean-res,0.487
+sj-fc30-mean-res-acret,1.00
+sj-fc30-mean-res-ci,"[0.447, 0.523]"
+sj-fc30-mean-res-hi,0.523
+sj-fc30-mean-res-lo,0.447
+sj-fc30-mean-res-rawret,1.00
+sj-fc30-spatial-band,0.488
+sj-fc30-spatial-band-acret,0.96
+sj-fc30-spatial-band-ci,"[0.453, 0.523]"
+sj-fc30-spatial-band-hi,0.523
+sj-fc30-spatial-band-lo,0.453
+sj-fc30-spatial-band-rawret,0.99
+sj-fc30-spatial-erp,0.589
+sj-fc30-spatial-erp-acret,0.87
+sj-fc30-spatial-erp-ci,"[0.558, 0.621]"
+sj-fc30-spatial-erp-hi,0.621
+sj-fc30-spatial-erp-lo,0.558
+sj-fc30-spatial-erp-rawret,0.94
+sj-fc30-spatial-erpres,+0.107
+sj-fc30-spatial-erpres-abs,0.107
+sj-fc30-spatial-erpres-ci,"[+0.063, +0.150]"
+sj-fc30-spatial-erpres-hi,+0.150
+sj-fc30-spatial-erpres-lo,+0.063
+sj-fc30-spatial-res,0.482
+sj-fc30-spatial-res-acret,0.97
+sj-fc30-spatial-res-ci,"[0.445, 0.518]"
+sj-fc30-spatial-res-hi,0.518
+sj-fc30-spatial-res-lo,0.445
+sj-fc30-spatial-res-rawret,0.99
+sj-fc30-zero-band,0.417
+sj-fc30-zero-band-acret,0.52
+sj-fc30-zero-band-ci,"[0.387, 0.447]"
+sj-fc30-zero-band-hi,0.447
+sj-fc30-zero-band-lo,0.387
+sj-fc30-zero-band-rawret,0.84
+sj-fc30-zero-erp,0.536
+sj-fc30-zero-erp-acret,0.68
+sj-fc30-zero-erp-ci,"[0.504, 0.567]"
+sj-fc30-zero-erp-hi,0.567
+sj-fc30-zero-erp-lo,0.504
+sj-fc30-zero-erp-rawret,0.85
+sj-fc30-zero-erpres,+0.049
+sj-fc30-zero-erpres-abs,0.049
+sj-fc30-zero-erpres-ci,"[+0.003, +0.095]"
+sj-fc30-zero-erpres-hi,+0.095
+sj-fc30-zero-erpres-lo,+0.003
+sj-fc30-zero-res,0.487
+sj-fc30-zero-res-acret,1.00
+sj-fc30-zero-res-ci,"[0.449, 0.523]"
+sj-fc30-zero-res-hi,0.523
+sj-fc30-zero-res-lo,0.449
+sj-fc30-zero-res-rawret,1.00
+sj-fc40-knn-band,0.498
+sj-fc40-knn-band-acret,1.02
+sj-fc40-knn-band-ci,"[0.466, 0.531]"
+sj-fc40-knn-band-hi,0.531
+sj-fc40-knn-band-lo,0.466
+sj-fc40-knn-band-rawret,1.01
+sj-fc40-knn-erp,0.603
+sj-fc40-knn-erp-acret,0.91
+sj-fc40-knn-erp-ci,"[0.570, 0.638]"
+sj-fc40-knn-erp-hi,0.638
+sj-fc40-knn-erp-lo,0.570
+sj-fc40-knn-erp-rawret,0.96
+sj-fc40-knn-erpres,+0.081
+sj-fc40-knn-erpres-abs,0.081
+sj-fc40-knn-erpres-ci,"[+0.032, +0.130]"
+sj-fc40-knn-erpres-hi,+0.130
+sj-fc40-knn-erpres-lo,+0.032
+sj-fc40-knn-res,0.523
+sj-fc40-knn-res-acret,1.24
+sj-fc40-knn-res-ci,"[0.485, 0.559]"
+sj-fc40-knn-res-hi,0.559
+sj-fc40-knn-res-lo,0.485
+sj-fc40-knn-res-rawret,1.07
+sj-fc40-mean-band,0.453
+sj-fc40-mean-band-acret,0.75
+sj-fc40-mean-band-ci,"[0.420, 0.487]"
+sj-fc40-mean-band-hi,0.487
+sj-fc40-mean-band-lo,0.420
+sj-fc40-mean-band-rawret,0.92
+sj-fc40-mean-erp,0.518
+sj-fc40-mean-erp-acret,0.63
+sj-fc40-mean-erp-ci,"[0.485, 0.548]"
+sj-fc40-mean-erp-hi,0.548
+sj-fc40-mean-erp-lo,0.485
+sj-fc40-mean-erp-rawret,0.82
+sj-fc40-mean-erpres,+0.035
+sj-fc40-mean-erpres-abs,0.035
+sj-fc40-mean-erpres-ci,"[-0.014, +0.082]"
+sj-fc40-mean-erpres-hi,+0.082
+sj-fc40-mean-erpres-lo,-0.014
+sj-fc40-mean-res,0.483
+sj-fc40-mean-res-acret,0.98
+sj-fc40-mean-res-ci,"[0.442, 0.521]"
+sj-fc40-mean-res-hi,0.521
+sj-fc40-mean-res-lo,0.442
+sj-fc40-mean-res-rawret,0.99
+sj-fc40-spatial-band,0.442
+sj-fc40-spatial-band-acret,0.68
+sj-fc40-spatial-band-ci,"[0.409, 0.476]"
+sj-fc40-spatial-band-hi,0.476
+sj-fc40-spatial-band-lo,0.409
+sj-fc40-spatial-band-rawret,0.89
+sj-fc40-spatial-erp,0.556
+sj-fc40-spatial-erp-acret,0.75
+sj-fc40-spatial-erp-ci,"[0.526, 0.586]"
+sj-fc40-spatial-erp-hi,0.586
+sj-fc40-spatial-erp-lo,0.526
+sj-fc40-spatial-erp-rawret,0.88
+sj-fc40-spatial-erpres,+0.060
+sj-fc40-spatial-erpres-abs,0.060
+sj-fc40-spatial-erpres-ci,"[+0.016, +0.106]"
+sj-fc40-spatial-erpres-hi,+0.106
+sj-fc40-spatial-erpres-lo,+0.016
+sj-fc40-spatial-res,0.496
+sj-fc40-spatial-res-acret,1.06
+sj-fc40-spatial-res-ci,"[0.458, 0.532]"
+sj-fc40-spatial-res-hi,0.532
+sj-fc40-spatial-res-lo,0.458
+sj-fc40-spatial-res-rawret,1.02
+sj-fc40-zero-band,0.447
+sj-fc40-zero-band-acret,0.71
+sj-fc40-zero-band-ci,"[0.419, 0.479]"
+sj-fc40-zero-band-hi,0.479
+sj-fc40-zero-band-lo,0.419
+sj-fc40-zero-band-rawret,0.90
+sj-fc40-zero-erp,0.523
+sj-fc40-zero-erp-acret,0.64
+sj-fc40-zero-erp-ci,"[0.493, 0.551]"
+sj-fc40-zero-erp-hi,0.551
+sj-fc40-zero-erp-lo,0.493
+sj-fc40-zero-erp-rawret,0.83
+sj-fc40-zero-erpres,+0.041
+sj-fc40-zero-erpres-abs,0.041
+sj-fc40-zero-erpres-ci,"[-0.005, +0.087]"
+sj-fc40-zero-erpres-hi,+0.087
+sj-fc40-zero-erpres-lo,-0.005
+sj-fc40-zero-res,0.482
+sj-fc40-zero-res-acret,0.97
+sj-fc40-zero-res-ci,"[0.445, 0.520]"
+sj-fc40-zero-res-hi,0.520
+sj-fc40-zero-res-lo,0.445
+sj-fc40-zero-res-rawret,0.99
+sj-fc50-knn-band,0.504
+sj-fc50-knn-band-acret,1.06
+sj-fc50-knn-band-ci,"[0.471, 0.537]"
+sj-fc50-knn-band-hi,0.537
+sj-fc50-knn-band-lo,0.471
+sj-fc50-knn-band-rawret,1.02
+sj-fc50-knn-erp,0.603
+sj-fc50-knn-erp-acret,0.91
+sj-fc50-knn-erp-ci,"[0.572, 0.635]"
+sj-fc50-knn-erp-hi,0.635
+sj-fc50-knn-erp-lo,0.572
+sj-fc50-knn-erp-rawret,0.96
+sj-fc50-knn-erpres,+0.067
+sj-fc50-knn-erpres-abs,0.067
+sj-fc50-knn-erpres-ci,"[+0.025, +0.107]"
+sj-fc50-knn-erpres-hi,+0.107
+sj-fc50-knn-erpres-lo,+0.025
+sj-fc50-knn-res,0.537
+sj-fc50-knn-res-acret,1.33
+sj-fc50-knn-res-ci,"[0.504, 0.569]"
+sj-fc50-knn-res-hi,0.569
+sj-fc50-knn-res-lo,0.504
+sj-fc50-knn-res-rawret,1.10
+sj-fc50-mean-band,0.474
+sj-fc50-mean-band-acret,0.87
+sj-fc50-mean-band-ci,"[0.439, 0.509]"
+sj-fc50-mean-band-hi,0.509
+sj-fc50-mean-band-lo,0.439
+sj-fc50-mean-band-rawret,0.96
+sj-fc50-mean-erp,0.498
+sj-fc50-mean-erp-acret,0.56
+sj-fc50-mean-erp-ci,"[0.464, 0.532]"
+sj-fc50-mean-erp-hi,0.532
+sj-fc50-mean-erp-lo,0.464
+sj-fc50-mean-erp-rawret,0.79
+sj-fc50-mean-erpres,+0.017
+sj-fc50-mean-erpres-abs,0.017
+sj-fc50-mean-erpres-ci,"[-0.032, +0.065]"
+sj-fc50-mean-erpres-hi,+0.065
+sj-fc50-mean-erpres-lo,-0.032
+sj-fc50-mean-res,0.482
+sj-fc50-mean-res-acret,0.97
+sj-fc50-mean-res-ci,"[0.444, 0.520]"
+sj-fc50-mean-res-hi,0.520
+sj-fc50-mean-res-lo,0.444
+sj-fc50-mean-res-rawret,0.99
+sj-fc50-spatial-band,0.453
+sj-fc50-spatial-band-acret,0.75
+sj-fc50-spatial-band-ci,"[0.419, 0.488]"
+sj-fc50-spatial-band-hi,0.488
+sj-fc50-spatial-band-lo,0.419
+sj-fc50-spatial-band-rawret,0.92
+sj-fc50-spatial-erp,0.518
+sj-fc50-spatial-erp-acret,0.63
+sj-fc50-spatial-erp-ci,"[0.487, 0.550]"
+sj-fc50-spatial-erp-hi,0.550
+sj-fc50-spatial-erp-lo,0.487
+sj-fc50-spatial-erp-rawret,0.82
+sj-fc50-spatial-erpres,+0.053
+sj-fc50-spatial-erpres-abs,0.053
+sj-fc50-spatial-erpres-ci,"[+0.011, +0.093]"
+sj-fc50-spatial-erpres-hi,+0.093
+sj-fc50-spatial-erpres-lo,+0.011
+sj-fc50-spatial-res,0.466
+sj-fc50-spatial-res-acret,0.87
+sj-fc50-spatial-res-ci,"[0.430, 0.501]"
+sj-fc50-spatial-res-hi,0.501
+sj-fc50-spatial-res-lo,0.430
+sj-fc50-spatial-res-rawret,0.96
+sj-fc50-zero-band,0.450
+sj-fc50-zero-band-acret,0.73
+sj-fc50-zero-band-ci,"[0.422, 0.479]"
+sj-fc50-zero-band-hi,0.479
+sj-fc50-zero-band-lo,0.422
+sj-fc50-zero-band-rawret,0.91
+sj-fc50-zero-erp,0.474
+sj-fc50-zero-erp-acret,0.48
+sj-fc50-zero-erp-ci,"[0.444, 0.506]"
+sj-fc50-zero-erp-hi,0.506
+sj-fc50-zero-erp-lo,0.444
+sj-fc50-zero-erp-rawret,0.75
+sj-fc50-zero-erpres,+0.008
+sj-fc50-zero-erpres-abs,0.008
+sj-fc50-zero-erpres-ci,"[-0.035, +0.054]"
+sj-fc50-zero-erpres-hi,+0.054
+sj-fc50-zero-erpres-lo,-0.035
+sj-fc50-zero-res,0.466
+sj-fc50-zero-res-acret,0.87
+sj-fc50-zero-res-ci,"[0.431, 0.501]"
+sj-fc50-zero-res-hi,0.501
+sj-fc50-zero-res-lo,0.431
+sj-fc50-zero-res-rawret,0.96
 sj-flip-band,40.9
 sj-flip-erp,27.7
 sj-flip-res,7.6
+sj-fmz-knn10-band,+0.019
+sj-fmz-knn10-band-abs,0.019
+sj-fmz-knn10-band-ci,"[-0.006, +0.044]"
+sj-fmz-knn10-band-hi,+0.044
+sj-fmz-knn10-band-lo,-0.006
+sj-fmz-knn10-erp,+0.026
+sj-fmz-knn10-erp-abs,0.026
+sj-fmz-knn10-erp-ci,"[+0.002, +0.051]"
+sj-fmz-knn10-erp-hi,+0.051
+sj-fmz-knn10-erp-lo,+0.002
+sj-fmz-knn10-res,+0.005
+sj-fmz-knn10-res-abs,0.005
+sj-fmz-knn10-res-ci,"[-0.009, +0.019]"
+sj-fmz-knn10-res-hi,+0.019
+sj-fmz-knn10-res-lo,-0.009
+sj-fmz-knn20-band,+0.051
+sj-fmz-knn20-band-abs,0.051
+sj-fmz-knn20-band-ci,"[+0.016, +0.087]"
+sj-fmz-knn20-band-hi,+0.087
+sj-fmz-knn20-band-lo,+0.016
+sj-fmz-knn20-erp,+0.038
+sj-fmz-knn20-erp-abs,0.038
+sj-fmz-knn20-erp-ci,"[+0.006, +0.071]"
+sj-fmz-knn20-erp-hi,+0.071
+sj-fmz-knn20-erp-lo,+0.006
+sj-fmz-knn20-res,+0.025
+sj-fmz-knn20-res-abs,0.025
+sj-fmz-knn20-res-ci,"[+0.005, +0.046]"
+sj-fmz-knn20-res-hi,+0.046
+sj-fmz-knn20-res-lo,+0.005
+sj-fmz-knn30-band,+0.067
+sj-fmz-knn30-band-abs,0.067
+sj-fmz-knn30-band-ci,"[+0.033, +0.100]"
+sj-fmz-knn30-band-hi,+0.100
+sj-fmz-knn30-band-lo,+0.033
+sj-fmz-knn30-erp,+0.074
+sj-fmz-knn30-erp-abs,0.074
+sj-fmz-knn30-erp-ci,"[+0.041, +0.109]"
+sj-fmz-knn30-erp-hi,+0.109
+sj-fmz-knn30-erp-lo,+0.041
+sj-fmz-knn30-res,+0.020
+sj-fmz-knn30-res-abs,0.020
+sj-fmz-knn30-res-ci,"[-0.008, +0.047]"
+sj-fmz-knn30-res-hi,+0.047
+sj-fmz-knn30-res-lo,-0.008
+sj-fmz-knn40-band,+0.051
+sj-fmz-knn40-band-abs,0.051
+sj-fmz-knn40-band-ci,"[+0.017, +0.084]"
+sj-fmz-knn40-band-hi,+0.084
+sj-fmz-knn40-band-lo,+0.017
+sj-fmz-knn40-erp,+0.081
+sj-fmz-knn40-erp-abs,0.081
+sj-fmz-knn40-erp-ci,"[+0.046, +0.117]"
+sj-fmz-knn40-erp-hi,+0.117
+sj-fmz-knn40-erp-lo,+0.046
+sj-fmz-knn40-res,+0.041
+sj-fmz-knn40-res-abs,0.041
+sj-fmz-knn40-res-ci,"[+0.011, +0.073]"
+sj-fmz-knn40-res-hi,+0.073
+sj-fmz-knn40-res-lo,+0.011
+sj-fmz-knn50-band,+0.054
+sj-fmz-knn50-band-abs,0.054
+sj-fmz-knn50-band-ci,"[+0.021, +0.087]"
+sj-fmz-knn50-band-hi,+0.087
+sj-fmz-knn50-band-lo,+0.021
+sj-fmz-knn50-erp,+0.129
+sj-fmz-knn50-erp-abs,0.129
+sj-fmz-knn50-erp-ci,"[+0.092, +0.164]"
+sj-fmz-knn50-erp-hi,+0.164
+sj-fmz-knn50-erp-lo,+0.092
+sj-fmz-knn50-res,+0.071
+sj-fmz-knn50-res-abs,0.071
+sj-fmz-knn50-res-ci,"[+0.039, +0.104]"
+sj-fmz-knn50-res-hi,+0.104
+sj-fmz-knn50-res-lo,+0.039
+sj-fmz-mean10-band,+0.014
+sj-fmz-mean10-band-abs,0.014
+sj-fmz-mean10-band-ci,"[-0.009, +0.039]"
+sj-fmz-mean10-band-hi,+0.039
+sj-fmz-mean10-band-lo,-0.009
+sj-fmz-mean10-erp,-0.014
+sj-fmz-mean10-erp-abs,0.014
+sj-fmz-mean10-erp-ci,"[-0.033, +0.005]"
+sj-fmz-mean10-erp-hi,+0.005
+sj-fmz-mean10-erp-lo,-0.033
+sj-fmz-mean10-res,+0.001
+sj-fmz-mean10-res-abs,0.001
+sj-fmz-mean10-res-ci,"[-0.008, +0.011]"
+sj-fmz-mean10-res-hi,+0.011
+sj-fmz-mean10-res-lo,-0.008
+sj-fmz-mean20-band,+0.038
+sj-fmz-mean20-band-abs,0.038
+sj-fmz-mean20-band-ci,"[+0.003, +0.073]"
+sj-fmz-mean20-band-hi,+0.073
+sj-fmz-mean20-band-lo,+0.003
+sj-fmz-mean20-erp,-0.003
+sj-fmz-mean20-erp-abs,0.003
+sj-fmz-mean20-erp-ci,"[-0.028, +0.024]"
+sj-fmz-mean20-erp-hi,+0.024
+sj-fmz-mean20-erp-lo,-0.028
+sj-fmz-mean20-res,-0.006
+sj-fmz-mean20-res-abs,0.006
+sj-fmz-mean20-res-ci,"[-0.024, +0.009]"
+sj-fmz-mean20-res-hi,+0.009
+sj-fmz-mean20-res-lo,-0.024
+sj-fmz-mean30-band,+0.055
+sj-fmz-mean30-band-abs,0.055
+sj-fmz-mean30-band-ci,"[+0.024, +0.087]"
+sj-fmz-mean30-band-hi,+0.087
+sj-fmz-mean30-band-lo,+0.024
+sj-fmz-mean30-erp,+0.042
+sj-fmz-mean30-erp-abs,0.042
+sj-fmz-mean30-erp-ci,"[+0.011, +0.074]"
+sj-fmz-mean30-erp-hi,+0.074
+sj-fmz-mean30-erp-lo,+0.011
+sj-fmz-mean30-res,-0.000
+sj-fmz-mean30-res-abs,0.000
+sj-fmz-mean30-res-ci,"[-0.022, +0.022]"
+sj-fmz-mean30-res-hi,+0.022
+sj-fmz-mean30-res-lo,-0.022
+sj-fmz-mean40-band,+0.006
+sj-fmz-mean40-band-abs,0.006
+sj-fmz-mean40-band-ci,"[-0.027, +0.038]"
+sj-fmz-mean40-band-hi,+0.038
+sj-fmz-mean40-band-lo,-0.027
+sj-fmz-mean40-erp,-0.005
+sj-fmz-mean40-erp-abs,0.005
+sj-fmz-mean40-erp-ci,"[-0.035, +0.025]"
+sj-fmz-mean40-erp-hi,+0.025
+sj-fmz-mean40-erp-lo,-0.035
+sj-fmz-mean40-res,+0.001
+sj-fmz-mean40-res-abs,0.001
+sj-fmz-mean40-res-ci,"[-0.022, +0.025]"
+sj-fmz-mean40-res-hi,+0.025
+sj-fmz-mean40-res-lo,-0.022
+sj-fmz-mean50-band,+0.024
+sj-fmz-mean50-band-abs,0.024
+sj-fmz-mean50-band-ci,"[-0.008, +0.058]"
+sj-fmz-mean50-band-hi,+0.058
+sj-fmz-mean50-band-lo,-0.008
+sj-fmz-mean50-erp,+0.024
+sj-fmz-mean50-erp-abs,0.024
+sj-fmz-mean50-erp-ci,"[-0.008, +0.057]"
+sj-fmz-mean50-erp-hi,+0.057
+sj-fmz-mean50-erp-lo,-0.008
+sj-fmz-mean50-res,+0.016
+sj-fmz-mean50-res-abs,0.016
+sj-fmz-mean50-res-ci,"[-0.009, +0.041]"
+sj-fmz-mean50-res-hi,+0.041
+sj-fmz-mean50-res-lo,-0.009
+sj-fmz-spatial10-band,+0.032
+sj-fmz-spatial10-band-abs,0.032
+sj-fmz-spatial10-band-ci,"[+0.006, +0.058]"
+sj-fmz-spatial10-band-hi,+0.058
+sj-fmz-spatial10-band-lo,+0.006
+sj-fmz-spatial10-erp,+0.024
+sj-fmz-spatial10-erp-abs,0.024
+sj-fmz-spatial10-erp-ci,"[+0.002, +0.046]"
+sj-fmz-spatial10-erp-hi,+0.046
+sj-fmz-spatial10-erp-lo,+0.002
+sj-fmz-spatial10-res,+0.003
+sj-fmz-spatial10-res-abs,0.003
+sj-fmz-spatial10-res-ci,"[-0.008, +0.014]"
+sj-fmz-spatial10-res-hi,+0.014
+sj-fmz-spatial10-res-lo,-0.008
+sj-fmz-spatial20-band,+0.038
+sj-fmz-spatial20-band-abs,0.038
+sj-fmz-spatial20-band-ci,"[+0.000, +0.076]"
+sj-fmz-spatial20-band-hi,+0.076
+sj-fmz-spatial20-band-lo,+0.000
+sj-fmz-spatial20-erp,+0.019
+sj-fmz-spatial20-erp-abs,0.019
+sj-fmz-spatial20-erp-ci,"[-0.006, +0.044]"
+sj-fmz-spatial20-erp-hi,+0.044
+sj-fmz-spatial20-erp-lo,-0.006
+sj-fmz-spatial20-res,+0.005
+sj-fmz-spatial20-res-abs,0.005
+sj-fmz-spatial20-res-ci,"[-0.009, +0.019]"
+sj-fmz-spatial20-res-hi,+0.019
+sj-fmz-spatial20-res-lo,-0.009
+sj-fmz-spatial30-band,+0.071
+sj-fmz-spatial30-band-abs,0.071
+sj-fmz-spatial30-band-ci,"[+0.038, +0.106]"
+sj-fmz-spatial30-band-hi,+0.106
+sj-fmz-spatial30-band-lo,+0.038
+sj-fmz-spatial30-erp,+0.054
+sj-fmz-spatial30-erp-abs,0.054
+sj-fmz-spatial30-erp-ci,"[+0.022, +0.085]"
+sj-fmz-spatial30-erp-hi,+0.085
+sj-fmz-spatial30-erp-lo,+0.022
+sj-fmz-spatial30-res,-0.005
+sj-fmz-spatial30-res-abs,0.005
+sj-fmz-spatial30-res-ci,"[-0.022, +0.013]"
+sj-fmz-spatial30-res-hi,+0.013
+sj-fmz-spatial30-res-lo,-0.022
+sj-fmz-spatial40-band,-0.005
+sj-fmz-spatial40-band-abs,0.005
+sj-fmz-spatial40-band-ci,"[-0.043, +0.032]"
+sj-fmz-spatial40-band-hi,+0.032
+sj-fmz-spatial40-band-lo,-0.043
+sj-fmz-spatial40-erp,+0.033
+sj-fmz-spatial40-erp-abs,0.033
+sj-fmz-spatial40-erp-ci,"[+0.005, +0.063]"
+sj-fmz-spatial40-erp-hi,+0.063
+sj-fmz-spatial40-erp-lo,+0.005
+sj-fmz-spatial40-res,+0.014
+sj-fmz-spatial40-res-abs,0.014
+sj-fmz-spatial40-res-ci,"[-0.006, +0.035]"
+sj-fmz-spatial40-res-hi,+0.035
+sj-fmz-spatial40-res-lo,-0.006
+sj-fmz-spatial50-band,+0.003
+sj-fmz-spatial50-band-abs,0.003
+sj-fmz-spatial50-band-ci,"[-0.030, +0.036]"
+sj-fmz-spatial50-band-hi,+0.036
+sj-fmz-spatial50-band-lo,-0.030
+sj-fmz-spatial50-erp,+0.044
+sj-fmz-spatial50-erp-abs,0.044
+sj-fmz-spatial50-erp-ci,"[+0.013, +0.076]"
+sj-fmz-spatial50-erp-hi,+0.076
+sj-fmz-spatial50-erp-lo,+0.013
+sj-fmz-spatial50-res,-0.000
+sj-fmz-spatial50-res-abs,0.000
+sj-fmz-spatial50-res-ci,"[-0.022, +0.024]"
+sj-fmz-spatial50-res-hi,+0.024
+sj-fmz-spatial50-res-lo,-0.022
 sj-inv-band,1.3\times10^{-3}
 sj-inv-erp,5.1\times10^{-3}
 sj-inv-res,1.1\times10^{-13}
 sj-invlabels-band,0.0
 sj-invlabels-erp,0.8
 sj-invlabels-res,0.0
+sj-margin-band,0.161
+sj-margin-erp,0.295
+sj-margin-res,0.153
+sj-marginratio-band,1.00
+sj-marginratio-erp,1.00
+sj-marginratio-res,1.00
+sj-nonfill-wmax,0.070
+sj-nonfill-wmin,0.038
+sj-nullmax-band,0.378
+sj-nullmax-erp,0.390
+sj-nullmax-res,0.379
+sj-nullmean-band,0.345
+sj-nullmean-erp,0.337
+sj-nullmean-res,0.328
 sj-o10-k0minuskm05-band,-0.003
 sj-o10-k0minuskm05-band-abs,0.003
 sj-o10-k0minuskm05-band-ci,"[-0.021, +0.016]"
@@ -1638,21 +2374,902 @@ sj-o50-nativeminusmean-res-abs,0.016
 sj-o50-nativeminusmean-res-ci,"[-0.041, +0.009]"
 sj-o50-nativeminusmean-res-hi,+0.009
 sj-o50-nativeminusmean-res-lo,-0.041
+sj-pcak128,0.507
+sj-pcak128-ci,"[0.471, 0.543]"
+sj-pcak128-hi,0.543
+sj-pcak128-lo,0.471
+sj-pcak16,0.485
+sj-pcak16-ci,"[0.447, 0.523]"
+sj-pcak16-hi,0.523
+sj-pcak16-lo,0.447
+sj-pcak32,0.477
+sj-pcak32-ci,"[0.439, 0.515]"
+sj-pcak32-hi,0.515
+sj-pcak32-lo,0.439
+sj-pcak64,0.487
+sj-pcak64-ci,"[0.447, 0.523]"
+sj-pcak64-hi,0.523
+sj-pcak64-lo,0.447
+sj-pnull-G-ba,0.330
+sj-pnull-G-mean,0.336
+sj-pnull-G-p,0.607
+sj-pnull-G-p95,0.373
+sj-pnull-Z-ba,0.540
+sj-pnull-Z-mean,0.335
+sj-pnull-Z-p,0.005
+sj-pnull-Z-p95,0.368
+sj-pnull-n,200
+sj-pooled-minus-train,+0.000
+sj-pooled-minus-train-abs,0.000
+sj-pooled-minus-train-ci,"[-0.014, +0.014]"
+sj-pooled-minus-train-hi,+0.014
+sj-pooled-minus-train-lo,-0.014
+sj-pooledpca,0.487
+sj-pooledpca-ci,"[0.449, 0.523]"
+sj-pooledpca-hi,0.523
+sj-pooledpca-lo,0.449
+sj-pre-erp-conference-G,0.545
+sj-pre-erp-conference-G-ci,"[0.513, 0.577]"
+sj-pre-erp-conference-G-hi,0.577
+sj-pre-erp-conference-G-lo,0.513
+sj-pre-erp-conference-Z,0.629
+sj-pre-erp-conference-Z-ci,"[0.597, 0.660]"
+sj-pre-erp-conference-Z-hi,0.660
+sj-pre-erp-conference-Z-lo,0.597
+sj-pre-erp-conference-ZminusG,+0.084
+sj-pre-erp-conference-ZminusG-abs,0.084
+sj-pre-erp-conference-ZminusG-ci,"[+0.044, +0.123]"
+sj-pre-erp-conference-ZminusG-hi,+0.123
+sj-pre-erp-conference-ZminusG-lo,+0.044
+sj-pre-erp-postonly-G,0.564
+sj-pre-erp-postonly-G-ci,"[0.534, 0.594]"
+sj-pre-erp-postonly-G-hi,0.594
+sj-pre-erp-postonly-G-lo,0.534
+sj-pre-erp-postonly-Z,0.547
+sj-pre-erp-postonly-Z-ci,"[0.515, 0.580]"
+sj-pre-erp-postonly-Z-hi,0.580
+sj-pre-erp-postonly-Z-lo,0.515
+sj-pre-erp-postonly-ZminusG,-0.017
+sj-pre-erp-postonly-ZminusG-abs,0.017
+sj-pre-erp-postonly-ZminusG-ci,"[-0.054, +0.019]"
+sj-pre-erp-postonly-ZminusG-hi,+0.019
+sj-pre-erp-postonly-ZminusG-lo,-0.054
+sj-pre-erp-preonly-G,0.330
+sj-pre-erp-preonly-G-ci,"[0.292, 0.368]"
+sj-pre-erp-preonly-G-hi,0.368
+sj-pre-erp-preonly-G-lo,0.292
+sj-pre-erp-preonly-Z,0.540
+sj-pre-erp-preonly-Z-ci,"[0.506, 0.575]"
+sj-pre-erp-preonly-Z-hi,0.575
+sj-pre-erp-preonly-Z-lo,0.506
+sj-pre-erp-preonly-ZminusG,+0.210
+sj-pre-erp-preonly-ZminusG-abs,0.210
+sj-pre-erp-preonly-ZminusG-ci,"[+0.161, +0.258]"
+sj-pre-erp-preonly-ZminusG-hi,+0.258
+sj-pre-erp-preonly-ZminusG-lo,+0.161
+sj-pre-postminusconf-G,+0.272
+sj-pre-postminusconf-G-abs,0.272
+sj-pre-postminusconf-G-ci,"[+0.223, +0.322]"
+sj-pre-postminusconf-G-hi,+0.322
+sj-pre-postminusconf-G-lo,+0.223
+sj-pre-postminusconf-Z,+0.128
+sj-pre-postminusconf-Z-abs,0.128
+sj-pre-postminusconf-Z-ci,"[+0.081, +0.174]"
+sj-pre-postminusconf-Z-hi,+0.174
+sj-pre-postminusconf-Z-lo,+0.081
+sj-pre-rate-conference,0.124
+sj-pre-rate-earlypost,0.130
+sj-pre-rate-post,0.127
+sj-pre-rate-pre,0.118
+sj-pre-res-conference-G,0.308
+sj-pre-res-conference-G-ci,"[0.272, 0.343]"
+sj-pre-res-conference-G-hi,0.343
+sj-pre-res-conference-G-lo,0.272
+sj-pre-res-conference-Z,0.487
+sj-pre-res-conference-Z-ci,"[0.447, 0.523]"
+sj-pre-res-conference-Z-hi,0.523
+sj-pre-res-conference-Z-lo,0.447
+sj-pre-res-conference-ZminusG,+0.178
+sj-pre-res-conference-ZminusG-abs,0.178
+sj-pre-res-conference-ZminusG-ci,"[+0.131, +0.227]"
+sj-pre-res-conference-ZminusG-hi,+0.227
+sj-pre-res-conference-ZminusG-lo,+0.131
+sj-pre-res-earlypost-G,0.433
+sj-pre-res-earlypost-G-ci,"[0.400, 0.468]"
+sj-pre-res-earlypost-G-hi,0.468
+sj-pre-res-earlypost-G-lo,0.400
+sj-pre-res-earlypost-Z,0.521
+sj-pre-res-earlypost-Z-ci,"[0.488, 0.556]"
+sj-pre-res-earlypost-Z-hi,0.556
+sj-pre-res-earlypost-Z-lo,0.488
+sj-pre-res-earlypost-ZminusG,+0.088
+sj-pre-res-earlypost-ZminusG-abs,0.088
+sj-pre-res-earlypost-ZminusG-ci,"[+0.039, +0.137]"
+sj-pre-res-earlypost-ZminusG-hi,+0.137
+sj-pre-res-earlypost-ZminusG-lo,+0.039
+sj-pre-res-post-G,0.580
+sj-pre-res-post-G-ci,"[0.545, 0.615]"
+sj-pre-res-post-G-hi,0.615
+sj-pre-res-post-G-lo,0.545
+sj-pre-res-post-Z,0.615
+sj-pre-res-post-Z-ci,"[0.581, 0.648]"
+sj-pre-res-post-Z-hi,0.648
+sj-pre-res-post-Z-lo,0.581
+sj-pre-res-post-ZminusG,+0.035
+sj-pre-res-post-ZminusG-abs,0.035
+sj-pre-res-post-ZminusG-ci,"[-0.006, +0.074]"
+sj-pre-res-post-ZminusG-hi,+0.074
+sj-pre-res-post-ZminusG-lo,-0.006
+sj-pre-res-pre-G,0.340
+sj-pre-res-pre-G-ci,"[0.306, 0.374]"
+sj-pre-res-pre-G-hi,0.374
+sj-pre-res-pre-G-lo,0.306
+sj-pre-res-pre-Z,0.434
+sj-pre-res-pre-Z-ci,"[0.398, 0.471]"
+sj-pre-res-pre-Z-hi,0.471
+sj-pre-res-pre-Z-lo,0.398
+sj-pre-res-pre-ZminusG,+0.094
+sj-pre-res-pre-ZminusG-abs,0.094
+sj-pre-res-pre-ZminusG-ci,"[+0.046, +0.142]"
+sj-pre-res-pre-ZminusG-hi,+0.142
+sj-pre-res-pre-ZminusG-lo,+0.046
+sj-prestim-corr,-0.92
+sj-repro-maxdiff,0
+sj-repro-n,21
+sj-resfill-maxabs,0.016
+sj-resfill-wmax,0.051
+sj-resfill-wmin,0.019
 sj-zpos-band,1.20
 sj-zpos-erp,0.78
 sj-zpos-res,0.06
+so-auc-band,0.682
+so-auc-erp,0.817
+so-auc-res,0.731
+so-bsc6minus1-clean,+0.107
+so-bsc6minus1-clean-abs,0.107
+so-bsc6minus1-clean-ci,"[+0.065, +0.150]"
+so-bsc6minus1-clean-hi,+0.150
+so-bsc6minus1-clean-lo,+0.065
+so-bsc6minus1-signal30,+0.047
+so-bsc6minus1-signal30-abs,0.047
+so-bsc6minus1-signal30-ci,"[+0.006, +0.088]"
+so-bsc6minus1-signal30-hi,+0.088
+so-bsc6minus1-signal30-lo,+0.006
+so-cent-band,1.20
+so-cent-erp,0.73
+so-cent-rawcounts,1.21
+so-cent-res,0.07
+so-clean-band,0.494
+so-clean-band-ci,"[0.460, 0.528]"
+so-clean-band-hi,0.528
+so-clean-band-lo,0.460
+so-clean-erp,0.645
+so-clean-erp-ci,"[0.611, 0.678]"
+so-clean-erp-hi,0.678
+so-clean-erp-lo,0.611
+so-clean-erpres,+0.097
+so-clean-erpres-abs,0.097
+so-clean-erpres-ci,"[+0.054, +0.141]"
+so-clean-erpres-hi,+0.141
+so-clean-erpres-lo,+0.054
+so-clean-res,0.548
+so-clean-res-ci,"[0.515, 0.581]"
+so-clean-res-hi,0.581
+so-clean-res-lo,0.515
 so-dlogit-band,4.13
 so-dlogit-erp,1.91
 so-dlogit-res,0.39
+so-f1-band,0.492
+so-f1-erp,0.644
+so-f1-res,0.546
+so-fc10-knn-band,0.494
+so-fc10-knn-band-acret,1.00
+so-fc10-knn-band-ci,"[0.461, 0.529]"
+so-fc10-knn-band-hi,0.529
+so-fc10-knn-band-lo,0.461
+so-fc10-knn-band-rawret,1.00
+so-fc10-knn-erp,0.659
+so-fc10-knn-erp-acret,1.05
+so-fc10-knn-erp-ci,"[0.626, 0.692]"
+so-fc10-knn-erp-hi,0.692
+so-fc10-knn-erp-lo,0.626
+so-fc10-knn-erp-rawret,1.02
+so-fc10-knn-erpres,+0.097
+so-fc10-knn-erpres-abs,0.097
+so-fc10-knn-erpres-ci,"[+0.054, +0.139]"
+so-fc10-knn-erpres-hi,+0.139
+so-fc10-knn-erpres-lo,+0.054
+so-fc10-knn-res,0.562
+so-fc10-knn-res-acret,1.07
+so-fc10-knn-res-ci,"[0.529, 0.596]"
+so-fc10-knn-res-hi,0.596
+so-fc10-knn-res-lo,0.529
+so-fc10-knn-res-rawret,1.03
+so-fc10-mean-band,0.490
+so-fc10-mean-band-acret,0.97
+so-fc10-mean-band-ci,"[0.455, 0.525]"
+so-fc10-mean-band-hi,0.525
+so-fc10-mean-band-lo,0.455
+so-fc10-mean-band-rawret,0.99
+so-fc10-mean-erp,0.635
+so-fc10-mean-erp-acret,0.97
+so-fc10-mean-erp-ci,"[0.602, 0.671]"
+so-fc10-mean-erp-hi,0.671
+so-fc10-mean-erp-lo,0.602
+so-fc10-mean-erp-rawret,0.99
+so-fc10-mean-erpres,+0.081
+so-fc10-mean-erpres-abs,0.081
+so-fc10-mean-erpres-ci,"[+0.035, +0.126]"
+so-fc10-mean-erpres-hi,+0.126
+so-fc10-mean-erpres-lo,+0.035
+so-fc10-mean-res,0.555
+so-fc10-mean-res-acret,1.03
+so-fc10-mean-res-ci,"[0.521, 0.589]"
+so-fc10-mean-res-hi,0.589
+so-fc10-mean-res-lo,0.521
+so-fc10-mean-res-rawret,1.01
+so-fc10-spatial-band,0.507
+so-fc10-spatial-band-acret,1.08
+so-fc10-spatial-band-ci,"[0.474, 0.542]"
+so-fc10-spatial-band-hi,0.542
+so-fc10-spatial-band-lo,0.474
+so-fc10-spatial-band-rawret,1.03
+so-fc10-spatial-erp,0.648
+so-fc10-spatial-erp-acret,1.01
+so-fc10-spatial-erp-ci,"[0.615, 0.682]"
+so-fc10-spatial-erp-hi,0.682
+so-fc10-spatial-erp-lo,0.615
+so-fc10-spatial-erp-rawret,1.00
+so-fc10-spatial-erpres,+0.092
+so-fc10-spatial-erpres-abs,0.092
+so-fc10-spatial-erpres-ci,"[+0.046, +0.137]"
+so-fc10-spatial-erpres-hi,+0.137
+so-fc10-spatial-erpres-lo,+0.046
+so-fc10-spatial-res,0.556
+so-fc10-spatial-res-acret,1.04
+so-fc10-spatial-res-ci,"[0.523, 0.589]"
+so-fc10-spatial-res-hi,0.589
+so-fc10-spatial-res-lo,0.523
+so-fc10-spatial-res-rawret,1.01
+so-fc10-zero-band,0.476
+so-fc10-zero-band-acret,0.88
+so-fc10-zero-band-ci,"[0.442, 0.509]"
+so-fc10-zero-band-hi,0.509
+so-fc10-zero-band-lo,0.442
+so-fc10-zero-band-rawret,0.96
+so-fc10-zero-erp,0.635
+so-fc10-zero-erp-acret,0.97
+so-fc10-zero-erp-ci,"[0.602, 0.670]"
+so-fc10-zero-erp-hi,0.670
+so-fc10-zero-erp-lo,0.602
+so-fc10-zero-erp-rawret,0.99
+so-fc10-zero-erpres,+0.084
+so-fc10-zero-erpres-abs,0.084
+so-fc10-zero-erpres-ci,"[+0.039, +0.130]"
+so-fc10-zero-erpres-hi,+0.130
+so-fc10-zero-erpres-lo,+0.039
+so-fc10-zero-res,0.551
+so-fc10-zero-res-acret,1.01
+so-fc10-zero-res-ci,"[0.518, 0.585]"
+so-fc10-zero-res-hi,0.585
+so-fc10-zero-res-lo,0.518
+so-fc10-zero-res-rawret,1.01
+so-fc20-knn-band,0.498
+so-fc20-knn-band-acret,1.02
+so-fc20-knn-band-ci,"[0.463, 0.534]"
+so-fc20-knn-band-hi,0.534
+so-fc20-knn-band-lo,0.463
+so-fc20-knn-band-rawret,1.01
+so-fc20-knn-erp,0.629
+so-fc20-knn-erp-acret,0.95
+so-fc20-knn-erp-ci,"[0.594, 0.662]"
+so-fc20-knn-erp-hi,0.662
+so-fc20-knn-erp-lo,0.594
+so-fc20-knn-erp-rawret,0.98
+so-fc20-knn-erpres,+0.067
+so-fc20-knn-erpres-abs,0.067
+so-fc20-knn-erpres-ci,"[+0.024, +0.109]"
+so-fc20-knn-erpres-hi,+0.109
+so-fc20-knn-erpres-lo,+0.024
+so-fc20-knn-res,0.562
+so-fc20-knn-res-acret,1.07
+so-fc20-knn-res-ci,"[0.529, 0.596]"
+so-fc20-knn-res-hi,0.596
+so-fc20-knn-res-lo,0.529
+so-fc20-knn-res-rawret,1.03
+so-fc20-mean-band,0.485
+so-fc20-mean-band-acret,0.94
+so-fc20-mean-band-ci,"[0.449, 0.521]"
+so-fc20-mean-band-hi,0.521
+so-fc20-mean-band-lo,0.449
+so-fc20-mean-band-rawret,0.98
+so-fc20-mean-erp,0.594
+so-fc20-mean-erp-acret,0.84
+so-fc20-mean-erp-ci,"[0.562, 0.627]"
+so-fc20-mean-erp-hi,0.627
+so-fc20-mean-erp-lo,0.562
+so-fc20-mean-erp-rawret,0.92
+so-fc20-mean-erpres,+0.048
+so-fc20-mean-erpres-abs,0.048
+so-fc20-mean-erpres-ci,"[+0.005, +0.092]"
+so-fc20-mean-erpres-hi,+0.092
+so-fc20-mean-erpres-lo,+0.005
+so-fc20-mean-res,0.547
+so-fc20-mean-res-acret,0.99
+so-fc20-mean-res-ci,"[0.513, 0.581]"
+so-fc20-mean-res-hi,0.581
+so-fc20-mean-res-lo,0.513
+so-fc20-mean-res-rawret,1.00
+so-fc20-spatial-band,0.485
+so-fc20-spatial-band-acret,0.94
+so-fc20-spatial-band-ci,"[0.452, 0.520]"
+so-fc20-spatial-band-hi,0.520
+so-fc20-spatial-band-lo,0.452
+so-fc20-spatial-band-rawret,0.98
+so-fc20-spatial-erp,0.608
+so-fc20-spatial-erp-acret,0.88
+so-fc20-spatial-erp-ci,"[0.575, 0.638]"
+so-fc20-spatial-erp-hi,0.638
+so-fc20-spatial-erp-lo,0.575
+so-fc20-spatial-erp-rawret,0.94
+so-fc20-spatial-erpres,+0.054
+so-fc20-spatial-erpres-abs,0.054
+so-fc20-spatial-erpres-ci,"[+0.011, +0.096]"
+so-fc20-spatial-erpres-hi,+0.096
+so-fc20-spatial-erpres-lo,+0.011
+so-fc20-spatial-res,0.555
+so-fc20-spatial-res-acret,1.03
+so-fc20-spatial-res-ci,"[0.521, 0.589]"
+so-fc20-spatial-res-hi,0.589
+so-fc20-spatial-res-lo,0.521
+so-fc20-spatial-res-rawret,1.01
+so-fc20-zero-band,0.447
+so-fc20-zero-band-acret,0.71
+so-fc20-zero-band-ci,"[0.412, 0.482]"
+so-fc20-zero-band-hi,0.482
+so-fc20-zero-band-lo,0.412
+so-fc20-zero-band-rawret,0.90
+so-fc20-zero-erp,0.600
+so-fc20-zero-erp-acret,0.86
+so-fc20-zero-erp-ci,"[0.570, 0.630]"
+so-fc20-zero-erp-hi,0.630
+so-fc20-zero-erp-lo,0.570
+so-fc20-zero-erp-rawret,0.93
+so-fc20-zero-erpres,+0.043
+so-fc20-zero-erpres-abs,0.043
+so-fc20-zero-erpres-ci,"[+0.000, +0.085]"
+so-fc20-zero-erpres-hi,+0.085
+so-fc20-zero-erpres-lo,+0.000
+so-fc20-zero-res,0.558
+so-fc20-zero-res-acret,1.04
+so-fc20-zero-res-ci,"[0.523, 0.591]"
+so-fc20-zero-res-hi,0.591
+so-fc20-zero-res-lo,0.523
+so-fc20-zero-res-rawret,1.02
+so-fc30-knn-band,0.483
+so-fc30-knn-band-acret,0.93
+so-fc30-knn-band-ci,"[0.450, 0.518]"
+so-fc30-knn-band-hi,0.518
+so-fc30-knn-band-lo,0.450
+so-fc30-knn-band-rawret,0.98
+so-fc30-knn-erp,0.652
+so-fc30-knn-erp-acret,1.03
+so-fc30-knn-erp-ci,"[0.618, 0.686]"
+so-fc30-knn-erp-hi,0.686
+so-fc30-knn-erp-lo,0.618
+so-fc30-knn-erp-rawret,1.01
+so-fc30-knn-erpres,+0.087
+so-fc30-knn-erpres-abs,0.087
+so-fc30-knn-erpres-ci,"[+0.046, +0.128]"
+so-fc30-knn-erpres-hi,+0.128
+so-fc30-knn-erpres-lo,+0.046
+so-fc30-knn-res,0.566
+so-fc30-knn-res-acret,1.08
+so-fc30-knn-res-ci,"[0.531, 0.599]"
+so-fc30-knn-res-hi,0.599
+so-fc30-knn-res-lo,0.531
+so-fc30-knn-res-rawret,1.03
+so-fc30-mean-band,0.472
+so-fc30-mean-band-acret,0.86
+so-fc30-mean-band-ci,"[0.441, 0.506]"
+so-fc30-mean-band-hi,0.506
+so-fc30-mean-band-lo,0.441
+so-fc30-mean-band-rawret,0.96
+so-fc30-mean-erp,0.580
+so-fc30-mean-erp-acret,0.79
+so-fc30-mean-erp-ci,"[0.548, 0.613]"
+so-fc30-mean-erp-hi,0.613
+so-fc30-mean-erp-lo,0.548
+so-fc30-mean-erp-rawret,0.90
+so-fc30-mean-erpres,+0.037
+so-fc30-mean-erpres-abs,0.037
+so-fc30-mean-erpres-ci,"[-0.003, +0.077]"
+so-fc30-mean-erpres-hi,+0.077
+so-fc30-mean-erpres-lo,-0.003
+so-fc30-mean-res,0.543
+so-fc30-mean-res-acret,0.98
+so-fc30-mean-res-ci,"[0.510, 0.577]"
+so-fc30-mean-res-hi,0.577
+so-fc30-mean-res-lo,0.510
+so-fc30-mean-res-rawret,0.99
+so-fc30-spatial-band,0.488
+so-fc30-spatial-band-acret,0.96
+so-fc30-spatial-band-ci,"[0.453, 0.523]"
+so-fc30-spatial-band-hi,0.523
+so-fc30-spatial-band-lo,0.453
+so-fc30-spatial-band-rawret,0.99
+so-fc30-spatial-erp,0.615
+so-fc30-spatial-erp-acret,0.90
+so-fc30-spatial-erp-ci,"[0.583, 0.648]"
+so-fc30-spatial-erp-hi,0.648
+so-fc30-spatial-erp-lo,0.583
+so-fc30-spatial-erp-rawret,0.95
+so-fc30-spatial-erpres,+0.068
+so-fc30-spatial-erpres-abs,0.068
+so-fc30-spatial-erpres-ci,"[+0.025, +0.112]"
+so-fc30-spatial-erpres-hi,+0.112
+so-fc30-spatial-erpres-lo,+0.025
+so-fc30-spatial-res,0.547
+so-fc30-spatial-res-acret,0.99
+so-fc30-spatial-res-ci,"[0.512, 0.580]"
+so-fc30-spatial-res-hi,0.580
+so-fc30-spatial-res-lo,0.512
+so-fc30-spatial-res-rawret,1.00
+so-fc30-zero-band,0.417
+so-fc30-zero-band-acret,0.52
+so-fc30-zero-band-ci,"[0.387, 0.447]"
+so-fc30-zero-band-hi,0.447
+so-fc30-zero-band-lo,0.387
+so-fc30-zero-band-rawret,0.84
+so-fc30-zero-erp,0.581
+so-fc30-zero-erp-acret,0.80
+so-fc30-zero-erp-ci,"[0.551, 0.611]"
+so-fc30-zero-erp-hi,0.611
+so-fc30-zero-erp-lo,0.551
+so-fc30-zero-erp-rawret,0.90
+so-fc30-zero-erpres,+0.044
+so-fc30-zero-erpres-abs,0.044
+so-fc30-zero-erpres-ci,"[+0.000, +0.090]"
+so-fc30-zero-erpres-hi,+0.090
+so-fc30-zero-erpres-lo,+0.000
+so-fc30-zero-res,0.537
+so-fc30-zero-res-acret,0.95
+so-fc30-zero-res-ci,"[0.502, 0.570]"
+so-fc30-zero-res-hi,0.570
+so-fc30-zero-res-lo,0.502
+so-fc30-zero-res-rawret,0.98
+so-fc40-knn-band,0.498
+so-fc40-knn-band-acret,1.02
+so-fc40-knn-band-ci,"[0.466, 0.531]"
+so-fc40-knn-band-hi,0.531
+so-fc40-knn-band-lo,0.466
+so-fc40-knn-band-rawret,1.01
+so-fc40-knn-erp,0.624
+so-fc40-knn-erp-acret,0.93
+so-fc40-knn-erp-ci,"[0.591, 0.657]"
+so-fc40-knn-erp-hi,0.657
+so-fc40-knn-erp-lo,0.591
+so-fc40-knn-erp-rawret,0.97
+so-fc40-knn-erpres,+0.073
+so-fc40-knn-erpres-abs,0.073
+so-fc40-knn-erpres-ci,"[+0.033, +0.114]"
+so-fc40-knn-erpres-hi,+0.114
+so-fc40-knn-erpres-lo,+0.033
+so-fc40-knn-res,0.551
+so-fc40-knn-res-acret,1.01
+so-fc40-knn-res-ci,"[0.518, 0.585]"
+so-fc40-knn-res-hi,0.585
+so-fc40-knn-res-lo,0.518
+so-fc40-knn-res-rawret,1.01
+so-fc40-mean-band,0.453
+so-fc40-mean-band-acret,0.75
+so-fc40-mean-band-ci,"[0.420, 0.487]"
+so-fc40-mean-band-hi,0.487
+so-fc40-mean-band-lo,0.420
+so-fc40-mean-band-rawret,0.92
+so-fc40-mean-erp,0.569
+so-fc40-mean-erp-acret,0.76
+so-fc40-mean-erp-ci,"[0.537, 0.600]"
+so-fc40-mean-erp-hi,0.600
+so-fc40-mean-erp-lo,0.537
+so-fc40-mean-erp-rawret,0.88
+so-fc40-mean-erpres,+0.034
+so-fc40-mean-erpres-abs,0.034
+so-fc40-mean-erpres-ci,"[-0.014, +0.081]"
+so-fc40-mean-erpres-hi,+0.081
+so-fc40-mean-erpres-lo,-0.014
+so-fc40-mean-res,0.536
+so-fc40-mean-res-acret,0.94
+so-fc40-mean-res-ci,"[0.501, 0.570]"
+so-fc40-mean-res-hi,0.570
+so-fc40-mean-res-lo,0.501
+so-fc40-mean-res-rawret,0.98
+so-fc40-spatial-band,0.442
+so-fc40-spatial-band-acret,0.68
+so-fc40-spatial-band-ci,"[0.409, 0.476]"
+so-fc40-spatial-band-hi,0.476
+so-fc40-spatial-band-lo,0.409
+so-fc40-spatial-band-rawret,0.89
+so-fc40-spatial-erp,0.589
+so-fc40-spatial-erp-acret,0.82
+so-fc40-spatial-erp-ci,"[0.562, 0.618]"
+so-fc40-spatial-erp-hi,0.618
+so-fc40-spatial-erp-lo,0.562
+so-fc40-spatial-erp-rawret,0.91
+so-fc40-spatial-erpres,+0.027
+so-fc40-spatial-erpres-abs,0.027
+so-fc40-spatial-erpres-ci,"[-0.013, +0.070]"
+so-fc40-spatial-erpres-hi,+0.070
+so-fc40-spatial-erpres-lo,-0.013
+so-fc40-spatial-res,0.562
+so-fc40-spatial-res-acret,1.07
+so-fc40-spatial-res-ci,"[0.528, 0.597]"
+so-fc40-spatial-res-hi,0.597
+so-fc40-spatial-res-lo,0.528
+so-fc40-spatial-res-rawret,1.03
+so-fc40-zero-band,0.447
+so-fc40-zero-band-acret,0.71
+so-fc40-zero-band-ci,"[0.419, 0.479]"
+so-fc40-zero-band-hi,0.479
+so-fc40-zero-band-lo,0.419
+so-fc40-zero-band-rawret,0.90
+so-fc40-zero-erp,0.512
+so-fc40-zero-erp-acret,0.57
+so-fc40-zero-erp-ci,"[0.483, 0.542]"
+so-fc40-zero-erp-hi,0.542
+so-fc40-zero-erp-lo,0.483
+so-fc40-zero-erp-rawret,0.79
+so-fc40-zero-erpres,-0.038
+so-fc40-zero-erpres-abs,0.038
+so-fc40-zero-erpres-ci,"[-0.084, +0.008]"
+so-fc40-zero-erpres-hi,+0.008
+so-fc40-zero-erpres-lo,-0.084
+so-fc40-zero-res,0.550
+so-fc40-zero-res-acret,1.01
+so-fc40-zero-res-ci,"[0.515, 0.585]"
+so-fc40-zero-res-hi,0.585
+so-fc40-zero-res-lo,0.515
+so-fc40-zero-res-rawret,1.00
+so-fc50-knn-band,0.504
+so-fc50-knn-band-acret,1.06
+so-fc50-knn-band-ci,"[0.471, 0.537]"
+so-fc50-knn-band-hi,0.537
+so-fc50-knn-band-lo,0.471
+so-fc50-knn-band-rawret,1.02
+so-fc50-knn-erp,0.615
+so-fc50-knn-erp-acret,0.90
+so-fc50-knn-erp-ci,"[0.581, 0.649]"
+so-fc50-knn-erp-hi,0.649
+so-fc50-knn-erp-lo,0.581
+so-fc50-knn-erp-rawret,0.95
+so-fc50-knn-erpres,+0.048
+so-fc50-knn-erpres-abs,0.048
+so-fc50-knn-erpres-ci,"[+0.008, +0.088]"
+so-fc50-knn-erpres-hi,+0.088
+so-fc50-knn-erpres-lo,+0.008
+so-fc50-knn-res,0.567
+so-fc50-knn-res-acret,1.09
+so-fc50-knn-res-ci,"[0.534, 0.600]"
+so-fc50-knn-res-hi,0.600
+so-fc50-knn-res-lo,0.534
+so-fc50-knn-res-rawret,1.03
+so-fc50-mean-band,0.474
+so-fc50-mean-band-acret,0.87
+so-fc50-mean-band-ci,"[0.439, 0.509]"
+so-fc50-mean-band-hi,0.509
+so-fc50-mean-band-lo,0.439
+so-fc50-mean-band-rawret,0.96
+so-fc50-mean-erp,0.542
+so-fc50-mean-erp-acret,0.67
+so-fc50-mean-erp-ci,"[0.509, 0.575]"
+so-fc50-mean-erp-hi,0.575
+so-fc50-mean-erp-lo,0.509
+so-fc50-mean-erp-rawret,0.84
+so-fc50-mean-erpres,+0.001
+so-fc50-mean-erpres-abs,0.001
+so-fc50-mean-erpres-ci,"[-0.044, +0.046]"
+so-fc50-mean-erpres-hi,+0.046
+so-fc50-mean-erpres-lo,-0.044
+so-fc50-mean-res,0.542
+so-fc50-mean-res-acret,0.97
+so-fc50-mean-res-ci,"[0.507, 0.578]"
+so-fc50-mean-res-hi,0.578
+so-fc50-mean-res-lo,0.507
+so-fc50-mean-res-rawret,0.99
+so-fc50-spatial-band,0.453
+so-fc50-spatial-band-acret,0.75
+so-fc50-spatial-band-ci,"[0.419, 0.488]"
+so-fc50-spatial-band-hi,0.488
+so-fc50-spatial-band-lo,0.419
+so-fc50-spatial-band-rawret,0.92
+so-fc50-spatial-erp,0.542
+so-fc50-spatial-erp-acret,0.67
+so-fc50-spatial-erp-ci,"[0.510, 0.573]"
+so-fc50-spatial-erp-hi,0.573
+so-fc50-spatial-erp-lo,0.510
+so-fc50-spatial-erp-rawret,0.84
+so-fc50-spatial-erpres,-0.009
+so-fc50-spatial-erpres-abs,0.009
+so-fc50-spatial-erpres-ci,"[-0.055, +0.035]"
+so-fc50-spatial-erpres-hi,+0.035
+so-fc50-spatial-erpres-lo,-0.055
+so-fc50-spatial-res,0.551
+so-fc50-spatial-res-acret,1.01
+so-fc50-spatial-res-ci,"[0.517, 0.586]"
+so-fc50-spatial-res-hi,0.586
+so-fc50-spatial-res-lo,0.517
+so-fc50-spatial-res-rawret,1.01
+so-fc50-zero-band,0.450
+so-fc50-zero-band-acret,0.73
+so-fc50-zero-band-ci,"[0.422, 0.479]"
+so-fc50-zero-band-hi,0.479
+so-fc50-zero-band-lo,0.422
+so-fc50-zero-band-rawret,0.91
+so-fc50-zero-erp,0.509
+so-fc50-zero-erp-acret,0.56
+so-fc50-zero-erp-ci,"[0.479, 0.540]"
+so-fc50-zero-erp-hi,0.540
+so-fc50-zero-erp-lo,0.479
+so-fc50-zero-erp-rawret,0.79
+so-fc50-zero-erpres,-0.017
+so-fc50-zero-erpres-abs,0.017
+so-fc50-zero-erpres-ci,"[-0.060, +0.027]"
+so-fc50-zero-erpres-hi,+0.027
+so-fc50-zero-erpres-lo,-0.060
+so-fc50-zero-res,0.526
+so-fc50-zero-res-acret,0.90
+so-fc50-zero-res-ci,"[0.490, 0.564]"
+so-fc50-zero-res-hi,0.564
+so-fc50-zero-res-lo,0.490
+so-fc50-zero-res-rawret,0.96
 so-flip-band,40.9
 so-flip-erp,21.6
 so-flip-res,6.2
+so-fmz-knn10-band,+0.019
+so-fmz-knn10-band-abs,0.019
+so-fmz-knn10-band-ci,"[-0.006, +0.044]"
+so-fmz-knn10-band-hi,+0.044
+so-fmz-knn10-band-lo,-0.006
+so-fmz-knn10-erp,+0.024
+so-fmz-knn10-erp-abs,0.024
+so-fmz-knn10-erp-ci,"[-0.003, +0.049]"
+so-fmz-knn10-erp-hi,+0.049
+so-fmz-knn10-erp-lo,-0.003
+so-fmz-knn10-res,+0.011
+so-fmz-knn10-res-abs,0.011
+so-fmz-knn10-res-ci,"[-0.002, +0.024]"
+so-fmz-knn10-res-hi,+0.024
+so-fmz-knn10-res-lo,-0.002
+so-fmz-knn20-band,+0.051
+so-fmz-knn20-band-abs,0.051
+so-fmz-knn20-band-ci,"[+0.016, +0.087]"
+so-fmz-knn20-band-hi,+0.087
+so-fmz-knn20-band-lo,+0.016
+so-fmz-knn20-erp,+0.029
+so-fmz-knn20-erp-abs,0.029
+so-fmz-knn20-erp-ci,"[-0.003, +0.060]"
+so-fmz-knn20-erp-hi,+0.060
+so-fmz-knn20-erp-lo,-0.003
+so-fmz-knn20-res,+0.005
+so-fmz-knn20-res-abs,0.005
+so-fmz-knn20-res-ci,"[-0.013, +0.022]"
+so-fmz-knn20-res-hi,+0.022
+so-fmz-knn20-res-lo,-0.013
+so-fmz-knn30-band,+0.067
+so-fmz-knn30-band-abs,0.067
+so-fmz-knn30-band-ci,"[+0.033, +0.100]"
+so-fmz-knn30-band-hi,+0.100
+so-fmz-knn30-band-lo,+0.033
+so-fmz-knn30-erp,+0.071
+so-fmz-knn30-erp-abs,0.071
+so-fmz-knn30-erp-ci,"[+0.036, +0.107]"
+so-fmz-knn30-erp-hi,+0.107
+so-fmz-knn30-erp-lo,+0.036
+so-fmz-knn30-res,+0.028
+so-fmz-knn30-res-abs,0.028
+so-fmz-knn30-res-ci,"[+0.006, +0.051]"
+so-fmz-knn30-res-hi,+0.051
+so-fmz-knn30-res-lo,+0.006
+so-fmz-knn40-band,+0.051
+so-fmz-knn40-band-abs,0.051
+so-fmz-knn40-band-ci,"[+0.017, +0.084]"
+so-fmz-knn40-band-hi,+0.084
+so-fmz-knn40-band-lo,+0.017
+so-fmz-knn40-erp,+0.112
+so-fmz-knn40-erp-abs,0.112
+so-fmz-knn40-erp-ci,"[+0.076, +0.147]"
+so-fmz-knn40-erp-hi,+0.147
+so-fmz-knn40-erp-lo,+0.076
+so-fmz-knn40-res,+0.002
+so-fmz-knn40-res-abs,0.002
+so-fmz-knn40-res-ci,"[-0.027, +0.028]"
+so-fmz-knn40-res-hi,+0.028
+so-fmz-knn40-res-lo,-0.027
+so-fmz-knn50-band,+0.054
+so-fmz-knn50-band-abs,0.054
+so-fmz-knn50-band-ci,"[+0.021, +0.087]"
+so-fmz-knn50-band-hi,+0.087
+so-fmz-knn50-band-lo,+0.021
+so-fmz-knn50-erp,+0.106
+so-fmz-knn50-erp-abs,0.106
+so-fmz-knn50-erp-ci,"[+0.070, +0.144]"
+so-fmz-knn50-erp-hi,+0.144
+so-fmz-knn50-erp-lo,+0.070
+so-fmz-knn50-res,+0.041
+so-fmz-knn50-res-abs,0.041
+so-fmz-knn50-res-ci,"[+0.011, +0.073]"
+so-fmz-knn50-res-hi,+0.073
+so-fmz-knn50-res-lo,+0.011
+so-fmz-mean10-band,+0.014
+so-fmz-mean10-band-abs,0.014
+so-fmz-mean10-band-ci,"[-0.009, +0.039]"
+so-fmz-mean10-band-hi,+0.039
+so-fmz-mean10-band-lo,-0.009
+so-fmz-mean10-erp,+0.000
+so-fmz-mean10-erp-abs,0.000
+so-fmz-mean10-erp-ci,"[-0.021, +0.022]"
+so-fmz-mean10-erp-hi,+0.022
+so-fmz-mean10-erp-lo,-0.021
+so-fmz-mean10-res,+0.003
+so-fmz-mean10-res-abs,0.003
+so-fmz-mean10-res-ci,"[+0.000, +0.008]"
+so-fmz-mean10-res-hi,+0.008
+so-fmz-mean10-res-lo,+0.000
+so-fmz-mean20-band,+0.038
+so-fmz-mean20-band-abs,0.038
+so-fmz-mean20-band-ci,"[+0.003, +0.073]"
+so-fmz-mean20-band-hi,+0.073
+so-fmz-mean20-band-lo,+0.003
+so-fmz-mean20-erp,-0.006
+so-fmz-mean20-erp-abs,0.006
+so-fmz-mean20-erp-ci,"[-0.032, +0.019]"
+so-fmz-mean20-erp-hi,+0.019
+so-fmz-mean20-erp-lo,-0.032
+so-fmz-mean20-res,-0.011
+so-fmz-mean20-res-abs,0.011
+so-fmz-mean20-res-ci,"[-0.025, +0.002]"
+so-fmz-mean20-res-hi,+0.002
+so-fmz-mean20-res-lo,-0.025
+so-fmz-mean30-band,+0.055
+so-fmz-mean30-band-abs,0.055
+so-fmz-mean30-band-ci,"[+0.024, +0.087]"
+so-fmz-mean30-band-hi,+0.087
+so-fmz-mean30-band-lo,+0.024
+so-fmz-mean30-erp,-0.001
+so-fmz-mean30-erp-abs,0.001
+so-fmz-mean30-erp-ci,"[-0.030, +0.028]"
+so-fmz-mean30-erp-hi,+0.028
+so-fmz-mean30-erp-lo,-0.030
+so-fmz-mean30-res,+0.006
+so-fmz-mean30-res-abs,0.006
+so-fmz-mean30-res-ci,"[-0.009, +0.022]"
+so-fmz-mean30-res-hi,+0.022
+so-fmz-mean30-res-lo,-0.009
+so-fmz-mean40-band,+0.006
+so-fmz-mean40-band-abs,0.006
+so-fmz-mean40-band-ci,"[-0.027, +0.038]"
+so-fmz-mean40-band-hi,+0.038
+so-fmz-mean40-band-lo,-0.027
+so-fmz-mean40-erp,+0.057
+so-fmz-mean40-erp-abs,0.057
+so-fmz-mean40-erp-ci,"[+0.030, +0.085]"
+so-fmz-mean40-erp-hi,+0.085
+so-fmz-mean40-erp-lo,+0.030
+so-fmz-mean40-res,-0.014
+so-fmz-mean40-res-abs,0.014
+so-fmz-mean40-res-ci,"[-0.035, +0.006]"
+so-fmz-mean40-res-hi,+0.006
+so-fmz-mean40-res-lo,-0.035
+so-fmz-mean50-band,+0.024
+so-fmz-mean50-band-abs,0.024
+so-fmz-mean50-band-ci,"[-0.008, +0.058]"
+so-fmz-mean50-band-hi,+0.058
+so-fmz-mean50-band-lo,-0.008
+so-fmz-mean50-erp,+0.033
+so-fmz-mean50-erp-abs,0.033
+so-fmz-mean50-erp-ci,"[+0.002, +0.065]"
+so-fmz-mean50-erp-hi,+0.065
+so-fmz-mean50-erp-lo,+0.002
+so-fmz-mean50-res,+0.016
+so-fmz-mean50-res-abs,0.016
+so-fmz-mean50-res-ci,"[-0.009, +0.039]"
+so-fmz-mean50-res-hi,+0.039
+so-fmz-mean50-res-lo,-0.009
+so-fmz-spatial10-band,+0.032
+so-fmz-spatial10-band-abs,0.032
+so-fmz-spatial10-band-ci,"[+0.006, +0.058]"
+so-fmz-spatial10-band-hi,+0.058
+so-fmz-spatial10-band-lo,+0.006
+so-fmz-spatial10-erp,+0.013
+so-fmz-spatial10-erp-abs,0.013
+so-fmz-spatial10-erp-ci,"[-0.011, +0.036]"
+so-fmz-spatial10-erp-hi,+0.036
+so-fmz-spatial10-erp-lo,-0.011
+so-fmz-spatial10-res,+0.005
+so-fmz-spatial10-res-abs,0.005
+so-fmz-spatial10-res-ci,"[-0.005, +0.014]"
+so-fmz-spatial10-res-hi,+0.014
+so-fmz-spatial10-res-lo,-0.005
+so-fmz-spatial20-band,+0.038
+so-fmz-spatial20-band-abs,0.038
+so-fmz-spatial20-band-ci,"[+0.000, +0.076]"
+so-fmz-spatial20-band-hi,+0.076
+so-fmz-spatial20-band-lo,+0.000
+so-fmz-spatial20-erp,+0.008
+so-fmz-spatial20-erp-abs,0.008
+so-fmz-spatial20-erp-ci,"[-0.021, +0.036]"
+so-fmz-spatial20-erp-hi,+0.036
+so-fmz-spatial20-erp-lo,-0.021
+so-fmz-spatial20-res,-0.003
+so-fmz-spatial20-res-abs,0.003
+so-fmz-spatial20-res-ci,"[-0.017, +0.011]"
+so-fmz-spatial20-res-hi,+0.011
+so-fmz-spatial20-res-lo,-0.017
+so-fmz-spatial30-band,+0.071
+so-fmz-spatial30-band-abs,0.071
+so-fmz-spatial30-band-ci,"[+0.038, +0.106]"
+so-fmz-spatial30-band-hi,+0.106
+so-fmz-spatial30-band-lo,+0.038
+so-fmz-spatial30-erp,+0.033
+so-fmz-spatial30-erp-abs,0.033
+so-fmz-spatial30-erp-ci,"[+0.003, +0.063]"
+so-fmz-spatial30-erp-hi,+0.063
+so-fmz-spatial30-erp-lo,+0.003
+so-fmz-spatial30-res,+0.010
+so-fmz-spatial30-res-abs,0.010
+so-fmz-spatial30-res-ci,"[-0.008, +0.027]"
+so-fmz-spatial30-res-hi,+0.027
+so-fmz-spatial30-res-lo,-0.008
+so-fmz-spatial40-band,-0.005
+so-fmz-spatial40-band-abs,0.005
+so-fmz-spatial40-band-ci,"[-0.043, +0.032]"
+so-fmz-spatial40-band-hi,+0.032
+so-fmz-spatial40-band-lo,-0.043
+so-fmz-spatial40-erp,+0.077
+so-fmz-spatial40-erp-abs,0.077
+so-fmz-spatial40-erp-ci,"[+0.046, +0.109]"
+so-fmz-spatial40-erp-hi,+0.109
+so-fmz-spatial40-erp-lo,+0.046
+so-fmz-spatial40-res,+0.013
+so-fmz-spatial40-res-abs,0.013
+so-fmz-spatial40-res-ci,"[-0.008, +0.033]"
+so-fmz-spatial40-res-hi,+0.033
+so-fmz-spatial40-res-lo,-0.008
+so-fmz-spatial50-band,+0.003
+so-fmz-spatial50-band-abs,0.003
+so-fmz-spatial50-band-ci,"[-0.030, +0.036]"
+so-fmz-spatial50-band-hi,+0.036
+so-fmz-spatial50-band-lo,-0.030
+so-fmz-spatial50-erp,+0.033
+so-fmz-spatial50-erp-abs,0.033
+so-fmz-spatial50-erp-ci,"[+0.002, +0.063]"
+so-fmz-spatial50-erp-hi,+0.063
+so-fmz-spatial50-erp-lo,+0.002
+so-fmz-spatial50-res,+0.025
+so-fmz-spatial50-res-abs,0.025
+so-fmz-spatial50-res-ci,"[+0.002, +0.051]"
+so-fmz-spatial50-res-hi,+0.051
+so-fmz-spatial50-res-lo,+0.002
 so-inv-band,1.3\times10^{-3}
 so-inv-erp,3.4\times10^{-3}
 so-inv-res,9.2\times10^{-14}
 so-invlabels-band,0.0
 so-invlabels-erp,0.0
 so-invlabels-res,0.0
+so-margin-band,0.161
+so-margin-erp,0.311
+so-margin-res,0.215
+so-marginratio-band,1.00
+so-marginratio-erp,1.05
+so-marginratio-res,1.40
+so-nonfill-wmax,0.070
+so-nonfill-wmin,0.043
+so-nullmax-band,0.378
+so-nullmax-erp,0.363
+so-nullmax-res,0.367
+so-nullmean-band,0.345
+so-nullmean-erp,0.333
+so-nullmean-res,0.329
 so-o10-k0minuskm05-band,-0.003
 so-o10-k0minuskm05-band-abs,0.003
 so-o10-k0minuskm05-band-ci,"[-0.021, +0.016]"
@@ -2508,9 +4125,907 @@ so-o50-nativeminusmean-res-abs,0.016
 so-o50-nativeminusmean-res-ci,"[-0.039, +0.009]"
 so-o50-nativeminusmean-res-hi,+0.009
 so-o50-nativeminusmean-res-lo,-0.039
+so-pcak128,0.529
+so-pcak128-ci,"[0.496, 0.562]"
+so-pcak128-hi,0.562
+so-pcak128-lo,0.496
+so-pcak16,0.567
+so-pcak16-ci,"[0.534, 0.602]"
+so-pcak16-hi,0.602
+so-pcak16-lo,0.534
+so-pcak32,0.575
+so-pcak32-ci,"[0.543, 0.605]"
+so-pcak32-hi,0.605
+so-pcak32-lo,0.543
+so-pcak64,0.548
+so-pcak64-ci,"[0.515, 0.581]"
+so-pcak64-hi,0.581
+so-pcak64-lo,0.515
+so-pooled-minus-train,-0.009
+so-pooled-minus-train-abs,0.009
+so-pooled-minus-train-ci,"[-0.021, +0.002]"
+so-pooled-minus-train-hi,+0.002
+so-pooled-minus-train-lo,-0.021
+so-pooledpca,0.539
+so-pooledpca-ci,"[0.504, 0.573]"
+so-pooledpca-hi,0.573
+so-pooledpca-lo,0.504
+so-resfill-maxabs,0.016
+so-resfill-wmax,0.049
+so-resfill-wmin,0.008
 so-zpos-band,1.20
 so-zpos-erp,0.73
 so-zpos-res,0.07
+sp-dlogit-band,4.13
+sp-dlogit-erp,1.91
+sp-dlogit-res,0.32
+sp-flip-band,40.9
+sp-flip-erp,21.6
+sp-flip-res,4.9
+sp-inv-band,1.3\times10^{-3}
+sp-inv-erp,3.4\times10^{-3}
+sp-inv-res,2.7\times10^{-13}
+sp-invlabels-band,0.0
+sp-invlabels-erp,0.0
+sp-invlabels-res,0.0
+sp-o10-k0minuskm05-band,-0.003
+sp-o10-k0minuskm05-band-abs,0.003
+sp-o10-k0minuskm05-band-ci,"[-0.021, +0.016]"
+sp-o10-k0minuskm05-band-hi,+0.016
+sp-o10-k0minuskm05-band-lo,-0.021
+sp-o10-k0minuskm05-erp,+0.031
+sp-o10-k0minuskm05-erp-abs,0.031
+sp-o10-k0minuskm05-erp-ci,"[+0.013, +0.052]"
+sp-o10-k0minuskm05-erp-hi,+0.052
+sp-o10-k0minuskm05-erp-lo,+0.013
+sp-o10-k0minuskm05-res,+0.008
+sp-o10-k0minuskm05-res-abs,0.008
+sp-o10-k0minuskm05-res-ci,"[-0.005, +0.021]"
+sp-o10-k0minuskm05-res-hi,+0.021
+sp-o10-k0minuskm05-res-lo,-0.005
+sp-o10-k0minuskm10-band,-0.002
+sp-o10-k0minuskm10-band-abs,0.002
+sp-o10-k0minuskm10-band-ci,"[-0.024, +0.021]"
+sp-o10-k0minuskm10-band-hi,+0.021
+sp-o10-k0minuskm10-band-lo,-0.024
+sp-o10-k0minuskm10-erp,+0.059
+sp-o10-k0minuskm10-erp-abs,0.059
+sp-o10-k0minuskm10-erp-ci,"[+0.028, +0.092]"
+sp-o10-k0minuskm10-erp-hi,+0.092
+sp-o10-k0minuskm10-erp-lo,+0.028
+sp-o10-k0minuskm10-res,+0.013
+sp-o10-k0minuskm10-res-abs,0.013
+sp-o10-k0minuskm10-res-ci,"[-0.006, +0.033]"
+sp-o10-k0minuskm10-res-hi,+0.033
+sp-o10-k0minuskm10-res-lo,-0.006
+sp-o10-k0minuskm20-band,+0.030
+sp-o10-k0minuskm20-band-abs,0.030
+sp-o10-k0minuskm20-band-ci,"[+0.000, +0.060]"
+sp-o10-k0minuskm20-band-hi,+0.060
+sp-o10-k0minuskm20-band-lo,+0.000
+sp-o10-k0minuskm20-erp,+0.131
+sp-o10-k0minuskm20-erp-abs,0.131
+sp-o10-k0minuskm20-erp-ci,"[+0.092, +0.169]"
+sp-o10-k0minuskm20-erp-hi,+0.169
+sp-o10-k0minuskm20-erp-lo,+0.092
+sp-o10-k0minuskm20-res,+0.013
+sp-o10-k0minuskm20-res-abs,0.013
+sp-o10-k0minuskm20-res-ci,"[-0.016, +0.041]"
+sp-o10-k0minuskm20-res-hi,+0.041
+sp-o10-k0minuskm20-res-lo,-0.016
+sp-o10-k0minuskm30-band,+0.046
+sp-o10-k0minuskm30-band-abs,0.046
+sp-o10-k0minuskm30-band-ci,"[+0.013, +0.079]"
+sp-o10-k0minuskm30-band-hi,+0.079
+sp-o10-k0minuskm30-band-lo,+0.013
+sp-o10-k0minuskm30-erp,+0.187
+sp-o10-k0minuskm30-erp-abs,0.187
+sp-o10-k0minuskm30-erp-ci,"[+0.145, +0.227]"
+sp-o10-k0minuskm30-erp-hi,+0.227
+sp-o10-k0minuskm30-erp-lo,+0.145
+sp-o10-k0minuskm30-res,+0.038
+sp-o10-k0minuskm30-res-abs,0.038
+sp-o10-k0minuskm30-res-ci,"[+0.006, +0.070]"
+sp-o10-k0minuskm30-res-hi,+0.070
+sp-o10-k0minuskm30-res-lo,+0.006
+sp-o10-k0minuskp05-band,+0.003
+sp-o10-k0minuskp05-band-abs,0.003
+sp-o10-k0minuskp05-band-ci,"[-0.014, +0.021]"
+sp-o10-k0minuskp05-band-hi,+0.021
+sp-o10-k0minuskp05-band-lo,-0.014
+sp-o10-k0minuskp05-erp,+0.022
+sp-o10-k0minuskp05-erp-abs,0.022
+sp-o10-k0minuskp05-erp-ci,"[-0.003, +0.047]"
+sp-o10-k0minuskp05-erp-hi,+0.047
+sp-o10-k0minuskp05-erp-lo,-0.003
+sp-o10-k0minuskp05-res,-0.005
+sp-o10-k0minuskp05-res-abs,0.005
+sp-o10-k0minuskp05-res-ci,"[-0.022, +0.011]"
+sp-o10-k0minuskp05-res-hi,+0.011
+sp-o10-k0minuskp05-res-lo,-0.022
+sp-o10-k0minuskp10-band,+0.011
+sp-o10-k0minuskp10-band-abs,0.011
+sp-o10-k0minuskp10-band-ci,"[-0.014, +0.036]"
+sp-o10-k0minuskp10-band-hi,+0.036
+sp-o10-k0minuskp10-band-lo,-0.014
+sp-o10-k0minuskp10-erp,+0.060
+sp-o10-k0minuskp10-erp-abs,0.060
+sp-o10-k0minuskp10-erp-ci,"[+0.028, +0.092]"
+sp-o10-k0minuskp10-erp-hi,+0.092
+sp-o10-k0minuskp10-erp-lo,+0.028
+sp-o10-k0minuskp10-res,+0.005
+sp-o10-k0minuskp10-res-abs,0.005
+sp-o10-k0minuskp10-res-ci,"[-0.017, +0.025]"
+sp-o10-k0minuskp10-res-hi,+0.025
+sp-o10-k0minuskp10-res-lo,-0.017
+sp-o10-k0minuskp20-band,+0.009
+sp-o10-k0minuskp20-band-abs,0.009
+sp-o10-k0minuskp20-band-ci,"[-0.021, +0.039]"
+sp-o10-k0minuskp20-band-hi,+0.039
+sp-o10-k0minuskp20-band-lo,-0.021
+sp-o10-k0minuskp20-erp,+0.136
+sp-o10-k0minuskp20-erp-abs,0.136
+sp-o10-k0minuskp20-erp-ci,"[+0.100, +0.172]"
+sp-o10-k0minuskp20-erp-hi,+0.172
+sp-o10-k0minuskp20-erp-lo,+0.100
+sp-o10-k0minuskp20-res,+0.019
+sp-o10-k0minuskp20-res-abs,0.019
+sp-o10-k0minuskp20-res-ci,"[-0.008, +0.046]"
+sp-o10-k0minuskp20-res-hi,+0.046
+sp-o10-k0minuskp20-res-lo,-0.008
+sp-o10-k0minuskp30-band,+0.028
+sp-o10-k0minuskp30-band-abs,0.028
+sp-o10-k0minuskp30-band-ci,"[-0.005, +0.062]"
+sp-o10-k0minuskp30-band-hi,+0.062
+sp-o10-k0minuskp30-band-lo,-0.005
+sp-o10-k0minuskp30-erp,+0.190
+sp-o10-k0minuskp30-erp-abs,0.190
+sp-o10-k0minuskp30-erp-ci,"[+0.152, +0.229]"
+sp-o10-k0minuskp30-erp-hi,+0.229
+sp-o10-k0minuskp30-erp-lo,+0.152
+sp-o10-k0minuskp30-res,+0.030
+sp-o10-k0minuskp30-res-abs,0.030
+sp-o10-k0minuskp30-res-ci,"[+0.000, +0.060]"
+sp-o10-k0minuskp30-res-hi,+0.060
+sp-o10-k0minuskp30-res-lo,+0.000
+sp-o10-k0minusnative_zero-band,+0.014
+sp-o10-k0minusnative_zero-band-abs,0.014
+sp-o10-k0minusnative_zero-band-ci,"[-0.009, +0.039]"
+sp-o10-k0minusnative_zero-band-hi,+0.039
+sp-o10-k0minusnative_zero-band-lo,-0.009
+sp-o10-k0minusnative_zero-erp,+0.000
+sp-o10-k0minusnative_zero-erp-abs,0.000
+sp-o10-k0minusnative_zero-erp-ci,"[-0.021, +0.022]"
+sp-o10-k0minusnative_zero-erp-hi,+0.022
+sp-o10-k0minusnative_zero-erp-lo,-0.021
+sp-o10-k0minusnative_zero-res,+0.005
+sp-o10-k0minusnative_zero-res-abs,0.005
+sp-o10-k0minusnative_zero-res-ci,"[-0.003, +0.013]"
+sp-o10-k0minusnative_zero-res-hi,+0.013
+sp-o10-k0minusnative_zero-res-lo,-0.003
+sp-o10-km05-band,0.493
+sp-o10-km05-band-ci,"[0.457, 0.528]"
+sp-o10-km05-band-hi,0.528
+sp-o10-km05-band-lo,0.457
+sp-o10-km05-erp,0.603
+sp-o10-km05-erp-ci,"[0.572, 0.637]"
+sp-o10-km05-erp-hi,0.637
+sp-o10-km05-erp-lo,0.572
+sp-o10-km05-res,0.607
+sp-o10-km05-res-ci,"[0.575, 0.638]"
+sp-o10-km05-res-hi,0.638
+sp-o10-km05-res-lo,0.575
+sp-o10-km10-band,0.491
+sp-o10-km10-band-ci,"[0.458, 0.524]"
+sp-o10-km10-band-hi,0.524
+sp-o10-km10-band-lo,0.458
+sp-o10-km10-erp,0.577
+sp-o10-km10-erp-ci,"[0.545, 0.608]"
+sp-o10-km10-erp-hi,0.608
+sp-o10-km10-erp-lo,0.545
+sp-o10-km10-res,0.602
+sp-o10-km10-res-ci,"[0.569, 0.633]"
+sp-o10-km10-res-hi,0.633
+sp-o10-km10-res-lo,0.569
+sp-o10-km20-band,0.460
+sp-o10-km20-band-ci,"[0.427, 0.493]"
+sp-o10-km20-band-hi,0.493
+sp-o10-km20-band-lo,0.427
+sp-o10-km20-erp,0.504
+sp-o10-km20-erp-ci,"[0.476, 0.531]"
+sp-o10-km20-erp-hi,0.531
+sp-o10-km20-erp-lo,0.476
+sp-o10-km20-res,0.602
+sp-o10-km20-res-ci,"[0.569, 0.633]"
+sp-o10-km20-res-hi,0.633
+sp-o10-km20-res-lo,0.569
+sp-o10-km2minuskp2-band,-0.020
+sp-o10-km2minuskp2-band-abs,0.020
+sp-o10-km2minuskp2-band-ci,"[-0.055, +0.017]"
+sp-o10-km2minuskp2-band-hi,+0.017
+sp-o10-km2minuskp2-band-lo,-0.055
+sp-o10-km2minuskp2-erp,+0.005
+sp-o10-km2minuskp2-erp-abs,0.005
+sp-o10-km2minuskp2-erp-ci,"[-0.032, +0.039]"
+sp-o10-km2minuskp2-erp-hi,+0.039
+sp-o10-km2minuskp2-erp-lo,-0.032
+sp-o10-km2minuskp2-res,+0.006
+sp-o10-km2minuskp2-res-abs,0.006
+sp-o10-km2minuskp2-res-ci,"[-0.028, +0.039]"
+sp-o10-km2minuskp2-res-hi,+0.039
+sp-o10-km2minuskp2-res-lo,-0.028
+sp-o10-km30-band,0.444
+sp-o10-km30-band-ci,"[0.412, 0.477]"
+sp-o10-km30-band-hi,0.477
+sp-o10-km30-band-lo,0.412
+sp-o10-km30-erp,0.449
+sp-o10-km30-erp-ci,"[0.423, 0.476]"
+sp-o10-km30-erp-hi,0.476
+sp-o10-km30-erp-lo,0.423
+sp-o10-km30-res,0.577
+sp-o10-km30-res-ci,"[0.545, 0.608]"
+sp-o10-km30-res-hi,0.608
+sp-o10-km30-res-lo,0.545
+sp-o10-kp00-band,0.490
+sp-o10-kp00-band-ci,"[0.455, 0.525]"
+sp-o10-kp00-band-hi,0.525
+sp-o10-kp00-band-lo,0.455
+sp-o10-kp00-erp,0.635
+sp-o10-kp00-erp-ci,"[0.602, 0.671]"
+sp-o10-kp00-erp-hi,0.671
+sp-o10-kp00-erp-lo,0.602
+sp-o10-kp00-res,0.615
+sp-o10-kp00-res-ci,"[0.581, 0.646]"
+sp-o10-kp00-res-hi,0.646
+sp-o10-kp00-res-lo,0.581
+sp-o10-kp05-band,0.487
+sp-o10-kp05-band-ci,"[0.453, 0.521]"
+sp-o10-kp05-band-hi,0.521
+sp-o10-kp05-band-lo,0.453
+sp-o10-kp05-erp,0.613
+sp-o10-kp05-erp-ci,"[0.578, 0.648]"
+sp-o10-kp05-erp-hi,0.648
+sp-o10-kp05-erp-lo,0.578
+sp-o10-kp05-res,0.619
+sp-o10-kp05-res-ci,"[0.585, 0.652]"
+sp-o10-kp05-res-hi,0.652
+sp-o10-kp05-res-lo,0.585
+sp-o10-kp10-band,0.479
+sp-o10-kp10-band-ci,"[0.447, 0.510]"
+sp-o10-kp10-band-hi,0.510
+sp-o10-kp10-band-lo,0.447
+sp-o10-kp10-erp,0.575
+sp-o10-kp10-erp-ci,"[0.542, 0.608]"
+sp-o10-kp10-erp-hi,0.608
+sp-o10-kp10-erp-lo,0.542
+sp-o10-kp10-res,0.610
+sp-o10-kp10-res-ci,"[0.575, 0.641]"
+sp-o10-kp10-res-hi,0.641
+sp-o10-kp10-res-lo,0.575
+sp-o10-kp20-band,0.480
+sp-o10-kp20-band-ci,"[0.449, 0.510]"
+sp-o10-kp20-band-hi,0.510
+sp-o10-kp20-band-lo,0.449
+sp-o10-kp20-erp,0.499
+sp-o10-kp20-erp-ci,"[0.469, 0.529]"
+sp-o10-kp20-erp-hi,0.529
+sp-o10-kp20-erp-lo,0.469
+sp-o10-kp20-res,0.596
+sp-o10-kp20-res-ci,"[0.561, 0.629]"
+sp-o10-kp20-res-hi,0.629
+sp-o10-kp20-res-lo,0.561
+sp-o10-kp30-band,0.461
+sp-o10-kp30-band-ci,"[0.433, 0.490]"
+sp-o10-kp30-band-hi,0.490
+sp-o10-kp30-band-lo,0.433
+sp-o10-kp30-erp,0.445
+sp-o10-kp30-erp-ci,"[0.420, 0.471]"
+sp-o10-kp30-erp-hi,0.471
+sp-o10-kp30-erp-lo,0.420
+sp-o10-kp30-res,0.585
+sp-o10-kp30-res-ci,"[0.551, 0.618]"
+sp-o10-kp30-res-hi,0.618
+sp-o10-kp30-res-lo,0.551
+sp-o10-native_zero-band,0.476
+sp-o10-native_zero-band-ci,"[0.442, 0.509]"
+sp-o10-native_zero-band-hi,0.509
+sp-o10-native_zero-band-lo,0.442
+sp-o10-native_zero-erp,0.635
+sp-o10-native_zero-erp-ci,"[0.602, 0.670]"
+sp-o10-native_zero-erp-hi,0.670
+sp-o10-native_zero-erp-lo,0.602
+sp-o10-native_zero-res,0.610
+sp-o10-native_zero-res-ci,"[0.575, 0.641]"
+sp-o10-native_zero-res-hi,0.641
+sp-o10-native_zero-res-lo,0.575
+sp-o10-nativeminusmean-band,-0.014
+sp-o10-nativeminusmean-band-abs,0.014
+sp-o10-nativeminusmean-band-ci,"[-0.039, +0.009]"
+sp-o10-nativeminusmean-band-hi,+0.009
+sp-o10-nativeminusmean-band-lo,-0.039
+sp-o10-nativeminusmean-erp,-0.000
+sp-o10-nativeminusmean-erp-abs,0.000
+sp-o10-nativeminusmean-erp-ci,"[-0.022, +0.021]"
+sp-o10-nativeminusmean-erp-hi,+0.021
+sp-o10-nativeminusmean-erp-lo,-0.022
+sp-o10-nativeminusmean-res,-0.005
+sp-o10-nativeminusmean-res-abs,0.005
+sp-o10-nativeminusmean-res-ci,"[-0.013, +0.003]"
+sp-o10-nativeminusmean-res-hi,+0.003
+sp-o10-nativeminusmean-res-lo,-0.013
+sp-o30-k0minuskm05-band,+0.022
+sp-o30-k0minuskm05-band-abs,0.022
+sp-o30-k0minuskm05-band-ci,"[-0.005, +0.047]"
+sp-o30-k0minuskm05-band-hi,+0.047
+sp-o30-k0minuskm05-band-lo,-0.005
+sp-o30-k0minuskm05-erp,+0.013
+sp-o30-k0minuskm05-erp-abs,0.013
+sp-o30-k0minuskm05-erp-ci,"[-0.017, +0.043]"
+sp-o30-k0minuskm05-erp-hi,+0.043
+sp-o30-k0minuskm05-erp-lo,-0.017
+sp-o30-k0minuskm05-res,+0.006
+sp-o30-k0minuskm05-res-abs,0.006
+sp-o30-k0minuskm05-res-ci,"[-0.016, +0.027]"
+sp-o30-k0minuskm05-res-hi,+0.027
+sp-o30-k0minuskm05-res-lo,-0.016
+sp-o30-k0minuskm10-band,+0.040
+sp-o30-k0minuskm10-band-abs,0.040
+sp-o30-k0minuskm10-band-ci,"[+0.009, +0.071]"
+sp-o30-k0minuskm10-band-hi,+0.071
+sp-o30-k0minuskm10-band-lo,+0.009
+sp-o30-k0minuskm10-erp,+0.059
+sp-o30-k0minuskm10-erp-abs,0.059
+sp-o30-k0minuskm10-erp-ci,"[+0.022, +0.096]"
+sp-o30-k0minuskm10-erp-hi,+0.096
+sp-o30-k0minuskm10-erp-lo,+0.022
+sp-o30-k0minuskm10-res,+0.039
+sp-o30-k0minuskm10-res-abs,0.039
+sp-o30-k0minuskm10-res-ci,"[+0.011, +0.068]"
+sp-o30-k0minuskm10-res-hi,+0.068
+sp-o30-k0minuskm10-res-lo,+0.011
+sp-o30-k0minuskm20-band,+0.062
+sp-o30-k0minuskm20-band-abs,0.062
+sp-o30-k0minuskm20-band-ci,"[+0.027, +0.095]"
+sp-o30-k0minuskm20-band-hi,+0.095
+sp-o30-k0minuskm20-band-lo,+0.027
+sp-o30-k0minuskm20-erp,+0.111
+sp-o30-k0minuskm20-erp-abs,0.111
+sp-o30-k0minuskm20-erp-ci,"[+0.074, +0.148]"
+sp-o30-k0minuskm20-erp-hi,+0.148
+sp-o30-k0minuskm20-erp-lo,+0.074
+sp-o30-k0minuskm20-res,+0.081
+sp-o30-k0minuskm20-res-abs,0.081
+sp-o30-k0minuskm20-res-ci,"[+0.049, +0.112]"
+sp-o30-k0minuskm20-res-hi,+0.112
+sp-o30-k0minuskm20-res-lo,+0.049
+sp-o30-k0minuskm30-band,+0.081
+sp-o30-k0minuskm30-band-abs,0.081
+sp-o30-k0minuskm30-band-ci,"[+0.047, +0.114]"
+sp-o30-k0minuskm30-band-hi,+0.114
+sp-o30-k0minuskm30-band-lo,+0.047
+sp-o30-k0minuskm30-erp,+0.142
+sp-o30-k0minuskm30-erp-abs,0.142
+sp-o30-k0minuskm30-erp-ci,"[+0.106, +0.179]"
+sp-o30-k0minuskm30-erp-hi,+0.179
+sp-o30-k0minuskm30-erp-lo,+0.106
+sp-o30-k0minuskm30-res,+0.123
+sp-o30-k0minuskm30-res-abs,0.123
+sp-o30-k0minuskm30-res-ci,"[+0.088, +0.156]"
+sp-o30-k0minuskm30-res-hi,+0.156
+sp-o30-k0minuskm30-res-lo,+0.088
+sp-o30-k0minuskp05-band,-0.010
+sp-o30-k0minuskp05-band-abs,0.010
+sp-o30-k0minuskp05-band-ci,"[-0.035, +0.016]"
+sp-o30-k0minuskp05-band-hi,+0.016
+sp-o30-k0minuskp05-band-lo,-0.035
+sp-o30-k0minuskp05-erp,+0.012
+sp-o30-k0minuskp05-erp-abs,0.012
+sp-o30-k0minuskp05-erp-ci,"[-0.014, +0.039]"
+sp-o30-k0minuskp05-erp-hi,+0.039
+sp-o30-k0minuskp05-erp-lo,-0.014
+sp-o30-k0minuskp05-res,-0.007
+sp-o30-k0minuskp05-res-abs,0.007
+sp-o30-k0minuskp05-res-ci,"[-0.027, +0.014]"
+sp-o30-k0minuskp05-res-hi,+0.014
+sp-o30-k0minuskp05-res-lo,-0.027
+sp-o30-k0minuskp10-band,+0.036
+sp-o30-k0minuskp10-band-abs,0.036
+sp-o30-k0minuskp10-band-ci,"[+0.003, +0.070]"
+sp-o30-k0minuskp10-band-hi,+0.070
+sp-o30-k0minuskp10-band-lo,+0.003
+sp-o30-k0minuskp10-erp,+0.074
+sp-o30-k0minuskp10-erp-abs,0.074
+sp-o30-k0minuskp10-erp-ci,"[+0.039, +0.109]"
+sp-o30-k0minuskp10-erp-hi,+0.109
+sp-o30-k0minuskp10-erp-lo,+0.039
+sp-o30-k0minuskp10-res,+0.027
+sp-o30-k0minuskp10-res-abs,0.027
+sp-o30-k0minuskp10-res-ci,"[-0.002, +0.057]"
+sp-o30-k0minuskp10-res-hi,+0.057
+sp-o30-k0minuskp10-res-lo,-0.002
+sp-o30-k0minuskp20-band,+0.060
+sp-o30-k0minuskp20-band-abs,0.060
+sp-o30-k0minuskp20-band-ci,"[+0.024, +0.095]"
+sp-o30-k0minuskp20-band-hi,+0.095
+sp-o30-k0minuskp20-band-lo,+0.024
+sp-o30-k0minuskp20-erp,+0.095
+sp-o30-k0minuskp20-erp-abs,0.095
+sp-o30-k0minuskp20-erp-ci,"[+0.055, +0.136]"
+sp-o30-k0minuskp20-erp-hi,+0.136
+sp-o30-k0minuskp20-erp-lo,+0.055
+sp-o30-k0minuskp20-res,+0.077
+sp-o30-k0minuskp20-res-abs,0.077
+sp-o30-k0minuskp20-res-ci,"[+0.041, +0.111]"
+sp-o30-k0minuskp20-res-hi,+0.111
+sp-o30-k0minuskp20-res-lo,+0.041
+sp-o30-k0minuskp30-band,+0.064
+sp-o30-k0minuskp30-band-abs,0.064
+sp-o30-k0minuskp30-band-ci,"[+0.027, +0.100]"
+sp-o30-k0minuskp30-band-hi,+0.100
+sp-o30-k0minuskp30-band-lo,+0.027
+sp-o30-k0minuskp30-erp,+0.141
+sp-o30-k0minuskp30-erp-abs,0.141
+sp-o30-k0minuskp30-erp-ci,"[+0.103, +0.180]"
+sp-o30-k0minuskp30-erp-hi,+0.180
+sp-o30-k0minuskp30-erp-lo,+0.103
+sp-o30-k0minuskp30-res,+0.133
+sp-o30-k0minuskp30-res-abs,0.133
+sp-o30-k0minuskp30-res-ci,"[+0.096, +0.169]"
+sp-o30-k0minuskp30-res-hi,+0.169
+sp-o30-k0minuskp30-res-lo,+0.096
+sp-o30-k0minusnative_zero-band,+0.055
+sp-o30-k0minusnative_zero-band-abs,0.055
+sp-o30-k0minusnative_zero-band-ci,"[+0.024, +0.087]"
+sp-o30-k0minusnative_zero-band-hi,+0.087
+sp-o30-k0minusnative_zero-band-lo,+0.024
+sp-o30-k0minusnative_zero-erp,-0.001
+sp-o30-k0minusnative_zero-erp-abs,0.001
+sp-o30-k0minusnative_zero-erp-ci,"[-0.030, +0.028]"
+sp-o30-k0minusnative_zero-erp-hi,+0.028
+sp-o30-k0minusnative_zero-erp-lo,-0.030
+sp-o30-k0minusnative_zero-res,-0.008
+sp-o30-k0minusnative_zero-res-abs,0.008
+sp-o30-k0minusnative_zero-res-ci,"[-0.024, +0.008]"
+sp-o30-k0minusnative_zero-res-hi,+0.008
+sp-o30-k0minusnative_zero-res-lo,-0.024
+sp-o30-km05-band,0.450
+sp-o30-km05-band-ci,"[0.415, 0.487]"
+sp-o30-km05-band-hi,0.487
+sp-o30-km05-band-lo,0.415
+sp-o30-km05-erp,0.567
+sp-o30-km05-erp-ci,"[0.537, 0.599]"
+sp-o30-km05-erp-hi,0.599
+sp-o30-km05-erp-lo,0.537
+sp-o30-km05-res,0.594
+sp-o30-km05-res-ci,"[0.561, 0.627]"
+sp-o30-km05-res-hi,0.627
+sp-o30-km05-res-lo,0.561
+sp-o30-km10-band,0.433
+sp-o30-km10-band-ci,"[0.400, 0.466]"
+sp-o30-km10-band-hi,0.466
+sp-o30-km10-band-lo,0.400
+sp-o30-km10-erp,0.521
+sp-o30-km10-erp-ci,"[0.491, 0.550]"
+sp-o30-km10-erp-hi,0.550
+sp-o30-km10-erp-lo,0.491
+sp-o30-km10-res,0.561
+sp-o30-km10-res-ci,"[0.529, 0.592]"
+sp-o30-km10-res-hi,0.592
+sp-o30-km10-res-lo,0.529
+sp-o30-km20-band,0.411
+sp-o30-km20-band-ci,"[0.385, 0.436]"
+sp-o30-km20-band-hi,0.436
+sp-o30-km20-band-lo,0.385
+sp-o30-km20-erp,0.469
+sp-o30-km20-erp-ci,"[0.444, 0.494]"
+sp-o30-km20-erp-hi,0.494
+sp-o30-km20-erp-lo,0.444
+sp-o30-km20-res,0.520
+sp-o30-km20-res-ci,"[0.491, 0.548]"
+sp-o30-km20-res-hi,0.548
+sp-o30-km20-res-lo,0.491
+sp-o30-km2minuskp2-band,-0.002
+sp-o30-km2minuskp2-band-abs,0.002
+sp-o30-km2minuskp2-band-ci,"[-0.036, +0.033]"
+sp-o30-km2minuskp2-band-hi,+0.033
+sp-o30-km2minuskp2-band-lo,-0.036
+sp-o30-km2minuskp2-erp,-0.016
+sp-o30-km2minuskp2-erp-abs,0.016
+sp-o30-km2minuskp2-erp-ci,"[-0.054, +0.021]"
+sp-o30-km2minuskp2-erp-hi,+0.021
+sp-o30-km2minuskp2-erp-lo,-0.054
+sp-o30-km2minuskp2-res,-0.003
+sp-o30-km2minuskp2-res-abs,0.003
+sp-o30-km2minuskp2-res-ci,"[-0.038, +0.030]"
+sp-o30-km2minuskp2-res-hi,+0.030
+sp-o30-km2minuskp2-res-lo,-0.038
+sp-o30-km30-band,0.392
+sp-o30-km30-band-ci,"[0.368, 0.415]"
+sp-o30-km30-band-hi,0.415
+sp-o30-km30-band-lo,0.368
+sp-o30-km30-erp,0.438
+sp-o30-km30-erp-ci,"[0.414, 0.460]"
+sp-o30-km30-erp-hi,0.460
+sp-o30-km30-erp-lo,0.414
+sp-o30-km30-res,0.477
+sp-o30-km30-res-ci,"[0.453, 0.502]"
+sp-o30-km30-res-hi,0.502
+sp-o30-km30-res-lo,0.453
+sp-o30-kp00-band,0.472
+sp-o30-kp00-band-ci,"[0.441, 0.506]"
+sp-o30-kp00-band-hi,0.506
+sp-o30-kp00-band-lo,0.441
+sp-o30-kp00-erp,0.580
+sp-o30-kp00-erp-ci,"[0.548, 0.613]"
+sp-o30-kp00-erp-hi,0.613
+sp-o30-kp00-erp-lo,0.548
+sp-o30-kp00-res,0.600
+sp-o30-kp00-res-ci,"[0.567, 0.633]"
+sp-o30-kp00-res-hi,0.633
+sp-o30-kp00-res-lo,0.567
+sp-o30-kp05-band,0.482
+sp-o30-kp05-band-ci,"[0.449, 0.515]"
+sp-o30-kp05-band-hi,0.515
+sp-o30-kp05-band-lo,0.449
+sp-o30-kp05-erp,0.567
+sp-o30-kp05-erp-ci,"[0.540, 0.596]"
+sp-o30-kp05-erp-hi,0.596
+sp-o30-kp05-erp-lo,0.540
+sp-o30-kp05-res,0.607
+sp-o30-kp05-res-ci,"[0.572, 0.641]"
+sp-o30-kp05-res-hi,0.641
+sp-o30-kp05-res-lo,0.572
+sp-o30-kp10-band,0.436
+sp-o30-kp10-band-ci,"[0.404, 0.468]"
+sp-o30-kp10-band-hi,0.468
+sp-o30-kp10-band-lo,0.404
+sp-o30-kp10-erp,0.506
+sp-o30-kp10-erp-ci,"[0.477, 0.534]"
+sp-o30-kp10-erp-hi,0.534
+sp-o30-kp10-erp-lo,0.477
+sp-o30-kp10-res,0.573
+sp-o30-kp10-res-ci,"[0.537, 0.608]"
+sp-o30-kp10-res-hi,0.608
+sp-o30-kp10-res-lo,0.537
+sp-o30-kp20-band,0.412
+sp-o30-kp20-band-ci,"[0.384, 0.442]"
+sp-o30-kp20-band-hi,0.442
+sp-o30-kp20-band-lo,0.384
+sp-o30-kp20-erp,0.485
+sp-o30-kp20-erp-ci,"[0.457, 0.512]"
+sp-o30-kp20-erp-hi,0.512
+sp-o30-kp20-erp-lo,0.457
+sp-o30-kp20-res,0.523
+sp-o30-kp20-res-ci,"[0.493, 0.553]"
+sp-o30-kp20-res-hi,0.553
+sp-o30-kp20-res-lo,0.493
+sp-o30-kp30-band,0.409
+sp-o30-kp30-band-ci,"[0.384, 0.436]"
+sp-o30-kp30-band-hi,0.436
+sp-o30-kp30-band-lo,0.384
+sp-o30-kp30-erp,0.439
+sp-o30-kp30-erp-ci,"[0.414, 0.466]"
+sp-o30-kp30-erp-hi,0.466
+sp-o30-kp30-erp-lo,0.414
+sp-o30-kp30-res,0.468
+sp-o30-kp30-res-ci,"[0.441, 0.496]"
+sp-o30-kp30-res-hi,0.496
+sp-o30-kp30-res-lo,0.441
+sp-o30-native_zero-band,0.417
+sp-o30-native_zero-band-ci,"[0.387, 0.447]"
+sp-o30-native_zero-band-hi,0.447
+sp-o30-native_zero-band-lo,0.387
+sp-o30-native_zero-erp,0.581
+sp-o30-native_zero-erp-ci,"[0.551, 0.611]"
+sp-o30-native_zero-erp-hi,0.611
+sp-o30-native_zero-erp-lo,0.551
+sp-o30-native_zero-res,0.608
+sp-o30-native_zero-res-ci,"[0.573, 0.641]"
+sp-o30-native_zero-res-hi,0.641
+sp-o30-native_zero-res-lo,0.573
+sp-o30-nativeminusmean-band,-0.055
+sp-o30-nativeminusmean-band-abs,0.055
+sp-o30-nativeminusmean-band-ci,"[-0.087, -0.024]"
+sp-o30-nativeminusmean-band-hi,-0.024
+sp-o30-nativeminusmean-band-lo,-0.087
+sp-o30-nativeminusmean-erp,+0.001
+sp-o30-nativeminusmean-erp-abs,0.001
+sp-o30-nativeminusmean-erp-ci,"[-0.028, +0.030]"
+sp-o30-nativeminusmean-erp-hi,+0.030
+sp-o30-nativeminusmean-erp-lo,-0.028
+sp-o30-nativeminusmean-res,+0.008
+sp-o30-nativeminusmean-res-abs,0.008
+sp-o30-nativeminusmean-res-ci,"[-0.008, +0.024]"
+sp-o30-nativeminusmean-res-hi,+0.024
+sp-o30-nativeminusmean-res-lo,-0.008
+sp-o50-k0minuskm05-band,-0.022
+sp-o50-k0minuskm05-band-abs,0.022
+sp-o50-k0minuskm05-band-ci,"[-0.049, +0.005]"
+sp-o50-k0minuskm05-band-hi,+0.005
+sp-o50-k0minuskm05-band-lo,-0.049
+sp-o50-k0minuskm05-erp,+0.024
+sp-o50-k0minuskm05-erp-abs,0.024
+sp-o50-k0minuskm05-erp-ci,"[-0.006, +0.055]"
+sp-o50-k0minuskm05-erp-hi,+0.055
+sp-o50-k0minuskm05-erp-lo,-0.006
+sp-o50-k0minuskm05-res,+0.033
+sp-o50-k0minuskm05-res-abs,0.033
+sp-o50-k0minuskm05-res-ci,"[+0.003, +0.063]"
+sp-o50-k0minuskm05-res-hi,+0.063
+sp-o50-k0minuskm05-res-lo,+0.003
+sp-o50-k0minuskm10-band,+0.011
+sp-o50-k0minuskm10-band-abs,0.011
+sp-o50-k0minuskm10-band-ci,"[-0.021, +0.044]"
+sp-o50-k0minuskm10-band-hi,+0.044
+sp-o50-k0minuskm10-band-lo,-0.021
+sp-o50-k0minuskm10-erp,+0.064
+sp-o50-k0minuskm10-erp-abs,0.064
+sp-o50-k0minuskm10-erp-ci,"[+0.028, +0.101]"
+sp-o50-k0minuskm10-erp-hi,+0.101
+sp-o50-k0minuskm10-erp-lo,+0.028
+sp-o50-k0minuskm10-res,+0.070
+sp-o50-k0minuskm10-res-abs,0.070
+sp-o50-k0minuskm10-res-ci,"[+0.035, +0.104]"
+sp-o50-k0minuskm10-res-hi,+0.104
+sp-o50-k0minuskm10-res-lo,+0.035
+sp-o50-k0minuskm20-band,+0.049
+sp-o50-k0minuskm20-band-abs,0.049
+sp-o50-k0minuskm20-band-ci,"[+0.014, +0.085]"
+sp-o50-k0minuskm20-band-hi,+0.085
+sp-o50-k0minuskm20-band-lo,+0.014
+sp-o50-k0minuskm20-erp,+0.106
+sp-o50-k0minuskm20-erp-abs,0.106
+sp-o50-k0minuskm20-erp-ci,"[+0.071, +0.142]"
+sp-o50-k0minuskm20-erp-hi,+0.142
+sp-o50-k0minuskm20-erp-lo,+0.071
+sp-o50-k0minuskm20-res,+0.131
+sp-o50-k0minuskm20-res-abs,0.131
+sp-o50-k0minuskm20-res-ci,"[+0.095, +0.166]"
+sp-o50-k0minuskm20-res-hi,+0.166
+sp-o50-k0minuskm20-res-lo,+0.095
+sp-o50-k0minuskm30-band,+0.068
+sp-o50-k0minuskm30-band-abs,0.068
+sp-o50-k0minuskm30-band-ci,"[+0.033, +0.104]"
+sp-o50-k0minuskm30-band-hi,+0.104
+sp-o50-k0minuskm30-band-lo,+0.033
+sp-o50-k0minuskm30-erp,+0.141
+sp-o50-k0minuskm30-erp-abs,0.141
+sp-o50-k0minuskm30-erp-ci,"[+0.104, +0.177]"
+sp-o50-k0minuskm30-erp-hi,+0.177
+sp-o50-k0minuskm30-erp-lo,+0.104
+sp-o50-k0minuskm30-res,+0.183
+sp-o50-k0minuskm30-res-abs,0.183
+sp-o50-k0minuskm30-res-ci,"[+0.147, +0.220]"
+sp-o50-k0minuskm30-res-hi,+0.220
+sp-o50-k0minuskm30-res-lo,+0.147
+sp-o50-k0minuskp05-band,+0.019
+sp-o50-k0minuskp05-band-abs,0.019
+sp-o50-k0minuskp05-band-ci,"[-0.006, +0.046]"
+sp-o50-k0minuskp05-band-hi,+0.046
+sp-o50-k0minuskp05-band-lo,-0.006
+sp-o50-k0minuskp05-erp,+0.005
+sp-o50-k0minuskp05-erp-abs,0.005
+sp-o50-k0minuskp05-erp-ci,"[-0.024, +0.033]"
+sp-o50-k0minuskp05-erp-hi,+0.033
+sp-o50-k0minuskp05-erp-lo,-0.024
+sp-o50-k0minuskp05-res,+0.060
+sp-o50-k0minuskp05-res-abs,0.060
+sp-o50-k0minuskp05-res-ci,"[+0.025, +0.093]"
+sp-o50-k0minuskp05-res-hi,+0.093
+sp-o50-k0minuskp05-res-lo,+0.025
+sp-o50-k0minuskp10-band,+0.041
+sp-o50-k0minuskp10-band-abs,0.041
+sp-o50-k0minuskp10-band-ci,"[+0.011, +0.073]"
+sp-o50-k0minuskp10-band-hi,+0.073
+sp-o50-k0minuskp10-band-lo,+0.011
+sp-o50-k0minuskp10-erp,+0.039
+sp-o50-k0minuskp10-erp-abs,0.039
+sp-o50-k0minuskp10-erp-ci,"[+0.006, +0.074]"
+sp-o50-k0minuskp10-erp-hi,+0.074
+sp-o50-k0minuskp10-erp-lo,+0.006
+sp-o50-k0minuskp10-res,+0.129
+sp-o50-k0minuskp10-res-abs,0.129
+sp-o50-k0minuskp10-res-ci,"[+0.087, +0.171]"
+sp-o50-k0minuskp10-res-hi,+0.171
+sp-o50-k0minuskp10-res-lo,+0.087
+sp-o50-k0minuskp20-band,+0.061
+sp-o50-k0minuskp20-band-abs,0.061
+sp-o50-k0minuskp20-band-ci,"[+0.025, +0.098]"
+sp-o50-k0minuskp20-band-hi,+0.098
+sp-o50-k0minuskp20-band-lo,+0.025
+sp-o50-k0minuskp20-erp,+0.085
+sp-o50-k0minuskp20-erp-abs,0.085
+sp-o50-k0minuskp20-erp-ci,"[+0.051, +0.120]"
+sp-o50-k0minuskp20-erp-hi,+0.120
+sp-o50-k0minuskp20-erp-lo,+0.051
+sp-o50-k0minuskp20-res,+0.210
+sp-o50-k0minuskp20-res-abs,0.210
+sp-o50-k0minuskp20-res-ci,"[+0.171, +0.248]"
+sp-o50-k0minuskp20-res-hi,+0.248
+sp-o50-k0minuskp20-res-lo,+0.171
+sp-o50-k0minuskp30-band,+0.076
+sp-o50-k0minuskp30-band-abs,0.076
+sp-o50-k0minuskp30-band-ci,"[+0.041, +0.112]"
+sp-o50-k0minuskp30-band-hi,+0.112
+sp-o50-k0minuskp30-band-lo,+0.041
+sp-o50-k0minuskp30-erp,+0.109
+sp-o50-k0minuskp30-erp-abs,0.109
+sp-o50-k0minuskp30-erp-ci,"[+0.073, +0.147]"
+sp-o50-k0minuskp30-erp-hi,+0.147
+sp-o50-k0minuskp30-erp-lo,+0.073
+sp-o50-k0minuskp30-res,+0.234
+sp-o50-k0minuskp30-res-abs,0.234
+sp-o50-k0minuskp30-res-ci,"[+0.197, +0.270]"
+sp-o50-k0minuskp30-res-hi,+0.270
+sp-o50-k0minuskp30-res-lo,+0.197
+sp-o50-k0minusnative_zero-band,+0.024
+sp-o50-k0minusnative_zero-band-abs,0.024
+sp-o50-k0minusnative_zero-band-ci,"[-0.008, +0.058]"
+sp-o50-k0minusnative_zero-band-hi,+0.058
+sp-o50-k0minusnative_zero-band-lo,-0.008
+sp-o50-k0minusnative_zero-erp,+0.033
+sp-o50-k0minusnative_zero-erp-abs,0.033
+sp-o50-k0minusnative_zero-erp-ci,"[+0.002, +0.065]"
+sp-o50-k0minusnative_zero-erp-hi,+0.065
+sp-o50-k0minusnative_zero-erp-lo,+0.002
+sp-o50-k0minusnative_zero-res,+0.014
+sp-o50-k0minusnative_zero-res-abs,0.014
+sp-o50-k0minusnative_zero-res-ci,"[-0.013, +0.041]"
+sp-o50-k0minusnative_zero-res-hi,+0.041
+sp-o50-k0minusnative_zero-res-lo,-0.013
+sp-o50-km05-band,0.496
+sp-o50-km05-band-ci,"[0.464, 0.528]"
+sp-o50-km05-band-hi,0.528
+sp-o50-km05-band-lo,0.464
+sp-o50-km05-erp,0.518
+sp-o50-km05-erp-ci,"[0.485, 0.551]"
+sp-o50-km05-erp-hi,0.551
+sp-o50-km05-erp-lo,0.485
+sp-o50-km05-res,0.555
+sp-o50-km05-res-ci,"[0.524, 0.586]"
+sp-o50-km05-res-hi,0.586
+sp-o50-km05-res-lo,0.524
+sp-o50-km10-band,0.463
+sp-o50-km10-band-ci,"[0.433, 0.494]"
+sp-o50-km10-band-hi,0.494
+sp-o50-km10-band-lo,0.433
+sp-o50-km10-erp,0.479
+sp-o50-km10-erp-ci,"[0.449, 0.509]"
+sp-o50-km10-erp-hi,0.509
+sp-o50-km10-erp-lo,0.449
+sp-o50-km10-res,0.518
+sp-o50-km10-res-ci,"[0.491, 0.545]"
+sp-o50-km10-res-hi,0.545
+sp-o50-km10-res-lo,0.491
+sp-o50-km20-band,0.425
+sp-o50-km20-band-ci,"[0.400, 0.452]"
+sp-o50-km20-band-hi,0.452
+sp-o50-km20-band-lo,0.400
+sp-o50-km20-erp,0.436
+sp-o50-km20-erp-ci,"[0.408, 0.464]"
+sp-o50-km20-erp-hi,0.464
+sp-o50-km20-erp-lo,0.408
+sp-o50-km20-res,0.457
+sp-o50-km20-res-ci,"[0.433, 0.480]"
+sp-o50-km20-res-hi,0.480
+sp-o50-km20-res-lo,0.433
+sp-o50-km2minuskp2-band,+0.011
+sp-o50-km2minuskp2-band-abs,0.011
+sp-o50-km2minuskp2-band-ci,"[-0.022, +0.044]"
+sp-o50-km2minuskp2-band-hi,+0.044
+sp-o50-km2minuskp2-band-lo,-0.022
+sp-o50-km2minuskp2-erp,-0.021
+sp-o50-km2minuskp2-erp-abs,0.021
+sp-o50-km2minuskp2-erp-ci,"[-0.054, +0.014]"
+sp-o50-km2minuskp2-erp-hi,+0.014
+sp-o50-km2minuskp2-erp-lo,-0.054
+sp-o50-km2minuskp2-res,+0.079
+sp-o50-km2minuskp2-res-abs,0.079
+sp-o50-km2minuskp2-res-ci,"[+0.051, +0.106]"
+sp-o50-km2minuskp2-res-hi,+0.106
+sp-o50-km2minuskp2-res-lo,+0.051
+sp-o50-km30-band,0.406
+sp-o50-km30-band-ci,"[0.382, 0.428]"
+sp-o50-km30-band-hi,0.428
+sp-o50-km30-band-lo,0.382
+sp-o50-km30-erp,0.401
+sp-o50-km30-erp-ci,"[0.378, 0.425]"
+sp-o50-km30-erp-hi,0.425
+sp-o50-km30-erp-lo,0.378
+sp-o50-km30-res,0.404
+sp-o50-km30-res-ci,"[0.385, 0.423]"
+sp-o50-km30-res-hi,0.423
+sp-o50-km30-res-lo,0.385
+sp-o50-kp00-band,0.474
+sp-o50-kp00-band-ci,"[0.439, 0.509]"
+sp-o50-kp00-band-hi,0.509
+sp-o50-kp00-band-lo,0.439
+sp-o50-kp00-erp,0.542
+sp-o50-kp00-erp-ci,"[0.509, 0.575]"
+sp-o50-kp00-erp-hi,0.575
+sp-o50-kp00-erp-lo,0.509
+sp-o50-kp00-res,0.588
+sp-o50-kp00-res-ci,"[0.553, 0.621]"
+sp-o50-kp00-res-hi,0.621
+sp-o50-kp00-res-lo,0.553
+sp-o50-kp05-band,0.455
+sp-o50-kp05-band-ci,"[0.419, 0.490]"
+sp-o50-kp05-band-hi,0.490
+sp-o50-kp05-band-lo,0.419
+sp-o50-kp05-erp,0.537
+sp-o50-kp05-erp-ci,"[0.507, 0.567]"
+sp-o50-kp05-erp-hi,0.567
+sp-o50-kp05-erp-lo,0.507
+sp-o50-kp05-res,0.528
+sp-o50-kp05-res-ci,"[0.494, 0.559]"
+sp-o50-kp05-res-hi,0.559
+sp-o50-kp05-res-lo,0.494
+sp-o50-kp10-band,0.433
+sp-o50-kp10-band-ci,"[0.400, 0.464]"
+sp-o50-kp10-band-hi,0.464
+sp-o50-kp10-band-lo,0.400
+sp-o50-kp10-erp,0.502
+sp-o50-kp10-erp-ci,"[0.474, 0.532]"
+sp-o50-kp10-erp-hi,0.532
+sp-o50-kp10-erp-lo,0.474
+sp-o50-kp10-res,0.458
+sp-o50-kp10-res-ci,"[0.430, 0.487]"
+sp-o50-kp10-res-hi,0.487
+sp-o50-kp10-res-lo,0.430
+sp-o50-kp20-band,0.414
+sp-o50-kp20-band-ci,"[0.384, 0.444]"
+sp-o50-kp20-band-hi,0.444
+sp-o50-kp20-band-lo,0.384
+sp-o50-kp20-erp,0.457
+sp-o50-kp20-erp-ci,"[0.431, 0.483]"
+sp-o50-kp20-erp-hi,0.483
+sp-o50-kp20-erp-lo,0.431
+sp-o50-kp20-res,0.378
+sp-o50-kp20-res-ci,"[0.360, 0.395]"
+sp-o50-kp20-res-hi,0.395
+sp-o50-kp20-res-lo,0.360
+sp-o50-kp30-band,0.398
+sp-o50-kp30-band-ci,"[0.371, 0.423]"
+sp-o50-kp30-band-hi,0.423
+sp-o50-kp30-band-lo,0.371
+sp-o50-kp30-erp,0.433
+sp-o50-kp30-erp-ci,"[0.411, 0.457]"
+sp-o50-kp30-erp-hi,0.457
+sp-o50-kp30-erp-lo,0.411
+sp-o50-kp30-res,0.354
+sp-o50-kp30-res-ci,"[0.341, 0.368]"
+sp-o50-kp30-res-hi,0.368
+sp-o50-kp30-res-lo,0.341
+sp-o50-native_zero-band,0.450
+sp-o50-native_zero-band-ci,"[0.422, 0.479]"
+sp-o50-native_zero-band-hi,0.479
+sp-o50-native_zero-band-lo,0.422
+sp-o50-native_zero-erp,0.509
+sp-o50-native_zero-erp-ci,"[0.479, 0.540]"
+sp-o50-native_zero-erp-hi,0.540
+sp-o50-native_zero-erp-lo,0.479
+sp-o50-native_zero-res,0.573
+sp-o50-native_zero-res-ci,"[0.539, 0.607]"
+sp-o50-native_zero-res-hi,0.607
+sp-o50-native_zero-res-lo,0.539
+sp-o50-nativeminusmean-band,-0.024
+sp-o50-nativeminusmean-band-abs,0.024
+sp-o50-nativeminusmean-band-ci,"[-0.058, +0.008]"
+sp-o50-nativeminusmean-band-hi,+0.008
+sp-o50-nativeminusmean-band-lo,-0.058
+sp-o50-nativeminusmean-erp,-0.033
+sp-o50-nativeminusmean-erp-abs,0.033
+sp-o50-nativeminusmean-erp-ci,"[-0.065, -0.002]"
+sp-o50-nativeminusmean-erp-hi,-0.002
+sp-o50-nativeminusmean-erp-lo,-0.065
+sp-o50-nativeminusmean-res,-0.014
+sp-o50-nativeminusmean-res-abs,0.014
+sp-o50-nativeminusmean-res-ci,"[-0.041, +0.013]"
+sp-o50-nativeminusmean-res-hi,+0.013
+sp-o50-nativeminusmean-res-lo,-0.041
+sp-zpos-band,1.20
+sp-zpos-erp,0.73
+sp-zpos-res,0.07
 sz-G-conference-r-max,-0.01
 sz-G-conference-r-med,-0.08
 sz-G-conference-r-min,-0.26

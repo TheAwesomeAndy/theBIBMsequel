@@ -1,0 +1,25 @@
+{
+  "epoch": "standard",
+  "n_perm": 200,
+  "protocol": "ERP-window pre-only (-200..0 ms) features; conference protocol; within-subject label permutations; p = (1 + #null >= observed) / (1 + n_perm)",
+  "results": {
+    "Z": {
+      "BA": 0.5402843601895735,
+      "null_mean": 0.33483412322274886,
+      "null_sd": 0.01904562260601875,
+      "null_p95": 0.36808846761453395,
+      "null_p99": 0.37600315955766195,
+      "null_max": 0.3823064770932069,
+      "p_value": 0.004975124378109453
+    },
+    "G": {
+      "BA": 0.330173775671406,
+      "null_mean": 0.33631121642969986,
+      "null_sd": 0.02301619516676966,
+      "null_p95": 0.37282780410742494,
+      "null_p99": 0.38548183254344387,
+      "null_max": 0.391785150078989,
+      "p_value": 0.6069651741293532
+    }
+  }
+}

@@ -62,8 +62,9 @@ def main():
     for ax, (f, o, t) in zip(axes[0], panels):
         panel(ax, json.load(open(AGG / f)), o, t)
     axes[0][0].set_ylabel("clean BA", labelpad=1)
-    axes[0][0].legend(frameon=False, fontsize=5.5, loc="upper left", bbox_to_anchor=(0.0, 0.92))
     fig.tight_layout(pad=0.3, w_pad=1.0)
+    h, lab = axes[0][0].get_legend_handles_labels()
+    fig.legend(h, lab, frameon=False, fontsize=6, loc="upper center", ncol=2, bbox_to_anchor=(0.5, 0.0))
     OUT.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT, bbox_inches="tight", pad_inches=0.01)
     print(f"[fig] wrote {OUT}")
