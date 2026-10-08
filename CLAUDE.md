@@ -30,7 +30,7 @@ at `ad79109`. **The `BIBM` repository is never edited**; all work happens here.
 * SHAPE windows (`SHAPE_EPOCH`, pre-specified in memory entry #43): `standard` (the
   conference input and windows; reproduces the conference values), `onset` (reservoir
   +39..+273 ms and ERP windows measured from true onset) and `post` (reservoir
-  0..+793 ms). Report all three, tune none. No spline repair on SHAPE (channel order
+  0..+797 ms). Report all three, tune none. No spline repair on SHAPE (channel order
   undocumented) and no trial-count analysis (subject averages only).
 * Journal outputs: `outputs/aggregate/journal/` (aggregate JSON only); figures under
   `manuscript/figures/journal/` from committed `analysis/make_fig_*.py` scripts.

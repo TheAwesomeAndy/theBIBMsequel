@@ -57,7 +57,7 @@ OUT = Path(__file__).resolve().parents[1] / "outputs" / "aggregate" / "journal"
 #   onset:    windows measured from true onset (sample 51): reservoir [61, 121) =
 #             +39..+273 ms, the window the conference text described, and ERP windows
 #             80..200 / 250..450 / 450..800 ms after onset;
-#   post:     reservoir [51, 255) = 0..+793 ms (six bins of 34), ERP windows as in onset.
+#   post:     reservoir [51, 255) = 0..+797 ms (six bins of 34), ERP windows as in onset.
 # Band-power always uses the whole epoch. Output files get the cohort name in place of
 # "tcrzem" and the epoch suffix.
 DATASET = os.environ.get("JDATA", "tcrzem")

@@ -535,7 +535,7 @@ def table_windows():
     """SHAPE: the conference windows against windows measured from true onset."""
     rows = []
     for ep, lab in (("", "Conference ($-160$..$+73$)"), ("_onset", "Onset ($+39$..$+273$)"),
-                    ("_post", "Post ($0$..$+793$)")):
+                    ("_post", "Post ($0$..$+797$)")):
         j1 = load(JAG / f"j1_shape_core{ep}.json"); j4 = load(JAG / f"j4_shape_edge{ep}.json")
         if not j1:
             continue
