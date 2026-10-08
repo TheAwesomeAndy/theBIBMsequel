@@ -119,16 +119,16 @@ python analysis/export_journal_values.py
 | Fig. 1 (reservoir dynamics, SHAPE) and Fig. 2 (SHAPE ERPs) | conference scripts, unchanged | `manuscript/figures/imported/` |
 | Fig. 3 (external ERPs) | `make_fig_tcrzem_erp.py` | `manuscript/figures/journal/fig_tcrzem_erp.pdf`, `tcrzem_erp_summary.json` |
 | Table I (clean, both cohorts) | J1, J3 (+ conference E3, E5) | `manuscript/journal/generated/tab_clean.tex` |
-| Fig. 4 (fill contrasts, two cohorts) | `make_fig_fills_two_cohorts.py` | `fig_fills.pdf` |
-| Table II (fills at 30%) | J1 (+ conference E2) | `generated/tab_fills.tex` |
-| Fig. 5, Table III (origin test) | J5; `make_fig_origin.py` | `fig_origin.pdf`, `generated/tab_origin_xl.tex` |
-| Fig. 6 (pre-stimulus windows) | J6, J7; `make_fig_prestimulus.py` | `fig_prestimulus.pdf` |
-| Fig. 7, Table IV (edge of stability) | J4, J8; `make_fig_edge.py` | `fig_edge.pdf`, `generated/tab_edge.tex` |
+| Table II (SHAPE conference vs onset vs post windows) | J1, J4 on SHAPE (`SHAPE_EPOCH`) | `generated/tab_windows.tex` |
+| Table III, Fig. 4 (fills at 30%, fill contrasts) | J1 (+ conference E2); `make_fig_fills_two_cohorts.py` | `generated/tab_fills.tex`, `fig_fills.pdf` |
+| Fig. 5, Table IV (origin test; SHAPE table) | J5 on both cohorts; `make_fig_origin.py` | `fig_origin.pdf`, `generated/tab_origin_sj.tex` |
+| Fig. 6 (pre-stimulus windows) and the z-score test | J6, J7, J9; `make_fig_prestimulus.py` | `fig_prestimulus.pdf` |
+| Fig. 7, Table V (edge of stability; SHAPE ten draws) | J4, J8 on both cohorts; `make_fig_edge.py` | `fig_edge.pdf`, `generated/tab_edge_s.tex` |
 | Fig. 8 (DEAP, SHAPE EEGNet) | conference script, unchanged | `manuscript/figures/imported/fig_deap_aug.pdf` |
-| Table V (SHAPE signal level) | conference E3, E4 | `generated/tab_signal_shape.tex` |
-| Fig. 9, Table VI (external signal level, long epoch) | J2, J3; `make_fig_signal.py` | `fig_signal_long.pdf`, `generated/tab_signal_xl.tex` |
-| Tables VII-VIII (appendix: matched-epoch signal level, origin test) | J2, J3, J5 | `generated/tab_signal_x.tex`, `generated/tab_origin_x.tex` |
-| Table IX (appendix: EEGNet recipes) | J3 recipe runs | `generated/tab_recipes.tex` |
+| Table VI (SHAPE signal level) | conference E3, E4 | `generated/tab_signal_shape.tex` |
+| Table VII, Fig. 9 (external signal level, long epoch) | J2, J3; `make_fig_signal.py` | `generated/tab_signal_xl.tex`, `fig_signal_long.pdf` |
+| Tables VIII-X (appendix: matched-epoch signal level, external origin test, external edge) | J2, J3, J4, J5 | `generated/tab_signal_x.tex`, `tab_origin_xl.tex`, `tab_origin_x.tex`, `tab_edge.tex` |
+| Table XI (appendix: EEGNet recipes) | J3 recipe runs | `generated/tab_recipes.tex` |
 | Every inline number | `export_journal_values.py` | `generated/values.tex`, `outputs/aggregate/journal/journal_values.csv` |
 
 `python scripts/check_journal.py` regenerates the values, builds the PDF, and runs the
