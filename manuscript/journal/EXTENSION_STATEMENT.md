@@ -18,12 +18,14 @@ the Edge of Stability in Spiking Reservoir Encoding of Affective EEG" (`main_jou
 
 ## What is new
 
-1. **SHAPE rerun.** Every new experiment also runs on SHAPE. The journal code reproduces
-   the conference clean results, fills, and draw-42 operating-point sweep exactly; the
-   pooled-basis sensitivity value differs by one observation of 633 (an earlier
-   regeneration of the embedding). Analysis windows measured from true onset (the
-   window the submitted conference manuscript described before its camera-ready correction, +39..+273 ms, and the whole post-onset
-   interval, 0..+797 ms) were fixed before their results were computed.
+1. **SHAPE rerun.** Every new experiment that subject averages and an undocumented
+   montage allow also runs on SHAPE (not spline repair, trial-count noise, or EEGNet).
+   The journal code reproduces the conference fixed-encoder clean results, fills, and
+   draw-42 operating-point sweep exactly; the pooled-basis sensitivity value differs by
+   one observation of 633 (an earlier regeneration of the embedding). Analysis windows
+   measured from true onset (the window the submitted conference manuscript described
+   before its camera-ready correction, +39..+273 ms, and the whole post-onset interval,
+   0..+797 ms) were fixed before their results were computed.
 2. **External cohort.** An independent public IAPS cohort (DataVerseNL
    doi:10.34894/TCRZEM, 228 subjects, different laboratory and montage), analyzed at the
    conference-matched epoch and at a long epoch pre-specified from the dataset's published
