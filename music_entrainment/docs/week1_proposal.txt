@@ -1,0 +1,313 @@
+=== FRAME https://week-1-rhythmic-entrainment-in-arspi-net-wqur.pages.grok.bot/__cursor/frame?v=eee53a83e903 len 16344
+Week 1: Rhythmic entrainment in ARSPI-Net
+
+One falsifiable test you can run on public data this month: does beat-locked EEG during naturalistic music carry structure beyond the superposition of evoked responses? ARSPI-Net is the calibrated measurement instrument, and the plan reuses your repository code.
+
+On this page
+
+The hypothesis
+ARSPI-Net as it exists in your code
+Dataset: NMED-T
+What the reservoir adds beyond frequency tagging and mTRF
+Analysis plan
+Controls and null models
+What would falsify it
+Synthetic check run this week
+Key assumptions
+Methodological challenges
+Code reuse map
+Next actions this week
+Toward consciousness and meditative states
+Verified sources
+The hypothesis
+
+H1 (primary).
+
+When the canonical ARSPI-Net LIF reservoir is driven by NMED-T EEG, its beat-locked spiking is not fully explained by an evoked-superposition model. After you subtract a cross-validated forward mTRF prediction from the audio, the EEG residual still drives beat-phase-locked reservoir activity above a circular-shift null. Across the ten song tempi, the beat-locked phase lag is flatter than the lag the evoked twin produces.
+
+H1b (does ARSPI-Net add value?): beat-cycle BSC6 features separate real EEG drive from its evoked twin better than linear beat-cycle features (raw 6-bin beat-cycle ERP, steady-state amplitude at the beat frequency) under participant-grouped cross-validation. If H1b fails, the reservoir is only acting as a filter for this question, and later weeks should use raw or mTRF features.
+
+Scope of the claim: a positive result shows beat-locked structure beyond linear stimulus-driven superposition. It does not by itself prove a self-sustained oscillator. Nonlinear or anticipatory evoked activity (for example the CNV) is a live alternative, covered under Methodological challenges.
+
+ARSPI-Net as it exists in your code
+Canonical operator
+chapter5Experiments/experiment_zero.py → LIFReservoir, used by experiments/confirmatory/confirmatory_pipeline.build_bsc_features
+Reservoir
+256 LIF neurons, β = 0.05, θ = 0.5, spectral radius 0.9, Xavier-uniform weights, one input per electrode, subtractive reset
+Per-electrode seeds
+reservoir_seed + ch*17, with reservoir seeds (7, 42, 99)
+Input encoding
+Direct current injection of the z-scored EEG sample, no spike encoder. SHAPE runs 1024 Hz → drop 205 prestimulus samples → decimate ×4 → 256 steps at 256 Hz
+Time constant
+τ = 19.5 steps: 76 ms at 256 Hz (low-pass corner 2.09 Hz), 156 ms at 125 Hz (corner 1.02 Hz)
+Readout
+bsc6_encode (6 temporal bins × 256 neurons = 1,536) → fixed SRP-64 (make_srp, seed 20240517) → fold-local linear readout (evaluate_features)
+Interpretability hooks
+Dynamical descriptors (LZ, permutation entropy, τ_AC, τ_relax, T_RTB, λ proxy) in experiments/ch6_ch7_3class/ch6_ch7_01_feature_extraction.py. Surrogates in chapter6Experiments/run_chapter6_exp3_surrogate.py. Destruction controls in confirmatory_pipeline.py
+Known caveat
+The Chapter 6 scripts (run_chapter6_exp1_esp.py, exp3_surrogate.py) use a different reservoir: 10% sparse W_rec ×0.05, W_in ~ N(0, 0.3), hard reset. The λ₁ = −0.054 contraction result comes from that variant, not from experiment_zero
+
+The SHAPE inputs are 1-second trial-averaged ERPs. NMED-T would be the reservoir's first continuous, single-listen drive, about 70,000 steps per song at 256 Hz. Your README also reports that raw ERP features beat BSC6/SRP-64 on SHAPE (69.6% vs 64.3%). That is why H1b treats added value as something to test, not to assume.
+
+Dataset: NMED-T
+Access
+Stanford Digital Repository, CC BY 3.0, open download: https://purl.stanford.edu/jn859kj8079
+Participants
+20 adults, each hearing 10 full songs once (4:30–5:00 each), told to listen attentively and not move
+EEG
+128-channel EGI dense array recorded at 1 kHz. Cleaned release has 125 rows (124 scalp electrodes plus a zero vertex reference, average-referenced) at 125 Hz, shape 125 × T × 20 per song
+Preprocessing done
+0.3 Hz high-pass, 59–61 Hz notch, 50 Hz low-pass (all zero-phase), ICA ocular/cardiac removal, >4 SD transients replaced by neighbour interpolation, onsets click-corrected
+Stimuli
+10 songs with electronically produced beats in duple meter, 55.97–150 BPM (0.93–2.50 Hz). Audio is not distributed: Table 1 of the paper lists Amazon ASINs
+Extras
+Tapping to 35 s excerpts (separate listen), familiarity and enjoyment ratings, demographics, Matlab analysis scripts
+Size
+39 GB in total. Cleaned per-song files are 656–721 MB, so about 7 GB for the pilot
+
+Why NMED-T over DEAP or OpenMIIR for Week 1: ten tempi on a steady electronic grid give you a built-in rate manipulation for the phase-lag test. Each listen is continuous, so there is no trial averaging to hide oscillatory dynamics. Your BIBM repo already handles DEAP (analysis/deap_replication.py, 32 channels at 128 Hz), but DEAP's 1-minute music videos have no tempo design.
+
+What the reservoir adds beyond frequency tagging and mTRF
+Frequency tagging gives power at the beat frequency, which superposed ERPs also produce (Novembre & Iannetti). The reservoir's thresholded, recurrent transform responds to phase structure that amplitude spectra ignore. Your Exp 6.3 found τ_AC and LZ separate real from phase-randomized drive.
+An mTRF is linear by construction, so whatever it cannot predict lands in the residual. Driving a fixed nonlinear operator with that residual tests whether the residual holds organized beat-locked structure, not just noise.
+The instrument is calibrated. Its group delay and gain per frequency can be measured with synthetic drives and subtracted, so its own filtering is not mistaken for brain latency.
+The readout is traceable. Beat-cycle BSC6 shows which reservoir neurons are phase-tuned, at which beat phase, and with what membrane time scale. That neuron-level account is the Level 1/3 traceability your dissertation built.
+Your destruction controls (shuffling bin order, collapsing bins) carry over directly to beat-phase bins.
+Analysis plan
+NMED-T EEG
+125 Hz → 256 Hz, z-score
+Audio + beat grid
+envelope, onsets, beat times
+Forward mTRF
+leave-one-song-out
+Real drive
+TRF pred + real residual
+Evoked twin
+TRF pred + phase-randomized residual
+LIF reservoir
+experiment_zero, 3 seeds
+Beat-phase MI, slope, beat-cycle BSC6
+1
+
+Stimulus features
+
+Compute the amplitude envelope at 256 Hz, half-wave-rectified envelope derivative (onsets), and beat times from a beat tracker. Accept a song only if the tracked tempo is within 1% of Table 1 and the tapping medians agree.
+
+2
+
+EEG preparation
+
+Use scipy.signal.resample_poly(x, 256, 125) so β = 0.05 keeps the 76 ms meaning it has in SHAPE. Z-score per channel per song, as in preprocess_epoch. Drop the first 10 s (onset transient). Pre-register a fronto-central cluster of about 16 electrodes plus one PCA/RCA component as drives.
+
+3
+
+Evoked model
+
+Per subject, fit a forward TRF (lags −100 to 500 ms, ridge λ by inner CV) from envelope and onsets to each channel. Train on 9 songs and predict the held-out song.
+
+4
+
+Two drives per song
+
+Real = the actual EEG, i.e. TRF prediction plus the true residual. Evoked twin = TRF prediction plus the phase-randomized residual (phase_randomize). Spectra match; only beat-locked residual structure differs.
+
+5
+
+Run the reservoir
+
+Drive LIFReservoir(seed=s + ch*17) for s in (7, 42, 99). Keep spikes and membrane. A 60 s drive takes about 0.2 s on the box, so the full 20 × 10 × 17-drive pilot is minutes.
+
+6
+
+Beat-phase readout
+
+Assign each step a beat phase. Bin population rate and per-neuron counts into 6 phase bins (a beat-cycle BSC6). Compute Tort's modulation index MI per drive, the fraction of phase-tuned neurons, and Ch6 descriptors (τ_AC, LZ) per song.
+
+7
+
+Cross-tempo phase test
+
+Per subject, regress the unwrapped beat-locked phase of the population rate on tempo (10 songs). The slope is an apparent latency. Subtract the reservoir's own slope, calibrated with a synthetic phase-locked oscillator, then compare real vs twin slopes.
+
+8
+
+Group statistics
+
+Subject-level z-scores against 1,000 circular shifts. Use Wilcoxon / paired tests across 20 subjects, participant-cluster bootstrap CIs (participant_bootstrap_ci), and equivalence bounds fixed in the pre-registration.
+
+MI =
+log 6 − H(P)
+log 6
+, H(P) = −Σ p_k log p_k over 6 beat-phase bins
+Controls and null models
+Control
+What it removes
+Expected if H1 is false
+Circular shift of EEG vs beat grid (≥10 s, 1,000×)
+Alignment only; keeps autocorrelation and spectrum
+Real MI inside null
+Evoked twin (phase-randomized residual)
+Beat-locked structure beyond linear TRF
+Real ≈ twin on MI, slope, BSC6
+Residual-only drive
+The stimulus-predicted part
+Residual MI inside null
+Beat-bin order shuffle, bin collapse
+Phase ordering in beat-cycle BSC6
+No drop in real-vs-twin decoding
+Raw beat-cycle ERP and SS-EP amplitude
+The reservoir itself
+Linear features match or beat BSC6 (H1b fails)
+Synthetic oscillator and evoked-kernel drives
+Brain entirely; calibrates the instrument
+Recovers known latency and ground truth
+High-gamma (30–50 Hz) beat-locking at edge electrodes
+Neural signal; flags movement/EMG
+Must be null, else exclude
+What would falsify it
+Outcome
+Reading
+Residual MI within null and real slope equivalent to twin slope
+H1 rejected: evoked superposition suffices
+Residual MI above null but slopes equivalent
+Non-linear or anticipatory evoked activity; no oscillator signature
+Residual MI above null and real slope flatter than twin
+H1 supported, within scope
+H1 supported but BSC6 ≤ linear features
+Effect is real but ARSPI-Net adds nothing here (H1b fails)
+Effects vanish under ρ ∈ {0.3, 1.2} or β ∈ {0.025, 0.1}
+Instrument-specific artifact; do not report as brain effect
+
+Fix the equivalence bounds before unblinding: for example ±20 ms apparent latency and ±0.2 in subject-level MI z-score. With n = 20, a paired test has about 80% power for d_z ≈ 0.66. That is the smallest effect the pilot can claim to detect.
+
+Synthetic check run this week
+Drive (60 s, NMED-T tempi, pink noise SNR 1:1.5)
+Phase–tempo slope
+Apparent latency
+Evoked kernel convolved with beat impulses
+−0.49 rad/Hz
+77 ms
+Phase-locked oscillator, constant phase
+−0.14 rad/Hz
+23 ms
+
+Both drives went through experiment_zero.LIFReservoir(seed=42) at 256 Hz. The reservoir keeps the evoked-vs-oscillator difference. The oscillator's 23 ms is the reservoir's own group delay, which you calibrate out. Phase concentration was 0.97 vs 0.99, so over NMED-T's narrow 0.93–2.5 Hz range the slope, not Doelling's phase-concentration metric, is the statistic to use. Script on the box: /workspace/synth_check.py (toy kernel, illustrative only).
+
+Key assumptions
+The purchased audio matches the files used in the study and aligns with EEG onsets (onsets were click-corrected). Verify with envelope–EEG cross-correlation.
+Steady electronic beats make a fixed beat grid valid. Perceived beat may still sit at a metrical level other than the listed tempo; tapping data checks this.
+Resampling to 256 Hz keeps the reservoir in the regime characterized on SHAPE. Firing rate and λ₁ must be re-checked under continuous drive.
+A linear TRF with envelope and onset regressors captures most of the evoked response. Anything it misses counts as 'beyond superposition', which is why the claim is scoped.
+Group-level beat locking in single-listen EEG is detectable at n = 20. Losorelli et al. show beat-frequency peaks in PCA-filtered averages; single-subject reliability is unknown.
+Methodological challenges
+Challenge
+Mitigation
+Evoked superposition vs oscillation
+Evoked twin, residual drive, cross-tempo slope; claim scoped to 'beyond linear superposition'
+Nonlinear/anticipatory ERPs (adaptation, CNV)
+Add beat-onset and metrical-position regressors to the TRF; report residual MI with and without them
+Tempo confounded with song (one song per tempo)
+Twin shares acoustics; add envelope beat-salience as covariate; treat slope as across-song
+Reservoir low-pass corner (2.09 Hz) sits inside the beat range
+Real and twin pass the same filter; calibrate gain and delay per tempo with synthetic drives
+Hyperparameter sensitivity
+Pre-register β = 0.05, θ = 0.5, ρ = 0.9, seeds 7/42/99; sweep ρ (BIBM experiment_camera_ready.weights) and β only as robustness
+Two reservoir variants in the repo
+Primary = experiment_zero; report the Ch6 variant as a robustness row
+Movement and EMG locked to the beat
+High-gamma beat-locking check at edge electrodes; exclude flagged songs
+Imputed channels and average reference
+Prefer the spatial component plus interior electrodes; log the imputed fraction per subject
+Multiple comparisons across channels and descriptors
+One pre-registered primary drive (spatial component) and two primary statistics (MI, slope)
+Code reuse map
+Reuse (read-only import)
+Role in Week 1
+chapter5Experiments/experiment_zero.py: LIFReservoir, bsc6_encode
+Reservoir operator; template for a beat_bsc6 that bins by beat phase
+experiments/confirmatory/confirmatory_pipeline.py: make_srp, project_bsc, evaluate_features, participant_bootstrap_ci, destroy_temporal_bin_order, destroy_temporal_collapse
+H1b decoding, CIs, destruction controls
+experiments/confirmatory/run_confirmatory_validation.py: preprocess_epoch
+Pattern for z-scoring; write an NMED-T variant using resample_poly
+chapter6Experiments/run_chapter6_exp3_surrogate.py: phase_randomize, block_shuffle
+Evoked twin and surrogate nulls
+chapter6Experiments/run_chapter6_exp1_esp.py (Benettin loop)
+Re-verify λ₁ < 0 under 60 s music drive
+experiments/ch6_ch7_3class/ch6_ch7_01_feature_extraction.py: permutation_entropy, autocorrelation_decay, lempel_ziv_population
+Descriptor family for real vs twin
+experiments/novel/novel_pipeline.py: transfer_function
+Calibrate the gain curve with beat-train templates
+BIBM analysis/experiment_camera_ready.py: weights(rho), damage
+ρ robustness sweep and damage-spreading check under music drive
+
+Put all new code in a separate repo or folder (for example music_entrainment/) that imports these modules. Leave both existing repos untouched.
+
+Next actions this week
+
+Download the NMED-T cleaned per-song files, tapping data and Matlab scripts (about 7 GB) from purl.stanford.edu/jn859kj8079; buy the 10 tracks by ASIN
+
+about 1 h
+
+Write nmedt_loader.py (resample_poly 125→256, z-score, 16-electrode cluster plus PCA component) and beat_grid.py (envelope, onsets, beat times checked against Table 1)
+
+half a day
+
+Calibrate the instrument: extend /workspace/synth_check.py to give per-tempo gain and delay for both reservoir variants, and re-run the Benettin λ₁ under 60 s drive
+
+2–3 h
+
+Draft the pre-registration (H1, H1b, primary drive, MI and slope, equivalence bounds, nulls) and timestamp it before computing residual MI
+
+2 h
+
+Run the pilot on 5 subjects × 10 songs; confirm the evoked twin gives MI inside the circular-shift null (false-positive check) before scaling to 20
+
+half a day
+
+Status as of 8 Nov 2026: none started. Only the synthetic check above has been run.
+
+Toward consciousness and meditative states
+
+If H1 holds, the beat-phase MI and the residual-driven descriptors (τ_AC, LZ) form an index of entrainment depth that separates stimulus-driven tracking from internally sustained timing. The arc from there:
+
+Week 2–3: test whether that index tracks enjoyment or familiarity ratings within NMED-T, which bridges entrainment and experience.
+Next: drive the same calibrated reservoir with EEG from rhythmic practices (mantra, breath-paced or drone listening vs silent sitting) to ask whether absorptive states show more internally sustained, less stimulus-explained beat-locking.
+Longer term: relate reservoir complexity descriptors to state reports, while keeping your measurement-instrument framing. These are functionals of the driven reservoir, not direct readouts of consciousness.
+Verified sources
+
+NMED-T dataset (Stanford Digital Repository)
+
+purl.stanford.edu
+
+Losorelli et al. 2017, NMED-T paper (ISMIR)
+
+archives.ismir.net
+
+Nozaradan et al. 2011, Tagging the neuronal entrainment to beat and meter
+
+J Neurosci
+
+Novembre & Iannetti 2018, Neural entrainment or event-related potentials?
+
+PNAS
+
+Doelling et al. 2019, An oscillator model better predicts cortical entrainment to music
+
+PNAS
+
+Crosse et al. 2016, The mTRF Toolbox
+
+Front Hum Neurosci
+
+ARSPI-Net dissertation code
+
+github.com
+
+BIBM 2026 reservoir paper code
+
+github.com
+
+Lane, Tang & Nelson 2024, Towards ARSPI-NET (LISAT)
+
+doi.org
+=== RESPONSES

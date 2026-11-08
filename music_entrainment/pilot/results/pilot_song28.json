@@ -1,0 +1,77 @@
+{
+ "song": 28,
+ "f_beat": 2.0,
+ "shape": [
+  125,
+  36513,
+  20
+ ],
+ "fs": 125.0,
+ "ssep_pc1": {
+  "beat": {
+   "f": 2.0,
+   "z_vs_neighbours": 2.52
+  },
+  "half": {
+   "f": 1.0,
+   "z_vs_neighbours": -0.23
+  },
+  "double": {
+   "f": 4.0,
+   "z_vs_neighbours": 9.4
+  },
+  "quad": {
+   "f": 8.0,
+   "z_vs_neighbours": 26.28
+  },
+  "top5_peaks_0.4-6Hz": [
+   0.625,
+   0.525,
+   0.425,
+   0.475,
+   0.775
+  ]
+ },
+ "ssep_me": {
+  "beat": {
+   "f": 2.0,
+   "z_vs_neighbours": -2.97
+  },
+  "half": {
+   "f": 1.0,
+   "z_vs_neighbours": -0.02
+  },
+  "double": {
+   "f": 4.0,
+   "z_vs_neighbours": 0.13
+  },
+  "quad": {
+   "f": 8.0,
+   "z_vs_neighbours": 1.93
+  },
+  "top5_peaks_0.4-6Hz": [
+   0.45,
+   0.55,
+   0.625,
+   0.475,
+   0.425
+  ]
+ },
+ "reservoir": {
+  "steps": 15360,
+  "seconds_wall": 0.28,
+  "mean_rate": 0.1263353983561198,
+  "silent_units": 0
+ },
+ "beat_phase_mi": {
+  "mi": 2.2142427658259343e-05,
+  "null_mean": 3.146694972662119e-05,
+  "null_sd": 4.963729787799398e-06,
+  "z": -1.878530981430552,
+  "p": 0.9751243781094527
+ },
+ "beat_phase_mi_input": {
+  "mi": 9.874990750193471e-05,
+  "z": -0.7951122833091118
+ }
+}
