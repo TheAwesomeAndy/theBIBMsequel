@@ -1,0 +1,99 @@
+{
+  "provenance": {
+    "git_commit": "f10a4439d25021fe384d32d18e53a3861284e662",
+    "git_dirty": true,
+    "argv": [
+      "check_shape_montage.py",
+      "--shape-dir",
+      "/home/user/data_local/batch_data"
+    ],
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "joblib": "1.6.0"
+    },
+    "synthetic": false,
+    "time_utc": "2026-11-11T20:57:07Z"
+  },
+  "hypothesis": "channels 0-31 = BioSemi-32 standard order; 32-33 = extra midline sites",
+  "biosemi32_order": [
+    "Fp1",
+    "AF3",
+    "F7",
+    "F3",
+    "FC1",
+    "FC5",
+    "T7",
+    "C3",
+    "CP1",
+    "CP5",
+    "P7",
+    "P3",
+    "Pz",
+    "PO3",
+    "O1",
+    "Oz",
+    "O2",
+    "PO4",
+    "P4",
+    "P8",
+    "CP6",
+    "CP2",
+    "C4",
+    "T8",
+    "FC6",
+    "FC2",
+    "F4",
+    "F8",
+    "AF4",
+    "Fp2",
+    "Fz",
+    "Cz"
+  ],
+  "mantel_channels_0_31": {
+    "r": -0.672726460807323,
+    "null_mean": 3.684289354378867e-05,
+    "null_sd": 0.045897112869682226,
+    "p": 0.0004997501249375312
+  },
+  "mantel_shifted_2_33": {
+    "r": -0.4544985981428141,
+    "null_mean": 3.12388591720365e-05,
+    "null_sd": 0.045525651533060305,
+    "p": 0.0004997501249375312
+  },
+  "extra_channels_top_correlates": {
+    "32": [
+      [
+        "FC1",
+        0.9394539858785764
+      ],
+      [
+        "FC2",
+        0.9391065570123157
+      ],
+      [
+        "Fz",
+        0.9230147094432867
+      ]
+    ],
+    "33": [
+      [
+        "Oz",
+        0.8220598066684105
+      ],
+      [
+        "O1",
+        0.8061386321032902
+      ],
+      [
+        "O2",
+        0.8040439094455045
+      ]
+    ]
+  },
+  "most_negative_pair_r": -0.27653328474759115
+}
