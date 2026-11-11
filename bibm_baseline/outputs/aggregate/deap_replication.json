@@ -1,0 +1,53 @@
+{
+  "n_subjects": 32,
+  "n_trials": 1280,
+  "task": "valence high/low",
+  "BA": {
+    "BandPower(NC)": {
+      "clean": [
+        0.639,
+        null
+      ],
+      "0.10": {
+        "zero": 0.5808,
+        "mean": 0.6319,
+        "knn": 0.6377
+      },
+      "0.30": {
+        "zero": 0.5397,
+        "mean": 0.6207,
+        "knn": 0.6381
+      },
+      "0.50": {
+        "zero": 0.5246,
+        "mean": 0.6093,
+        "knn": 0.6299
+      }
+    },
+    "RandEmbed(C)": {
+      "clean": [
+        0.6258,
+        null
+      ],
+      "0.10": {
+        "zero": 0.5316,
+        "mean": 0.6199,
+        "knn": 0.624
+      },
+      "0.30": {
+        "zero": 0.5076,
+        "mean": 0.613,
+        "knn": 0.6254
+      },
+      "0.50": {
+        "zero": 0.504,
+        "mean": 0.5996,
+        "knn": 0.628
+      }
+    }
+  },
+  "mean_minus_zero_30": {
+    "BandPower(NC)": 0.081,
+    "RandEmbed(C)": 0.1054
+  }
+}

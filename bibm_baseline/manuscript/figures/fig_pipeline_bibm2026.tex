@@ -1,0 +1,21 @@
+% Figure source: reservoir temporal-encoding pipeline for BIBM 2026.
+% Compile through main_bibm2026.tex with TikZ loaded.
+\begin{tikzpicture}[
+    font=\footnotesize,
+    >=Latex,
+    block/.style={draw, rounded corners, align=center, minimum height=7mm, text width=0.84\linewidth, inner sep=3pt},
+    arrow/.style={-{Latex[length=2mm]}, thick}
+]
+\node[block] (x) {ERP observation\\$X_s^{(c)}\in\mathbb{R}^{M\times T}$};
+\node[block, below=4.5mm of x] (lif) {fixed LIF reservoir dynamics\\$v_{t+1}=\beta v_t+Wz_t+W_{\mathrm{in}}x_t-\vartheta r_t$};
+\node[block, below=4.5mm of lif] (spikes) {binary spike trajectory\\$z_t=\mathbf{1}[v_t\geq\vartheta]$};
+\node[block, below=4.5mm of spikes] (bins) {six-bin spike-count code\\$b_{j,k}=\sum_{t\in\mathcal{B}_k}z_j(t)$};
+\node[block, below=4.5mm of bins] (embed) {PCA-compressed reservoir embedding\\$E_s^{(c)}$};
+\node[block, below=4.5mm of embed] (eval) {subject-level readout\\clean and perturbed evaluation};
+
+\draw[arrow] (x) -- (lif);
+\draw[arrow] (lif) -- (spikes);
+\draw[arrow] (spikes) -- (bins);
+\draw[arrow] (bins) -- (embed);
+\draw[arrow] (embed) -- (eval);
+\end{tikzpicture}

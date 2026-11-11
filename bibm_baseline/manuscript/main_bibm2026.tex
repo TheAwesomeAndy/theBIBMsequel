@@ -1,0 +1,350 @@
+\pdfminorversion=4 % IEEE camera-ready setting: Acrobat 5.0 (PDF 1.4) compatibility
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{graphicx}
+\graphicspath{{figures/imported/}{manuscript/figures/imported/}}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{balance}
+
+\newcommand{\BSC}{\ensuremath{\mathrm{BSC}_{6}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ind}{\mathbf{1}}
+
+\title{On the Edge of Stability: Spiking Reservoir State-Space Encoding of Affective EEG}
+
+\author{
+\IEEEauthorblockN{Andrew A. Lane\IEEEauthorrefmark{1}, Wendy Tang\IEEEauthorrefmark{1}, and Brady D. Nelson\IEEEauthorrefmark{2}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Electrical and Computer Engineering, Stony Brook University, Stony Brook, NY, USA}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Department of Psychology, Stony Brook University, Stony Brook, NY, USA}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Affective EEG event-related potentials (ERPs) are noisy, subject-dependent measurements of evoked neural dynamics, and robustness rankings can depend as much on the evaluation protocol as on the representation. We compare four affective-ERP representations under subject-grouped validation with subject-level uncertainty: spectral band-power, ERP-window amplitudes, a fixed leaky integrate-and-fire reservoir summarized by a six-bin spike-count (\BSC{}) embedding and operated just above the half-maximum crossing of its measured damage-spreading curve ($\rho^\ast\approx0.82$, a rate-associated crossover below the $\rho=1$ echo-state heuristic; removing the recurrence costs $0.049$ balanced accuracy, BA, $95\%$ CI $[-0.098,-0.002]$), and a trained EEGNet, with electrode removal, amplitude noise, and temporal jitter applied to the raw signal identically for every encoder. Two channel-dropout artifacts are quantified. Raw retention has a chance floor that favors near-chance models: the reservoir keeps $100\%$ at $30\%$ dropout because its clean BA, $0.487$, is close to the $1/3$ floor. Zero-fill of dropped channels is not invariant to an information-preserving re-centering of the features, so it penalizes non-centered encoders: across $10$--$50\%$ dropout, in-distribution fills raise them by up to $0.13$ BA while the reservoir's near-centered embedding is unchanged by the constant fills, and at $30\%$ dropout zero-fill halves the measured lead of ERP-window features over the reservoir ($+0.05$ versus $+0.09$ to $+0.11$ BA). For EEGNet, channel-dropout augmentation more than halves the loss to electrode removal (BA at $30\%$ removal $0.660$ to $0.703$; clean $0.731$). On DEAP, the fill rule alone moves the measured robustness of band-power features by up to $0.11$ BA. We recommend reporting absolute accuracy with subject-level uncertainty alongside retention, stating and varying the fill rule, and reporting trained models with and without augmentation.
+\end{abstract}
+
+
+\begin{IEEEkeywords}
+EEG, event-related potentials, spiking neural networks, reservoir computing, affective computing, neuromorphic computing, ARSPI-Net.
+\end{IEEEkeywords}
+
+\section{Introduction}
+Electroencephalographic event-related potentials (ERPs) provide millisecond-scale measurements of evoked neural dynamics, but the recorded waveform is a noisy, low-dimensional, and subject-dependent projection of an unobserved neural process \cite{makeig2002dynamic,blankertz2011singletrial}. A representation may separate affective conditions under one protocol while preserving little usable structure after amplitude noise, temporal misalignment, or channel loss.
+
+Endpoint accuracy alone also says little about what a representation preserves, which matters for spiking encodings. Fixed recurrent reservoirs and spiking networks provide nonlinear temporal expansions \cite{maass2002real,lukosevicius2009reservoir}, but EEG/ERP studies often treat them primarily as classifiers \cite{gong2023sglnet,craik2019deep}. How such encodings change under perturbation remains underreported, even though preprocessing and electrode-loss choices materially change EEG results \cite{delpup2025preprocessing,chiang2023depression,guo2025mma}.
+
+This paper evaluates whether channel-dropout robustness rankings for affective-ERP representations are stable under reasonable changes to the scoring protocol. We compare spectral band-power, ERP-window amplitudes, a fixed leaky integrate-and-fire (LIF) reservoir summarized by six spike-count bins (\BSC{}) and compressed for a linear readout, and a trained EEGNet. The reservoir is not a proposed winner but a fixed, near-centered reference whose dynamics are not retrained under perturbation. The contributions are:
+\begin{enumerate}
+    \item A subject-grouped robustness comparison of affective-ERP representations under electrode removal, amplitude noise, and temporal jitter applied identically to every encoder's input, with subject-level confidence intervals and a permutation null (Secs.~\ref{sec:clean}, \ref{sec:rawsignal}; Tables~\ref{tab:clean}, \ref{tab:rawsignal}).
+    \item Two protocol artifacts in channel-dropout evaluation, raw-retention inflation near the chance floor and zero-fill bias for non-centered features, each stated as a proposition (Sec.~\ref{sec:confound}) and the second also tested on DEAP (Secs.~\ref{sec:perturb}, \ref{sec:deap}).
+    \item Paired subject-level evidence that zero-imputation halves the measured lead of ERP-window features over the reservoir, while channel-dropout augmentation more than halves the trained EEGNet's loss to electrode removal (Fig.~\ref{fig:impute}, Tables~\ref{tab:dropconf}, \ref{tab:rawsignal}).
+    \item A fixed-reservoir reference analysis: a spectral-radius sweep with a no-recurrence ablation, a measured damage-spreading curve whose half-maximum crossing $\rho^\ast\approx0.82$ coincides with a doubling of the firing rate, with a one-step branching bound whose threshold needs a membrane-density measurement (Fig.~\ref{fig:resdyn}), and a single-bin ablation separating the state-space expansion from temporal bin granularity (Eq.~\eqref{eq:operator}).
+\end{enumerate}
+Clinical labels and affective categories define the task structure; the representations and their invariances under perturbation are the object of study.
+
+\section{Related Work}
+\label{sec:related}
+ERP/EEG analysis uses window amplitudes, Hjorth \cite{hjorth1970eeg} and wavelet/spectral descriptors \cite{subasi2007eeg}, and linear models \cite{blankertz2011singletrial}, interpretable through components such as the P300 and late positive potential \cite{makeig2002dynamic} but can miss nonlinear temporal interactions. Reservoir computing offers a complementary approach: a fixed high-dimensional recurrent system maps the input to a state trajectory read out by a simple classifier \cite{maass2002real,jaeger2001echo,jaeger2004harnessing,lukosevicius2009reservoir}, and spiking liquid-state machines add event-based timing and count structure \cite{diehl2015unsupervised,roy2019towards}. Reservoir computation is often reported to peak near the transition between ordered and chaotic dynamics, located by how far a small state perturbation spreads \cite{bertschinger2004realtime,legenstein2007edge}; for a thresholded reservoir that transition need not coincide with the $\rho=1$ echo-state heuristic \cite{jaeger2001echo} (Sec.~\ref{sec:methods}). When the recurrent dynamics are fixed, the reservoir can be analyzed as a measurement operator rather than only as a classifier.
+
+Spiking and deep networks are now widely applied to EEG \cite{gong2023sglnet,lawhern2018eegnet,craik2019deep}. Much of this literature emphasizes endpoint accuracy over preprocessing and acquisition choices \cite{delpup2025preprocessing,kornblith2019similarity}. Neuromorphic reservoir features for affective EEG were introduced in prior ARSPI-Net work \cite{lane2023arspi,lane2024arspi}; here we establish their perturbation and invariance properties and identify two scoring artifacts that distort robustness comparisons.
+
+Dynamic spatial filtering addresses missing or corrupted channels with a learned channel-attention front end \cite{banville2022dsf}, and channel-dropout or amplitude-noise augmentation are standard ways to harden trained models \cite{rommel2022augment}. A recent EEG foundation-model benchmark finds that apparent channel-dropout fragility can depend on whether dropped channels are removed or zero-padded \cite{sirca2026beyond}. More broadly, missing-data handling in neuroimaging spans a spectrum from constant fills and spherical-spline interpolation of absent electrodes~\cite{perrin1989spherical}, through learned imputation and learned spatial filtering~\cite{banville2022dsf}, to conditional generative synthesis of missing modalities~\cite{bi2024graymatters,hu2025gmldm}. The four fills we study sit at the simple end of that spectrum, with no learned imputer. We separate two scoring effects, raw-retention inflation and zero-fill bias, and use the training-free, near-centered reservoir as the reference.
+
+\section{Methods}
+\label{sec:methods}
+\subsection{ERP Observation Model}
+Let $X_s^{(c)}\in\R^{C\times T}$ denote the trial-averaged ERP observation for subject $s$ and affective condition $c$, with $C$ electrodes (channels) and $T$ temporal samples. We treat $X_s^{(c)}$ as a noisy observation of an unobserved neural state trajectory:
+\begin{equation}\label{eq:obs}
+    \xi_{t+1}=f_\theta(\xi_t,u_t)+\eta_t,\qquad
+    x_t=H\xi_t+\epsilon_t,
+\end{equation}
+where $\xi_t$ is the latent neural state, $H$ the scalp measurement operator, and $\epsilon_t$ measurement and preprocessing noise; the signal-level perturbations below act on this model (Sec.~\ref{sec:rawsignal}).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.94\textwidth]{fig_reservoir_dyn.pdf}
+\caption{The fixed LIF reservoir as a dynamical system, linked to accuracy. (a)~Spike raster for one condition (shaded $=$ the $t\in[10,70)$ window, about $-160$ to $+73$~ms around onset at step $51$). (b)~Population state-space trajectory (first three principal components of the membrane state), from epoch start (dark) to end (light), for the three conditions; the trajectories largely overlap. (c)~Subject-level BA ($95\%$ CI) versus spectral radius $\rho$, clean and with $30\%$ of electrodes removed; $\rho=0$ removes the recurrence, and the dash-dot line marks the pre-specified $\rho=0.9$. (d)~Damage-spreading order parameter versus $\rho$; the dashed line marks its half-maximum crossing $\rho^\ast\approx0.82$, across which the mean firing rate doubles (Sec.~\ref{sec:clean}); dash-dot $=$ $\rho=0.9$, dotted $=$ the echo-state heuristic $\rho=1$.}
+\label{fig:resdyn}
+\end{figure*}
+
+\subsection{Spiking Reservoir Encoding}
+For each electrode trace, the signal is passed through ARSPI-Net's temporal encoding stage~\cite{lane2023arspi,lane2024arspi}, a fixed LIF reservoir of $256$ neurons with recurrent weights $W$ scaled to spectral radius $\rho=0.9$ (just above the half-maximum damage crossing $\rho^\ast\approx0.82$; Fig.~\ref{fig:resdyn}d), input weights $W_{\mathrm{in}}$, leak parameter $\beta=0.05$, and firing threshold $\vartheta=0.5$:
+\begin{align}
+    v_{t} &= \big[(1-\beta)\,(1-z_{t-1})\odot v_{t-1} + W z_{t-1} + W_{\mathrm{in}}x_t\big]_+, \\
+    z_{t} &= \Ind[v_{t}\geq \vartheta],
+\end{align}
+where $v_t$ is the membrane state, $z_t$ is the binary spike vector, $[\cdot]_+$ is rectification at zero, and the factor $(1-z_{t-1})$ resets every unit that spiked at the previous step. $W_{\mathrm{in}}$ and $W$ are drawn once from a Xavier-uniform law (seed $42$); the reservoir is fixed, and only the readout is trained. To test whether the recurrent dynamics matter, the same reservoir is rescaled to $\rho\in\{0,0.3,0.6,0.9,1.2,1.5\}$ with every other parameter fixed ($\rho=0$ removes the recurrence, leaving a feedforward LIF layer). A label-free order parameter measures damage spreading~\cite{bertschinger2004realtime}: two copies receive the same electrode drive, one unit's spike is flipped at the start of the analysis window, and the normalized Hamming distance between the copies' spike vectors, averaged over the steps more than ten after the flip and over $400$ sampled drives and flipped units, measures how far the flip spreads; $\rho^\ast$ is the half-maximum crossing of this curve over $\rho\in[0,2]$, interpolated on a grid of step $0.1$. A one-step branching count bounds where damage can first spread: a flipped spike in unit $j$ shifts the recurrent input of unit $i$ by $W_{ij}$ at the next step and flips its spike only if the pre-threshold membrane lies within $|W_{ij}|$ of $\vartheta$, so with $p_\vartheta$ the density of pre-threshold membrane values at $\vartheta$ (per unit of membrane potential, averaged over units and steps) and $\bar\kappa$ the mean column sum $\sum_i|W_{ij}|$ at unit spectral radius ($13.4$ for the seed-$42$ weights), one flip produces $m(\rho)\approx\rho\,p_\vartheta\bar\kappa$ further flips, and damage can spread once $m>1$, i.e.\ beyond $\rho_c\approx1/(p_\vartheta\bar\kappa)$. This threshold is set by the mean column $\ell_1$ norm of $W$ and the fraction of units near threshold, not by the unit circle, and it need not coincide with $\rho^\ast$ (Sec.~\ref{sec:clean}); the count ignores persisting sub-threshold differences (which add flips), rectification at zero (which erases some), and the flipped unit's own reset. The criterion is refutable: equating $\rho_c$ with $\rho^\ast\approx0.82$ would require $p_\vartheta\approx0.09$ per unit of membrane potential, far below the $1/\vartheta=2$ of a uniform density on $[0,\vartheta)$; the membrane histogram at the operating point, not reported here, is the direct test.
+
+Activity is summarized by six equal temporal bins over the window $t\in[10,70)$ in sample units; with stimulus onset at sample $51$ (Sec.~\ref{sec:data}), this spans about $-160$ to $+73$~ms around onset. For reservoir unit $j$ and bin $k$, the binned spike-count code is $b_{j,k}=\sum_{t\in\mathcal{B}_k} z_j(t)$, $k=1,\ldots,6$. Each electrode's spike-bin vector is projected onto one $64$-component PCA basis shared across electrodes, and the $34$ projections are concatenated into a trial-level representation $E_s^{(c)}\in\R^{2176}$. The encoding is a fixed composition of a nonlinear temporal map, spike-count binning, and the unsupervised projection:
+\begin{equation}\label{eq:operator}
+E=\phi_{\mathrm{PCA}}\!\big([b_1,\dots,b_6]\big)=\Phi(X),
+\end{equation}
+so $E=\Phi(X)$ is a fixed, label-free representation. The PCA basis is fitted, unsupervised, on the training subjects of each fold only; fitting it once over all subjects (transductive with respect to subject inclusion) is reported as a sensitivity check in Sec.~\ref{sec:clean}. A single-bin control (BSC$_1$, total spike count in the window) uses the identical pipeline. The window lies mostly before onset and excludes the later components the ERP-window baseline sees; because every epoch is z-scored over its full length, pre-stimulus samples also carry an offset set by the post-stimulus signal, so we do not attribute the reservoir's accuracy to a specific evoked component.
+
+
+
+
+\subsection{Baselines and Readout}
+Two classical baselines are evaluated under the same subject-grouped protocol. The band-power baseline (A0) uses Welch band power in five bands ($1$--$4$, $4$--$8$, $8$--$13$, $13$--$30$, $30$--$45$~Hz) per channel ($5\times34=170$ dimensions). The ERP-window baseline (A0$_e$) uses mean amplitude in three fixed windows, about $-120$--$0$~ms (pre-stimulus baseline), $50$--$250$~ms (early components), and $250$--$600$~ms (P300 and late positive potential) relative to onset, per channel ($3 \times 34 = 102$ dimensions).
+
+As a trained deep baseline we evaluate EEGNet-8,2~\cite{lawhern2018eegnet} on the raw $34\times256$ ERP signal under the identical subject-grouped folds, trained per fold (Adam, $80$ epochs) with train-only per-channel standardization, with and without augmentation by random channel dropout and additive noise.
+
+\subsection{Perturbation Diagnostics}
+The feature-coordinate experiment (Sec.~\ref{sec:perturb}) suppresses a dropped channel's feature block after extraction and refills it by one of four rules, isolating the fill convention; it applies to the fixed encoders. The signal-level experiment (Sec.~\ref{sec:rawsignal}) corrupts the test subjects' raw signal before any feature extraction, identically for every encoder including EEGNet (same draws in each fold; training on the clean signal): removal of $10$, $30$, or $50\%$ of the electrodes, white noise at $5$~dB SNR per channel, and an alignment shift of up to $\pm50$~ms, with all features recomputed from the corrupted signal. In Eq.~\eqref{eq:obs}, noise augments $\epsilon_t$, removal zeroes rows of $H$, and jitter shifts the sampling index of $x_t$. Performance is balanced accuracy (BA).
+
+\subsection{Scoring Conventions and Two Confounds}
+\label{sec:confound}
+Let $c=1/3$ be chance BA for three balanced classes. \emph{Raw retention} is $R=\mathrm{BA}_{\mathrm{pert}}/\mathrm{BA}_{\mathrm{clean}}$ and \emph{above-chance retention} is $A=(\mathrm{BA}_{\mathrm{pert}}-c)/(\mathrm{BA}_{\mathrm{clean}}-c)$. Channel dropout also requires a fill rule for a dropped channel's features: we compare zero-fill with train-mean fill, then add two in-distribution checks, train-fitted $k$-nearest-neighbor fill ($k{=}10$) and a within-sample spatial fill (mean of the retained channels).
+
+A robustness score describes the representation alone only if it is invariant under the reparametrizations of the features that leave the clean readout unchanged; for a train-standardized readout these include every per-feature affine map. Zero-fill scoring does not pass this test, and raw retention has a separate defect, a chance floor.
+
+\noindent\textbf{Proposition 1 (fill rule and re-centering).} \emph{Let $z=D_\sigma^{-1}(x-\mu)$ be the standardized readout input, $D_\sigma=\operatorname{diag}(\sigma)$, with $\mu,\sigma$ fitted on the training subjects, and let $S$ index the dropped coordinates. Zero-fill ($x_S=0$) and mean fill ($x_S=\mu_S$) differ by the fixed shift}
+\begin{equation}\label{eq:noninv}
+z_S^{\mathrm{zero}}-z_S^{\mathrm{mean}}=-D_{\sigma,S}^{-1}\mu_S .
+\end{equation}
+\emph{Under a constant re-centering $x\mapsto x-b$ the clean input and the mean-fill input are unchanged, whereas the zero-fill input shifts by $D_{\sigma,S}^{-1}b_S$; the two fills coincide if and only if $\mu_S=0$.}
+
+\noindent\emph{Proof.} Refitting on re-centered data gives $\mu-b$ and the same $\sigma$, so $z$ is unchanged and the mean fill maps to the origin for every $b$, while a zero-filled coordinate maps to $-(\mu_i-b_i)/\sigma_i$, a shift of $b_i/\sigma_i$.\hfill$\square$
+
+For a linear readout with class weights $w$ the two fills differ in the dropped block's contribution to each class logit by $\sum_{i\in S}w_i\mu_i/\sigma_i$ in magnitude, so they disagree only as far as the dropped features are non-centered ($k$NN fill, translation-equivariant, is likewise invariant to re-centering). Averaged over features and training folds, $|\mu_i|/\sigma_i$ is $0.06$ for the reservoir's PCA code, against $0.75$ for ERP-window and $1.20$ for band-power, which is why the reservoir is the reference in Sec.~\ref{sec:perturb}.
+
+\noindent\textbf{Proposition 2 (chance floor).} \emph{For a readout that scores no worse than chance in expectation, $\mathbb{E}[\mathrm{BA}_{\mathrm{pert}}]\ge c$, then $\mathbb{E}[R]\ge c/\mathrm{BA}_{\mathrm{clean}}$, a floor that rises toward $1$ as the clean score approaches chance, whereas $A=0$ at chance for every encoder. To first order in the sampling error $s$ of $\mathrm{BA}_{\mathrm{pert}}$, the sampling error of $A$ is $s/(\mathrm{BA}_{\mathrm{clean}}-c)$.}
+
+\noindent\emph{Proof.} Substitute $\mathrm{BA}_{\mathrm{pert}}=c$ in $R$; the error term is the delta method with $\mathrm{BA}_{\mathrm{clean}}$ held fixed.\hfill$\square$
+
+For the reservoir ($\mathrm{BA}_{\mathrm{clean}}=0.487$) the floor is $0.69$ and the error multiplier $6.5$, against $0.53$ and $3.4$ for ERP-window ($0.629$).
+
+\section{Experimental Protocol}
+\subsection{Dataset and Task}
+\label{sec:data}
+The experiments use trial-averaged affective ERP data from the Stress, Health, and the Psychophysiology of Emotion (SHAPE) project~\cite{shape}, collected by the Laboratory for Clinical Affective Neuroscience at Stony Brook University, with 211 subjects after exclusion of one anomalous subject record. Each subject contributes three affective conditions (negative, neutral, pleasant), yielding 633 subject-condition observations. Each recorded epoch ($34$ scalp channels at $1024$~Hz, $1.2$~s, baseline-corrected over the $200$~ms pre-stimulus interval) is analyzed as every fourth of its first $1024$ samples: $256$ samples at $256$~Hz spanning $-200$ to $+800$~ms around stimulus onset (onset at sample $51$), z-scored per channel within each epoch; the grand averages show the expected late-positive-potential enhancement for emotional over neutral stimuli (Fig.~\ref{fig:erp}).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.90\textwidth]{fig_erp.pdf}
+\caption{Trial-averaged affective ERP data (SHAPE cohort; grand averages over 211 subjects). (a)~Grand-average waveforms per condition at the most affect-discriminative channel; time $0$ $=$ stimulus onset (dashed), shaded $=$ the late ERP-window feature ($250$--$600$~ms). (b)~Spatiotemporal map of the emotional-minus-neutral difference across all $34$ channels (dotted $=$ the same window; $-$/$+$ mark the sign). (c)~Global field power per condition.}
+\label{fig:erp}
+\end{figure*}
+
+\subsection{Validation}
+\label{sec:validation}
+All results are computed under a single protocol: StratifiedGroupKFold (5 folds, seeds $42$--$46$), train-only standardization, and a balanced L2 logistic readout; observations from the same subject never span train and test, and EEGNet is trained on the same folds. Uncertainty is estimated at the level of the subject, not the fold: for each representation we average the out-of-fold class probabilities of every observation across the five repeated partitions, then form $95\%$ confidence intervals (CIs) from $4000$ resamples of the $211$ subjects with replacement, keeping a resampled subject's three observations together; macro one-vs-rest AUC uses the same pooled probabilities. Encoder, fill, and condition contrasts are paired differences under the same resampling. Pooling the partitions before resampling keeps the dependence among the $25$ overlapping fold estimates out of the intervals; no test treats folds as independent. The intervals are conditional on the sampled electrode masks (one draw per seed and fold), the fitted models, and the single reservoir weight draw: they measure subject sampling only.
+
+\section{Results}
+\subsection{Clean Classification and Controls}
+\label{sec:clean}
+Table~\ref{tab:clean} reports clean three-class performance. The trained EEGNet is the most accurate representation (BA $0.731$, $95\%$ CI $[0.701,0.763]$); among the fixed encoders, ERP-window features lead (A0$_e$, $0.629$), above band-power (A0, $0.494$) and the reservoir embedding (A1, $0.487$), whose subject-level intervals overlap. A within-subject label-permutation null ($20$ permutations) gives mean BA $0.33$ to $0.34$ (SD at most $0.024$, maximum $0.39$), so each fixed encoder carries genuine but modest signal.
+
+
+\begin{table}[t]
+\caption{Clean three-class performance with subject-level bootstrap $95\%$ CIs, macro-F1, and macro one-vs-rest ROC-AUC from the pooled out-of-fold probabilities. Chance is $1/3$ (AUC $0.5$); the trained model is compared on BA only.}
+\label{tab:clean}
+\centering
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{llccc}
+\toprule
+Cfg & Features & BA [95\% CI] & F1 & AUC \\
+\midrule
+D0 & EEGNet (raw, trained) & $0.731$ [$0.701$, $0.763$] & -- & -- \\
+A0$_e$ & ERP-window (102) & $0.629$ [$0.597$, $0.660$] & $0.629$ & $0.799$ \\
+A0 & Band-power (170) & $0.494$ [$0.460$, $0.528$] & $0.492$ & $0.682$ \\
+A1 & Reservoir \BSC{} (2176) & $0.487$ [$0.447$, $0.523$] & $0.485$ & $0.658$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\emph{Controls.} The single-bin total-count code (BSC$_1$, BA $0.487$ $[0.450,0.523]$) gives a paired difference \BSC{} minus BSC$_1$ of $+0.001$ BA ($95\%$ CI $[-0.044,+0.047]$) clean and $-0.001$ ($[-0.046,+0.041]$) with $30\%$ of electrodes removed: no six-bin advantage is detected, the intervals allow a few points of BA either way, and we claim no temporal-coding benefit for \BSC{}.
+
+\emph{Spectral radius and recurrent dynamics.} The recurrent dynamics contribute: relative to the pre-specified $\rho=0.9$, the feedforward layer ($\rho=0$) loses $0.049$ BA ($95\%$ CI $[-0.098,-0.002]$), and the strongly recurrent $\rho=1.5$ loses $0.057$ ($[-0.106,-0.011]$; $-0.058$, $[-0.103,-0.016]$, with $30\%$ of electrodes removed; Fig.~\ref{fig:resdyn}c). Between $\rho=0.3$ and $1.2$ the differences from $\rho=0.9$ are within noise, as is the $\rho=0$ contrast under $30\%$ removal ($-0.030$, $[-0.074,+0.016]$), so the optimum is broad. After an initial step at small $\rho$, the order parameter rises with its largest increment between $\rho=0.8$ and $0.9$ and saturates above $\rho\approx1.2$; its half-maximum crossing is $\rho^\ast\approx0.82$, below the echo-state heuristic $\rho=1$ (Fig.~\ref{fig:resdyn}d), and the mean firing rate doubles across it ($0.06$ at $\rho=0.6$, $0.12$ at $\rho=0.9$). The crossing is not where damage first spreads: relative to the $2r(1-r)$ at which unrelated spike trains at rate $r$ differ, the damage rises from $0$ at $\rho=0$ to $0.72$ by $\rho=0.3$ and stays within $0.72$--$0.84$ through $1.5$, so the flip persists at every $\rho\ge0.3$ and the rise across $\rho^\ast$ is largely the rise of the firing rate. This long-lag damage does not fix the one-step count $m$: a sub-threshold difference decays with time constant $1/\beta=20$ steps absent intervening spikes or resets, so damage can persist with $m<1$, and $\rho_c$ stays undetermined until $p_\vartheta$ is measured. We therefore read $\rho^\ast$, the title's edge of stability, as a rate-associated crossover of the damage statistic, not as a measured transition between ordered and chaotic dynamics. The pre-specified operating point lies just above it, inside the broad optimum.
+
+Fitting the PCA basis on all subjects (transductive) gives BA $0.485$ $[0.447,0.521]$, against $0.487$, and $\{16,32,64,128\}$ components give $0.477$--$0.507$, inside the $64$-component interval: neither the pooled basis (no evidence of optimistic inflation under this subject-grouped protocol) nor the component count accounts for the results.
+
+\subsection{Two Confounds in Channel-Dropout Robustness}
+\label{sec:perturb}
+Channel dropout is where the reported conclusion depends on the scoring convention (Table~\ref{tab:dropconf}, Fig.~\ref{fig:impute}).
+
+\emph{Accuracy-floor effect.} With zero-imputation, raw retention ranks the reservoir first at $30\%$ dropout: its BA does not move (retention $100\%$, against $85\%$ for ERP-window; $97\%$ under signal-level removal, Table~\ref{tab:rawsignal}). By Proposition~2 this ranking is nearly forced: the reservoir's raw retention cannot fall below $0.69$ unless its perturbed score falls below chance, and under the fixed-denominator approximation its above-chance retention carries a $95\%$ interval of roughly $\pm0.25$ (against $\pm0.11$ for ERP-window), so the retention columns of Table~\ref{tab:dropconf} are diagnostics only.
+
+\emph{Zero-imputation effect.} At $30\%$ dropout, train-mean imputation (Sec.~\ref{sec:confound}) raises band-power from $0.417$ to $0.472$ and ERP-window features from $0.536$ to $0.578$, while the reservoir does not change ($0.487$ under both fills). ERP-window features lead the reservoir under every fill, but the fill sets the size of the lead: the paired difference ERP-window minus reservoir is $+0.049$ BA ($95\%$ CI $[+0.003,+0.095]$) under zero-fill and $+0.092$ to $+0.107$ under the three in-distribution fills, whose CIs all lie above $+0.04$. Zero-imputation thus halves the measured advantage of the strongest fixed encoder, because only the non-centered encoder's score moves with the constant.
+
+\emph{Generality.} The mean-minus-zero gaps at $30\%$ dropout are $+0.042$ ($[+0.011,+0.074]$) for ERP-window, $+0.055$ ($[+0.024,+0.087]$) for band-power, and $-0.000$ ($[-0.022,+0.022]$) for the reservoir, ordered as the non-centeredness in Eq.~\eqref{eq:noninv}. Across $10$--$50\%$ dropout the reservoir's two constant-fill scores agree within $0.016$~BA and no CI excludes zero, whereas the gap of the non-centered encoders varies with the rate and is significant for band-power at $20$ and $30\%$ and for ERP-window at $30\%$ (Fig.~\ref{fig:impute}a). $k$NN fill differs in kind (Fig.~\ref{fig:impute}b): it adds content rather than moving the origin, and at $40$ and $50\%$ it significantly raises every encoder, ERP-window most ($+0.13$~BA at $50\%$, $[+0.09,+0.16]$); at $30\%$ they give $0.610$/$0.589$ (ERP-window), $0.483$/$0.488$ (band-power), $0.507$/$0.482$ (reservoir).
+
+\begin{table}[t]
+\caption{Channel dropout at $30\%$: naive and corrected evaluation. ``Zero'' and ``Mean'' denote zero- and train-mean fill of dropped channels; for EEGNet (raw-signal model) ``Zero'' is signal-level removal of $30\%$ of the electrodes (Table~\ref{tab:rawsignal}). Raw-ret. is $\mathrm{BA}_{\mathrm{zero}}/\mathrm{BA}_{\mathrm{clean}}$; AC-ret. is above-chance retention under mean fill (removal for EEGNet); ``+aug.'' denotes train-time augmentation. Per-cell $95\%$ CIs are $\pm0.03$ to $\pm0.04$.}
+\label{tab:dropconf}
+\centering
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lccccc}
+\toprule
+Representation & Clean & Zero & Mean & raw-ret. & AC-ret. \\
+\midrule
+EEGNet & $0.731$ & $0.660$ & -- & $90\%$ & $82\%$ \\
+\quad +\,aug. & $0.731$ & $0.703$ & -- & $96\%$ & $93\%$ \\
+ERP-window & $0.629$ & $0.536$ & $0.578$ & $85\%$ & $83\%$ \\
+Band-power & $0.494$ & $0.417$ & $0.472$ & $84\%$ & $86\%$ \\
+Reservoir & $0.487$ & $0.487$ & $0.487$ & $100\%$ & $100\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.93\columnwidth]{fig_impute_subj.pdf}
+\caption{How much the fill rule alone moves channel-dropout accuracy: paired subject-level change in BA relative to zero-fill, with $95\%$ CIs, versus the share of electrodes dropped. (a)~Train-mean fill, which differs from zero-fill only by the shift of Eq.~\eqref{eq:noninv}; the legend gives each encoder's mean $|\mu|/\sigma$. (b)~$k$NN fill, which changes the block's content.}
+\label{fig:impute}
+\end{figure}
+
+\subsection{Signal-Level Perturbations}
+\label{sec:rawsignal}
+In the signal-level experiment (Table~\ref{tab:rawsignal}), for band-power and ERP-window a removed electrode is exactly zero-fill (their removal rows equal the zero-fill scores of Sec.~\ref{sec:perturb}); for the reservoir a silent electrode's zero spike-count block projects away from the PCA origin, so the shift of Eq.~\eqref{eq:noninv} reappears before the projection.
+
+First, ERP-window features remain the most accurate fixed encoder under every condition; their paired lead over the reservoir is $+0.06$ to $+0.14$~BA, every CI excluding zero. Second, the reservoir holds its accuracy through $30\%$ removal (loss $0.013$, $95\%$ CI $[-0.014,+0.041]$) but falls to $0.393$ at $50\%$, close to chance (loss $0.093$, $[+0.055,+0.131]$), so its fill invariance is a property of its feature space, not robustness to missing electrodes. Third, $5$~dB noise costs band-power $0.059$~BA ($[+0.019,+0.098]$) while ERP-window and the reservoir stay within noise of their clean scores, and $\pm50$~ms jitter moves no fixed encoder.
+
+\emph{Training effect.} EEGNet ingests the same corrupted signal and is the most accurate encoder in every condition (paired lead over ERP-window $+0.08$ to $+0.20$, every CI excluding zero); unaugmented, it loses $0.071$~BA at $30\%$ removal and $0.144$ at $50\%$. Re-training with channel-dropout and amplitude-noise augmentation leaves clean accuracy unchanged (paired difference $-0.000$, $[-0.025,+0.022]$) and cuts these losses by more than half, to $0.028$ and $0.062$: the augmented network is ahead by $+0.043$ ($[+0.009,+0.077]$) at $30\%$ and $+0.082$ ($[+0.049,+0.115]$) at $50\%$. For this architecture, dropout robustness is thus set largely by the training procedure (Fig.~\ref{fig:deapaug}b).
+
+\begin{table}[t]
+\caption{Signal-level perturbations: subject-level BA with every representation recomputed from the corrupted test signal (same draws for all encoders; training on clean data, EEGNet also with augmentation). Per-cell $95\%$ CIs are $\pm0.03$ to $\pm0.04$.}
+\label{tab:rawsignal}
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+Condition & Band-pow. & ERP-win. & Reserv. & EEGNet & +aug. \\
+\midrule
+Clean & $0.494$ & $0.629$ & $0.487$ & $0.731$ & $0.731$ \\
+$10\%$ removed & $0.476$ & $0.602$ & $0.469$ & $0.719$ & $0.722$ \\
+$30\%$ removed & $0.417$ & $0.536$ & $0.474$ & $0.660$ & $0.703$ \\
+$50\%$ removed & $0.450$ & $0.474$ & $0.393$ & $0.588$ & $0.670$ \\
+Noise $5$~dB & $0.436$ & $0.619$ & $0.479$ & $0.738$ & $0.727$ \\
+Jitter $\pm50$~ms & $0.496$ & $0.626$ & $0.493$ & $0.719$ & $0.708$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{External Check of the Fill-Rule Effect}
+\label{sec:deap}
+As an external check of the imputation effect, we evaluate band-power features (four log-power bands) on DEAP~\cite{koelstra2012deap}, an independent affective EEG dataset (32 subjects, 40 trials each), on binary valence under the standard within-subject protocol (per-subject stratified $5$-fold; DEAP band-power is at chance cross-subject). The same pattern appears, larger than in SHAPE (Fig.~\ref{fig:deapaug}a): at $30\%$ dropout, band-power scores BA $0.540$ under zero-imputation ($95\%$ CI $[0.528,0.552]$), $0.621$ $[0.591,0.648]$ under mean, and $0.638$ $[0.607,0.668]$ under $k$NN imputation (CIs from resampling the $32$ subjects' mean BA). Against clean BA $0.639$, zero-imputation indicates a $0.10$ BA loss and $k$NN almost none: on a second dataset, task, and montage, the imputation convention alone moves measured robustness by up to $0.11$ BA.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.93\columnwidth]{fig_deap_aug.pdf}
+\caption{(a)~External check on DEAP~\cite{koelstra2012deap} (32 subjects, within-subject binary valence, band-power; clean BA $0.639$; CIs from resampling subjects). (b)~EEGNet without and with channel-dropout and noise augmentation under the conditions of Table~\ref{tab:rawsignal} (subject-level $95\%$ CIs): augmentation leaves clean accuracy unchanged and more than halves the loss to electrode removal.}
+\label{fig:deapaug}
+\end{figure}
+
+\section{Discussion}
+The main result is methodological: neither raw retention nor zero-fill scoring describes the representation alone (Propositions~1 and~2), and for trained models augmentation is a third, training-side factor. The fixed reservoir should not be described as the most channel-robust encoder: ERP-window features lead it under every fill at $30\%$ dropout and under every signal-level condition, zero-imputation halves that lead, and the augmented EEGNet is the most accurate and the strongest dropout baseline. The reservoir remains a useful near-centered reference, but its invariance belongs to its feature space and does not survive signal-level removal of half the electrodes. Its dynamics still matter: removing the recurrence or driving it strongly recurrent lowers accuracy, and the operating point lies just above a rate-associated crossover of the damage statistic; whether that crossover is also the ordered-to-chaotic transition of other reservoirs~\cite{bertschinger2004realtime,legenstein2007edge} turns on the unmeasured membrane density at threshold.
+
+We suggest a minimal reporting standard for EEG robustness studies: absolute accuracy with subject-level uncertainty alongside raw and above-chance retention, a stated channel-fill rule with at least one in-distribution fill, and trained-model results with and without perturbation augmentation.
+
+\textbf{Limitations.} The primary cohort is a single trial-averaged affective-ERP dataset. The fill-rule effect follows from Proposition~1 and holds across three fills, five dropout rates, and DEAP; paradigm-matched multi-cohort ERP validation would strengthen it. EEGNet uses one fixed recipe without a hyperparameter search, and the spectral-radius sweep uses a single draw of the reservoir weights and reports no membrane histogram, leaving $\rho_c$ unmeasured. Adversarial attacks, montage shifts, and graph topology are outside its scope.
+
+\section{Conclusion}
+Channel-dropout robustness rankings for affective-ERP representations depend on the scoring protocol: raw retention has a chance floor, zero-fill depends on the coordinate origin, and trained models need their augmentation state made explicit. Zero-fill halves the measured lead of the strongest fixed encoder, the near-centered spiking reservoir makes these effects visible without being the most accurate encoder, and the fill-rule effect replicates on DEAP.
+
+\textbf{Data Availability.} SHAPE was collected by the Stony Brook University Laboratory for Clinical Affective Neuroscience (data requests: \cite{shape}); DEAP is public~\cite{koelstra2012deap}.
+
+\IEEEtriggeratref{16}
+\begin{thebibliography}{99}
+
+\bibitem{maass2002real}
+W. Maass, T. Natschl\"ager, and H. Markram, ``Real-time computing without stable states: A new framework for neural computation based on perturbations,'' \emph{Neural Computation}, vol. 14, no. 11, pp. 2531--2560, 2002.
+
+\bibitem{jaeger2001echo}
+H. Jaeger, ``The echo state approach to analysing and training recurrent neural networks,'' German National Research Center for Information Technology, GMD Report 148, 2001.
+
+\bibitem{jaeger2004harnessing}
+H. Jaeger and H. Haas, ``Harnessing nonlinearity: Predicting chaotic systems and saving energy in wireless communication,'' \emph{Science}, vol. 304, no. 5667, pp. 78--80, 2004.
+
+\bibitem{lukosevicius2009reservoir}
+M. Luko\v{s}evi\v{c}ius and H. Jaeger, ``Reservoir computing approaches to recurrent neural network training,'' \emph{Computer Science Review}, vol. 3, no. 3, pp. 127--149, 2009.
+
+\bibitem{bertschinger2004realtime}
+N. Bertschinger and T. Natschl\"ager, ``Real-time computation at the edge of chaos in recurrent neural networks,'' \emph{Neural Computation}, vol. 16, no. 7, pp. 1413--1436, 2004.
+
+\bibitem{legenstein2007edge}
+R. Legenstein and W. Maass, ``Edge of chaos and prediction of computational performance for neural circuit models,'' \emph{Neural Networks}, vol. 20, no. 3, pp. 323--334, 2007.
+
+\bibitem{diehl2015unsupervised}
+P. U. Diehl and M. Cook, ``Unsupervised learning of digit recognition using spike-timing-dependent plasticity,'' \emph{Frontiers in Computational Neuroscience}, vol. 9, p. 99, 2015.
+
+\bibitem{roy2019towards}
+K. Roy, A. Jaiswal, and P. Panda, ``Towards spike-based machine intelligence with neuromorphic computing,'' \emph{Nature}, vol. 575, pp. 607--617, 2019.
+
+\bibitem{lane2023arspi}
+A. Lane, W. Tang, and B. Nelson, ``Towards ARSPI-Net: Development of an efficient hybrid deep learning framework,'' in \emph{Proc. IEEE Long Island Systems, Applications and Technology Conf. (LISAT)}, Old Westbury, NY, USA, 2023, pp. 1--8.
+
+\bibitem{lane2024arspi}
+A. Lane, W. Tang, and B. Nelson, ``Towards ARSPI-Net: Advancing EEG feature extraction with neuromorphic algorithms,'' in \emph{Proc. IEEE Long Island Systems, Applications and Technology Conf. (LISAT)}, Holtsville, NY, USA, 2024, pp. 1--8.
+
+\bibitem{gong2023sglnet}
+P. Gong, P. Wang, Y. Zhou, and D. Zhang, ``A spiking neural network with adaptive graph convolution and LSTM for EEG-based brain-computer interfaces,'' \emph{IEEE Trans. Neural Syst. Rehabil. Eng.}, vol. 31, pp. 1440--1450, 2023.
+
+\bibitem{hjorth1970eeg}
+B. Hjorth, ``EEG analysis based on time domain properties,'' \emph{Electroencephalography and Clinical Neurophysiology}, vol. 29, no. 3, pp. 306--310, 1970.
+
+\bibitem{subasi2007eeg}
+A. Subasi, ``EEG signal classification using wavelet feature extraction and a mixture of expert model,'' \emph{Expert Systems with Applications}, vol. 32, no. 4, pp. 1084--1093, 2007.
+
+\bibitem{makeig2002dynamic}
+S. Makeig, M. Westerfield, T.-P. Jung, S. Enghoff, J. Townsend, E. Courchesne, and T. J. Sejnowski, ``Dynamic brain sources of visual evoked responses,'' \emph{Science}, vol. 295, no. 5555, pp. 690--694, 2002.
+
+\bibitem{blankertz2011singletrial}
+B. Blankertz, S. Lemm, M. Treder, S. Haufe, and K.-R. M\"uller, ``Single-trial analysis and classification of ERP components: a tutorial,'' \emph{NeuroImage}, vol. 56, no. 2, pp. 814--825, 2011.
+
+\bibitem{lawhern2018eegnet}
+V. J. Lawhern, A. J. Solon, N. R. Waytowich, S. M. Gordon, C. P. Hung, and B. J. Lance, ``EEGNet: A compact convolutional neural network for EEG-based brain-computer interfaces,'' \emph{Journal of Neural Engineering}, vol. 15, no. 5, 056013, 2018.
+
+\bibitem{craik2019deep}
+A. Craik, Y. He, and J. L. Contreras-Vidal, ``Deep learning for electroencephalogram (EEG) classification tasks: A review,'' \emph{Journal of Neural Engineering}, vol. 16, no. 3, 031001, 2019.
+
+\bibitem{chiang2023depression}
+H.-S. Chiang, M.-Y. Chen, and L.-S. Liao, ``Cognitive depression detection cyber-medical system based on EEG analysis and deep learning approaches,'' \emph{IEEE J. Biomed. Health Inform.}, vol. 27, no. 2, pp. 608--616, 2023.
+
+\bibitem{guo2025mma}
+Y. Guo, K. Yang, and Y. Wu, ``A multi-modality attention network for driver fatigue detection based on frontal EEG, EDA and PPG signals,'' \emph{IEEE J. Biomed. Health Inform.}, vol. 29, no. 6, pp. 4009--4022, 2025.
+
+\bibitem{delpup2025preprocessing}
+F. Del Pup, A. Zanola, L. F. Tshimanga, A. Bertoldo, and M. Atzori, ``The more, the better? Evaluating the role of EEG preprocessing for deep learning applications,'' \emph{IEEE Trans. Neural Syst. Rehabil. Eng.}, vol. 33, pp. 1061--1070, 2025.
+
+\bibitem{kornblith2019similarity}
+S. Kornblith, M. Norouzi, H. Lee, and G. Hinton, ``Similarity of neural network representations revisited,'' in \emph{Proc. Int. Conf. Machine Learning}, 2019, pp. 3519--3529.
+
+\bibitem{sirca2026beyond}
+U. \v{S}irca, M. Alimardani, S. Zafeiriou, and K. Barmpas, ``Beyond accuracy: Robustness, interpretability and expressiveness of EEG foundation models,'' \emph{arXiv:2605.17562}, 2026.
+
+\bibitem{banville2022dsf}
+H. Banville, S. U. N. Wood, C. Aimone, D.-A. Engemann, and A. Gramfort, ``Robust learning from corrupted EEG with dynamic spatial filtering,'' \emph{NeuroImage}, vol. 251, 118994, 2022.
+
+\bibitem{rommel2022augment}
+C. Rommel, J. Paillard, T. Moreau, and A. Gramfort, ``Data augmentation for learning predictive models on EEG: A systematic comparison,'' \emph{Journal of Neural Engineering}, vol. 19, no. 6, 066020, 2022.
+
+\bibitem{perrin1989spherical}
+F. Perrin, J. Pernier, O. Bertrand, and J. F. Echallier, ``Spherical splines for scalp potential and current density mapping,'' \emph{Electroencephalography and Clinical Neurophysiology}, vol. 72, no. 2, pp. 184--187, 1989.
+
+\bibitem{bi2024graymatters}
+Y. Bi, A. Abrol, S. Jia, J. Sui, and V. D. Calhoun, ``Gray matters: ViT-GAN framework for identifying schizophrenia biomarkers linking structural MRI and functional network connectivity,'' \emph{NeuroImage}, vol. 297, 120674, 2024.
+
+\bibitem{hu2025gmldm}
+X. Hu, J. Yang, S. Jia, Y. Bi, and V. D. Calhoun, ``GM-LDM: Latent diffusion model for brain biomarker identification through functional data-driven gray matter synthesis,'' arXiv:2506.12719, 2025.
+
+\bibitem{koelstra2012deap}
+S. Koelstra \emph{et al.}, ``DEAP: A database for emotion analysis using physiological signals,'' \emph{IEEE Trans. Affective Computing}, vol. 3, no. 1, pp. 18--31, 2012.
+
+\bibitem{shape}
+Laboratory for Clinical Affective Neuroscience, ``The Stress, Health, and the Psychophysiology of Emotion (SHAPE) project,'' Stony Brook University, Stony Brook, NY, USA. [Online]. Available: \url{https://lab-can.com}
+
+\end{thebibliography}
+
+\end{document}

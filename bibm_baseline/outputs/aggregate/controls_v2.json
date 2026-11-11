@@ -1,0 +1,61 @@
+{
+  "ERP_window": {
+    "clean": [
+      0.6162,
+      0.0158
+    ],
+    "amp5": [
+      0.4608,
+      0.0164
+    ],
+    "drop30": [
+      0.4544,
+      0.026
+    ]
+  },
+  "ERP_window_F1": {
+    "clean": 0.6147,
+    "amp5": 0.4596,
+    "drop30": 0.4207
+  },
+  "ERP_window_AUC_clean": 0.7895,
+  "ERP_def": {
+    "windows_ms": [
+      [
+        80,
+        200
+      ],
+      [
+        250,
+        450
+      ],
+      [
+        450,
+        800
+      ]
+    ],
+    "n_features": 102
+  },
+  "RP_multiseed": {
+    "n_seeds": 5,
+    "clean_mean": 0.5014,
+    "clean_sd": 0.0019,
+    "amp5_mean": 0.3989,
+    "amp5_sd": 0.0077,
+    "clean_all": [
+      0.5019,
+      0.5031,
+      0.5032,
+      0.5,
+      0.499
+    ],
+    "amp5_all": [
+      0.4082,
+      0.3879,
+      0.395,
+      0.401,
+      0.4023
+    ]
+  },
+  "protocol": "StratifiedGroupKFold(5,shuffle); seeds 42-46; train-only StandardScaler; balanced L2 logistic (max_iter=2000)"
+}
