@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import sys
 
+import numpy as np
+
 from common import base_parser, cv_settings, protocol, write  # noqa: E402
 from sequel import config as C, datasets, features, reservoir  # noqa: E402
 
@@ -31,8 +33,14 @@ def main() -> int:
         for norm in args.norms:
             ep = s.to_epochs("fir", norm)
             win = C.window_samples(C.RES_WINDOWS_REL_MS[args.window], onset=ep.onset)
-            enc = {"BSC6": (reservoir.LIFReservoir().encode(ep.X, win, 6).counts, True),
-                   "Amp6": (features.amplitude_bins(ep.X, win, 6), False),
+            bsc = reservoir.LIFReservoir().encode(ep.X, win, 6).counts
+            amp = features.amplitude_bins(ep.X, win, 6)
+            enc = {"BSC6": (bsc, True),
+                   "Amp6": (amp, False),
+                   # Fusion: per-channel concatenation of the reservoir embedding (fold-local PCA)
+                   # and the matched amplitude code. Beating Amp6 alone means the reservoir adds
+                   # information that binning does not carry.
+                   "BSC6+Amp6": ((bsc, amp), "fusion"),
                    "LPP-300-1000": (features.lpp_window(ep.X, ep.times_ms), False),
                    "ERP-window": (features.erp_windows(ep.X, ep.times_ms), False),
                    "Band-power": (features.bandpower(ep.X), False)}
@@ -40,7 +48,10 @@ def main() -> int:
             preds = {}
             for e, (B, pca) in enc.items():
                 def fn(seed, fold, tr, te, B=B, pca=pca):
-                    if pca:
+                    if pca == "fusion":
+                        P = features.BlockPCA().fit(B[0][tr])
+                        E = np.concatenate([P.transform(B[0]), B[1]], axis=2)
+                    elif pca:
                         P = features.BlockPCA().fit(B[tr])
                         E = P.transform(B)
                     else:
@@ -50,10 +61,12 @@ def main() -> int:
                 preds[e] = protocol.pooled_oof(fn, ep.y, splits)["clean"]
             ba = protocol.bootstrap_ba(ep.y, ep.groups, preds, n_boot)
             con = {f"BSC6_minus_{e}": protocol.paired_diff(ep.y, ep.groups, preds["BSC6"], preds[e], n_boot)
-                   for e in enc if e != "BSC6"}
+                   for e in enc if e not in ("BSC6", "BSC6+Amp6")}
+            con["fusion_minus_Amp6"] = protocol.paired_diff(ep.y, ep.groups, preds["BSC6+Amp6"], preds["Amp6"], n_boot)
+            con["fusion_minus_BSC6"] = protocol.paired_diff(ep.y, ep.groups, preds["BSC6+Amp6"], preds["BSC6"], n_boot)
             out["results"][f"{name}|{norm}"] = {"chance": 1.0 / len(set(ep.y)), "BA": ba, "contrasts": con}
             print(f"[{name}|{norm}] " + " ".join(f"{e}={ba[e]['BA']:.3f}" for e in enc) + " | " +
-                  " ".join(f"{k[11:]}:{v['mean_diff']:+.3f}[{v['ci95'][0]:+.3f},{v['ci95'][1]:+.3f}]"
+                  " ".join(f"{k}:{v['mean_diff']:+.3f}[{v['ci95'][0]:+.3f},{v['ci95'][1]:+.3f}]"
                            for k, v in con.items()), flush=True)
     write(out, args.out or "encoder_contrasts.json", args)
     return 0

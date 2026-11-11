@@ -114,7 +114,7 @@ def riemann_pipeline(kind: str = "erpcov", seed: int = 0, nfilter: int = 4):
     from sklearn.preprocessing import StandardScaler
 
     cov = (ERPCovariances(estimator="lwf") if kind == "erpcov"
-           else XdawnCovariances(nfilter=nfilter, estimator="lwf"))
+           else XdawnCovariances(nfilter=nfilter, estimator="lwf", xdawn_estimator="lwf"))
     return make_pipeline(cov, TangentSpace(metric="riemann"), StandardScaler(),
                          LogisticRegression(max_iter=2000, C=1.0, class_weight="balanced",
                                             solver="lbfgs", random_state=seed))

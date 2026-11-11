@@ -50,3 +50,18 @@ def test_riemann_learns_and_tolerates_zeroed_channel(kind):
     Xz[:, :, 5] = 0.0                               # a removed electrode must not break SPD estimation
     p = clf.predict_proba(Xz)
     assert np.isfinite(p).all() and np.allclose(p.sum(1), 1)
+
+
+@pytest.mark.parametrize("kind", ["erpcov", "xdawn"])
+def test_riemann_handles_average_reference_rank_deficiency(kind):
+    X, y = _toy(seed=3)
+    # Mean-of-two-sites reference (ERP CORE P3/N400 use P9/P10): those two channels become
+    # exact negatives, so every covariance is singular. On real ERP CORE P3 data, unregularized
+    # xDAWN failed on 13 of 25 folds and shrinkage (xdawn_estimator="lwf") on none. This toy does
+    # not trigger the failure with the old setting either (it depends on solver numerics), so it
+    # checks that the pipeline returns finite probabilities on singular input, not the regression.
+    ref = X[:, :, [0, 1]].mean(axis=2, keepdims=True)
+    X = X - ref
+    assert np.abs(X[:, :, 0] + X[:, :, 1]).max() < 1e-12
+    p = trained.RiemannClassifier(kind).fit(X, y).predict_proba(X)
+    assert np.isfinite(p).all()
