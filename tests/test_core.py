@@ -261,3 +261,19 @@ def test_lpp_window_is_mean_300_1000(legacy):
     f = features.lpp_window(legacy.X, legacy.times_ms)
     m = (legacy.times_ms >= 300) & (legacy.times_ms < 1000)
     np.testing.assert_allclose(f[:, :, 0], legacy.X[:, m, :].mean(axis=1))
+
+
+def test_global_scale_is_one_scalar_and_count_independent():
+    rng = np.random.default_rng(9)
+    times = np.arange(-50, 250) * 4.0
+    sig = np.where(times > 300, 5.0, 0.0)
+    few = sig + rng.normal(0, 4.0, (50, 300)).mean(0) * 1.0      # noisy average (few trials)
+    many = sig + rng.normal(0, 4.0, (800, 300)).mean(0)          # clean average (many trials)
+    X = np.stack([few, many])[:, :, None]
+    g = data.normalize(X, times, "global_scale")
+    np.testing.assert_allclose(g * X.std(), X)                  # a single common scale
+    b = data.normalize(X, times, "baseline_z")
+    late = times > 300
+    # baseline_z shrinks the noisier average's effect relative to the cleaner one
+    assert b[0, late].mean() < 0.5 * b[1, late].mean()
+    assert g[0, late].mean() == pytest.approx(g[1, late].mean(), rel=0.1)

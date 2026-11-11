@@ -20,6 +20,8 @@ Preprocessing choices exposed here are exactly the ones the journal paper varies
                                pre-stimulus samples only.
                 ``pre_center`` subtract the pre-stimulus mean, divide by the whole-epoch SD
                                (keeps epoch_z's scale normalization, removes its offset leak).
+                ``global_scale`` microvolts divided by one dataset-wide SD (no per-epoch
+                               scaling, so trial counts cannot rescale conditions).
                 ``none``       microvolts as recorded (baseline-corrected upstream).
 """
 from __future__ import annotations
@@ -119,6 +121,15 @@ def normalize(X: np.ndarray, times_ms: np.ndarray, mode: str = "epoch_z") -> np.
     """Per-epoch, per-channel normalization. ``X`` is (N, T, ch)."""
     if mode == "none":
         return X.copy()
+    if mode == "global_scale":
+        # One label-free scalar for the whole dataset: microvolt shapes are kept, and the
+        # scale cannot differ between conditions. Per-epoch normalizations (epoch_z,
+        # baseline_z, pre_center) divide each condition average by its own SD, which
+        # depends on how many trials it averages (noise SD ~ 1/sqrt(n)); with unequal trial
+        # counts (oddball: 40 rare vs 156 frequent) that rescales conditions differently and
+        # can cancel the effect itself (ERP CORE P3 at Pz: d_z 1.05 in uV, 0.05 baseline_z).
+        sd = X.std()
+        return X / (sd if sd > 0 else 1.0)
     if mode == "pre_center":
         # Separates the two things epoch_z does: the pre-stimulus mean is removed (no
         # post-stimulus offset reaches the baseline) but the per-epoch scale is the
