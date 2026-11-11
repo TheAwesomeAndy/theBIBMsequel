@@ -127,8 +127,21 @@ def average_conditions(trials: np.ndarray, conds: np.ndarray, cond_ids: list[int
 
 
 # -------------------------------------------------------------------------------- SHAPE
-def shape(shape_dir: str | None = None) -> ERPSet:
+# Hypothesis, NOT confirmed by the lab: channels 0-31 follow the BioSemi-32 standard order
+# and 32-33 are FCz and Iz (experiments/check_shape_montage.py: Mantel r = -0.673 against a
+# random-order null of 0.000 +- 0.046; ch32 tracks FC1/FC2/Fz, ch33 tracks Oz/O1/O2).
+SHAPE_MONTAGE_HYPOTHESIS = ["Fp1", "AF3", "F7", "F3", "FC1", "FC5", "T7", "C3", "CP1", "CP5", "P7",
+                            "P3", "Pz", "PO3", "O1", "Oz", "O2", "PO4", "P4", "P8", "CP6", "CP2",
+                            "C4", "T8", "FC6", "FC2", "F4", "F8", "AF4", "Fp2", "Fz", "Cz", "FCz", "Iz"]
+
+
+def shape(shape_dir: str | None = None, montage_hypothesis: bool = False) -> ERPSet:
     raw, y, g = data.load_shape_raw(shape_dir)
+    if montage_hypothesis:
+        names = SHAPE_MONTAGE_HYPOTHESIS
+        return ERPSet("shape", raw, y, g, C.FS_RAW, C.ONSET_RAW, names, ["Neg", "Neu", "Pos"],
+                      template_positions(names), None,
+                      {"montage": "HYPOTHESIS (BioSemi-32 order + FCz, Iz); awaiting lab confirmation"})
     return ERPSet("shape", raw, y, g, C.FS_RAW, C.ONSET_RAW, [f"ch{i:02d}" for i in range(raw.shape[2])],
                   ["Neg", "Neu", "Pos"], None, None, {"montage": "unknown (requested from the lab)"})
 

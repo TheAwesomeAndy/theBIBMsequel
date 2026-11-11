@@ -73,6 +73,7 @@ def run_dataset(ep, positions, splits, n_boot, rates, window_ms=C.RES_WINDOWS_RE
     win = C.window_samples(window_ms, onset=ep.onset)
     enc = encoders(win)
     enc["ERP-window"] = (lambda X: features.erp_windows(X, ep.times_ms), False)
+    enc["LPP-300-1000"] = (lambda X: features.lpp_window(X, ep.times_ms), False)
     preds, th = {}, {}
     for name, (fn, pca) in enc.items():
         t0 = time.time()

@@ -39,6 +39,15 @@ def erp_windows(X: np.ndarray, times_ms: np.ndarray, windows=C.ERP_WINDOWS_REL_M
     return out
 
 
+def lpp_window(X: np.ndarray, times_ms: np.ndarray, window=(300, 1000)) -> np.ndarray:
+    """Conventional LPP score per channel: mean amplitude 300-1000 ms after onset.
+
+    The scoring window of the SHAPE lab's published work (Nelson et al., 2015), which pools
+    Pz/P3/P4 and Oz/O1/O2; per-channel values are kept so the readout can weight sites.
+    """
+    return erp_windows(X, times_ms, [window])
+
+
 def amplitude_bins(X: np.ndarray, window: tuple[int, int], n_bins: int = 6) -> np.ndarray:
     """Matched non-spiking control: mean amplitude in the reservoir's own bins.
 

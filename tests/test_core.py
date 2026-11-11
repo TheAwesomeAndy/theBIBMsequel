@@ -255,3 +255,9 @@ def test_pre_center_removes_offset_leak_keeps_scale(raw):
             np.testing.assert_allclose(b[:, :C.ONSET].mean(axis=1), 0, atol=1e-9)
         else:                                               # epoch_z moves the baseline offset
             assert np.abs(a[:, pre].mean(1) - b[:, pre].mean(1)).max() > 0.1
+
+
+def test_lpp_window_is_mean_300_1000(legacy):
+    f = features.lpp_window(legacy.X, legacy.times_ms)
+    m = (legacy.times_ms >= 300) & (legacy.times_ms < 1000)
+    np.testing.assert_allclose(f[:, :, 0], legacy.X[:, m, :].mean(axis=1))
