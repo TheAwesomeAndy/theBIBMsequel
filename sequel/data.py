@@ -18,6 +18,8 @@ Preprocessing choices exposed here are exactly the ones the journal paper varies
                 ``baseline_z`` subtract the pre-stimulus mean and divide by the pre-stimulus
                                SD per epoch and channel. Pre-stimulus values depend on
                                pre-stimulus samples only.
+                ``pre_center`` subtract the pre-stimulus mean, divide by the whole-epoch SD
+                               (keeps epoch_z's scale normalization, removes its offset leak).
                 ``none``       microvolts as recorded (baseline-corrected upstream).
 """
 from __future__ import annotations
@@ -117,6 +119,13 @@ def normalize(X: np.ndarray, times_ms: np.ndarray, mode: str = "epoch_z") -> np.
     """Per-epoch, per-channel normalization. ``X`` is (N, T, ch)."""
     if mode == "none":
         return X.copy()
+    if mode == "pre_center":
+        # Separates the two things epoch_z does: the pre-stimulus mean is removed (no
+        # post-stimulus offset reaches the baseline) but the per-epoch scale is the
+        # whole-epoch SD (the cross-subject amplitude normalization is kept).
+        mu = X[:, times_ms < 0, :].mean(axis=1, keepdims=True)
+        sd = X.std(axis=1, keepdims=True)
+        return (X - mu) / np.where(sd > 0, sd, 1.0)
     if mode == "epoch_z":
         ref = X
     elif mode == "baseline_z":

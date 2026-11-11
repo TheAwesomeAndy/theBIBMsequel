@@ -240,3 +240,18 @@ def test_pooled_oof_and_permutation_end_to_end(legacy):
     pt = protocol.permutation_test(cache, y, g, n_perm=9)
     assert pt["observed_BA"] == pytest.approx(ba["BA"])
     assert 0.1 <= pt["p"] <= 1.0
+
+
+def test_pre_center_removes_offset_leak_keeps_scale(raw):
+    X, y, g = raw
+    X2 = X.copy()
+    X2[:, 400:, :] += 3.0                                   # shift only post-stimulus samples
+    pre = slice(0, C.ONSET - 10)
+    for mode in ("pre_center", "epoch_z"):
+        a = data.preprocess(X, y, g, "fir", mode).X
+        b = data.preprocess(X2, y, g, "fir", mode).X
+        if mode == "pre_center":                            # baseline mean stays exactly zero
+            np.testing.assert_allclose(a[:, :C.ONSET].mean(axis=1), 0, atol=1e-9)
+            np.testing.assert_allclose(b[:, :C.ONSET].mean(axis=1), 0, atol=1e-9)
+        else:                                               # epoch_z moves the baseline offset
+            assert np.abs(a[:, pre].mean(1) - b[:, pre].mean(1)).max() > 0.1
