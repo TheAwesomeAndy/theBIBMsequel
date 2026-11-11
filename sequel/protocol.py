@@ -47,7 +47,8 @@ Hook = Callable[[str, int, int, StandardScaler, LogisticRegression, dict], None]
 
 
 def pooled_oof(fold_fn: FoldFn, y: np.ndarray, splits: list[Split],
-               hook: Hook | None = None, c: float = C.READOUT_C) -> dict[str, np.ndarray]:
+               hook: Hook | None = None, c: float = C.READOUT_C,
+               return_proba: bool = False) -> dict[str, np.ndarray]:
     """Run ``fold_fn`` on every split and pool test probabilities per condition.
 
     ``fold_fn(seed, fold, tr, te)`` returns ``{condition: (Xtr, Xte, meta)}``. Conditions that
@@ -68,6 +69,8 @@ def pooled_oof(fold_fn: FoldFn, y: np.ndarray, splits: list[Split],
             acc.setdefault(name, np.zeros((len(y), classes.size)))[te] += clf.predict_proba(sc.transform(Xte))
             if hook is not None:
                 hook(name, seed, fold, sc, clf, meta)
+    if return_proba:                       # summed over repeats; same scale for every encoder
+        return acc
     return {k: classes[np.argmax(v, axis=1)] for k, v in acc.items()}
 
 

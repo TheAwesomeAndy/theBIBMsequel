@@ -45,7 +45,7 @@ def main() -> int:
                    "ERP-window": (features.erp_windows(ep.X, ep.times_ms), False),
                    "Band-power": (features.bandpower(ep.X), False)}
             splits = protocol.make_splits(ep.y, ep.groups, seeds)
-            preds = {}
+            preds, proba, classes = {}, {}, np.unique(ep.y)
             for e, (B, pca) in enc.items():
                 def fn(seed, fold, tr, te, B=B, pca=pca):
                     if pca == "fusion":
@@ -58,14 +58,20 @@ def main() -> int:
                         E = B
                     E = E.reshape(len(ep.y), -1)
                     return {"clean": (E[tr], E[te], None)}
-                preds[e] = protocol.pooled_oof(fn, ep.y, splits)["clean"]
+                proba[e] = protocol.pooled_oof(fn, ep.y, splits, return_proba=True)["clean"]
+                preds[e] = classes[np.argmax(proba[e], axis=1)]
+            # Late fusion (added after the early-fusion result, reported alongside it): average
+            # the two models' pooled probabilities, so neither block dominates by dimension.
+            preds["late(BSC6,Amp6)"] = classes[np.argmax(proba["BSC6"] + proba["Amp6"], axis=1)]
             ba = protocol.bootstrap_ba(ep.y, ep.groups, preds, n_boot)
             con = {f"BSC6_minus_{e}": protocol.paired_diff(ep.y, ep.groups, preds["BSC6"], preds[e], n_boot)
                    for e in enc if e not in ("BSC6", "BSC6+Amp6")}
             con["fusion_minus_Amp6"] = protocol.paired_diff(ep.y, ep.groups, preds["BSC6+Amp6"], preds["Amp6"], n_boot)
             con["fusion_minus_BSC6"] = protocol.paired_diff(ep.y, ep.groups, preds["BSC6+Amp6"], preds["BSC6"], n_boot)
+            con["late_minus_Amp6"] = protocol.paired_diff(ep.y, ep.groups, preds["late(BSC6,Amp6)"], preds["Amp6"], n_boot)
+            con["late_minus_BSC6"] = protocol.paired_diff(ep.y, ep.groups, preds["late(BSC6,Amp6)"], preds["BSC6"], n_boot)
             out["results"][f"{name}|{norm}"] = {"chance": 1.0 / len(set(ep.y)), "BA": ba, "contrasts": con}
-            print(f"[{name}|{norm}] " + " ".join(f"{e}={ba[e]['BA']:.3f}" for e in enc) + " | " +
+            print(f"[{name}|{norm}] " + " ".join(f"{e}={ba[e]['BA']:.3f}" for e in preds) + " | " +
                   " ".join(f"{k}:{v['mean_diff']:+.3f}[{v['ci95'][0]:+.3f},{v['ci95'][1]:+.3f}]"
                            for k, v in con.items()), flush=True)
     write(out, args.out or "encoder_contrasts.json", args)

@@ -277,3 +277,14 @@ def test_global_scale_is_one_scalar_and_count_independent():
     # baseline_z shrinks the noisier average's effect relative to the cleaner one
     assert b[0, late].mean() < 0.5 * b[1, late].mean()
     assert g[0, late].mean() == pytest.approx(g[1, late].mean(), rel=0.1)
+
+
+def test_pooled_oof_return_proba_matches_labels(legacy):
+    y, g = legacy.y, legacy.groups
+    F = features.erp_windows(legacy.X, legacy.times_ms).reshape(len(y), -1)
+    sp = protocol.make_splits(y, g, seeds=(42, 43))
+    fn = lambda s, f, tr, te: {"clean": (F[tr], F[te], None)}  # noqa: E731
+    labels = protocol.pooled_oof(fn, y, sp)["clean"]
+    proba = protocol.pooled_oof(fn, y, sp, return_proba=True)["clean"]
+    np.testing.assert_array_equal(np.unique(y)[proba.argmax(1)], labels)
+    np.testing.assert_allclose(proba.sum(1), 2.0)          # one probability vector per repeat
