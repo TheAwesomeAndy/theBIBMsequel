@@ -71,3 +71,18 @@ def test_template_positions_known_and_unknown():
     pytest.importorskip("mne")
     assert datasets.template_positions(["Fz", "Cz", "Pz"]).shape == (3, 3)
     assert datasets.template_positions(["Fz", "NotAChannel"]) is None
+
+
+def test_regress_eog_removes_ocular_component():
+    rng = np.random.default_rng(5)
+    n = 20000
+    blink = np.zeros(n)
+    blink[rng.integers(0, n - 200, 40)[:, None] + np.arange(200)] = 150.0  # 150 uV blinks
+    brain = rng.normal(0, 5, (n, 4))
+    eeg = brain + np.outer(blink, [1.0, 0.6, 0.2, 0.05])
+    clean = datasets.regress_eog(eeg, (blink + rng.normal(0, 1, n))[:, None])
+    # A constant offset (the mean of the removed component) remains by design; epochs are
+    # baseline-corrected afterwards, so compare mean-removed signals.
+    err = (clean - clean.mean(0)) - (brain - brain.mean(0))
+    raw_err = (eeg - eeg.mean(0)) - (brain - brain.mean(0))
+    assert np.abs(err).max() < 0.05 * np.abs(raw_err).max()

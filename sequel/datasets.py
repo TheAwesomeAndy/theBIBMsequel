@@ -209,9 +209,28 @@ def fetch_erpcore(task: str, subjects: list[int] | None = None, root: Path = DAT
     return base / task
 
 
+def regress_eog(eeg: np.ndarray, eog: np.ndarray) -> np.ndarray:
+    """Least-squares removal of ocular signals (Gratton et al., 1983 style, no event split).
+
+    ``eeg`` (n_times, n_ch) and ``eog`` (n_times, k) bipolar EOG derivations. Returns
+    eeg - eog @ B with B fitted on the whole recording. The SHAPE lab pipeline uses
+    Gratton regression (Nelson et al., 2015), so this keeps the datasets comparable.
+    """
+    E = eog - eog.mean(axis=0)
+    B, *_ = np.linalg.lstsq(E, eeg - eeg.mean(axis=0), rcond=None)
+    return eeg - E @ B
+
+
 def build_erpcore(task: str, root: Path = DATA_ROOT, highpass: float = 0.1,
-                  reject_uv: float = 200.0, min_trials: int = 10, delete_raw: bool = False) -> ERPSet:
-    """Condition averages for one ERP CORE task from the downloaded BIDS files."""
+                  reject_uv: float = 200.0, min_trials: int = 10, eog_correction: bool = True,
+                  delete_raw: bool = False) -> ERPSet:
+    """Condition averages for one ERP CORE task from the downloaded BIDS files.
+
+    Steps: 0.1 Hz high-pass on all channels; EEG re-referenced (P9/P10 mean or average, as
+    in ERP CORE); bipolar VEOG (VEOG_lower - FP2) and HEOG (HEOG_left - HEOG_right)
+    regressed out of the EEG; -200..+1000 ms epochs, baseline-corrected; peak-to-peak
+    rejection; per-condition averages.
+    """
     import mne
     import pandas as pd
 
@@ -221,14 +240,25 @@ def build_erpcore(task: str, root: Path = DATA_ROOT, highpass: float = 0.1,
     X, y, g, ntr, ch_names, pos, skipped = [], [], [], [], None, None, []
     for sdir in sorted(p for p in tdir.iterdir() if p.is_dir()):
         stem = f"{sdir.name}_ses-{task}_task-{task}"
+        if not (sdir / f"{stem}_eeg.set").exists():
+            continue
         raw = mne.io.read_raw_eeglab(sdir / f"{stem}_eeg.set", preload=True, verbose="error")
-        raw.pick([c for c in raw.ch_names if "EOG" not in c.upper()])
+        raw.filter(highpass, None, picks="all", verbose="error")
+        allc = raw.get_data().T * 1e6                                   # (n_times, ch) in uV
+        names_all = raw.ch_names
+        eeg_idx = [i for i, c in enumerate(names_all) if "EOG" not in c.upper()]
+        cont = allc[:, eeg_idx]
+        eeg_names = [names_all[i] for i in eeg_idx]
         if ref == "average":
-            raw.set_eeg_reference("average", verbose="error")
+            cont = cont - cont.mean(axis=1, keepdims=True)
         else:
-            raw.set_eeg_reference(ref, verbose="error")
-        raw.filter(highpass, None, verbose="error")
-        cont = raw.get_data().T * 1e6                                   # (n_times, ch) in uV
+            cont = cont - cont[:, [eeg_names.index(r) for r in ref]].mean(axis=1, keepdims=True)
+        if eog_correction:
+            ix = {c: names_all.index(c) for c in ("VEOG_lower", "FP2", "HEOG_left", "HEOG_right")}
+            eog = np.c_[allc[:, ix["VEOG_lower"]] - allc[:, ix["FP2"]],
+                        allc[:, ix["HEOG_left"]] - allc[:, ix["HEOG_right"]]]
+            cont = regress_eog(cont, eog)
+        raw = raw.copy().pick(eeg_names)
         ev = pd.read_csv(sdir / f"{stem}_events.tsv", sep="\t")
         ev = ev[ev["trial_type"] == "stimulus"]
         vals = ev["value"].astype(int).to_numpy()
@@ -257,7 +287,8 @@ def build_erpcore(task: str, root: Path = DATA_ROOT, highpass: float = 0.1,
                 p.unlink()
     return ERPSet(f"erpcore_{task}", np.asarray(X), np.asarray(y), np.asarray(g),
                   int(raw.info["sfreq"]), n_pre, ch_names, labels, pos, np.asarray(ntr),
-                  {"reference": ref, "highpass_hz": highpass, "reject_uv": reject_uv,
+                  {"reference": ref, "highpass_hz": highpass, "eog_correction": eog_correction,
+                   "reject_uv": reject_uv,
                    "min_trials": min_trials, "skipped_subjects": skipped,
                    "source": "OSF 9f5w7 (ERP CORE BIDS raw files)"})
 
