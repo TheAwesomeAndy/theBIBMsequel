@@ -162,12 +162,16 @@ def _download_all(jobs: list[tuple[str, Path, int]], workers: int = 8) -> None:
     import time
 
     def one(job):
-        url, dest, _ = job
-        for attempt in range(6):                # backoff on HTTP 429/5xx from the hosts
+        url, dest, size = job
+        for attempt in range(6):                # backoff on HTTP 429/5xx and bot-check pages
             try:
-                return _curl(url, dest)
+                _curl(url, dest)
+                if dest.stat().st_size == size:  # a bot-check HTML page has the wrong size
+                    return None
+                dest.unlink()
             except subprocess.CalledProcessError:
-                time.sleep(5 * 2 ** attempt)
+                pass
+            time.sleep(5 * 2 ** attempt)
         raise RuntimeError(f"download failed after retries: {url} -> {dest}")
 
     todo = [j for j in jobs if not (j[1].exists() and j[1].stat().st_size == j[2])]
@@ -264,7 +268,7 @@ _TCRZEM_RE = re.compile(r"(S\d+)_Mastoid_(Neg|Neu|Pos)_(High|Low)\.(dat|vhdr|vmr
 TCRZEM_VALENCE = {"Neg": 0, "Neu": 1, "Pos": 2}
 
 
-def fetch_tcrzem(root: Path = DATA_ROOT, max_subjects: int | None = None, workers: int = 8) -> Path:
+def fetch_tcrzem(root: Path = DATA_ROOT, max_subjects: int | None = None, workers: int = 2) -> Path:
     """Download the exported, mastoid-referenced segment files (about 4.3 GB)."""
     idx = json.loads(_curl(f"https://dataverse.nl/api/datasets/:persistentId/?persistentId={TCRZEM_DOI}",
                            timeout=120))["data"]["latestVersion"]["files"]
@@ -330,7 +334,7 @@ def build_tcrzem(root: Path = DATA_ROOT, pre_stim_ms: float = 1000.0, reject_uv:
                 seg_pts = info["segment_points"] or 1792
                 d = raw[: (raw.size // (n_ch * seg_pts)) * n_ch * seg_pts].reshape(-1, seg_pts, n_ch)
                 segs.append(d * info["res"][None, None, :])
-            eeg = [i for i, n in enumerate(info["names"]) if not re.search(r"EOG|ECG|EMG|REF|M[12]$|^A[12]$", n, re.I)]
+            eeg = [i for i, n in enumerate(info["names"]) if not re.search(r"EOG|ECG|EMG|REF|STATUS|TRIG|M[12]$|^A[12]$", n, re.I)]
             names = [info["names"][i] for i in eeg]
             sf = info["sfreq"]
             onset = int(round(pre_stim_ms * sf / 1000.0))

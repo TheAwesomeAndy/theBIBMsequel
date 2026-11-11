@@ -1,0 +1,42 @@
+{
+  "provenance": {
+    "git_commit": "b9dddcb364784138441b971fd22644d21b4fd736",
+    "git_dirty": true,
+    "argv": [
+      "fetch_datasets.py",
+      "tcrzem"
+    ],
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "joblib": "1.6.0"
+    },
+    "synthetic": false,
+    "time_utc": "2026-11-11T21:01:22Z"
+  },
+  "tcrzem": {
+    "name": "tcrzem",
+    "n_obs": 684,
+    "n_subjects": 228,
+    "n_channels": 32,
+    "conditions": [
+      "Neg",
+      "Neu",
+      "Pos"
+    ],
+    "fs_raw": 512,
+    "has_positions": true,
+    "trials_per_average_median": 44.0,
+    "skipped_subjects": [],
+    "settings": {
+      "reject_uv": 200.0,
+      "min_trials": 4,
+      "source": "doi:10.34894/TCRZEM",
+      "positions": "standard_1005 template"
+    },
+    "build_seconds": 23
+  }
+}
