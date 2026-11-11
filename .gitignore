@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+outputs/aggregate/*_SYNTHETIC.json
+# restricted data must never be committed
+*.pkl
+*.npy
+batch_data/
+categories/
+data_local/
+# LaTeX build products
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.out

@@ -1,0 +1,60 @@
+% Journal manuscript skeleton (IEEE TNSRE). Section intents are in comments; text is
+% written only after the Phase 1 decision gate (docs/ROADMAP.md). Not yet compiled.
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,graphicx,cite,url}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+% Title: author decision. Conference title kept "On the Edge of Stability" (BIBM memory #23).
+% "robustness" is banned in the title by the author wording rules.
+\title{[Title to be decided]}
+\author{Andrew~A.~Lane, Wendy~Tang, and Brady~D.~Nelson
+\thanks{This paper extends the authors' IEEE BIBM 2026 Doctoral Forum paper [ref]. New
+material: [list from manuscript/overlap_log.md].}}
+\maketitle
+
+\begin{abstract}
+% Written last. Must state datasets, encoders, the three scoring effects, and Prop. 3.
+\end{abstract}
+
+\begin{IEEEkeywords}
+EEG, event-related potentials, channel dropout, imputation, spiking reservoir, evaluation protocol.
+\end{IEEEkeywords}
+
+\section{Introduction}
+% Problem: robustness rankings for EEG representations depend on how missing channels are
+% scored. Gap: Sirca et al. 2026 (removed vs zero-padded) and Banville et al. 2022 (DSF)
+% study models, not the scoring rule. Contributions mapped to sections.
+
+\section{Related Work}
+% Channel loss and imputation in EEG (spherical splines, DSF, augmentation); evaluation
+% leakage and validation (Brookshire 2024, Varoquaux 2018, Kapoor and Narayanan 2023);
+% reservoir computing and edge of chaos (Bertschinger 2004, Legenstein and Maass 2007).
+
+\section{Theory}
+% Prop. 1 (fill rule and re-centering), Prop. 2 (chance floor), Prop. 3 (new: zero fill
+% to chance under a change of origin), fill-bias index. Proofs from docs/THEORY.md.
+
+\section{Methods}
+\subsection{Datasets}       % SHAPE (+ montage), ERP CORE, P300 BCI set, TCRZEM, DEAP
+\subsection{Preprocessing}  % FIR decimation, baseline_z, windows relative to onset
+\subsection{Encoders}       % band power, ERP windows, Amp6, BSC6/BSC1 reservoir, Riemannian, EEGNet, FM probe
+\subsection{Perturbations and fill rules} % feature level, signal level, spline, refit
+\subsection{Validation}     % grouped CV, subject bootstrap, 1000 permutations, mask draws
+
+\section{Results}
+\subsection{Clean accuracy and the matched control}   % p1a, p1c
+\subsection{Reservoir dynamics over weight draws}     % p1b
+\subsection{Fill rules across encoders and datasets}  % Phase 2 to 4
+\subsection{Theory against measurement}               % fill-bias index vs observed loss
+
+\section{Discussion}
+% Reporting standard; limitations stated plainly.
+
+\section{Conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}

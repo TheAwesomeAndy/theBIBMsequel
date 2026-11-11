@@ -1,0 +1,18 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q tests
+      - name: Smoke-run every experiment on the synthetic cohort
+        working-directory: experiments
+        run: |
+          python run_window_study.py --synthetic --quick --decimation fir --norm baseline_z --windows post
+          python run_reservoir_dynamics.py --synthetic --quick --weight-seeds 42 --rho 0.0 0.9 --rho-fine 0.0 0.9 --n-drive 50
+          python run_permutation.py --synthetic --quick --n-perm 9
