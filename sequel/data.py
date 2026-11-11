@@ -85,18 +85,31 @@ def load_bibm_pickle(path: str | os.PathLike | None = None) -> Epochs:
                   info={"source": "bibm_pickle", "decimation": "legacy", "norm": "epoch_z"})
 
 
-def decimate_raw(raw: np.ndarray, mode: str = "fir") -> tuple[np.ndarray, np.ndarray]:
-    """raw (N, 1229, ch) at 1024 Hz -> (signal at 256 Hz, times in ms relative to onset)."""
+def decimate_raw(raw: np.ndarray, mode: str = "fir", fs_raw: int = C.FS_RAW,
+                 onset_raw: int = C.ONSET_RAW) -> tuple[np.ndarray, np.ndarray]:
+    """raw (N, T, ch) at ``fs_raw`` -> (signal at 256 Hz, times in ms relative to onset).
+
+    ``fir`` starts at sample ``onset_raw mod q`` so that onset falls exactly on a kept
+    sample (for SHAPE, q = 4 and the start is raw[1:]). ``legacy`` is the BIBM SHAPE
+    signal only.
+    """
+    q = fs_raw // C.FS
+    if q * C.FS != fs_raw:
+        raise ValueError(f"fs_raw {fs_raw} is not an integer multiple of {C.FS} Hz")
     if mode == "legacy":
+        if (fs_raw, onset_raw) != (C.FS_RAW, C.ONSET_RAW):
+            raise ValueError("legacy decimation is defined for the SHAPE signal only")
         idx = np.arange(0, 1024, C.DECIM)
         out = raw[:, idx, :]
     elif mode == "fir":
-        idx = np.arange(1, raw.shape[1], C.DECIM)
-        out = decimate(raw[:, 1:, :], C.DECIM, ftype="fir", zero_phase=True, axis=1)
+        start = onset_raw % q
+        idx = np.arange(start, raw.shape[1], q)
+        out = raw[:, start:, :] if q == 1 else decimate(raw[:, start:, :], q, ftype="fir",
+                                                        zero_phase=True, axis=1)
         idx = idx[: out.shape[1]]
     else:
         raise ValueError(f"unknown decimation mode {mode!r}")
-    times = (idx - C.ONSET_RAW) / C.FS_RAW * 1000.0
+    times = (idx - onset_raw) / fs_raw * 1000.0
     return np.ascontiguousarray(out), times
 
 
@@ -116,9 +129,10 @@ def normalize(X: np.ndarray, times_ms: np.ndarray, mode: str = "epoch_z") -> np.
 
 
 def preprocess(raw: np.ndarray, y: np.ndarray, groups: np.ndarray,
-               decimation: str = "fir", norm: str = "baseline_z") -> Epochs:
-    X, times = decimate_raw(raw, decimation)
+               decimation: str = "fir", norm: str = "baseline_z", fs_raw: int = C.FS_RAW,
+               onset_raw: int = C.ONSET_RAW, source: str = "shape_raw") -> Epochs:
+    X, times = decimate_raw(raw, decimation, fs_raw, onset_raw)
     X = normalize(X, times, norm)
     onset = int(np.argmin(np.abs(times)))
     return Epochs(X, y, groups, times, onset=onset,
-                  info={"source": "shape_raw", "decimation": decimation, "norm": norm})
+                  info={"source": source, "decimation": decimation, "norm": norm})
