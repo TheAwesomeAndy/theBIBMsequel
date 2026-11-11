@@ -81,3 +81,26 @@ of `W` at unit spectral radius (13.4 for seed 42, checked in
 Note found while writing the tests: with `rho = 0` a flip cannot reach other units, but it
 changes the flipped unit's own reset, so damage is confined to one unit (at most
 `1/N_RES`), not exactly zero (`test_damage_zero_without_recurrence`).
+
+## Proposition 4 (new): per-epoch normalization of averages confounds trial count
+
+Let a subject's condition average be `a_c(t) = s_c(t) + e_c(t)`, the mean of `n_c` trials
+whose noise is independent across trials with per-trial SD `sigma` at each sample, so the
+noise of the average has SD `sigma / sqrt(n_c)` (any spectrum). Baseline z-scoring divides
+`a_c` by its own baseline SD. With a baseline of `L` samples free of evoked signal, that SD
+converges to `sigma / sqrt(n_c)` as `L` grows, so a post-stimulus sample becomes
+`sqrt(n_c) s_c(t) / sigma + O(1)` noise. The normalized contrast between two conditions is
+then
+
+    (sqrt(n_1) s_1(t) - sqrt(n_2) s_2(t)) / sigma,
+
+not proportional to `s_1(t) - s_2(t)`. It vanishes when `s_1 / s_2 = sqrt(n_2 / n_1)` and
+reverses sign beyond it. In an oddball design (rare `n_1` about 40, frequent `n_2` about 156)
+the factor is about 2, so a rare P3 twice the frequent one is cancelled. A single dataset-wide
+scale (`global_scale`) multiplies every average by the same constant and keeps the
+contrast proportional to `s_1 - s_2`. Whole-epoch z-scoring (`epoch_z`) has the same
+dependence, diluted because its SD also contains the evoked signal.
+
+Measured: ERP CORE P3 at Pz, rare minus frequent d_z = 1.05 in microvolts and 0.05 after
+`baseline_z`; LPP-window balanced accuracy 0.708 versus 0.500. Test:
+`test_global_scale_is_one_scalar_and_count_independent`.

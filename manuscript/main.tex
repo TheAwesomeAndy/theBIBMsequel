@@ -1,59 +1,178 @@
-% Journal manuscript skeleton (IEEE TNSRE). Section intents are in comments; text is
-% written only after the Phase 1 decision gate (docs/ROADMAP.md). Not yet compiled.
+% Journal manuscript, target IEEE TNSRE (backup JBHI). DRAFT v0.1.
+% Conventions for this draft:
+%   \pend{...}  red: result not yet computed (the analysis that will supply it is named)
+%   \prov{...}  blue: point estimate from a completed run whose CI or replication is pending
+% Every other number is final and traceable to outputs/aggregate/*.json.
+% Author wording rules: python manuscript/check_author_wording.py (must pass before commit).
 \documentclass[journal]{IEEEtran}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{booktabs,graphicx,cite,url}
+\usepackage{booktabs,multirow,graphicx,cite,url}
+\usepackage{xcolor}
+\newcommand{\pend}[1]{\textcolor{red}{[PENDING: #1]}}
+\newcommand{\prov}[1]{\textcolor{blue}{#1}}
+\newcommand{\BSC}{\ensuremath{\mathrm{BSC}_{6}}}
 \newtheorem{proposition}{Proposition}
 
 \begin{document}
 
-% Title: author decision. Conference title kept "On the Edge of Stability" (BIBM memory #23).
-% "robustness" is banned in the title by the author wording rules.
-\title{[Title to be decided]}
-\author{Andrew~A.~Lane, Wendy~Tang, and Brady~D.~Nelson
-\thanks{This paper extends the authors' IEEE BIBM 2026 Doctoral Forum paper [ref]. New
-material: [list from manuscript/overlap_log.md].}}
+% Working title. Final title is the author's decision (BIBM kept "On the Edge of Stability").
+% Candidates that respect the wording rules (no "robustness" in the title):
+%   (a) Scoring Choices Decide Channel-Dropout Comparisons of ERP Encoders
+%   (b) Fill Rules, Normalization, and Chance Floors in Subject-Grouped ERP Decoding
+%   (c) A Spiking Reservoir Reference for Channel Loss in ERP Decoding: Five Datasets
+\title{Fill Rules, Normalization, and Chance Floors in Subject-Grouped ERP Decoding: A Five-Dataset Study with a Spiking Reservoir Reference}
+
+\author{Andrew~A.~Lane, Wendy~Tang, and Brady~D.~Nelson%
+\thanks{A.~A.~Lane and W.~Tang are with the Department of Electrical and Computer Engineering, Stony Brook University, Stony Brook, NY, USA. B.~D.~Nelson is with the Department of Psychology, Stony Brook University.}%
+\thanks{This paper extends the authors' IEEE BIBM 2026 Doctoral Forum paper~\cite{lane2026bibm}. New material is listed in Section~\ref{sec:novelty}.}}
+
 \maketitle
 
 \begin{abstract}
-% Written last. Must state datasets, encoders, the three scoring effects, and Prop. 3.
+Comparisons of EEG representations under channel loss are usually reported as one number per encoder, but that number depends on choices that are rarely stated: how a missing channel is filled, how each epoch is normalized, and how accuracy retention is scored. We study these choices on five event-related potential (ERP) datasets: two affective picture-viewing cohorts (211 and 228 participants) and three ERP CORE paradigms (P3, N400, N170). Encoders range from conventional late positive potential (LPP) and window amplitudes to band power, a matched six-bin amplitude code, and a fixed leaky integrate-and-fire reservoir read out through six spike-count bins. We prove that zero fill is not invariant to a change of feature origin and can drive a non-centered encoder to chance while mean fill is unaffected, and that per-epoch normalization of averaged ERPs rescales conditions by their trial counts. Both effects are measured: whole-epoch z-scoring let post-stimulus signal reach a pre-stimulus reservoir window that carries no affective information on its own (balanced accuracy 0.487 versus 0.305 under baseline-only scaling), and baseline z-scoring removed the oddball P3 effect from a conventional LPP score (paired $d_z$ 1.05 to 0.05). \pend{headline fill-rule and reservoir-versus-control results across datasets, Phase 1 and 2 summaries}. We give a reporting checklist and release code that reproduces the conference results exactly.
 \end{abstract}
 
 \begin{IEEEkeywords}
-EEG, event-related potentials, channel dropout, imputation, spiking reservoir, evaluation protocol.
+EEG, event-related potentials, channel loss, imputation, normalization, spiking reservoir, evaluation protocol.
 \end{IEEEkeywords}
 
 \section{Introduction}
-% Problem: robustness rankings for EEG representations depend on how missing channels are
-% scored. Gap: Sirca et al. 2026 (removed vs zero-padded) and Banville et al. 2022 (DSF)
-% study models, not the scoring rule. Contributions mapped to sections.
+\IEEEPARstart{E}{lectrode} loss is common in practical EEG, and a growing literature compares how well learned and fixed representations tolerate it~\cite{banville2022dsf,rommel2022augment,sirca2026beyond}. Such comparisons rest on a scoring protocol: a rule for what a missing channel contributes, a normalization applied before encoding, and a summary of how much accuracy survives. Small changes to that protocol can reorder encoders. A recent foundation-model benchmark found that apparent channel-dropout fragility depends on whether dropped channels are removed or zero-padded~\cite{sirca2026beyond}, and preprocessing choices more broadly change deep-learning EEG results~\cite{delpup2025preprocessing}.
+
+Our conference paper showed two such effects on one affective ERP cohort~\cite{lane2026bibm}. Raw retention has a chance floor that flatters weak encoders, and zero fill of a dropped channel is not invariant to an information-preserving re-centering of the features. A fixed spiking reservoir served there as a near-centered reference, because its embedding barely moves under constant fills.
+
+This paper asks whether those conclusions hold beyond one cohort, one paradigm and one preprocessing pipeline, and what else in the protocol can decide a comparison. The contributions are:
+\begin{enumerate}
+\item \textbf{Theory.} Proposition~3 shows that a change of feature origin, which carries no information, moves zero-fill accuracy anywhere between its mean-fill value and chance. Proposition~4 shows that per-epoch normalization of averaged ERPs rescales each condition by the square root of its trial count, which can cancel a real effect (Section~\ref{sec:theory}).
+\item \textbf{Two normalization artifacts, measured.} Whole-epoch z-scoring carried post-stimulus information into the mostly pre-stimulus window used by the conference reservoir, and baseline z-scoring cancelled the oddball P3 effect (Section~\ref{sec:normres}).
+\item \textbf{A five-dataset fill-rule study} with feature-level and signal-level fills, spherical-spline repair where electrode positions exist, readout refitting, and a training-side fill-bias index (Section~\ref{sec:fillres}).
+\item \textbf{A matched control for the reservoir.} A six-bin amplitude code with the reservoir's own bins separates what the spiking expansion adds from what binning alone provides (Section~\ref{sec:resres}).
+\item \textbf{Reproducibility.} Code that reproduces all twelve conference table cells exactly, synthetic tests for every proposition, and aggregate results only, with no subject-level data released (Section~\ref{sec:repro}).
+\end{enumerate}
 
 \section{Related Work}
-% Channel loss and imputation in EEG (spherical splines, DSF, augmentation); evaluation
-% leakage and validation (Brookshire 2024, Varoquaux 2018, Kapoor and Narayanan 2023);
-% reservoir computing and edge of chaos (Bertschinger 2004, Legenstein and Maass 2007).
+\label{sec:related}
+\emph{Channel loss.} Missing electrodes are handled by constant fills, by spherical-spline interpolation~\cite{perrin1989spherical}, by learned spatial filtering~\cite{banville2022dsf}, and by training-time channel dropout~\cite{rommel2022augment}. Benchmarks of foundation models now report channel-dropout curves~\cite{sirca2026beyond}. We focus on the scoring rule rather than on a new model.
+
+\emph{Evaluation of EEG decoders.} Segment-level splits leak participant identity into the test set~\cite{brookshire2024leakage,kamrud2021partitioning}, cross-validation error bars are wide at typical sample sizes~\cite{varoquaux2018cv}, and leakage is widespread across machine-learning-based science~\cite{kapoor2023leakage}. Unlabeled test-subject statistics, as in Euclidean alignment~\cite{he2020euclidean}, are a legitimate adaptation when stated as such. All splits here keep participants intact.
+
+\emph{Affective and cognitive ERPs.} The late positive potential is larger for emotional than neutral pictures and is usually scored as a mean over several hundred milliseconds at parietal and occipital sites~\cite{nelson2015familial}. ERP CORE provides standardized paradigms and data for six components~\cite{kappenman2021erpcore}. Within-participant multivariate decoding of averaged ERP subsets is an established complement to component scoring~\cite{bae2018decoding}. Deep networks trained within participants have decoded facial emotion from single trials~\cite{mayortorres2023interpretability}. We decode across participants from condition averages, a harder and different estimand.
+
+\emph{Reservoir computing.} Fixed recurrent networks map an input to a high-dimensional state read out by a simple classifier~\cite{maass2002real,jaeger2001echo}, and their performance is often linked to the transition between ordered and chaotic dynamics~\cite{bertschinger2004realtime,legenstein2007edge}. Here the reservoir is a reference encoder, not a proposed winner.
 
 \section{Theory}
-% Prop. 1 (fill rule and re-centering), Prop. 2 (chance floor), Prop. 3 (new: zero fill
-% to chance under a change of origin), fill-bias index. Proofs from docs/THEORY.md.
+\label{sec:theory}
+A fixed encoder maps an observation to features $x\in\mathbb{R}^D$ grouped into per-electrode blocks. The readout standardizes with training statistics, $z=D_\sigma^{-1}(x-\mu)$, and computes class logits $\ell=Wz+b$. Let $S$ index the coordinates of the dropped electrodes and $K$ the number of classes. Propositions~1 and~2 are from~\cite{lane2026bibm} and are restated for completeness.
 
-\section{Methods}
-\subsection{Datasets}       % SHAPE (+ montage), ERP CORE, P300 BCI set, TCRZEM, DEAP
-\subsection{Preprocessing}  % FIR decimation, baseline_z, windows relative to onset
-\subsection{Encoders}       % band power, ERP windows, Amp6, BSC6/BSC1 reservoir, Riemannian, EEGNet, FM probe
-\subsection{Perturbations and fill rules} % feature level, signal level, spline, refit
-\subsection{Validation}     % grouped CV, subject bootstrap, 1000 permutations, mask draws
+\begin{proposition}[Fill rule and re-centering]
+Zero fill ($x_S=0$) and mean fill ($x_S=\mu_S$) differ by the fixed shift $z_S^{\mathrm{zero}}-z_S^{\mathrm{mean}}=-D_{\sigma,S}^{-1}\mu_S$. Under $x\mapsto x-c$ the clean and mean-fill inputs are unchanged, while the zero-fill input moves by $D_{\sigma,S}^{-1}c_S$. For a linear readout the zero-fill logits equal the mean-fill logits plus the constant $\delta=-W_{:,S}(\mu_S/\sigma_S)$.
+\end{proposition}
+
+\begin{proposition}[Chance floor]
+If $\mathbb{E}[\mathrm{BA}_{\mathrm{pert}}]\ge 1/K$, raw retention $R=\mathrm{BA}_{\mathrm{pert}}/\mathrm{BA}_{\mathrm{clean}}$ satisfies $\mathbb{E}[R]\ge 1/(K\,\mathrm{BA}_{\mathrm{clean}})$, while above-chance retention is zero at chance for every encoder.
+\end{proposition}
+
+\begin{proposition}[Zero fill to chance]
+Consider encoders $x_t=x+ta$ for a fixed direction $a$, each with its own fitted readout. Mean-fill balanced accuracy does not depend on $t$. If $u=-W_{:,S}(a_S/\sigma_S)$ has a unique largest coordinate $k^\ast$, zero-fill balanced accuracy equals $1/K$ for all sufficiently large $t$.
+\end{proposition}
+\begin{proof}
+Standardization removes $ta$, so $W$, $b$ and all mean-fill logits are independent of $t$. The zero-fill shift is $\delta_t=\delta_0+tu$. A test observation with mean-fill logits $m$ is assigned to $k^\ast$ once $t>\max_{k\ne k^\ast}(m_k+\delta_{0k}-m_{k^\ast}-\delta_{0k^\ast})/(u_{k^\ast}-u_k)$. A finite test set has a largest such threshold, beyond which every observation is assigned to $k^\ast$, recall is one for $k^\ast$ and zero otherwise, and balanced accuracy is $1/K$.
+\end{proof}
+
+\begin{proposition}[Per-epoch normalization of averages]
+Let condition $c$ of a participant be the average of $n_c$ trials, $a_c(t)=s_c(t)+e_c(t)$, with trial noise independent across trials and per-trial standard deviation $\sigma$ at each sample. Dividing $a_c$ by its own baseline standard deviation gives, for a long evoked-free baseline, post-stimulus values $\sqrt{n_c}\,s_c(t)/\sigma$ plus noise. The normalized contrast between two conditions is $(\sqrt{n_1}s_1(t)-\sqrt{n_2}s_2(t))/\sigma$, which vanishes when $s_1/s_2=\sqrt{n_2/n_1}$. A single scale shared by all observations keeps the contrast proportional to $s_1-s_2$.
+\end{proposition}
+\begin{proof}
+The noise of an average of $n_c$ independent trials has standard deviation $\sigma/\sqrt{n_c}$ at each sample, whatever its spectrum, and the baseline standard deviation converges to it as the baseline lengthens. Dividing by it multiplies the signal by $\sqrt{n_c}/\sigma$.
+\end{proof}
+
+\emph{Fill-bias index.} Proposition~1 gives a training-side predictor of how far zero fill moves a model, $B=\operatorname{spread}(\delta-\bar\delta)/\operatorname{median}(\ell_{(1)}-\ell_{(2)})$, the class spread of the centered logit shift divided by the median top-two logit margin on the training data. It uses no test labels. We test whether $B$ predicts the observed zero-fill effect in Section~\ref{sec:fillres}.
+
+\section{Materials and Methods}
+\subsection{Datasets}
+Table~\ref{tab:datasets} lists the five datasets. Each observation is one participant's trial-averaged ERP for one condition, the design of the conference study.
+
+\emph{SHAPE.} The Stress, Health, and the Psychophysiology of Emotion project~\cite{shape} recorded 34 channels at 1024~Hz during an emotional interrupt task with neutral, pleasant and unpleasant IAPS pictures. Segments run from $-200$ to $+1000$~ms. An automated check found all 636 exported files to be $1229\times34$ with complete condition panels, and one participant with flat channels was excluded, leaving 211. The channel header was removed at export. The channel correlations match the BioSemi 32-channel layout in standard order (Mantel $r=-0.673$ against a random-order null of $0.000\pm0.046$), with the two extra channels tracking FCz and Iz. \pend{confirmed channel list from the lab}.
+
+\emph{TCRZEM.} An independent IAPS passive-viewing cohort~\cite{tcrzem}, exported as mastoid-referenced, ocular-corrected segments at 512~Hz, 32 BioSemi channels. We averaged trials by valence with arousal pooled (228 participants, median 44 trials per average). Positions are template 10--05 locations.
+
+\emph{ERP CORE.} Raw BIDS recordings~\cite{kappenman2021erpcore} at 1024~Hz with digitized positions, 30 EEG channels. We used P3 (rare versus frequent letters), N400 (related versus unrelated word pairs) and N170 (faces versus cars). Data were high-passed at 0.1~Hz, re-referenced as in ERP CORE (P9/P10 mean for P3 and N400, average for N170), corrected for ocular activity by regressing bipolar vertical and horizontal EOG out of the EEG~\cite{gratton1983}, epoched from $-200$ to $+1000$~ms, baseline-corrected, and screened with a 200~$\mu$V peak-to-peak criterion. Participants with fewer than ten trials in either condition were excluded. Without ocular correction this criterion removed 10 of 40 P3 participants, and with it 4.
+
+Each dataset reproduced its known component: TCRZEM negative minus neutral at Pz/P3/P4, 300 to 1000~ms, $+2.00~\mu$V ($d_z=0.76$), N400 unrelated minus related at Cz/CPz/Pz, 300 to 500~ms, $-6.54~\mu$V ($d_z=-1.97$, negative in all 35 participants), and N170 faces minus cars at P8/PO8, 110 to 150~ms, $-1.26~\mu$V ($d_z=-0.91$).
+
+\begin{table}[t]
+\caption{Datasets. $K$: classes (SHAPE and TCRZEM: negative, neutral, pleasant). $N$: participants. Ch.: EEG channels. Trials: median trials per average. P3, N400 and N170 are from ERP CORE. Observations are trial averages per participant and condition.}
+\label{tab:datasets}
+\centering\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+Dataset & $K$ & $N$ & Ch. & Positions & Trials \\
+\midrule
+SHAPE & 3 & 211 & 34 & inferred & \pend{lab} \\
+TCRZEM & 3 & 228 & 32 & template & 44 \\
+P3 & 2 & 36 & 30 & digitized & 42 \\
+N400 & 2 & 35 & 30 & digitized & 58 \\
+N170 & 2 & 38 & 30 & digitized & 78.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Preprocessing}
+All datasets pass through one path: zero-phase FIR decimation to 256~Hz with stimulus onset on a kept sample, then one of four normalizations. \emph{epoch\_z} z-scores each epoch and channel over the whole epoch (the conference setting). \emph{baseline\_z} uses pre-stimulus statistics only. \emph{pre\_center} subtracts the pre-stimulus mean and divides by the whole-epoch standard deviation. \emph{global\_scale} divides every observation by one dataset-wide standard deviation. Features use post-stimulus samples only unless stated, following the recommendation to discard the baseline period.
+
+\subsection{Encoders}
+\emph{LPP} is the mean amplitude from 300 to 1000~ms per channel~\cite{nelson2015familial}. \emph{ERP window} is the mean amplitude in three windows per channel. \emph{Band power} uses Welch estimates in five bands from 1 to 45~Hz. The \emph{reservoir} is the conference encoder: 256 leaky integrate-and-fire units ($\beta=0.05$, $\vartheta=0.5$, spectral radius 0.9, one shared fixed weight draw), driven by each electrode trace, summarized as spike counts in six equal bins (\BSC{}), and compressed by a 64-component PCA basis shared across electrodes and fitted on training participants only. \BSC[1] sums the six bins. \emph{Amp6}, the matched control, averages the amplitude in the reservoir's own six bins, so the reservoir's contribution beyond binning is measured directly.
+
+\subsection{Channel loss}
+In each fold a fixed fraction of electrodes (10, 30 or 50\%) is removed in the test participants, with the same draws for every encoder. Feature-level fills replace the dropped blocks by zero, the training mean, a $k$-nearest-neighbor estimate ($k=10$), the mean of retained channels, or a spherical-spline estimate~\cite{perrin1989spherical}. Signal-level removal zeroes the dropped traces before encoding, and signal-level spline repair interpolates them before encoding. Refit trains the readout on the retained channels only.
+
+\subsection{Validation}
+\label{sec:validation}
+Five repeats of five-fold participant-grouped stratified cross-validation, train-only standardization, and a balanced $\ell_2$ logistic readout ($C=1$). Out-of-fold probabilities are pooled across repeats before scoring, and 95\% intervals come from 4000 resamples of participants, each keeping all its observations. Encoder and fill contrasts are paired under the same resamples. Within-participant label permutation (1000 permutations, headline estimator) gives the null distribution. \pend{permutation run}.
 
 \section{Results}
-\subsection{Clean accuracy and the matched control}   % p1a, p1c
-\subsection{Reservoir dynamics over weight draws}     % p1b
-\subsection{Fill rules across encoders and datasets}  % Phase 2 to 4
-\subsection{Theory against measurement}               % fill-bias index vs observed loss
+\subsection{Exact reproduction of the conference results}
+\label{sec:repro}
+Rebuilt from the raw SHAPE files with the conference preprocessing, the new code reproduced all twelve conference table cells to six decimals (clean, 30\% zero, mean, $k$NN and spatial fills, and signal-level removal, for band power, ERP windows and the reservoir). The match also confirms that the cross-validation splits are identical.
+
+\subsection{Normalization artifacts}
+\label{sec:normres}
+\emph{Offset leak into a pre-stimulus window.} The conference reservoir window spanned $-160$ to $+74$~ms around onset. Under whole-epoch z-scoring its clean balanced accuracy was 0.487. Under baseline-only scaling, which keeps post-stimulus samples from influencing pre-stimulus values, it fell to \prov{0.305}, against a chance level of 0.333, and the matched Amp6 code fell from 0.536 to \prov{0.308}. With post-stimulus windows the reservoir kept most of its accuracy under baseline-only scaling (late window \prov{0.602 to 0.566}). The conference reservoir accuracy therefore came almost entirely from post-stimulus signal reaching the window through the normalization, a caveat the conference paper raised but could not quantify. \pend{FIR-decimation cells and paired CIs, p1a}.
+
+\emph{Trial counts.} In the P3 task the rare average contains about four times fewer trials than the frequent one. In microvolts, rare minus frequent at Pz from 300 to 1000~ms gave $d_z=1.05$. After baseline z-scoring it gave $d_z=0.05$, and LPP decoding fell from 0.708 to 0.500 [0.389, 0.611], as Proposition~4 predicts. Under \emph{global\_scale} the LPP score decoded at 0.708. \pend{effect on SHAPE, which needs per-condition trial counts}.
+
+\emph{Scale normalization itself helps cross-participant decoding.} On SHAPE with FIR decimation, ERP-window features scored \prov{0.621} under whole-epoch z-scoring and \prov{0.567} under \emph{pre\_center}, which keeps the scale normalization but removes the offset leak, so about \prov{five} points of that score are attributable to the leak. Baseline-only scaling lowered every encoder, including post-stimulus windows, so whole-epoch z-scoring also helps through a per-epoch amplitude normalization. \pend{full normalization grid with paired CIs}.
+
+\subsection{What the reservoir adds beyond binning}
+\label{sec:resres}
+Across the eight legacy-decimation SHAPE cells (two normalizations, four windows), Amp6 exceeded \BSC{} in every cell, by \prov{4 to 9} points in the post-stimulus windows and by \prov{0.3} points in the uninformative conference window under baseline-only scaling. Moving the window after onset made the six-bin code informative: in the early window \BSC{} exceeded \BSC[1] by \prov{8} points, whereas the two were identical in the conference window. On ERP CORE P3 under \emph{global\_scale}, \BSC{} minus Amp6 was $+0.014$ [$-0.083$, $+0.111$], and \BSC{} exceeded the LPP score by $+0.153$ [$+0.042$, $+0.264$]. On N400 under \emph{global\_scale}, \BSC{} minus Amp6 was $+0.057$ [$-0.043$, $+0.143$], while \BSC{} exceeded the LPP score ($+0.129$ [$+0.029$, $+0.229$]), ERP windows ($+0.114$ [$+0.014$, $+0.214$]) and band power ($+0.171$ [$+0.071$, $+0.271$]). On N170 \BSC{} led Amp6 in point estimate (\prov{0.632 versus 0.539} under baseline\_z). \pend{paired contrasts for N170, TCRZEM and SHAPE}. With 35 to 38 participants the paired intervals on ERP CORE are about $\pm10$ points wide, so only the two large cohorts can resolve differences of a few points.
+
+\emph{Weight draws.} At spectral radius 0.9 three independent weight draws gave \prov{0.585, 0.586 and 0.585} on SHAPE (FIR decimation, baseline\_z, post-stimulus window), so the reservoir accuracy does not hinge on one draw. The dependence on spectral radius differed between draws, so we do not report an optimal operating point. \pend{all ten draws, threshold density, branching threshold, p1b}.
+
+\subsection{Fill rules across datasets}
+\label{sec:fillres}
+The reservoir embedding was near-centered on all three ERP CORE tasks, with mean $|\mu_i|/\sigma_i$ of 0.14 to 0.17 against 0.43 to 1.03 for the other encoders and a fill-bias index of 0.01 to 0.03 against 0.23 to 1.13. Its mean-minus-zero fill shift at 30\% dropout was $+0.013$ to $+0.014$. The other encoders shifted more and in either direction, as Proposition~1 allows: on N400 mean fill was worse than zero fill for ERP windows ($-0.057$ [$-0.114$, $-0.014$]). \pend{fill-bias index versus observed shift across all datasets and rates, Proposition 3 re-centering experiment, spline and refit summaries}.
 
 \section{Discussion}
-% Reporting standard; limitations stated plainly.
+\label{sec:novelty}
+\emph{Reporting checklist.} We recommend that channel-loss studies state:
+\begin{enumerate}
+\item the fill rule, with at least one in-distribution fill and, where positions exist, spline repair,
+\item the normalization, and whether its statistics use post-stimulus samples,
+\item for averaged ERPs, the trial counts per condition and whether any per-epoch scaling depends on them,
+\item absolute accuracy with participant-level intervals beside raw and above-chance retention,
+\item the augmentation state of trained models.
+\end{enumerate}
+
+\emph{Relation to the conference paper.} New here: Propositions 3 and 4, the fill-bias index, four additional datasets, the matched Amp6 control, the normalization analysis, spherical-spline and refit conditions, multiple reservoir weight draws, and exact reproduction code. The conference results are reproduced, and the conference reservoir accuracy is reinterpreted as a normalization effect.
+
+\emph{Limitations.} Observations are condition averages, so we do not estimate single-trial performance or within-participant decoding~\cite{bae2018decoding}. The ERP CORE samples are small. SHAPE positions are inferred until the lab confirms the channel list, and TCRZEM positions are templates. The reservoir uses one architecture. Clinical labels play no role, and nothing here is a diagnostic claim. \pend{trained-model arm (EEGNet with and without augmentation) and Riemannian baseline, Phase 3}.
 
 \section{Conclusion}
+\pend{write after Phase 1 and 2 results are final}.
+
+\section*{Data Availability}
+SHAPE is available from the Laboratory for Clinical Affective Neuroscience, Stony Brook University~\cite{shape}. TCRZEM~\cite{tcrzem} and ERP CORE~\cite{kappenman2021erpcore} are public. Code and aggregate results: \pend{repository DOI at release}.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
