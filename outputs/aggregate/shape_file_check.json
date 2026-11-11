@@ -1,0 +1,97 @@
+{
+  "provenance": {
+    "git_commit": "7358993fa7b3260e8b1906f1c7221cc0239e7fd3",
+    "git_dirty": true,
+    "argv": [
+      "check_shape_files.py",
+      "--shape-dir",
+      "/home/user/data_local/batch_data"
+    ],
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "joblib": "1.6.0"
+    },
+    "synthetic": false,
+    "time_utc": "2026-11-11T22:16:43Z"
+  },
+  "n_files": 636,
+  "n_subjects": 212,
+  "expected_shape": [
+    1229,
+    34
+  ],
+  "wrong_shape": [],
+  "unrecognized_names": [],
+  "nonfinite_files": [],
+  "flat_channel_files": [
+    [
+      "SHAPE_Community_127_IAPSNeg_BC.txt",
+      [
+        0,
+        8,
+        12,
+        15,
+        18,
+        22
+      ]
+    ],
+    [
+      "SHAPE_Community_127_IAPSNeu_BC.txt",
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    ],
+    [
+      "SHAPE_Community_127_IAPSPos_BC.txt",
+      [
+        2,
+        29
+      ]
+    ]
+  ],
+  "baseline_mean_over_0.01uV": [],
+  "incomplete_panels": {},
+  "duplicate_file_groups": [],
+  "max_abs_amplitude_uV": {
+    "median": 20.67825,
+    "p99": 60.856175,
+    "max": 325.738
+  }
+}
