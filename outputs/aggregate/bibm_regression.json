@@ -1,0 +1,146 @@
+{
+  "provenance": {
+    "git_commit": "9515c20dd4082f24014a96dabd67289a6bf1bdfb",
+    "git_dirty": true,
+    "argv": [
+      "check_bibm_regression.py",
+      "--shape-dir",
+      "/home/user/data_local/batch_data"
+    ],
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "joblib": "1.6.0"
+    },
+    "synthetic": false,
+    "time_utc": "2026-11-11T20:19:32Z"
+  },
+  "check": "BIBM regression",
+  "tol": 1e-06,
+  "rows": [
+    {
+      "paper_cell": [
+        "tab:clean",
+        "Band-power",
+        "BA"
+      ],
+      "expected": 0.494471,
+      "reproduced": 0.49447077409162715,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:clean",
+        "ERP-window",
+        "BA"
+      ],
+      "expected": 0.628752,
+      "reproduced": 0.6287519747235387,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:clean",
+        "Reservoir",
+        "BA"
+      ],
+      "expected": 0.486572,
+      "reproduced": 0.48657187993680884,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "zero",
+        "Band-power"
+      ],
+      "expected": 0.417062,
+      "reproduced": 0.4170616113744076,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "zero",
+        "ERP-window"
+      ],
+      "expected": 0.535545,
+      "reproduced": 0.5355450236966824,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "zero",
+        "Reservoir"
+      ],
+      "expected": 0.486572,
+      "reproduced": 0.48657187993680884,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "mean",
+        "Band-power"
+      ],
+      "expected": 0.472354,
+      "reproduced": 0.47235387045813587,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "mean",
+        "ERP-window"
+      ],
+      "expected": 0.578199,
+      "reproduced": 0.5781990521327014,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "mean",
+        "Reservoir"
+      ],
+      "expected": 0.486572,
+      "reproduced": 0.48657187993680884,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "knn",
+        "ERP-window"
+      ],
+      "expected": 0.609795,
+      "reproduced": 0.6097946287519748,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:dropconf",
+        "spatial",
+        "ERP-window"
+      ],
+      "expected": 0.589258,
+      "reproduced": 0.5892575039494471,
+      "ok": true
+    },
+    {
+      "paper_cell": [
+        "tab:rawsignal",
+        "remove_0.3",
+        "Reservoir"
+      ],
+      "expected": 0.473934,
+      "reproduced": 0.47393364928909953,
+      "ok": true
+    }
+  ],
+  "n_fail": 0
+}

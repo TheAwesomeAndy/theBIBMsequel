@@ -38,7 +38,14 @@ def main() -> int:
     p = base_parser(__doc__)
     p.add_argument("--tol", type=float, default=1e-6)
     args = p.parse_args()
-    ep = data.load_bibm_pickle(args.pickle)
+    if args.pickle or not args.shape_dir:
+        ep = data.load_bibm_pickle(args.pickle)
+    else:
+        # The BIBM audit (A18) verified X_ds == raw[0:1024:4], z-scored per epoch and channel.
+        # Observation order matters for the CV splits; the loader orders by subject, then
+        # condition (Neg, Neu, Pos). A pass here confirms that order matches the pickle's.
+        raw, y, g = data.load_shape_raw(args.shape_dir)
+        ep = data.preprocess(raw, y, g, decimation="legacy", norm="epoch_z")
     y, g = ep.y, ep.groups
     blocks = {
         "Band-power": (features.bandpower(ep.X), False),
