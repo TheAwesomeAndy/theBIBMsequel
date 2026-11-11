@@ -1,10 +1,12 @@
 {
   "provenance": {
-    "git_commit": "b9dddcb364784138441b971fd22644d21b4fd736",
+    "git_commit": "9b83c0fc602ef2c70984096fc0fed3320be11067",
     "git_dirty": true,
     "argv": [
       "fetch_datasets.py",
-      "tcrzem"
+      "erpcore_P3",
+      "erpcore_N400",
+      "erpcore_N170"
     ],
     "python": "3.13.18",
     "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
@@ -15,7 +17,7 @@
       "joblib": "1.6.0"
     },
     "synthetic": false,
-    "time_utc": "2026-11-11T21:01:22Z"
+    "time_utc": "2026-11-11T21:41:42Z"
   },
   "tcrzem": {
     "name": "tcrzem",
@@ -38,5 +40,94 @@
       "positions": "standard_1005 template"
     },
     "build_seconds": 23
+  },
+  "erpcore_P3": {
+    "name": "erpcore_P3",
+    "n_obs": 72,
+    "n_subjects": 36,
+    "n_channels": 30,
+    "conditions": [
+      "frequent",
+      "rare"
+    ],
+    "fs_raw": 1024,
+    "has_positions": true,
+    "trials_per_average_median": 42.0,
+    "skipped_subjects": [
+      "sub-005",
+      "sub-009",
+      "sub-035",
+      "sub-039"
+    ],
+    "settings": {
+      "reference": [
+        "P9",
+        "P10"
+      ],
+      "highpass_hz": 0.1,
+      "eog_correction": true,
+      "reject_uv": 200.0,
+      "min_trials": 10,
+      "source": "OSF 9f5w7 (ERP CORE BIDS raw files)"
+    },
+    "build_seconds": 310
+  },
+  "erpcore_N400": {
+    "name": "erpcore_N400",
+    "n_obs": 70,
+    "n_subjects": 35,
+    "n_channels": 30,
+    "conditions": [
+      "related",
+      "unrelated"
+    ],
+    "fs_raw": 1024,
+    "has_positions": true,
+    "trials_per_average_median": 58.0,
+    "skipped_subjects": [
+      "sub-004",
+      "sub-016",
+      "sub-029",
+      "sub-030",
+      "sub-039"
+    ],
+    "settings": {
+      "reference": [
+        "P9",
+        "P10"
+      ],
+      "highpass_hz": 0.1,
+      "eog_correction": true,
+      "reject_uv": 200.0,
+      "min_trials": 10,
+      "source": "OSF 9f5w7 (ERP CORE BIDS raw files)"
+    },
+    "build_seconds": 200
+  },
+  "erpcore_N170": {
+    "name": "erpcore_N170",
+    "n_obs": 76,
+    "n_subjects": 38,
+    "n_channels": 30,
+    "conditions": [
+      "faces",
+      "cars"
+    ],
+    "fs_raw": 1024,
+    "has_positions": true,
+    "trials_per_average_median": 78.5,
+    "skipped_subjects": [
+      "sub-029",
+      "sub-035"
+    ],
+    "settings": {
+      "reference": "average",
+      "highpass_hz": 0.1,
+      "eog_correction": true,
+      "reject_uv": 200.0,
+      "min_trials": 10,
+      "source": "OSF 9f5w7 (ERP CORE BIDS raw files)"
+    },
+    "build_seconds": 229
   }
 }
