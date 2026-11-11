@@ -155,7 +155,28 @@ def _osf_list(href: str) -> list[dict]:
     return out
 
 
-def fetch_erpcore(task: str, subjects: list[int] | None = None, root: Path = DATA_ROOT) -> Path:
+def _download_all(jobs: list[tuple[str, Path, int]], workers: int = 8) -> None:
+    """Fetch (url, dest, expected_size) jobs in parallel, skipping complete files."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    import time
+
+    def one(job):
+        url, dest, _ = job
+        for attempt in range(6):                # backoff on HTTP 429/5xx from the hosts
+            try:
+                return _curl(url, dest)
+            except subprocess.CalledProcessError:
+                time.sleep(5 * 2 ** attempt)
+        raise RuntimeError(f"download failed after retries: {url} -> {dest}")
+
+    todo = [j for j in jobs if not (j[1].exists() and j[1].stat().st_size == j[2])]
+    with ThreadPoolExecutor(workers) as ex:
+        list(ex.map(one, todo))
+
+
+def fetch_erpcore(task: str, subjects: list[int] | None = None, root: Path = DATA_ROOT,
+                  workers: int = 4) -> Path:
     """Download the BIDS raw files of one ERP CORE task. Returns the local task directory."""
     if task not in ERPCORE_TASKS:
         raise ValueError(f"task must be one of {list(ERPCORE_TASKS)}")
@@ -167,6 +188,7 @@ def fetch_erpcore(task: str, subjects: list[int] | None = None, root: Path = DAT
     if subjects is not None:
         want = {f"sub-{s:03d}" for s in subjects}
         subs = [n for n in subs if n["attributes"]["name"] in want]
+    jobs = []
     for sub in subs:
         sname = sub["attributes"]["name"]
         sessions = _osf_list(sub["relationships"]["files"]["links"]["related"]["href"])
@@ -177,8 +199,9 @@ def fetch_erpcore(task: str, subjects: list[int] | None = None, root: Path = DAT
         for f in _osf_list(eeg["relationships"]["files"]["links"]["related"]["href"]):
             nm = f["attributes"]["name"]
             dest = base / task / sname / nm
-            if nm.endswith(_ERPCORE_SUFFIXES) and not (dest.exists() and dest.stat().st_size == f["attributes"]["size"]):
-                _curl(f["links"]["download"], dest)
+            if nm.endswith(_ERPCORE_SUFFIXES):
+                jobs.append((f["links"]["download"], dest, f["attributes"]["size"]))
+    _download_all(jobs, workers)
     return base / task
 
 
@@ -241,7 +264,7 @@ _TCRZEM_RE = re.compile(r"(S\d+)_Mastoid_(Neg|Neu|Pos)_(High|Low)\.(dat|vhdr|vmr
 TCRZEM_VALENCE = {"Neg": 0, "Neu": 1, "Pos": 2}
 
 
-def fetch_tcrzem(root: Path = DATA_ROOT, max_subjects: int | None = None) -> Path:
+def fetch_tcrzem(root: Path = DATA_ROOT, max_subjects: int | None = None, workers: int = 8) -> Path:
     """Download the exported, mastoid-referenced segment files (about 4.3 GB)."""
     idx = json.loads(_curl(f"https://dataverse.nl/api/datasets/:persistentId/?persistentId={TCRZEM_DOI}",
                            timeout=120))["data"]["latestVersion"]["files"]
@@ -250,10 +273,8 @@ def fetch_tcrzem(root: Path = DATA_ROOT, max_subjects: int | None = None) -> Pat
         keep = sorted({_TCRZEM_RE.search(f["dataFile"]["filename"]).group(1) for f in files})[:max_subjects]
         files = [f for f in files if _TCRZEM_RE.search(f["dataFile"]["filename"]).group(1) in keep]
     out = root / "tcrzem"
-    for f in files:
-        dest = out / f["dataFile"]["filename"]
-        if not (dest.exists() and dest.stat().st_size == f["dataFile"]["filesize"]):
-            _curl(f"https://dataverse.nl/api/access/datafile/{f['dataFile']['id']}", dest)
+    _download_all([(f"https://dataverse.nl/api/access/datafile/{f['dataFile']['id']}",
+                    out / f["dataFile"]["filename"], f["dataFile"]["filesize"]) for f in files], workers)
     return out
 
 
