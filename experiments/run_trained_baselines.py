@@ -28,7 +28,35 @@ from joblib import Parallel, delayed
 from common import base_parser, cv_settings, protocol, removal_draw, write  # noqa: E402
 from sequel import config as C, datasets, features, fills, trained  # noqa: E402
 
-ALL_MODELS = ("EEGNet", "EEGNet+aug", "TS-ERPCov", "TS-xDAWN", "Amp6", "LPP-300-1000")
+ALL_MODELS = ("BSC6-tuned", "EEGNet", "EEGNet+aug", "TS-ERPCov", "TS-xDAWN", "Amp6", "LPP-300-1000")
+GAINS = (0.25, 0.5, 1.0, 2.0, 4.0)
+
+
+def tuned_reservoir_proba(codes, y, groups, tr, te, seed, inner_folds=3):
+    """Nested input-gain selection (as run_gain_search.py), clean test condition only."""
+    from sklearn.metrics import balanced_accuracy_score
+    from sklearn.model_selection import StratifiedGroupKFold
+    classes = np.unique(y)
+
+    def fit_pred(B, a, b):
+        P = features.BlockPCA().fit(B[a])
+        E = P.transform(B).reshape(len(B), -1)
+        sc, clf = protocol.fit_readout(E[a], y[a], seed)
+        return clf.predict_proba(sc.transform(E[b]))
+
+    inner = StratifiedGroupKFold(inner_folds, shuffle=True, random_state=seed)
+    score = {}
+    for gain in GAINS:
+        sub, ysub = codes[gain][tr], y[tr]
+        pr = np.zeros((len(tr), classes.size))
+        for a, b in inner.split(np.zeros((len(tr), 1)), ysub, groups=groups[tr]):
+            P = features.BlockPCA().fit(sub[a])
+            E = P.transform(sub).reshape(len(sub), -1)
+            sc, clf = protocol.fit_readout(E[a], ysub[a], seed)
+            pr[b] = clf.predict_proba(sc.transform(E[b]))
+        score[gain] = balanced_accuracy_score(ysub, classes[pr.argmax(1)])
+    best = max(GAINS, key=lambda k: (score[k], -abs(np.log(k))))
+    return fit_pred(codes[best], tr, te), best
 
 
 def _linear(Ftr, ytr, Fte_list, seed):
@@ -36,7 +64,8 @@ def _linear(Ftr, ytr, Fte_list, seed):
     return [clf.predict_proba(sc.transform(F.reshape(len(F), -1))) for F in Fte_list]
 
 
-def run_fold(seed, fold, tr, te, Xw, Xfull, times, win, y, positions, rate, models, epochs):
+def run_fold(seed, fold, tr, te, Xw, Xfull, times, win, y, positions, rate, models, epochs,
+             codes=None, groups=None):
     """Return {(model, condition): (te, proba)} for one split."""
     pct = int(round(rate * 100))
     n_ch = Xw.shape[2]
@@ -53,7 +82,11 @@ def run_fold(seed, fold, tr, te, Xw, Xfull, times, win, y, positions, rate, mode
     out = {}
     s = 100 * seed + fold
     for m in models:
-        if m in ("EEGNet", "EEGNet+aug"):
+        if m == "BSC6-tuned":
+            pr, best = tuned_reservoir_proba(codes, y, groups, tr, te, seed)
+            out[(m, "clean")] = (te, pr)
+            out[("_gain", str(best))] = (te, None)
+        elif m in ("EEGNet", "EEGNet+aug"):
             clf = trained.EEGNetClassifier(s, aug=(m == "EEGNet+aug"), epochs=epochs).fit(Xw[tr], y[tr])
             for c, (xw, _) in tests.items():
                 out[(m, c)] = (te, clf.predict_proba(xw))
@@ -83,28 +116,39 @@ def run_dataset(s, args, seeds, n_boot):
     Xw = ep.X[:, win[0]:win[1], :]
     splits = protocol.make_splits(y, g, seeds)
     t0 = time.time()
+    codes = None
+    if "BSC6-tuned" in args.models:
+        from sequel import reservoir
+        codes = {gain: reservoir.LIFReservoir().encode(ep.X * gain, win, 6).counts for gain in GAINS}
     parts = Parallel(n_jobs=args.jobs)(
         delayed(run_fold)(sd, fd, tr, te, Xw, ep.X, ep.times_ms, win, y, s.positions, args.rate,
-                          args.models, args.epochs) for sd, fd, tr, te in splits)
+                          args.models, args.epochs, codes, g) for sd, fd, tr, te in splits)
     classes = np.unique(y)
     acc = {}
+    chosen = []
     for part in parts:
         for key, (te, p) in part.items():
+            if key[0] == "_gain":
+                chosen.append(key[1])
+                continue
             acc.setdefault(key, np.zeros((len(y), classes.size)))[te] += p
     preds = {k: classes[np.argmax(v, axis=1)] for k, v in acc.items()}
     pct = int(round(args.rate * 100))
     conds = sorted({c for _, c in preds})
+    from collections import Counter
     res = {"chance": 1.0 / classes.size, "seconds": round(time.time() - t0),
+           "chosen_gains": dict(Counter(chosen)),
            "BA": {m: protocol.bootstrap_ba(y, g, {c: preds[(m, c)] for c in conds if (m, c) in preds}, n_boot)
                   for m in args.models},
            "paired": {}}
-    ref = [r for r in ("Amp6", "LPP-300-1000") if r in args.models]
+    ref = [r for r in ("Amp6", "LPP-300-1000", "BSC6-tuned") if r in args.models]
     for m in args.models:
         for r in ref:
             if r == m:
                 continue
             for c in ("clean", f"sig{pct}_zero"):
-                res["paired"][f"{m}_minus_{r}|{c}"] = protocol.paired_diff(y, g, preds[(m, c)], preds[(r, c)], n_boot)
+                if (m, c) in preds and (r, c) in preds:
+                    res["paired"][f"{m}_minus_{r}|{c}"] = protocol.paired_diff(y, g, preds[(m, c)], preds[(r, c)], n_boot)
         if (m, f"sig{pct}_zero") in preds:
             res["paired"][f"{m}|clean_minus_sig{pct}_zero"] = protocol.paired_diff(
                 y, g, preds[(m, "clean")], preds[(m, f"sig{pct}_zero")], n_boot)
