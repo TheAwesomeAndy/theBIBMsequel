@@ -29,7 +29,7 @@
 \maketitle
 
 \begin{abstract}
-Comparisons of EEG representations under channel loss are usually reported as one number per encoder, but that number depends on choices that are rarely stated: how a missing channel is filled, how each epoch is normalized, and how accuracy retention is scored. We study these choices on five event-related potential (ERP) datasets: two affective picture-viewing cohorts (211 and 228 participants) and three ERP CORE paradigms (P3, N400, N170). Encoders range from conventional late positive potential (LPP) and window amplitudes to band power, a matched six-bin amplitude code, and a fixed leaky integrate-and-fire reservoir read out through six spike-count bins. We prove that zero fill is not invariant to a change of feature origin and can drive a non-centered encoder to chance while mean fill is unaffected, and that per-epoch normalization of averaged ERPs rescales conditions by their trial counts. Both effects are measured: whole-epoch z-scoring let post-stimulus signal reach a pre-stimulus reservoir window that carries no affective information on its own (balanced accuracy 0.487 versus 0.305 under baseline-only scaling), and baseline z-scoring removed the oddball P3 effect from a conventional LPP score (paired $d_z$ 1.05 to 0.05). \pend{headline fill-rule and reservoir-versus-control results across datasets, Phase 1 and 2 summaries}. We give a reporting checklist and release code that reproduces the conference results exactly.
+Comparisons of EEG representations under channel loss are usually reported as one number per encoder, but that number depends on choices that are rarely stated: how a missing channel is filled, how each epoch is normalized, and how accuracy retention is scored. We study these choices on five event-related potential (ERP) datasets: two affective picture-viewing cohorts (211 and 228 participants) and three ERP CORE paradigms (P3, N400, N170). Encoders range from conventional late positive potential (LPP) and window amplitudes to band power, a matched six-bin amplitude code, and a fixed leaky integrate-and-fire reservoir read out through six spike-count bins. We prove that zero fill is not invariant to a change of feature origin and can drive a non-centered encoder to chance while mean fill is unaffected, and that per-epoch normalization of averaged ERPs rescales conditions by their trial counts. Both effects are measured: whole-epoch z-scoring let post-stimulus signal reach a pre-stimulus reservoir window that carries no affective information on its own (balanced accuracy 0.487 versus 0.305 under baseline-only scaling), and baseline z-scoring removed the oddball P3 effect from a conventional LPP score (paired $d_z$ 1.05 to 0.05). With its single input gain chosen by nested cross-validation, the training-free reservoir reached \prov{0.889} balanced accuracy on the oddball P3 task, above EEGNet (0.847) and a Riemannian tangent-space classifier (0.875) in point estimate, and exceeded the conventional LPP score by $+0.181$ [$+0.083$, $+0.278$]. \pend{gain-tuned results on N400, N170 and the two affective cohorts, and paired contrasts against the trained models}. We give a reporting checklist and release code that reproduces the conference results exactly.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -46,6 +46,7 @@ This paper asks whether those conclusions hold beyond one cohort, one paradigm a
 \item \textbf{Theory.} Proposition~3 shows that a change of feature origin, which carries no information, moves zero-fill accuracy anywhere between its mean-fill value and chance. Proposition~4 shows that per-epoch normalization of averaged ERPs rescales each condition by the square root of its trial count, which can cancel a real effect (Section~\ref{sec:theory}).
 \item \textbf{Two normalization artifacts, measured.} Whole-epoch z-scoring carried post-stimulus information into the mostly pre-stimulus window used by the conference reservoir, and baseline z-scoring cancelled the oddball P3 effect (Section~\ref{sec:normres}).
 \item \textbf{A five-dataset fill-rule study} with feature-level and signal-level fills, spherical-spline repair where electrode positions exist, readout refitting, and a training-side fill-bias index (Section~\ref{sec:fillres}).
+\item \textbf{A tuned, training-free reservoir.} The reservoir's one scale-sensitive parameter, its input gain, is chosen by nested participant-grouped cross-validation. Tuned, it matches or exceeds trained EEGNet and Riemannian classifiers on the P3 task with no trained weights in the encoder (Section~\ref{sec:gainres}).
 \item \textbf{A matched control for the reservoir.} A six-bin amplitude code with the reservoir's own bins separates what the spiking expansion adds from what binning alone provides (Section~\ref{sec:resres}).
 \item \textbf{Reproducibility.} Code that reproduces all twelve conference table cells exactly, synthetic tests for every proposition, and aggregate results only, with no subject-level data released (Section~\ref{sec:repro}).
 \end{enumerate}
@@ -123,6 +124,10 @@ All datasets pass through one path: zero-phase FIR decimation to 256~Hz with sti
 \subsection{Encoders}
 \emph{LPP} is the mean amplitude from 300 to 1000~ms per channel~\cite{nelson2015familial}. \emph{ERP window} is the mean amplitude in three windows per channel. \emph{Band power} uses Welch estimates in five bands from 1 to 45~Hz. The \emph{reservoir} is the conference encoder: 256 leaky integrate-and-fire units ($\beta=0.05$, $\vartheta=0.5$, spectral radius 0.9, one shared fixed weight draw), driven by each electrode trace, summarized as spike counts in six equal bins (\BSC{}), and compressed by a 64-component PCA basis shared across electrodes and fitted on training participants only. \BSC[1] sums the six bins. \emph{Amp6}, the matched control, averages the amplitude in the reservoir's own six bins, so the reservoir's contribution beyond binning is measured directly.
 
+\emph{Reservoir input gain.} Standardization in the readout makes the linear encoders insensitive to the overall input scale, but the reservoir has a fixed firing threshold, so its spike counts depend on input amplitude. Its input is therefore multiplied by a gain $\gamma\in\{0.25,0.5,1,2,4\}$ chosen separately in every outer training fold by a three-fold participant-grouped inner cross-validation on the training participants only, refitted on the whole outer training set, and scored on the untouched test participants. Ties go to the gain closest to 1. We report the fixed gain $\gamma=1$ of the conference study beside the tuned result.
+
+\emph{Trained baselines.} EEGNet-8,2~\cite{lawhern2018eegnet} uses the conference recipe (Adam, learning rate $10^{-3}$, 80 epochs, batch 64), with and without augmentation by random channel dropout and additive noise. Two Riemannian classifiers map ERP-prototype covariances and xDAWN covariances~\cite{barachant2014plug} to the tangent space at the training mean, with shrinkage estimators and the same logistic readout. All trained models see the same post-stimulus window, participants and removed electrodes as the fixed encoders.
+
 \subsection{Channel loss}
 In each fold a fixed fraction of electrodes (10, 30 or 50\%) is removed in the test participants, with the same draws for every encoder. Feature-level fills replace the dropped blocks by zero, the training mean, a $k$-nearest-neighbor estimate ($k=10$), the mean of retained channels, or a spherical-spline estimate~\cite{perrin1989spherical}. Signal-level removal zeroes the dropped traces before encoding, and signal-level spline repair interpolates them before encoding. Refit trains the readout on the retained channels only.
 
@@ -142,6 +147,31 @@ Rebuilt from the raw SHAPE files with the conference preprocessing, the new code
 \emph{Trial counts.} In the P3 task the rare average contains about four times fewer trials than the frequent one. In microvolts, rare minus frequent at Pz from 300 to 1000~ms gave $d_z=1.05$. After baseline z-scoring it gave $d_z=0.05$, and LPP decoding fell from 0.708 to 0.500 [0.389, 0.611], as Proposition~4 predicts. Under \emph{global\_scale} the LPP score decoded at 0.708. \pend{effect on SHAPE, which needs per-condition trial counts}.
 
 \emph{Scale normalization itself helps cross-participant decoding.} On SHAPE with FIR decimation, ERP-window features scored \prov{0.621} under whole-epoch z-scoring and \prov{0.567} under \emph{pre\_center}, which keeps the scale normalization but removes the offset leak, so about \prov{five} points of that score are attributable to the leak. Baseline-only scaling lowered every encoder, including post-stimulus windows, so whole-epoch z-scoring also helps through a per-epoch amplitude normalization. \pend{full normalization grid with paired CIs}.
+
+\subsection{Gain-tuned reservoir against trained models}
+\label{sec:gainres}
+Table~\ref{tab:gain} compares clean accuracy on the three ERP CORE tasks. On P3, nested gain selection chose $\gamma=2$ in 17 of 25 outer folds, $\gamma=4$ in 7 and $\gamma=1$ in one, so the conference gain was too low for this input scale. The tuned reservoir reached 0.889, against 0.861 at $\gamma=1$ (paired $+0.028$ [$-0.042$, $+0.111$]). It exceeded the LPP score by $+0.181$ [$+0.083$, $+0.278$] and the matched Amp6 code by $+0.042$ [$-0.028$, $+0.111$], and it was the most accurate encoder on the task in point estimate, ahead of the best Riemannian classifier (0.875) and EEGNet (0.847) without any trained weights in the encoder. The comparisons with trained models are point estimates from the same splits. \pend{paired tuned-reservoir versus trained-model contrasts, and gain-tuned results on N400, N170, TCRZEM and SHAPE}.
+
+\begin{table}[t]
+\caption{Clean balanced accuracy on ERP CORE (chance 0.5), \emph{global\_scale}, post-stimulus window, same participant-grouped splits for every row. \BSC{} rows use no trained weights in the encoder. TS: Riemannian tangent space. Bold: best per task.}
+\label{tab:gain}
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccc}
+\toprule
+Encoder & P3 & N400 & N170 \\
+\midrule
+\BSC{}, tuned $\gamma$ & \textbf{0.889} & \pend{} & \pend{} \\
+\BSC{}, $\gamma=1$ & 0.861 & 0.829 & 0.684 \\
+Amp6 & 0.847 & 0.771 & 0.618 \\
+LPP 300--1000~ms & 0.708 & 0.700 & 0.553 \\
+\midrule
+EEGNet & 0.847 & 0.900 & 0.776 \\
+EEGNet + aug. & 0.847 & 0.886 & 0.763 \\
+TS, ERP cov. & 0.875 & \textbf{0.914} & \textbf{0.816} \\
+TS, xDAWN & 0.861 & 0.829 & 0.763 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{What the reservoir adds beyond binning}
 \label{sec:resres}
@@ -164,9 +194,9 @@ The reservoir embedding was near-centered on all three ERP CORE tasks, with mean
 \item the augmentation state of trained models.
 \end{enumerate}
 
-\emph{Relation to the conference paper.} New here: Propositions 3 and 4, the fill-bias index, four additional datasets, the matched Amp6 control, the normalization analysis, spherical-spline and refit conditions, multiple reservoir weight draws, and exact reproduction code. The conference results are reproduced, and the conference reservoir accuracy is reinterpreted as a normalization effect.
+\emph{Relation to the conference paper.} New here: Propositions 3 and 4, the fill-bias index, four additional datasets, the matched Amp6 control, the normalization analysis, spherical-spline and refit conditions, multiple reservoir weight draws, nested selection of the reservoir input gain, trained EEGNet and Riemannian baselines, and exact reproduction code. The conference results are reproduced, and the conference reservoir accuracy is reinterpreted as a normalization effect.
 
-\emph{Limitations.} Observations are condition averages, so we do not estimate single-trial performance or within-participant decoding~\cite{bae2018decoding}. The ERP CORE samples are small. SHAPE positions are inferred until the lab confirms the channel list, and TCRZEM positions are templates. The reservoir uses one architecture. Clinical labels play no role, and nothing here is a diagnostic claim. \pend{trained-model arm (EEGNet with and without augmentation) and Riemannian baseline, Phase 3}.
+\emph{Limitations.} Observations are condition averages, so we do not estimate single-trial performance or within-participant decoding~\cite{bae2018decoding}. The ERP CORE samples are small. SHAPE positions are inferred until the lab confirms the channel list, and TCRZEM positions are templates. The reservoir uses one architecture. The gain search was introduced in this study after the fixed-gain results were known. Because the gain is chosen inside each training fold, test participants never inform it, but the decision to tune it was not prespecified, and we therefore report the fixed-gain results beside it. EEGNet uses one recipe without a hyperparameter search, so its accuracies may be conservative. Clinical labels play no role, and nothing here is a diagnostic claim.
 
 \section{Conclusion}
 \pend{write after Phase 1 and 2 results are final}.
