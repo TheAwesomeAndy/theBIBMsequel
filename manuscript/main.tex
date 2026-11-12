@@ -133,12 +133,14 @@ In each fold a fixed fraction of electrodes (10, 30 or 50\%) is removed in the t
 
 \subsection{Validation}
 \label{sec:validation}
-Five repeats of five-fold participant-grouped stratified cross-validation, train-only standardization, and a balanced $\ell_2$ logistic readout ($C=1$). Out-of-fold probabilities are pooled across repeats before scoring, and 95\% intervals come from 4000 resamples of participants, each keeping all its observations. Encoder and fill contrasts are paired under the same resamples. Within-participant label permutation (1000 permutations, headline estimator) gives the null distribution. \pend{permutation run}.
+Five repeats of five-fold participant-grouped stratified cross-validation, train-only standardization, and a balanced $\ell_2$ logistic readout ($C=1$). Out-of-fold probabilities are pooled across repeats before scoring, and 95\% intervals come from 4000 resamples of participants, each keeping all its observations. Encoder and fill contrasts are paired under the same resamples. Within-participant label permutation (1000 permutations, headline estimator, the same five-repeat protocol) gives the null distribution.
 
 \section{Results}
 \subsection{Exact reproduction of the conference results}
 \label{sec:repro}
 Rebuilt from the raw SHAPE files with the conference preprocessing, the new code reproduced all twelve conference table cells to six decimals (clean, 30\% zero, mean, $k$NN and spatial fills, and signal-level removal, for band power, ERP windows and the reservoir). The match also confirms that the cross-validation splits are identical.
+
+\emph{Permutation null.} On SHAPE under \emph{global\_scale}, every encoder exceeded all 1000 within-participant label permutations ($p=0.001$, the smallest attainable): \BSC{} 0.553, Amp6 0.684, ERP windows 0.542, band power 0.460. The null distributions centered on chance (means 0.333, standard deviations 0.019 to 0.022, maxima 0.400 to 0.404), so the grouped protocol shows no label leakage. The conference paper used 20 permutations.
 
 \subsection{Normalization artifacts}
 \label{sec:normres}

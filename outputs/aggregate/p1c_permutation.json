@@ -1,0 +1,95 @@
+{
+  "provenance": {
+    "git_commit": "a05875732dd590a716d1142a7698d7904fe921ad",
+    "git_dirty": false,
+    "argv": [
+      "run_permutation.py",
+      "--shape-dir",
+      "/home/user/data_local/batch_data",
+      "--norm",
+      "global_scale",
+      "--n-perm",
+      "1000",
+      "--jobs",
+      "2",
+      "--encoders",
+      "Amp6",
+      "ERP-window",
+      "Band-power",
+      "BSC6"
+    ],
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v378-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "joblib": "1.6.0"
+    },
+    "synthetic": false,
+    "time_utc": "2026-11-12T02:38:46Z"
+  },
+  "design": {
+    "shape_dir": "/home/user/data_local/batch_data",
+    "pickle": null,
+    "out": null,
+    "quick": false,
+    "synthetic": false,
+    "decimation": "fir",
+    "norm": "global_scale",
+    "window": "post",
+    "n_perm": 1000,
+    "jobs": 2,
+    "encoders": [
+      "Amp6",
+      "ERP-window",
+      "Band-power",
+      "BSC6"
+    ],
+    "window_samples": [
+      51,
+      256
+    ],
+    "cv_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ]
+  },
+  "encoders": {
+    "Amp6": {
+      "observed_BA": 0.684044233807267,
+      "n_perm": 1000,
+      "null_mean": 0.33276935229067933,
+      "null_sd": 0.01977802030095781,
+      "null_max": 0.40126382306477093,
+      "p": 0.000999000999000999
+    },
+    "ERP-window": {
+      "observed_BA": 0.5418641390205371,
+      "n_perm": 1000,
+      "null_mean": 0.33264928909952607,
+      "null_sd": 0.020844671996604128,
+      "null_max": 0.4044233807266982,
+      "p": 0.000999000999000999
+    },
+    "Band-power": {
+      "observed_BA": 0.4597156398104265,
+      "n_perm": 1000,
+      "null_mean": 0.33279778830963663,
+      "null_sd": 0.018914121271907957,
+      "null_max": 0.40126382306477093,
+      "p": 0.000999000999000999
+    },
+    "BSC6": {
+      "observed_BA": 0.5529225908372828,
+      "n_perm": 1000,
+      "null_mean": 0.3327472353870458,
+      "null_sd": 0.02209925717820433,
+      "null_max": 0.39968404423380727,
+      "p": 0.000999000999000999
+    }
+  }
+}
