@@ -1,0 +1,45 @@
+\section{Theory}\label{sec:theory}
+
+\subsection{Observation Model}
+Consider one channel of one epoch, $x(t)$ for $t=1,\dots,T$, with pre-stimulus index set $\mathcal{P}$ of size $T_0$ and post-stimulus set $\mathcal{Q}$ of size $T_1=T-T_0$. Write $x(t)=s_y(t)+n(t)$, where $s_y$ is the evoked response for condition $y$, zero on $\mathcal{P}$, and $n$ is zero-mean background activity. Baseline correction subtracts the pre-stimulus mean, so that
+\begin{equation}
+\textstyle\sum_{t\in\mathcal{P}} x(t)=0. \label{eq:bc}
+\end{equation}
+Denote the post-stimulus mean by $\bar{x}_\mathcal{Q}=T_1^{-1}\sum_{t\in\mathcal{Q}}x(t)$. Four scalings are compared. Per-epoch z-scoring uses the epoch mean $m=T^{-1}\sum_t x(t)$ and standard deviation $\hat\sigma$,
+\begin{equation}
+z(t)=\frac{x(t)-m}{\hat\sigma}. \label{eq:z}
+\end{equation}
+A post-stimulus variant replaces $(m,\hat\sigma)$ by the mean and standard deviation over $\mathcal{Q}$. Pre-stimulus scaling divides by the standard deviation over $\mathcal{P}$, $\tilde{x}(t)=x(t)/\hat\sigma_\mathcal{P}$, and the unscaled signal is kept in microvolts.
+
+\subsection{The Leakage Identity}
+\begin{proposition}[Pre-stimulus leakage identity]\label{prop:identity}
+For a baseline-corrected epoch, $m=(T_1/T)\,\bar{x}_\mathcal{Q}$, and for every $t\in\mathcal{P}$
+\begin{equation}
+z(t)=\frac{x(t)}{\hat\sigma}-\frac{T_1}{T}\,\frac{\bar{x}_\mathcal{Q}}{\hat\sigma},
+\qquad
+\bar{z}_\mathcal{P}=-\frac{T_1}{T}\,\frac{\bar{x}_\mathcal{Q}}{\hat\sigma}. \label{eq:identity}
+\end{equation}
+Under the post-stimulus variant, $\bar{z}_\mathcal{P}=-\bar{x}_\mathcal{Q}/\hat\sigma_\mathcal{Q}$.
+\end{proposition}
+\begin{proof}
+Split the sum defining $m$ over $\mathcal{P}$ and $\mathcal{Q}$ and apply \eqref{eq:bc}; substitute into \eqref{eq:z} and average over $\mathcal{P}$, using \eqref{eq:bc} once more. The variant follows in the same way.
+\end{proof}
+
+The identity is exact. The pre-stimulus mean of a z-scored epoch carries no pre-stimulus information at all: it equals the post-stimulus mean amplitude, sign-flipped and scaled by $T_1/(T\hat\sigma)$. Across channels the pre-stimulus scalp pattern is the post-stimulus mean pattern divided channel-wise by $\hat\sigma$. A sustained, one-signed condition difference, such as the late positive potential of affective picture viewing \cite{hajcak2010lpp} or the P3, therefore appears at every pre-stimulus sample at once.
+
+\begin{corollary}[Causal encoders]\label{cor:causal}
+Let $\xi_t=\Phi(\xi_{t-1},u_t)$ be any causal state-space encoder and let $\xi_{T_0}$ be its state at stimulus onset. Driven by $u=z$, $\xi_{T_0}$ is a function of $(x_\mathcal{P},\bar{x}_\mathcal{Q},\hat\sigma)$ and can carry information about $y$ even when $I(y;x_\mathcal{P})=0$. Driven by pre-stimulus scaling, $\xi_{T_0}$ is a function of $x_\mathcal{P}$ alone, and the data processing inequality gives $I(y;\xi_{T_0})\le I(y;x_\mathcal{P})$.
+\end{corollary}
+
+The corollary turns the identity into a falsifiable test for any temporal model. A reservoir, recurrent network, or convolutional network restricted to pre-stimulus samples decodes at chance under scaling that never touches $\mathcal{Q}$. Above-chance decoding under per-epoch scaling measures the leak directly.
+
+\subsection{The Averaging Law}
+Let trial $i$ of condition $y$ have post-stimulus mean pattern $\bar{\mathbf{x}}^{(i)}_\mathcal{Q}=\boldsymbol\mu_y+\mathbf{e}_i$ across channels, with $\mathbf{e}_i$ independent with covariance $\Sigma_e$. An average of $k$ trials has the same condition means and covariance $\Sigma_e/k$. Treating $\hat\sigma$ as approximately constant, which holds when it is estimated from many samples, the leaked pattern \eqref{eq:identity} is an affine image of the post-stimulus mean, and its Mahalanobis separation is
+\begin{equation}
+D(k)=\sqrt{k}\,D(1),\qquad D(1)^2=\Delta\boldsymbol\mu^\top\Sigma_e^{-1}\Delta\boldsymbol\mu. \label{eq:law}
+\end{equation}
+For two equal-covariance Gaussian classes the optimal balanced accuracy is $\Phi(D/2)$, which yields the parameter-free prediction
+\begin{equation}
+\BA(k)=\Phi\!\left(\sqrt{k}\;\Phi^{-1}\!\big(\BA(1)\big)\right). \label{eq:pred}
+\end{equation}
+Single-trial decoding sits at $k=1$, where slow background fluctuations dominate $\Sigma_e$ and the leak is small. Participant-level decoding of averaged ERPs sits at $k$ equal to the number of retained trials, where the leak approaches the discriminability of the post-stimulus mean itself. Across participants the covariance acquires a between-participant term, $\Sigma_b+\Sigma_e/k$, which bounds the leak by participant variability rather than by trial count.
