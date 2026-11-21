@@ -19,11 +19,9 @@ R pseudo-trials per class are formed from the training pool and from the test
 pool separately by averaging k distinct random trials, then normalized,
 reduced to the pre-stimulus mean pattern, and decoded with shrinkage LDA.
 
-Revision (2026-11-21, before any X03 run and after the first X02 run on N170
-and P3): the pre-stimulus mean feature was replaced by four pre-stimulus bin
-means (sequel.erpcore.pre_bins). The mean is identically zero after baseline
-correction, up to float32 rounding, and the first run decoded that residue
-(P3, unscaled input, BA 0.643). The identity feature -m/sd is unchanged.
+Statistic (fixed before any X03 run): the pre-registered time-resolved
+statistic of dissoAdventuresv2@69b6c97, i.e. shrinkage LDA on the 28-channel
+pattern of each 4-sample bin, averaged over bins centered in [-200, 0) ms.
 
 Usage: ERPCORE_DATA_DIR=... python experiments/X03/run.py
 Output: outputs/X03/x03_results.json
@@ -58,8 +56,14 @@ def pseudo(x, k, R, rng):
     return np.stack([x[rng.choice(len(x), k, replace=False)].mean(0) for _ in range(R)])
 
 
+def binned(x, B=4):
+    n, T, c = x.shape
+    return x[:, :(T // B) * B].reshape(n, T // B, B, c).mean(2)
+
+
 def participant_curve(x, times, y, norm, rng):
-    pre = times < 0
+    centers = times[:(len(times) // 4) * 4].reshape(-1, 4).mean(1)
+    pre_b = np.flatnonzero((centers >= -200) & (centers < 0))
     out = {}
     for k in KS:
         accs = []
@@ -73,17 +77,19 @@ def participant_curve(x, times, y, norm, rng):
                     if len(xc) < k:
                         ok = False; break
                     P = pseudo(xc, k, R, rng)
-                    Xs.append(ec.pre_bins(ec.normalize(P, times, norm), times)); Ys.append(np.full(len(P), c))
+                    Xs.append(binned(ec.normalize(P, times, norm))[:, pre_b]); Ys.append(np.full(len(P), c))
                 if not ok:
                     break
                 pools[split] = (np.concatenate(Xs), np.concatenate(Ys))
             if not ok:
                 break
-            clf = make_pipeline(StandardScaler(), LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto"))
-            clf.fit(*pools["tr"])
-            Xt, yt = pools["te"]
-            p = clf.predict(Xt)
-            accs.append(np.mean([(p[yt == c] == c).mean() for c in (0, 1)]))
+            Xtr, ytr = pools["tr"]; Xt, yt = pools["te"]
+            fold = []
+            for j in range(Xtr.shape[1]):
+                clf = make_pipeline(StandardScaler(), LinearDiscriminantAnalysis(solver="lsqr", shrinkage="auto"))
+                p = clf.fit(Xtr[:, j], ytr).predict(Xt[:, j])
+                fold.append(np.mean([(p[yt == c] == c).mean() for c in (0, 1)]))
+            accs.append(float(np.mean(fold)))
         if len(accs) == 5:
             out[k] = float(np.mean(accs))
     return out
