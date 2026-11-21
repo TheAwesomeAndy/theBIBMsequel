@@ -1,0 +1,22 @@
+{
+  "provenance": {
+    "experiment": "X01c-2026-11",
+    "git_commit": "aaf9ca43c4c9f40db58589dd0c1502369bde4310",
+    "utc": "2026-11-21T23:41:59+00:00",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.1",
+    "data_checksum": "85f81c854574122bc0e4d2764b288a1465ab2e6ad8173d0df5ee1e80f365c9a3",
+    "params": {
+      "pre_window_ds": [
+        9,
+        51
+      ]
+    }
+  },
+  "pearson_r": 0.9964920310433366,
+  "ba_prestim_mean_z": 0.5418641390205372,
+  "ba_neg_m_over_sd": 0.5434439178515008,
+  "prediction_agreement": 0.9589257503949447,
+  "max_abs_prestim_mean_unscaled_uV": 0.6116215686274491
+}
