@@ -19,6 +19,12 @@ R pseudo-trials per class are formed from the training pool and from the test
 pool separately by averaging k distinct random trials, then normalized,
 reduced to the pre-stimulus mean pattern, and decoded with shrinkage LDA.
 
+Revision (2026-11-21, before any X03 run and after the first X02 run on N170
+and P3): the pre-stimulus mean feature was replaced by four pre-stimulus bin
+means (sequel.erpcore.pre_bins). The mean is identically zero after baseline
+correction, up to float32 rounding, and the first run decoded that residue
+(P3, unscaled input, BA 0.643). The identity feature -m/sd is unchanged.
+
 Usage: ERPCORE_DATA_DIR=... python experiments/X03/run.py
 Output: outputs/X03/x03_results.json
 """
@@ -67,7 +73,7 @@ def participant_curve(x, times, y, norm, rng):
                     if len(xc) < k:
                         ok = False; break
                     P = pseudo(xc, k, R, rng)
-                    Xs.append(ec.normalize(P, times, norm)[:, pre].mean(1)); Ys.append(np.full(len(P), c))
+                    Xs.append(ec.pre_bins(ec.normalize(P, times, norm), times)); Ys.append(np.full(len(P), c))
                 if not ok:
                     break
                 pools[split] = (np.concatenate(Xs), np.concatenate(Ys))
