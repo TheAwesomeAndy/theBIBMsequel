@@ -24,8 +24,8 @@ N_SCALP = 28
 CONTRASTS = {
     "N170": (("faces, correct",), ("cars, correct",)),
     "P3": (("rare, correct",), ("frequent, correct",)),
-    "N400": (("unrelated",), ("related",)),
-    "N2pc": (("left",), ("right",)),
+    "N400": (("all unrelated, correct",), ("all related, correct",)),
+    "N2pc": (("left target, all target colors",), ("right target, all target colors",)),
     "MMN": (("deviant",), ("standard",)),
 }
 
