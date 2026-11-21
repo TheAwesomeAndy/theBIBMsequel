@@ -1,0 +1,26 @@
+# Restricted data never enter this repository
+*.pkl
+*.pickle
+*.mat
+*.npy
+*.npz
+*.csv
+*.txt
+!requirements.txt
+data/
+data_local/
+*.edf
+*.bdf
+*.fif
+*.set
+*.fdt
+
+# Build and caches
+__pycache__/
+*.pyc
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.synctex.gz
