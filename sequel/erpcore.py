@@ -81,3 +81,17 @@ def normalize(x, times, mode: str):
     if mode == "post_z":
         return (x - x[:, post].mean(1, keepdims=True)) / x[:, post].std(1, keepdims=True)
     raise ValueError(mode)
+
+
+def pre_bins(Z, times, n_bins=4, width=12):
+    """Pre-stimulus feature: means of `n_bins` consecutive bins of `width` samples ending at onset.
+
+    Replaces the pre-stimulus mean used in the first X02 run. After baseline
+    correction over the whole pre-stimulus interval that mean is identically zero
+    up to float32 rounding (about 3e-6 uV), and a standardized readout then
+    decodes rounding residue. Bin means carry genuine pre-stimulus values.
+    Returns (n, n_bins * C).
+    """
+    idx = np.flatnonzero(times < 0)[-n_bins * width:]
+    seg = Z[:, idx, :]
+    return seg.reshape(len(Z), n_bins, width, -1).mean(2).reshape(len(Z), -1)

@@ -12,6 +12,12 @@ Predictions, fixed in this file before any X02 result was computed:
   P3 (within participants, single trials) the leak is smaller than across
      participants (the averaging law, tested directly in X03).
 
+Revision (2026-11-21, before any X03 run and after the first X02 run on N170
+and P3): the pre-stimulus mean feature was replaced by four pre-stimulus bin
+means (sequel.erpcore.pre_bins). The mean is identically zero after baseline
+correction, up to float32 rounding, and the first run decoded that residue
+(P3, unscaled input, BA 0.643). The identity feature -m/sd is unchanged.
+
 Usage: ERPCORE_DATA_DIR=... python experiments/X02/run.py
 Output: outputs/X02/x02_results.json
 """
@@ -81,10 +87,10 @@ def main():
             for n in NORMS:
                 # across regime: normalize the participant average, as SHAPE does
                 A = ec.normalize(avg_raw, times, n)
-                avgs[n].append(A[:, pre].mean(1))
+                avgs[n].append(ec.pre_bins(A, times))
                 # within regime: normalize each trial
                 Z = ec.normalize(x, times, n)
-                within[n].append(within_cv(Z[:, pre].mean(1), y))
+                within[n].append(within_cv(ec.pre_bins(Z, times), y))
             avgs.setdefault("identity_-m/sd", []).append(-avg_raw.mean(1) / avg_raw.std(1))
             ids += [pid, pid]; labs += [0, 1]
             within_id.append(pid)
@@ -115,7 +121,7 @@ def main():
                   f"within {w.mean():.3f} [{lo:.3f},{hi:.3f}] p={p:.3g}  {time.time()-t0:.0f}s", flush=True)
         res[par] = out
     cm.write_json(OUT, {"provenance": {"experiment": "X02-2026-11", "norms": NORMS, "n_perm": N_PERM,
-                                       "feature": "pre-stimulus (-200..0 ms) mean, 28 scalp channels",
+                                       "feature": "four 12-sample pre-stimulus bin means ending at onset (-188..0 ms), 28 scalp channels",
                                        "across": "participant-grouped 5-fold x5, StandardScaler + L2 logistic",
                                        "within": "stratified 5-fold x2, shrinkage LDA"},
                         "results": res, "runtime_s": round(time.time() - t0, 1)})
