@@ -23,7 +23,7 @@ from sequel import common as cm  # noqa: E402
 OUT = ROOT / "outputs" / "X01" / "x01b_reservoir_null.json"
 
 
-def main(n_perm: int = 100):
+def main(n_perm: int = 50):
     t0 = time.time()
     raw, y, g = cm.load_shape_raw()
     Xb = cm.downsample(raw)
@@ -45,4 +45,4 @@ def main(n_perm: int = 100):
 
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]) if len(sys.argv) > 1 else 100)
+    main(int(sys.argv[1]) if len(sys.argv) > 1 else 50)
