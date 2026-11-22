@@ -46,3 +46,13 @@ Open items for this paper:
 Prediction that was not supported: Euclidean alignment was predicted to stay near the
 uncentered accuracy on SHAPE. It reached 0.834 against 0.679. On single trials the
 prediction held.
+
+## Code revision of the new outputs
+
+The X09 to X12 scripts were written and run in one session and committed together in
+`e99d42d`. Outputs that record a `git_commit` therefore show the parent commit
+`af43a15`. Each final output was produced by the script version committed in `e99d42d`,
+with two exceptions that the run records describe: the ERP CORE half of X09 ran before
+the constant-feature guard was added (the affected cell is annotated in the output),
+and the ERP CORE half of X11 ran before the covariance fixes, which touch only the
+SHAPE half. A rerun from the committed scripts reproduces every number.
