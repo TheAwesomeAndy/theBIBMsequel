@@ -1,0 +1,45 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newcommand{\BA}{\mathrm{BA}}
+
+\begin{document}
+
+\title{Per-Epoch Normalization Writes the Evoked Response Into the Pre-Stimulus Interval of EEG Decoders}
+
+\author{Andrew~A.~Lane,
+        Wendy~Tang,
+        and~Brady~D.~Nelson%
+\thanks{A. A. Lane and W. Tang are with the Department of Electrical and Computer Engineering, Stony Brook University, Stony Brook, NY 11794 USA (e-mail: andrew.a.lane@stonybrook.edu).}%
+\thanks{B. D. Nelson is with the Department of Psychology, Stony Brook University, Stony Brook, NY 11794 USA.}}
+
+\markboth{IEEE Transactions on Neural Systems and Rehabilitation Engineering}%
+{Lane \MakeLowercase{\textit{et al.}}: Per-Epoch Normalization and Pre-Stimulus Leakage}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/theory}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+
+\section*{Data and Code Availability}
+SHAPE data are available from the Laboratory for Clinical Affective Neuroscience at Stony Brook University on request \cite{shape}. ERP CORE is public \cite{kappenman2021erpcore}. All code, the committed predictions, and every aggregate result reported here are public \cite{repo_sequel}. No participant-level data are included in the repository.
+
+\section*{Use of AI-Assisted Tools}
+An AI assistant (Claude, Anthropic) was used to write analysis code, run experiments, search and verify the literature, and draft text under the direction of the authors. The authors reviewed every analysis and statement, and take full responsibility for the content.
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}

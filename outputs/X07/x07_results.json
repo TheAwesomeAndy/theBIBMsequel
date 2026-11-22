@@ -1,0 +1,366 @@
+{
+  "provenance": {
+    "experiment": "X07-2026-11",
+    "git_commit": "dc10af7a3977caec47d134f83323448c98893ccb",
+    "utc": "2026-11-22T04:51:35+00:00",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.1",
+    "data_checksum": "85f81c854574122bc0e4d2764b288a1465ab2e6ad8173d0df5ee1e80f365c9a3",
+    "params": {
+      "source": "dissoAdventureExperiments/chapter5Experiments/experiment_zero.py",
+      "n_obs": 636,
+      "n_subjects": 212,
+      "pre_samples": 51
+    }
+  },
+  "results": {
+    "raw|epoch_z|uncentered": {
+      "fold_mean": 0.6747474747474748,
+      "fold_sd": 0.03460165815475177,
+      "pooled_ba": 0.6745283018867925
+    },
+    "raw|epoch_z|centered": {
+      "fold_mean": 0.8775613275613277,
+      "fold_sd": 0.03049832280990147,
+      "pooled_ba": 0.8773584905660377
+    },
+    "reservoir_pca_all|epoch_z|uncentered": {
+      "fold_mean": 0.5719336219336218,
+      "fold_sd": 0.043188975333941594,
+      "pooled_ba": 0.5723270440251572
+    },
+    "reservoir_pca_fold|epoch_z|uncentered": {
+      "fold_mean": 0.5975468975468974,
+      "fold_sd": 0.037927612318284835,
+      "pooled_ba": 0.5974842767295597
+    },
+    "reservoir_pca_all|epoch_z|centered": {
+      "fold_mean": 0.7754689754689754,
+      "fold_sd": 0.04982514940116631,
+      "pooled_ba": 0.7751572327044025
+    },
+    "reservoir_pca_fold|epoch_z|centered": {
+      "fold_mean": 0.7866522366522367,
+      "fold_sd": 0.06021142906750558,
+      "pooled_ba": 0.7861635220125787
+    },
+    "raw|pre_sd|uncentered": {
+      "fold_mean": 0.6183982683982684,
+      "fold_sd": 0.056681171990439684,
+      "pooled_ba": 0.6179245283018867
+    },
+    "raw|pre_sd|centered": {
+      "fold_mean": 0.8367243867243868,
+      "fold_sd": 0.04405534451422802,
+      "pooled_ba": 0.8364779874213837
+    },
+    "reservoir_pca_all|pre_sd|uncentered": {
+      "fold_mean": 0.5645743145743146,
+      "fold_sd": 0.05001332464479123,
+      "pooled_ba": 0.5644654088050315
+    },
+    "reservoir_pca_fold|pre_sd|uncentered": {
+      "fold_mean": 0.5706349206349206,
+      "fold_sd": 0.040640989908969596,
+      "pooled_ba": 0.5707547169811321
+    },
+    "reservoir_pca_all|pre_sd|centered": {
+      "fold_mean": 0.71998556998557,
+      "fold_sd": 0.04419502595316793,
+      "pooled_ba": 0.7201257861635221
+    },
+    "reservoir_pca_fold|pre_sd|centered": {
+      "fold_mean": 0.7313131313131314,
+      "fold_sd": 0.03931642734533966,
+      "pooled_ba": 0.7311320754716982
+    },
+    "raw|none|uncentered": {
+      "fold_mean": 0.6779220779220778,
+      "fold_sd": 0.04127488642105262,
+      "pooled_ba": 0.6776729559748428
+    },
+    "raw|none|centered": {
+      "fold_mean": 0.9121212121212121,
+      "fold_sd": 0.023957300813404407,
+      "pooled_ba": 0.9119496855345912
+    },
+    "reservoir_pca_all|none|uncentered": {
+      "fold_mean": 0.5301587301587303,
+      "fold_sd": 0.06048207616202853,
+      "pooled_ba": 0.5298742138364779
+    },
+    "reservoir_pca_fold|none|uncentered": {
+      "fold_mean": 0.5630591630591629,
+      "fold_sd": 0.04329509350051538,
+      "pooled_ba": 0.5628930817610063
+    },
+    "reservoir_pca_all|none|centered": {
+      "fold_mean": 0.7123376623376623,
+      "fold_sd": 0.04619639026951473,
+      "pooled_ba": 0.7122641509433962
+    },
+    "reservoir_pca_fold|none|centered": {
+      "fold_mean": 0.7233766233766235,
+      "fold_sd": 0.05590508661825232,
+      "pooled_ba": 0.7232704402515724
+    }
+  },
+  "pooled_ba_bootstrap": {
+    "raw|epoch_z|uncentered": {
+      "ba": 0.6745283018867925,
+      "ci": [
+        0.6415094339622641,
+        0.7075471698113208
+      ]
+    },
+    "raw|epoch_z|centered": {
+      "ba": 0.8773584905660377,
+      "ci": [
+        0.8490566037735849,
+        0.9056603773584905
+      ]
+    },
+    "reservoir_pca_all|epoch_z|uncentered": {
+      "ba": 0.5723270440251572,
+      "ci": [
+        0.5361635220125786,
+        0.610062893081761
+      ]
+    },
+    "reservoir_pca_fold|epoch_z|uncentered": {
+      "ba": 0.5974842767295597,
+      "ci": [
+        0.559748427672956,
+        0.6336477987421384
+      ]
+    },
+    "reservoir_pca_all|epoch_z|centered": {
+      "ba": 0.7751572327044025,
+      "ci": [
+        0.7389937106918238,
+        0.8113207547169811
+      ]
+    },
+    "reservoir_pca_fold|epoch_z|centered": {
+      "ba": 0.7861635220125787,
+      "ci": [
+        0.7515723270440251,
+        0.8207547169811321
+      ]
+    },
+    "raw|pre_sd|uncentered": {
+      "ba": 0.6179245283018867,
+      "ci": [
+        0.5849056603773585,
+        0.6509433962264151
+      ]
+    },
+    "raw|pre_sd|centered": {
+      "ba": 0.8364779874213837,
+      "ci": [
+        0.8034591194968553,
+        0.8694968553459118
+      ]
+    },
+    "reservoir_pca_all|pre_sd|uncentered": {
+      "ba": 0.5644654088050315,
+      "ci": [
+        0.5267295597484277,
+        0.6022012578616353
+      ]
+    },
+    "reservoir_pca_fold|pre_sd|uncentered": {
+      "ba": 0.5707547169811321,
+      "ci": [
+        0.5345911949685535,
+        0.6084905660377359
+      ]
+    },
+    "reservoir_pca_all|pre_sd|centered": {
+      "ba": 0.7201257861635221,
+      "ci": [
+        0.6792452830188679,
+        0.7594339622641509
+      ]
+    },
+    "reservoir_pca_fold|pre_sd|centered": {
+      "ba": 0.7311320754716982,
+      "ci": [
+        0.690251572327044,
+        0.7704402515723271
+      ]
+    },
+    "raw|none|uncentered": {
+      "ba": 0.6776729559748428,
+      "ci": [
+        0.6415094339622641,
+        0.7122641509433962
+      ]
+    },
+    "raw|none|centered": {
+      "ba": 0.9119496855345912,
+      "ci": [
+        0.8852201257861635,
+        0.9371069182389937
+      ]
+    },
+    "reservoir_pca_all|none|uncentered": {
+      "ba": 0.5298742138364779,
+      "ci": [
+        0.49528301886792453,
+        0.5660377358490566
+      ]
+    },
+    "reservoir_pca_fold|none|uncentered": {
+      "ba": 0.5628930817610063,
+      "ci": [
+        0.5251572327044025,
+        0.60062893081761
+      ]
+    },
+    "reservoir_pca_all|none|centered": {
+      "ba": 0.7122641509433962,
+      "ci": [
+        0.6713836477987422,
+        0.7531446540880503
+      ]
+    },
+    "reservoir_pca_fold|none|centered": {
+      "ba": 0.7232704402515724,
+      "ci": [
+        0.6823899371069183,
+        0.7625786163522013
+      ]
+    }
+  },
+  "contrasts": {
+    "raw|uncentered: epoch_z - pre_sd": {
+      "diff_mean_boot": 0.056560534591194964,
+      "ci": [
+        0.022012578616352085,
+        0.0911949685534591
+      ]
+    },
+    "raw|uncentered: epoch_z - none": {
+      "diff_mean_boot": -0.0029815251572327074,
+      "ci": [
+        -0.037735849056603765,
+        0.03144654088050303
+      ]
+    },
+    "raw|centering gain under epoch_z": {
+      "diff_mean_boot": 0.20320400943396225,
+      "ci": [
+        0.17138364779874204,
+        0.23584905660377364
+      ]
+    },
+    "raw|centering gain under pre_sd": {
+      "diff_mean_boot": 0.21856721698113205,
+      "ci": [
+        0.179245283018868,
+        0.25471698113207564
+      ]
+    },
+    "raw|centered: epoch_z - pre_sd": {
+      "diff_mean_boot": 0.04119732704402515,
+      "ci": [
+        0.011006289308176154,
+        0.072327044025157
+      ]
+    },
+    "raw|centered: epoch_z - none": {
+      "diff_mean_boot": -0.03413443396226414,
+      "ci": [
+        -0.06289308176100616,
+        -0.0062893081761007386
+      ]
+    },
+    "reservoir_pca_all|uncentered: epoch_z - pre_sd": {
+      "diff_mean_boot": 0.007812106918238994,
+      "ci": [
+        -0.03930817610062898,
+        0.053459119496855334
+      ]
+    },
+    "reservoir_pca_all|uncentered: epoch_z - none": {
+      "diff_mean_boot": 0.04274292452830188,
+      "ci": [
+        -0.0015723270440251042,
+        0.08805031446540867
+      ]
+    },
+    "reservoir_pca_all|centering gain under epoch_z": {
+      "diff_mean_boot": 0.20263600628930817,
+      "ci": [
+        0.16666666666666663,
+        0.23742138364779874
+      ]
+    },
+    "reservoir_pca_all|centering gain under pre_sd": {
+      "diff_mean_boot": 0.1558262578616352,
+      "ci": [
+        0.12421383647798734,
+        0.18867924528301883
+      ]
+    },
+    "reservoir_pca_all|centered: epoch_z - pre_sd": {
+      "diff_mean_boot": 0.05462185534591194,
+      "ci": [
+        0.011006289308175932,
+        0.09905660377358494
+      ]
+    },
+    "reservoir_pca_all|centered: epoch_z - none": {
+      "diff_mean_boot": 0.0631069182389937,
+      "ci": [
+        0.020440251572327095,
+        0.10534591194968534
+      ]
+    },
+    "reservoir_pca_fold|uncentered: epoch_z - pre_sd": {
+      "diff_mean_boot": 0.02645440251572328,
+      "ci": [
+        -0.018867924528301883,
+        0.07075471698113212
+      ]
+    },
+    "reservoir_pca_fold|uncentered: epoch_z - none": {
+      "diff_mean_boot": 0.0344555817610063,
+      "ci": [
+        -0.0062893081761006275,
+        0.07704402515723263
+      ]
+    },
+    "reservoir_pca_fold|centering gain under epoch_z": {
+      "diff_mean_boot": 0.1886497641509434,
+      "ci": [
+        0.15408805031446537,
+        0.2248427672955975
+      ]
+    },
+    "reservoir_pca_fold|centering gain under pre_sd": {
+      "diff_mean_boot": 0.16048152515723269,
+      "ci": [
+        0.12578616352201255,
+        0.19496855345911956
+      ]
+    },
+    "reservoir_pca_fold|centered: epoch_z - pre_sd": {
+      "diff_mean_boot": 0.05462264150943396,
+      "ci": [
+        0.011006289308176154,
+        0.09748427672955984
+      ]
+    },
+    "reservoir_pca_fold|centered: epoch_z - none": {
+      "diff_mean_boot": 0.06301454402515722,
+      "ci": [
+        0.022012578616352082,
+        0.10377358490566035
+      ]
+    }
+  },
+  "runtime_s": 292.2
+}

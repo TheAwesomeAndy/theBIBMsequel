@@ -1,0 +1,411 @@
+{
+ "provenance": {
+  "experiment": "X09-2026-11 (ERP CORE)",
+  "norms": [
+   "none",
+   "pre_sd",
+   "epoch_z",
+   "epoch_center",
+   "epoch_sd",
+   "epoch_minmax",
+   "epoch_p95"
+  ],
+  "n_perm": 500,
+  "features": "pre_bins4: four 12-sample pre-stimulus bin means x 28 channels (112); pre_logsd: log SD over the pre-stimulus interval x 28 channels; trials scaled then averaged per participant and condition",
+  "cv": "participant-grouped 5-fold x5, standardized L2 logistic; null: within-participant label swaps, one repeat each",
+  "note": "pre_logsd|pre_sd annotated as degenerate after the run (see the run record in experiments/X09/run.py); no other cell was changed"
+ },
+ "results": {
+  "N170": {
+   "n_participants": 40,
+   "general_identity_max_abs_error": 1.3322676295501878e-15,
+   "pre_bins4|none": {
+    "ba": 0.5025000000000001,
+    "p": 0.4171656686626746,
+    "null_q95": 0.6
+   },
+   "pre_bins4|pre_sd": {
+    "ba": 0.5449999999999999,
+    "p": 0.2774451097804391,
+    "null_q95": 0.6125
+   },
+   "pre_bins4|epoch_z": {
+    "ba": 0.605,
+    "p": 0.03792415169660679,
+    "null_q95": 0.6
+   },
+   "pre_bins4|epoch_center": {
+    "ba": 0.6,
+    "p": 0.04590818363273453,
+    "null_q95": 0.5875
+   },
+   "pre_bins4|epoch_sd": {
+    "ba": 0.5225,
+    "p": 0.39520958083832336,
+    "null_q95": 0.6125
+   },
+   "pre_bins4|epoch_minmax": {
+    "ba": 0.565,
+    "p": 0.11377245508982035,
+    "null_q95": 0.5881249999999995
+   },
+   "pre_bins4|epoch_p95": {
+    "ba": 0.5,
+    "p": 0.5289421157684631,
+    "null_q95": 0.6125
+   },
+   "pre_logsd|none": {
+    "ba": 0.48750000000000004,
+    "p": 0.6746506986027944,
+    "null_q95": 0.5381249999999995
+   },
+   "pre_logsd|pre_sd": {
+    "degenerate": true,
+    "reason": "feature constant by construction: log(SD/SD) = 0 up to rounding; the readout decodes rounding residue",
+    "degenerate_value": {
+     "ba": 0.44999999999999996,
+     "p": 0.7904191616766467,
+     "null_q95": 0.6125
+    }
+   },
+   "pre_logsd|epoch_z": {
+    "ba": 0.53,
+    "p": 0.249500998003992,
+    "null_q95": 0.5631249999999994
+   },
+   "pre_logsd|epoch_center": {
+    "ba": 0.48750000000000004,
+    "p": 0.6646706586826348,
+    "null_q95": 0.5375000000000001
+   },
+   "pre_logsd|epoch_sd": {
+    "ba": 0.53,
+    "p": 0.22954091816367264,
+    "null_q95": 0.575
+   },
+   "pre_logsd|epoch_minmax": {
+    "ba": 0.535,
+    "p": 0.3013972055888224,
+    "null_q95": 0.5875
+   },
+   "pre_logsd|epoch_p95": {
+    "ba": 0.5175000000000001,
+    "p": 0.35129740518962077,
+    "null_q95": 0.575
+   }
+  },
+  "P3": {
+   "n_participants": 40,
+   "general_identity_max_abs_error": 1.3322676295501878e-15,
+   "pre_bins4|none": {
+    "ba": 0.525,
+    "p": 0.3992015968063872,
+    "null_q95": 0.6125
+   },
+   "pre_bins4|pre_sd": {
+    "ba": 0.545,
+    "p": 0.249500998003992,
+    "null_q95": 0.6006249999999995
+   },
+   "pre_bins4|epoch_z": {
+    "ba": 0.6825,
+    "p": 0.003992015968063872,
+    "null_q95": 0.6000000000000001
+   },
+   "pre_bins4|epoch_center": {
+    "ba": 0.6875,
+    "p": 0.001996007984031936,
+    "null_q95": 0.6
+   },
+   "pre_bins4|epoch_sd": {
+    "ba": 0.5375,
+    "p": 0.34331337325349304,
+    "null_q95": 0.6000000000000001
+   },
+   "pre_bins4|epoch_minmax": {
+    "ba": 0.69,
+    "p": 0.001996007984031936,
+    "null_q95": 0.6
+   },
+   "pre_bins4|epoch_p95": {
+    "ba": 0.54,
+    "p": 0.24151696606786427,
+    "null_q95": 0.6125
+   },
+   "pre_logsd|none": {
+    "ba": 0.51,
+    "p": 0.37524950099800397,
+    "null_q95": 0.55
+   },
+   "pre_logsd|pre_sd": {
+    "degenerate": true,
+    "reason": "feature constant by construction: log(SD/SD) = 0 up to rounding; the readout decodes rounding residue",
+    "degenerate_value": {
+     "ba": 0.6425000000000001,
+     "p": 0.02594810379241517,
+     "null_q95": 0.6125
+    }
+   },
+   "pre_logsd|epoch_z": {
+    "ba": 0.5850000000000001,
+    "p": 0.04590818363273453,
+    "null_q95": 0.575
+   },
+   "pre_logsd|epoch_center": {
+    "ba": 0.51,
+    "p": 0.4431137724550898,
+    "null_q95": 0.55
+   },
+   "pre_logsd|epoch_sd": {
+    "ba": 0.5850000000000001,
+    "p": 0.04590818363273453,
+    "null_q95": 0.575
+   },
+   "pre_logsd|epoch_minmax": {
+    "ba": 0.6225,
+    "p": 0.015968063872255488,
+    "null_q95": 0.5881249999999995
+   },
+   "pre_logsd|epoch_p95": {
+    "ba": 0.5950000000000001,
+    "p": 0.03592814371257485,
+    "null_q95": 0.5874999999999999
+   }
+  },
+  "N400": {
+   "n_participants": 40,
+   "general_identity_max_abs_error": 1.1102230246251565e-15,
+   "pre_bins4|none": {
+    "ba": 0.45999999999999996,
+    "p": 0.7584830339321357,
+    "null_q95": 0.6006249999999995
+   },
+   "pre_bins4|pre_sd": {
+    "ba": 0.48,
+    "p": 0.6187624750499002,
+    "null_q95": 0.6125
+   },
+   "pre_bins4|epoch_z": {
+    "ba": 0.7575,
+    "p": 0.001996007984031936,
+    "null_q95": 0.6
+   },
+   "pre_bins4|epoch_center": {
+    "ba": 0.7625,
+    "p": 0.001996007984031936,
+    "null_q95": 0.6125
+   },
+   "pre_bins4|epoch_sd": {
+    "ba": 0.47,
+    "p": 0.6726546906187625,
+    "null_q95": 0.6125
+   },
+   "pre_bins4|epoch_minmax": {
+    "ba": 0.6875,
+    "p": 0.001996007984031936,
+    "null_q95": 0.6
+   },
+   "pre_bins4|epoch_p95": {
+    "ba": 0.5025000000000001,
+    "p": 0.47305389221556887,
+    "null_q95": 0.6125
+   },
+   "pre_logsd|none": {
+    "ba": 0.5275000000000001,
+    "p": 0.1497005988023952,
+    "null_q95": 0.55
+   },
+   "pre_logsd|pre_sd": {
+    "degenerate": true,
+    "reason": "feature constant by construction: log(SD/SD) = 0 up to rounding; the readout decodes rounding residue",
+    "degenerate_value": {
+     "ba": 0.485,
+     "p": 0.6127744510978044,
+     "null_q95": 0.6125
+    }
+   },
+   "pre_logsd|epoch_z": {
+    "ba": 0.6200000000000001,
+    "p": 0.013972055888223553,
+    "null_q95": 0.575
+   },
+   "pre_logsd|epoch_center": {
+    "ba": 0.5275000000000001,
+    "p": 0.15568862275449102,
+    "null_q95": 0.55
+   },
+   "pre_logsd|epoch_sd": {
+    "ba": 0.6200000000000001,
+    "p": 0.007984031936127744,
+    "null_q95": 0.575
+   },
+   "pre_logsd|epoch_minmax": {
+    "ba": 0.55,
+    "p": 0.22355289421157684,
+    "null_q95": 0.5874999999999999
+   },
+   "pre_logsd|epoch_p95": {
+    "ba": 0.625,
+    "p": 0.007984031936127744,
+    "null_q95": 0.575
+   }
+  },
+  "N2pc": {
+   "n_participants": 39,
+   "general_identity_max_abs_error": 1.7763568394002505e-15,
+   "pre_bins4|none": {
+    "ba": 0.4538461538461538,
+    "p": 0.7524950099800399,
+    "null_q95": 0.6153846153846154
+   },
+   "pre_bins4|pre_sd": {
+    "ba": 0.3846153846153846,
+    "p": 0.9660678642714571,
+    "null_q95": 0.6153846153846154
+   },
+   "pre_bins4|epoch_z": {
+    "ba": 0.576923076923077,
+    "p": 0.06187624750499002,
+    "null_q95": 0.5897435897435898
+   },
+   "pre_bins4|epoch_center": {
+    "ba": 0.5641025641025641,
+    "p": 0.20159680638722555,
+    "null_q95": 0.6025641025641025
+   },
+   "pre_bins4|epoch_sd": {
+    "ba": 0.41538461538461535,
+    "p": 0.8842315369261478,
+    "null_q95": 0.6153846153846154
+   },
+   "pre_bins4|epoch_minmax": {
+    "ba": 0.6076923076923078,
+    "p": 0.029940119760479042,
+    "null_q95": 0.5897435897435898
+   },
+   "pre_bins4|epoch_p95": {
+    "ba": 0.41025641025641024,
+    "p": 0.9321357285429142,
+    "null_q95": 0.6025641025641026
+   },
+   "pre_logsd|none": {
+    "ba": 0.4794871794871795,
+    "p": 0.8143712574850299,
+    "null_q95": 0.5384615384615384
+   },
+   "pre_logsd|pre_sd": {
+    "degenerate": true,
+    "reason": "feature constant by construction: log(SD/SD) = 0 up to rounding; the readout decodes rounding residue",
+    "degenerate_value": {
+     "ba": 0.5538461538461539,
+     "p": 0.19760479041916168,
+     "null_q95": 0.6032051282051277
+    }
+   },
+   "pre_logsd|epoch_z": {
+    "ba": 0.4897435897435897,
+    "p": 0.5568862275449101,
+    "null_q95": 0.5641025641025641
+   },
+   "pre_logsd|epoch_center": {
+    "ba": 0.4794871794871795,
+    "p": 0.8483033932135728,
+    "null_q95": 0.5384615384615384
+   },
+   "pre_logsd|epoch_sd": {
+    "ba": 0.4897435897435897,
+    "p": 0.5249500998003992,
+    "null_q95": 0.5641025641025641
+   },
+   "pre_logsd|epoch_minmax": {
+    "ba": 0.4717948717948718,
+    "p": 0.7405189620758483,
+    "null_q95": 0.5769230769230769
+   },
+   "pre_logsd|epoch_p95": {
+    "ba": 0.5179487179487179,
+    "p": 0.2934131736526946,
+    "null_q95": 0.5641025641025641
+   }
+  },
+  "MMN": {
+   "n_participants": 40,
+   "general_identity_max_abs_error": 1.5543122344752192e-15,
+   "pre_bins4|none": {
+    "ba": 0.575,
+    "p": 0.10578842315369262,
+    "null_q95": 0.5875
+   },
+   "pre_bins4|pre_sd": {
+    "ba": 0.5375,
+    "p": 0.3153692614770459,
+    "null_q95": 0.6000000000000001
+   },
+   "pre_bins4|epoch_z": {
+    "ba": 0.6325,
+    "p": 0.041916167664670656,
+    "null_q95": 0.625
+   },
+   "pre_bins4|epoch_center": {
+    "ba": 0.615,
+    "p": 0.041916167664670656,
+    "null_q95": 0.6125
+   },
+   "pre_bins4|epoch_sd": {
+    "ba": 0.545,
+    "p": 0.28542914171656686,
+    "null_q95": 0.6000000000000001
+   },
+   "pre_bins4|epoch_minmax": {
+    "ba": 0.54,
+    "p": 0.19161676646706588,
+    "null_q95": 0.5875
+   },
+   "pre_bins4|epoch_p95": {
+    "ba": 0.5775,
+    "p": 0.12574850299401197,
+    "null_q95": 0.6125
+   },
+   "pre_logsd|none": {
+    "ba": 0.505,
+    "p": 0.3273453093812375,
+    "null_q95": 0.525
+   },
+   "pre_logsd|pre_sd": {
+    "degenerate": true,
+    "reason": "feature constant by construction: log(SD/SD) = 0 up to rounding; the readout decodes rounding residue",
+    "degenerate_value": {
+     "ba": 0.5525,
+     "p": 0.23952095808383234,
+     "null_q95": 0.6125
+    }
+   },
+   "pre_logsd|epoch_z": {
+    "ba": 0.5275,
+    "p": 0.16367265469061876,
+    "null_q95": 0.5506249999999995
+   },
+   "pre_logsd|epoch_center": {
+    "ba": 0.505,
+    "p": 0.3313373253493014,
+    "null_q95": 0.525
+   },
+   "pre_logsd|epoch_sd": {
+    "ba": 0.5275,
+    "p": 0.15768463073852296,
+    "null_q95": 0.55
+   },
+   "pre_logsd|epoch_minmax": {
+    "ba": 0.47,
+    "p": 0.7784431137724551,
+    "null_q95": 0.5625
+   },
+   "pre_logsd|epoch_p95": {
+    "ba": 0.5075000000000001,
+    "p": 0.43313373253493015,
+    "null_q95": 0.55
+   }
+  }
+ },
+ "runtime_s": 1257.7
+}

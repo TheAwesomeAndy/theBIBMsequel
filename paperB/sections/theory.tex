@@ -1,0 +1,63 @@
+\section{Theory}\label{sec:theory}
+
+\subsection{Observation Model}
+Participant $s$ contributes observations $\mathbf{x}_{s,i}\in\mathbb{R}^d$ with labels $c_{s,i}\in\{1,\dots,K\}$,
+\begin{equation}
+\mathbf{x}_{s,i}=\mathbf{a}_s+\boldsymbol\mu_{c_{s,i}}+\mathbf{e}_{s,i}, \label{eq:model}
+\end{equation}
+where $\mathbf{a}_s$ is a participant offset with covariance $\Sigma_a$, $\boldsymbol\mu_c$ is the condition mean, and $\mathbf{e}_{s,i}$ is zero-mean noise with covariance $\Sigma_e$, independent across observations and of $\mathbf{a}_s$. An observation is a trial in single-trial decoding and a condition average in ERP decoding. For a pair of conditions with $\Delta\boldsymbol\mu=\boldsymbol\mu_c-\boldsymbol\mu_{c'}$, the squared Mahalanobis separation of an uncentered observation across participants is
+\begin{equation}
+D_0^2=\Delta\boldsymbol\mu^\top(\Sigma_a+\Sigma_e)^{-1}\Delta\boldsymbol\mu. \label{eq:d0}
+\end{equation}
+
+\subsection{Reference Centering}
+Let $\mathcal{R}_s$ be a set of $m$ unlabeled reference observations of participant $s$ with class proportions $\boldsymbol\pi_s$, and let $\bar{\mathbf{x}}_{\mathcal{R}_s}$ be their mean. Reference centering forms $\tilde{\mathbf{x}}_{s,i}=\mathbf{x}_{s,i}-\bar{\mathbf{x}}_{\mathcal{R}_s}$.
+
+\begin{proposition}[Reference-size law]\label{prop:law}
+Let observation $i\notin\mathcal{R}_s$. Under \eqref{eq:model},
+\begin{equation}
+\tilde{\mathbf{x}}_{s,i}=\boldsymbol\mu_{c_{s,i}}-\textstyle\sum_c\pi_{s,c}\boldsymbol\mu_c+\mathbf{e}_{s,i}-\bar{\mathbf{e}}_{\mathcal{R}_s}, \label{eq:centered}
+\end{equation}
+which contains no participant offset and has noise covariance $(1+1/m)\Sigma_e$. If $\boldsymbol\pi_s=\boldsymbol\pi$ for all participants, the separation of two conditions is
+\begin{equation}
+D^2(m)=\frac{m}{m+1}\,D_\infty^2,\qquad D_\infty^2=\Delta\boldsymbol\mu^\top\Sigma_e^{-1}\Delta\boldsymbol\mu. \label{eq:law}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Average \eqref{eq:model} over $\mathcal{R}_s$ and subtract. The offset $\mathbf{a}_s$ cancels exactly. The two noise terms are independent because $i\notin\mathcal{R}_s$, which gives the covariance. With a common $\boldsymbol\pi$ the subtracted mean term is the same constant for every participant and condition, so it leaves $\Delta\boldsymbol\mu$ unchanged.
+\end{proof}
+
+\begin{corollary}[Break-even reference size]\label{cor:breakeven}
+Let $r=D_0^2/D_\infty^2\in(0,1]$. Reference centering improves on the uncentered readout if and only if
+\begin{equation}
+m>m^\ast=\frac{r}{1-r}. \label{eq:breakeven}
+\end{equation}
+\end{corollary}
+\begin{proof}
+$D^2(m)>D_0^2$ is $m/(m+1)>r$.
+\end{proof}
+
+The ratio $r$ is the share of discriminant-direction variance that is not participant variance. When observations are averages of $k$ trials, $\Sigma_e$ is replaced by $\Sigma_e/k$ while $\Sigma_a$ is unchanged, so $r$ falls toward zero as $k$ grows and $m^\ast$ falls with it. Averaged ERPs are therefore the regime where one or two reference observations already give a large gain, and single trials are the regime where $r$ is close to one, the gain is small, and a reference set below $m^\ast$ lowers accuracy. When the reference observations are drawn without regard to class, the reference mean also carries the between-class spread $\Sigma_\mu$, and $\Sigma_e/m$ in the reference term becomes $(\Sigma_e+\Sigma_\mu)/m$, a small correction when single-observation effects are weak.
+
+Three further consequences follow. First, the gain over \eqref{eq:d0} is set by how much participant variance lies along the discriminant, $D_\infty^2/D_0^2\ge1$, and it saturates quickly in $m$: one reference observation recovers half of $D_\infty^2$ and ten recover $91\%$. Second, when $\boldsymbol\pi_s$ varies across participants, the term $\sum_c\pi_{s,c}\boldsymbol\mu_c$ becomes a participant-specific shift along the condition means, and centering reintroduces a participant effect that is correlated with class composition. Designs with fixed condition proportions are free of it. Third, \eqref{eq:law} needs no label from the test participant, but it does need $m\ge1$ further observations of that participant. With $m=0$ the transform is undefined, and the decoder falls back to \eqref{eq:d0}.
+
+\subsection{The Complete Balanced Panel}
+In a repeated-measures design every participant contributes each condition once, so $K$ observations form a panel with $\boldsymbol\pi=\mathbf{1}/K$. Full-panel centering subtracts the mean of all $K$ observations, including the one being classified.
+
+\begin{proposition}[Panel identities]\label{prop:panel}
+For a complete balanced panel, (i) $\tilde{\mathbf{x}}_{s,c}=\boldsymbol\mu_c-\bar{\boldsymbol\mu}+\mathbf{e}_{s,c}-\bar{\mathbf{e}}_s$, with noise covariance $(1-1/K)\Sigma_e$ and cross-covariance $-\Sigma_e/K$ between two observations of the same panel. (ii) Leave-one-out centering satisfies
+\begin{equation}
+\mathbf{x}_{s,c}-\frac{1}{K-1}\sum_{c'\ne c}\mathbf{x}_{s,c'}=\frac{K}{K-1}\,\tilde{\mathbf{x}}_{s,c}. \label{eq:loo}
+\end{equation}
+(iii) Both forms give $D^2=\frac{K}{K-1}D_\infty^2$ for a single observation of the panel.
+\end{proposition}
+\begin{proof}
+(i) follows from \eqref{eq:model}. For (ii), $\sum_{c'\ne c}\mathbf{x}_{s,c'}=K\bar{\mathbf{x}}_s-\mathbf{x}_{s,c}$, and collecting terms gives the factor $K/(K-1)$. (iii) follows from (i), and from Proposition~\ref{prop:law} with $m=K-1$ after noting that the leave-one-out reference set contains every condition except $c$, which scales $\Delta\boldsymbol\mu$ by $K/(K-1)$.
+\end{proof}
+
+Identity \eqref{eq:loo} shows that leave-one-out centering is a rescaling of full-panel centering. It carries the same information for any scale-equivariant readout, so it is a consistency check of the implementation and not an independent control. The separation in (iii) exceeds $D_\infty^2$ because the reference set of a panel is label-structured: it is known to contain the other conditions and not the one being classified. The panel therefore supplies design knowledge in addition to the offset estimate. The readout that uses all of it assigns the $K$ labels of a test panel jointly, as the permutation $\sigma$ maximizing $\sum_c\log p(\sigma(c)\mid\tilde{\mathbf{x}}_{s,c})$, and the negative cross-covariance in (i) is what a joint assignment exploits.
+
+\subsection{Incomplete Panels and Second-Order Alignment}
+If a test participant contributes a subset $\mathcal{A}$ of the conditions, centering still removes $\mathbf{a}_s$, and the class means become $\boldsymbol\mu_c-\bar{\boldsymbol\mu}_\mathcal{A}$. A readout trained on complete panels then meets a shift $\bar{\boldsymbol\mu}-\bar{\boldsymbol\mu}_\mathcal{A}$ that depends on which conditions are present, and its accuracy falls between the complete-panel and uncentered values.
+
+Euclidean alignment \cite{he2020ea} and Riemannian recentering \cite{zanini2018transfer} use the same unlabeled reference set to whiten each participant's second-order statistics. Under the purely additive model \eqref{eq:model} they leave $\mathbf{a}_s$ in place. They remove it only to the extent that the participant effect is multiplicative, $\mathbf{x}_{s,i}=g_s(\boldsymbol\mu_c+\mathbf{e}_{s,i})$ with a participant gain $g_s$, because whitening by the participant's own second moment divides out $g_s$. Comparing the two families on the same panels therefore measures how much of the participant effect is an offset and how much is a gain.
