@@ -1,0 +1,336 @@
+{
+ "counts": {
+  "UNSTATED": 28,
+  "FIXED": 3,
+  "TRAIN": 3,
+  "OWN": 4,
+  "NONE": 1,
+  "PRE": 1
+ },
+ "rows": [
+  {
+   "arxiv": "2512.22656",
+   "date": "2025-12-27",
+   "title": "Clinically Calibrated Machine Learning Benchmarks for Large-Scale Multi-Disorder EEG Classification",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.22333",
+   "date": "2025-12-26",
+   "title": "Emotion classification using EEG headset signals and Random Forest",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.21170",
+   "date": "2025-12-24",
+   "title": "A Unified Framework for EEG Seizure Detection Using Universum-Integrated Generalized Eigenvalues Proximal Support Vector Machine",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.20929",
+   "date": "2025-12-24",
+   "title": "Decoding Predictive Inference in Visual Language Processing via Spatiotemporal Neural Coherence",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.20319",
+   "date": "2025-12-23",
+   "title": "Deep Learning Classification of EEG Responses to Multi-Dimensional Transcranial Electrical Stimulation",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.19097",
+   "date": "2025-12-22",
+   "title": "DIVER-1: Scaling Intracranial EEG Foundation Models for Transferable Representations",
+   "code": "FIXED",
+   "evidence": "\"normalized signals by dividing by 200 uV\"",
+   "note": "intracranial EEG"
+  },
+  {
+   "arxiv": "2601.00020",
+   "date": "2025-12-22",
+   "title": "Personalized Spiking Neural Networks with Ferroelectric Synapses for EEG Signal Processing",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.18689",
+   "date": "2025-12-21",
+   "title": "Fusion of Multiscale Features Via Centralized Sparse-attention Network for EEG Decoding",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.18346",
+   "date": "2025-12-20",
+   "title": "Cognitive Inference based Feature Pyramid Network for Sentimental Analysis using EEG Signals",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.17775",
+   "date": "2025-12-19",
+   "title": "How Light Shapes Memory: Beta Synchrony in the Temporal-Parietal Cortex Predicts Cognitive Ergonomics for BCI Applications",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.22172",
+   "date": "2025-12-17",
+   "title": "PaperNet: Efficient Temporal Convolutions and Channel Residual Attention for EEG Epilepsy Detection",
+   "code": "TRAIN",
+   "evidence": "\"statistics computed from the training subset to avoid information leakage\"",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.15250",
+   "date": "2025-12-17",
+   "title": "Leveraging Foundational Models and Simple Fusion for Multi-modal Physiological Signal Analysis",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.15246",
+   "date": "2025-12-17",
+   "title": "Enhancing Alzheimer's Detection through Late Fusion of Multi-Modal EEG Features",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.13806",
+   "date": "2025-12-15",
+   "title": "EEG-D3: A Solution to the Hidden Overfitting Problem of Deep Learning Models",
+   "code": "OWN",
+   "evidence": "\"Each electrode within a window is then standardised independently\"",
+   "note": "trial-locked windows"
+  },
+  {
+   "arxiv": "2512.13458",
+   "date": "2025-12-15",
+   "title": "SSAS: Cross-subject EEG-based Emotion Recognition through Source Selection with Adversarial Strategy",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.22146",
+   "date": "2025-12-14",
+   "title": "EEG-to-Voice Decoding of Spoken and Imagined speech Using Non-Invasive EEG",
+   "code": "OWN",
+   "evidence": "\"normalization was applied within each trial based on the minimum and maximum values\"",
+   "note": "trial-locked (task onset)"
+  },
+  {
+   "arxiv": "2512.12273",
+   "date": "2025-12-13",
+   "title": "GRC-Net: Gram Residual Co-attention Net for epilepsy prediction",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.09524",
+   "date": "2025-12-10",
+   "title": "NeuroSketch: A Practical Design Recipe for Neural Decoding",
+   "code": "TRAIN",
+   "evidence": "\"mean and standard deviation calculated across all extracted windows and time samples for each participant\"",
+   "note": "participant-wide, includes test windows"
+  },
+  {
+   "arxiv": "2512.06725",
+   "date": "2025-12-07",
+   "title": "Decoding Motor Behavior Using Deep Learning and Reservoir Computing",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.16929",
+   "date": "2025-12-07",
+   "title": "BIONIX: A Wireless, Low-Cost Prosthetic Arm with Dual-Signal EEG and EMG Control",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.05528",
+   "date": "2025-12-05",
+   "title": "Decoding Selective Auditory Attention to Musical Elements in Ecologically Valid Music Listening",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.05500",
+   "date": "2025-12-05",
+   "title": "SSDLabeler: Realistic semi-synthetic data generation for multi-label artifact classification in EEG",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.02978",
+   "date": "2025-12-02",
+   "title": "Rethinking Generalized BCIs: Benchmarking 340,000+ Unique Algorithmic Configurations for EEG Mental Command Decoding",
+   "code": "TRAIN",
+   "evidence": "\"feature normalization are confined strictly to the training folds\"",
+   "note": ""
+  },
+  {
+   "arxiv": "2512.00574",
+   "date": "2025-11-29",
+   "title": "GCMCG: A Clustering-Aware Graph Attention and Expert Fusion Network for Multi-Paradigm, Multi-task, and Cross-Subject EEG Decoding",
+   "code": "OWN",
+   "evidence": "each channel standardized by the mean and SD of that same denoised signal (Eq. 4)",
+   "note": "trial-locked (4 s MI trials)"
+  },
+  {
+   "arxiv": "2511.23142",
+   "date": "2025-11-28",
+   "title": "Adapting Neural Audio Codecs to EEG",
+   "code": "FIXED",
+   "evidence": "\"clipped to +-200uV, normalized to the [-1, 1] range\"",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.21940",
+   "date": "2025-11-26",
+   "title": "Deep Learning Architectures for Code-Modulated Visual Evoked Potentials Detection",
+   "code": "FIXED",
+   "evidence": "\"raw EEG signals were first scaled to microvolts\"",
+   "note": "stimulus-locked (c-VEP)"
+  },
+  {
+   "arxiv": "2511.20848",
+   "date": "2025-11-25",
+   "title": "NOIR 2.0: Neural Signal Operated Intelligent Robots for Everyday Activities",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.20570",
+   "date": "2025-11-25",
+   "title": "Gated Uncertainty-Aware Runtime Dual Invariants for Neural Signal-Controlled Robotics",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.18940",
+   "date": "2025-11-24",
+   "title": "Geometry-Aware Deep Congruence Networks for Manifold Learning in Cross-Subject Motor Imagery",
+   "code": "NONE",
+   "evidence": "covariance pipeline; \"Future work will explore signal-level normalization\"",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.20696",
+   "date": "2025-11-24",
+   "title": "Prototype-Guided Non-Exemplar Continual Learning for Cross-subject EEG Decoding",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.18571",
+   "date": "2025-11-23",
+   "title": "SAMBA: Toward an EEG Foundation Model via Differential Mamba and Coordinate-Driven Spatial Embedding",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.18294",
+   "date": "2025-11-23",
+   "title": "MultiDiffNet: A Multi-Objective Diffusion Framework for Generalizable Brain Decoding",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.17164",
+   "date": "2025-11-21",
+   "title": "Teager-Kaiser Energy Methods For EEG Feature Extraction In Biomedical Applications",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.15902",
+   "date": "2025-11-19",
+   "title": "EEG Emotion Recognition Through Deep Learning",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.15138",
+   "date": "2025-11-19",
+   "title": "Cross-Modal Consistency-Guided Active Learning for Affective BCI Systems",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.13954",
+   "date": "2025-11-17",
+   "title": "A Brain Wave Encodes a Thousand Tokens: Modeling Inter-Cortical Neural Interactions for Effective EEG-based Emotion Recognition",
+   "code": "OWN",
+   "evidence": "\"z-score normalization is applied independently to both the trial chunks\" per channel",
+   "note": "sliding windows over long trials"
+  },
+  {
+   "arxiv": "2511.12394",
+   "date": "2025-11-16",
+   "title": "Multi-Domain EEG Representation Learning with Orthogonal Mapping and Attention-based Fusion for Cognitive Load Classification",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.12073",
+   "date": "2025-11-15",
+   "title": "Informed Bootstrap Augmentation Improves EEG Decoding",
+   "code": "PRE",
+   "evidence": "\"Each trial ... was z-scored using the pre-stimulus baseline (-200-0 ms)\"",
+   "note": "stimulus-locked"
+  },
+  {
+   "arxiv": "2511.11940",
+   "date": "2025-11-14",
+   "title": "Learning the relative composition of EEG signals using pairwise relative shift pretraining",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  },
+  {
+   "arxiv": "2511.10935",
+   "date": "2025-11-14",
+   "title": "CAT-Net: A Cross-Attention Tone Network for Cross-Subject EEG-EMG Fusion Tone Decoding",
+   "code": "UNSTATED",
+   "evidence": "no deciding sentence found by the screen",
+   "note": ""
+  }
+ ],
+ "excluded": [
+  "2512.00194",
+  "2511.23162"
+ ]
+}
