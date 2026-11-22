@@ -22,7 +22,7 @@ x1 = json.loads((ROOT / "outputs/X01/x01_results.json").read_text())["balanced_a
 p4 = ROOT / "outputs/X04/x04_results.json"
 x4 = json.loads(p4.read_text())["balanced_accuracy"] if p4.exists() else {}
 
-fig, ax = plt.subplots(1, 2, figsize=(7.16, 2.45), gridspec_kw={"width_ratios": [1, 1.35]})
+fig, ax = plt.subplots(1, 2, figsize=(7.16, 1.9), gridspec_kw={"width_ratios": [1, 1.35]})
 t = np.array(x5["bin_center_ms"])
 for n in ["epoch_z", "pre_sd", "none"]:
     lab, col, _ = SCALE[n]

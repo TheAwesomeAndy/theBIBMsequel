@@ -29,7 +29,7 @@ Under the post-stimulus variant, $\bar{z}_\mathcal{P}=-\bar{x}_\mathcal{Q}/\hat\
 Write $m=(T_0\bar{x}_\mathcal{P}+T_1\bar{x}_\mathcal{Q})/T$, so $\bar{x}_\mathcal{P}-m=(T_1/T)(\bar{x}_\mathcal{P}-\bar{x}_\mathcal{Q})$, which gives \eqref{eq:general}. Setting $\bar{x}_\mathcal{P}=0$ by \eqref{eq:bc} gives \eqref{eq:identity}. The variant follows in the same way.
 \end{proof}
 
-Both forms are exact, and \eqref{eq:general} needs no assumption about baseline correction. The pre-stimulus mean of a z-scored epoch is a scaled contrast between the two intervals, and after baseline correction it carries no pre-stimulus information at all: it equals the post-stimulus mean amplitude, sign-flipped and scaled by $T_1/(T\hat\sigma)$. Across channels the pre-stimulus scalp pattern is the post-stimulus mean pattern divided channel-wise by $\hat\sigma$. A sustained, one-signed condition difference, such as the late positive potential of affective picture viewing \cite{hajcak2010lpp} or the P3, therefore appears at every pre-stimulus sample at once.
+Both forms are exact, and \eqref{eq:general} needs no assumption about baseline correction. After baseline correction the pre-stimulus mean of a z-scored epoch carries no pre-stimulus information: it is the post-stimulus mean amplitude, sign-flipped and scaled by $T_1/(T\hat\sigma)$. A sustained, one-signed condition difference, such as the late positive potential \cite{hajcak2010lpp} or the P3, therefore appears at every pre-stimulus sample at once.
 
 \begin{proposition}[Scale route]\label{prop:scale}
 For a baseline-corrected epoch with interval variances $s_\mathcal{P}^2$ and $s_\mathcal{Q}^2$,
@@ -42,13 +42,13 @@ Under scale-only normalization $x(t)/\hat\sigma$, the pre-stimulus mean is zero 
 $\hat\sigma^2=T^{-1}\sum_t x(t)^2-m^2$. By \eqref{eq:bc}, $\sum_\mathcal{P}x^2=T_0s_\mathcal{P}^2$ and $\sum_\mathcal{Q}x^2=T_1(s_\mathcal{Q}^2+\bar{x}_\mathcal{Q}^2)$. Substituting $m=(T_1/T)\bar{x}_\mathcal{Q}$ gives \eqref{eq:scale}.
 \end{proof}
 
-The denominator contains the energy of the evoked response. Dividing by it leaves first-order pre-stimulus features untouched and writes post-stimulus energy into every second-order feature and into any nonlinear encoder. The two propositions therefore make separate, testable predictions. A location statistic taken from the whole epoch (mean, minimum) leaks into pre-stimulus means. A scale statistic taken from the whole epoch (standard deviation, range, amplitude percentile) leaks into pre-stimulus variances. Removing the mean subtraction alone does not make a scaling leak-free.
+The denominator contains the energy of the evoked response. Dividing by it leaves first-order pre-stimulus features untouched and writes post-stimulus energy into every second-order feature and any nonlinear encoder. The propositions make separate predictions: a whole-epoch location statistic (mean, minimum) leaks into pre-stimulus means, and a whole-epoch scale statistic (standard deviation, range, amplitude percentile) leaks into pre-stimulus variances.
 
 \begin{corollary}[Causal encoders]\label{cor:causal}
 Let $\xi_t=\Phi(\xi_{t-1},u_t)$ be any causal state-space encoder and let $\xi_{T_0}$ be its state at stimulus onset. Driven by $u=z$, $\xi_{T_0}$ is a function of $(x_\mathcal{P},\bar{x}_\mathcal{Q},\hat\sigma)$ and can carry information about $y$ even when $I(y;x_\mathcal{P})=0$. The same holds for $u=x/\hat\sigma$ through \eqref{eq:scale}. Driven by pre-stimulus scaling, $\xi_{T_0}$ is a function of $x_\mathcal{P}$ alone, and the data processing inequality gives $I(y;\xi_{T_0})\le I(y;x_\mathcal{P})$.
 \end{corollary}
 
-The corollary turns the identity into a falsifiable test for any temporal model. A reservoir, recurrent network, or convolutional network restricted to pre-stimulus samples decodes at chance under scaling that never touches $\mathcal{Q}$. Above-chance decoding under per-epoch scaling measures the leak directly.
+The corollary gives a falsifiable test for any temporal model: restricted to pre-stimulus samples, it decodes at chance under scaling that never touches $\mathcal{Q}$, and its accuracy under per-epoch scaling measures the leak.
 
 \subsection{The Averaging Law}
 Let trial $i$ of condition $y$ have post-stimulus mean pattern $\bar{\mathbf{x}}^{(i)}_\mathcal{Q}=\boldsymbol\mu_y+\mathbf{e}_i$ across channels, with $\mathbf{e}_i$ independent with covariance $\Sigma_e$. An average of $k$ trials has the same condition means and covariance $\Sigma_e/k$. Treating $\hat\sigma$ as approximately constant, which holds when it is estimated from many samples, the leaked pattern \eqref{eq:identity} is an affine image of the post-stimulus mean, and its Mahalanobis separation is
@@ -59,5 +59,4 @@ For two equal-covariance Gaussian classes the optimal balanced accuracy is $\Phi
 \begin{equation}
 \BA(k)=\Phi\!\left(\sqrt{k}\;\Phi^{-1}\!\big(\BA(1)\big)\right). \label{eq:pred}
 \end{equation}
-Equation \eqref{eq:law} is exact under its stated model: independent trials, a common covariance, and a fixed $\hat\sigma$. Equation \eqref{eq:pred} adds Gaussian classes and an optimal linear readout, so for a decoder estimated from a finite sample it is an approximation whose accuracy is an empirical question (Sec.~\ref{sec:results}).
-Single-trial decoding sits at $k=1$, where slow background fluctuations dominate $\Sigma_e$ and the leak is small. Participant-level decoding of averaged ERPs sits at $k$ equal to the number of retained trials, where the leak approaches the discriminability of the post-stimulus mean itself. Across participants the covariance acquires a between-participant term, $\Sigma_b+\Sigma_e/k$, which bounds the leak by participant variability rather than by trial count.
+Equation \eqref{eq:law} is exact under its model: independent trials, a common covariance, and a fixed $\hat\sigma$. Equation \eqref{eq:pred} adds Gaussian classes and an optimal linear readout, so for a decoder estimated from a finite sample it is an approximation, tested in Sec.~\ref{sec:results}. Single-trial decoding sits at $k=1$, where the leak is small. Participant-level decoding of averaged ERPs sits at $k$ equal to the number of retained trials. Across participants the covariance becomes $\Sigma_b+\Sigma_e/k$, so participant variability bounds the leak.

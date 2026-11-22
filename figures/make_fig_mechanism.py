@@ -28,7 +28,7 @@ X = cm.downsample(raw)
 Z = cm.normalize(X, "epoch_z")
 t = (np.arange(X.shape[1]) - cm.ONSET_DS) / cm.FS_DS * 1000
 
-fig, ax = plt.subplots(1, 3, figsize=(7.16, 2.3), gridspec_kw={"width_ratios": [1, 1, 0.9]})
+fig, ax = plt.subplots(1, 3, figsize=(7.16, 1.85), gridspec_kw={"width_ratios": [1, 1, 0.9]})
 for k, (name, col, ls) in enumerate(COND):
     ax[0].plot(t, X[y == k].mean((0, 2)), color=col, ls=ls, lw=1.6, label=name)
     ax[1].plot(t, Z[y == k].mean((0, 2)), color=col, ls=ls, lw=1.6, label=name)

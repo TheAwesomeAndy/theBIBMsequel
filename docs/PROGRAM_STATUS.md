@@ -9,13 +9,13 @@ JOURNAL_MATRIX.md, REVIEWER_CHALLENGES.md, PROVENANCE_AUDIT.md, OPPORTUNITY_MAP.
 |---|---|---|
 | Location | `manuscript/` | `paperB/` |
 | Central claim | Scaling an epoch by its own statistics writes post-stimulus information into the pre-stimulus interval by two exact routes, with a square-root averaging law for its size | Subject centering estimates a participant offset from m unlabeled reference observations. Separation is m/(m+1) of its asymptote, and centering helps only above a break-even size |
-| Draft | Complete, about 9.2 pages, builds clean | First full draft, 5 pages, builds clean |
+| Draft | Complete, 8 pages, builds clean | First full draft, 5 pages, builds clean |
 | Target | IEEE TNSRE | IEEE TNSRE after Paper A, or J. Neural Eng. |
 | Readiness | Not submission-ready. Science is in place. Four items below remain | Not submission-ready. Core evidence is in place. Related work and three reviewer analyses remain |
-| Next action | Author review of the revised PDF and the length decision | Literature pass for the related-work section |
+| Next action | Author review of the revised PDF | Literature pass for the related-work section |
 
 ## Paper A: what stands between the draft and submission
-1. Author decisions: title (shortened this session), footnote and contact address, length (about 1.2 pages over the 8-page threshold, which carries overlength charges).
+1. Author decisions: title (shortened this session), footnote and contact address. Length is settled: cut to exactly 8 pages on 2026-11-22 (text from about 5,430 to 4,560 words, three figures shortened, every result and number kept). The last page is full, so any addition needs an equal cut.
 2. Co-author approval of the text and of the AI-use statement.
 3. Crossref pass on six references added this session.
 4. One full reading of van Driel et al. (2021) to confirm that it contains no order-zero or z-scoring case. The novelty statement in the introduction depends on it.

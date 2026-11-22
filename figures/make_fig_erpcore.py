@@ -19,7 +19,7 @@ LS = {"epoch_z": "-", "post_z": (0, (5, 1.5)), "pre_sd": "--", "none": ":"}
 def fig3():
     r = json.loads((ROOT / "outputs/X02/x02_results.json").read_text())["results"]
     pars = list(r)
-    fig, ax = plt.subplots(2, len(pars), figsize=(7.16, 3.3), sharex=True, sharey="row")
+    fig, ax = plt.subplots(2, len(pars), figsize=(7.16, 2.4), sharex=True, sharey="row")
     ax = np.atleast_2d(ax)
     for j, par in enumerate(pars):
         t = np.array(r[par]["bin_center_ms"])
@@ -45,7 +45,7 @@ def fig3():
 def fig4():
     r = json.loads((ROOT / "outputs/X03/x03_results.json").read_text())["results"]
     pars = list(r)
-    fig, ax = plt.subplots(1, len(pars), figsize=(7.16, 1.9), sharey=True)
+    fig, ax = plt.subplots(1, len(pars), figsize=(7.16, 1.6), sharey=True)
     for j, par in enumerate(pars):
         a = ax[j]
         for n in ["epoch_z", "pre_sd"]:
