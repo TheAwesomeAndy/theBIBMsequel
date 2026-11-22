@@ -6,15 +6,15 @@ session, so every row below is a manual reading of the rule against the manuscri
 
 | Rule | Harness requirement | Paper A | Status |
 |---|---|---|---|
-| `title.length`, title rules | 8 to 13 words, declarative, no metaphor, colon subtitle allowed | "Per-Epoch Normalization Breaks Causality in EEG Decoding: Exact Leakage Identities and an Averaging Law" (13 words) | met |
+| `title.length`, title rules | 8 to 13 words, declarative, no metaphor, colon subtitle allowed | "Dividing by the Future: Exact Leakage Identities and a sqrt(k) Law for Per-Epoch EEG Normalization" (14 words) | one word over, and figurative by the author's choice |
 | `abstract.length` | under 200 words | about 200 by a LaTeX-stripped count (was 247) | at the bound |
 | `abstract.structure` | four sentences | ten sentences carrying the key numbers | not met, by choice. IEEE abstracts of this type report results. Author decision |
-| `intro.contributions`, `intro.forward-refs` | itemized contributions, each with a section reference | four contributions in prose, one section reference | partly met. An itemized list costs about six lines |
+| `intro.contributions`, `intro.forward-refs` | itemized contributions, each with a section reference | itemized, each with a section reference | met |
 | `intro.roadmap`, `intro.cliche-opening` | none | none | met |
 | `methods.leakage` | subject-wise validation for human data | participant-grouped folds throughout | met |
 | `methods.reproducibility` | seeds, versions, code | seeds and public code stated | met |
-| `methods.future-tense` | past tense | present tense throughout the methods | not met. Mechanical to convert |
-| `structure.sections`, `conclusion.*` | a Conclusion section | none. The paper ends on Scope and Future Directions | not met. Needs about eight lines and an equal cut |
+| `methods.future-tense` | past tense | converted to past tense | met |
+| `structure.sections`, `conclusion.*` | a Conclusion section | Conclusion section added | met |
 | `limits.present` | one to three stated limitations with a pivot | "Scope and Future Directions" states scope positively, per the project voice directive, which bans the word the check looks for | conflict between the two rulebooks. Author decision |
 | `ethics.statement` | IRB and consent statement for human data | none | not met. A submission blocker for TNSRE. The protocol number must come from the data custodian |
 | `data.availability` | present | present | met |

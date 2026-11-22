@@ -17,12 +17,11 @@ JOURNAL_MATRIX.md, REVIEWER_CHALLENGES.md, PROVENANCE_AUDIT.md, OPPORTUNITY_MAP.
 ## Paper A: what stands between the draft and submission
 1. Ethics statement. The manuscript has no IRB and consent statement for SHAPE. TNSRE requires one, and the protocol details must come from the data custodian.
 2. Co-author approval of the text and of the AI-use statement.
-3. Author decisions from `docs/HARNESS_REVIEW.md`: a Conclusion section, an itemized contribution list, past-tense methods, and the four-sentence abstract rule.
+3. Author approval of the title. The Conclusion, itemized contributions, and past-tense methods from `docs/HARNESS_REVIEW.md` are applied. The four-sentence abstract rule is not applied, by recommendation.
 4. Cover letter and the journal's formatting checks.
 
-Closed on 2026-11-22: length (exactly 8 pages, the last page full), title (now "Per-Epoch
-Normalization Breaks Causality in EEG Decoding: Exact Leakage Identities and an Averaging
-Law"), author footnote, the six added references (all verified against publisher or
+Closed on 2026-11-22: length (exactly 8 pages, the last page full), title (now "Dividing by the Future: Exact Leakage Identities and a sqrt(k) Law for
+Per-Epoch EEG Normalization", pending author approval), author footnote, the six added references (all verified against publisher or
 proceedings pages), and the van Driel reading. The bioRxiv full text of that paper
 contains no trial-wise z-scoring, no order-zero detrending, no closed form, and no
 analysis of trial count, so the novelty statement stands. The published journal version
