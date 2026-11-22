@@ -15,7 +15,7 @@ JOURNAL_MATRIX.md, REVIEWER_CHALLENGES.md, PROVENANCE_AUDIT.md, OPPORTUNITY_MAP.
 | Next action | Author review of the revised PDF | Literature pass for the related-work section |
 
 ## Paper A: what stands between the draft and submission
-1. Author decisions: title (shortened this session), footnote and contact address. Length is settled: cut to exactly 8 pages on 2026-11-22 (text from about 5,430 to 4,560 words, three figures shortened, every result and number kept). The last page is full, so any addition needs an equal cut.
+1. Author decisions: title (shortened this session), footnote and contact address. Length is settled: cut to exactly 8 pages on 2026-11-22 (text from about 5,430 to 4,540 words, three figures shortened, every result and number kept). The last page is full, so any addition needs an equal cut.
 2. Co-author approval of the text and of the AI-use statement.
 3. Crossref pass on six references added this session.
 4. One full reading of van Driel et al. (2021) to confirm that it contains no order-zero or z-scoring case. The novelty statement in the introduction depends on it.
