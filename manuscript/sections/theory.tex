@@ -48,7 +48,7 @@ The denominator contains the energy of the evoked response. Dividing by it leave
 Let $\xi_t=\Phi(\xi_{t-1},u_t)$ be any causal state-space encoder and let $\xi_{T_0}$ be its state at stimulus onset. Driven by $u=z$, $\xi_{T_0}$ is a function of $(x_\mathcal{P},\bar{x}_\mathcal{Q},\hat\sigma)$ and can carry information about $y$ even when $I(y;x_\mathcal{P})=0$. The same holds for $u=x/\hat\sigma$ through \eqref{eq:scale}. Driven by pre-stimulus scaling, $\xi_{T_0}$ is a function of $x_\mathcal{P}$ alone, and the data processing inequality gives $I(y;\xi_{T_0})\le I(y;x_\mathcal{P})$.
 \end{corollary}
 
-The corollary gives a falsifiable test for any temporal model: restricted to pre-stimulus samples, it decodes at chance under scaling that never touches $\mathcal{Q}$, and its accuracy under per-epoch scaling measures the leak.
+The corollary gives a falsifiable test for any temporal model: restricted to pre-stimulus samples, it decodes at chance under scaling that never touches $\mathcal{Q}$.
 
 \subsection{The Averaging Law}
 Let trial $i$ of condition $y$ have post-stimulus mean pattern $\bar{\mathbf{x}}^{(i)}_\mathcal{Q}=\boldsymbol\mu_y+\mathbf{e}_i$ across channels, with $\mathbf{e}_i$ independent with covariance $\Sigma_e$. An average of $k$ trials has the same condition means and covariance $\Sigma_e/k$. Treating $\hat\sigma$ as approximately constant, which holds when it is estimated from many samples, the leaked pattern \eqref{eq:identity} is an affine image of the post-stimulus mean, and its Mahalanobis separation is

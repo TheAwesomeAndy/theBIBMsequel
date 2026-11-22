@@ -11,14 +11,22 @@ JOURNAL_MATRIX.md, REVIEWER_CHALLENGES.md, PROVENANCE_AUDIT.md, OPPORTUNITY_MAP.
 | Central claim | Scaling an epoch by its own statistics writes post-stimulus information into the pre-stimulus interval by two exact routes, with a square-root averaging law for its size | Subject centering estimates a participant offset from m unlabeled reference observations. Separation is m/(m+1) of its asymptote, and centering helps only above a break-even size |
 | Draft | Complete, 8 pages, builds clean | First full draft, 5 pages, builds clean |
 | Target | IEEE TNSRE | IEEE TNSRE after Paper A, or J. Neural Eng. |
-| Readiness | Not submission-ready. Science is in place. Four items below remain | Not submission-ready. Core evidence is in place. Related work and three reviewer analyses remain |
+| Readiness | Not submission-ready. Science is in place. Four items below remain, the ethics statement first | Not submission-ready. Core evidence is in place. Related work and three reviewer analyses remain |
 | Next action | Author review of the revised PDF | Literature pass for the related-work section |
 
 ## Paper A: what stands between the draft and submission
-1. Author decisions: title (shortened this session), footnote and contact address. Length is settled: cut to exactly 8 pages on 2026-11-22 (text from about 5,430 to 4,540 words, three figures shortened, every result and number kept). The last page is full, so any addition needs an equal cut.
+1. Ethics statement. The manuscript has no IRB and consent statement for SHAPE. TNSRE requires one, and the protocol details must come from the data custodian.
 2. Co-author approval of the text and of the AI-use statement.
-3. Crossref pass on six references added this session.
-4. One full reading of van Driel et al. (2021) to confirm that it contains no order-zero or z-scoring case. The novelty statement in the introduction depends on it.
+3. Author decisions from `docs/HARNESS_REVIEW.md`: a Conclusion section, an itemized contribution list, past-tense methods, and the four-sentence abstract rule.
+4. Cover letter and the journal's formatting checks.
+
+Closed on 2026-11-22: length (exactly 8 pages, the last page full), title (now "Per-Epoch
+Normalization Breaks Causality in EEG Decoding: Exact Leakage Identities and an Averaging
+Law"), author footnote, the six added references (all verified against publisher or
+proceedings pages), and the van Driel reading. The bioRxiv full text of that paper
+contains no trial-wise z-scoring, no order-zero detrending, no closed form, and no
+analysis of trial count, so the novelty statement stands. The published journal version
+was not read.
 
 Scientific risk that no further experiment in hand removes: a referee may judge the
 effect narrow, because full-epoch accuracy changes by +0.023 with an interval that
@@ -71,5 +79,5 @@ realizability.
 - Remote branches that still hold earlier identity metadata: `journal-tnsre`, `journal-tnsre-stonybrook`, `journal-tnsre-clean`, `journal-tnsre-noemail`. This session cannot delete remote branches. They can be deleted from the repository's Branches page. `journal-extension` and two `ccr-` branches also exist and were not inspected.
 
 **Next highest-value action**
-Author review of `manuscript/main.pdf`, then the Crossref pass and the van Driel reading,
-which together make Paper A ready for co-author sign-off.
+The ethics statement for SHAPE, which only the data custodian can supply, then co-author
+sign-off on Paper A.
