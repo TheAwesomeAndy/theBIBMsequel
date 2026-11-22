@@ -25,11 +25,18 @@ statistic exceeds its null across participants in paradigms with a sustained
 one-signed condition difference, and is at chance under none and pre_sd;
 within participants the leak is smaller than across participants.
 
-Usage: ERPCORE_DATA_DIR=... python experiments/X02/run.py
+Run record: the first run computed N170, P3, N400 with one permutation stream
+(default_rng(2026)) shared across paradigms and was stopped during N2pc by a
+session interruption. N2pc and MMN were then computed with `run.py N2pc MMN`,
+which seeds each paradigm's permutations separately. This changes only which
+random permutations are drawn.
+
+Usage: ERPCORE_DATA_DIR=... python experiments/X02/run.py [PARADIGM ...]
 Output: outputs/X02/x02_results.json
 """
 from __future__ import annotations
 
+import json
 import sys
 import time
 from pathlib import Path
@@ -89,10 +96,15 @@ def flat_across(F, y, g, repeats=5, seed=0):
     return float(across(F[:, None, :], y, g, [0], repeats, seed)[0])
 
 
-def main():
-    t0 = time.time(); res = {}
-    rng = np.random.default_rng(2026)
+def main(only=None):
+    """`only`: paradigms to (re)compute; results already in OUT for other paradigms are kept.
+    The permutation stream is seeded per paradigm so a resumed run matches a full run."""
+    t0 = time.time()
+    res = json.loads(OUT.read_text())["results"] if (only and OUT.exists()) else {}
     for par in ec.CONTRASTS:
+        if only and par not in only:
+            continue
+        rng = np.random.default_rng([2026, list(ec.CONTRASTS).index(par)])
         parts = ec.participants(par)
         W = {n: [] for n in NORMS}; A = {n: [] for n in NORMS}; Aavg = {n: [] for n in NORMS}
         ident, g, y2, counts = [], [], [], []
@@ -149,4 +161,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:] or None)
