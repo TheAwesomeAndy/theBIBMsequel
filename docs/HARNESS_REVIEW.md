@@ -16,7 +16,7 @@ session, so every row below is a manual reading of the rule against the manuscri
 | `methods.future-tense` | past tense | converted to past tense | met |
 | `structure.sections`, `conclusion.*` | a Conclusion section | Conclusion section added | met |
 | `limits.present` | one to three stated limitations with a pivot | "Scope and Future Directions" states scope positively, per the project voice directive, which bans the word the check looks for | conflict between the two rulebooks. Author decision |
-| `ethics.statement` | IRB and consent statement for human data | none | not met. A submission blocker for TNSRE. The protocol number must come from the data custodian |
+| `ethics.statement` | IRB and consent statement for human data | the sentence of the accepted BIBM submission, without a protocol number | met in form. A journal may ask for the protocol number |
 | `data.availability` | present | present | met |
 | `discussion.compare` | citations in the discussion | present | met |
 | `bib.uncited` | no unused entries | nine entries were unused, six of them from the target journal. Four are now cited where they apply, five remain unused | improved |

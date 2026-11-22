@@ -15,7 +15,7 @@ JOURNAL_MATRIX.md, REVIEWER_CHALLENGES.md, PROVENANCE_AUDIT.md, OPPORTUNITY_MAP.
 | Next action | Author review of the revised PDF | Literature pass for the related-work section |
 
 ## Paper A: what stands between the draft and submission
-1. Ethics statement. The manuscript has no IRB and consent statement for SHAPE. TNSRE requires one, and the protocol details must come from the data custodian.
+1. Ethics statement. Added on 2026-11-22 with the sentence of the accepted BIBM submission (commit c5521a1 of the BIBM repository): SHAPE was collected under the laboratory's Institutional Review Board oversight. The BIBM camera-ready dropped that sentence, and it names no protocol number or consent procedure, which TNSRE may ask for at submission.
 2. Co-author approval of the text and of the AI-use statement.
 3. Author approval of the title. The Conclusion, itemized contributions, and past-tense methods from `docs/HARNESS_REVIEW.md` are applied. The four-sentence abstract rule is not applied, by recommendation.
 4. Cover letter and the journal's formatting checks.
@@ -35,7 +35,7 @@ realizability.
 ## Paper B: what stands between the draft and submission
 1. Related work: nine references today. Needs test-time adaptation, per-subject normalization layers, mixed-effects decoding, repeated-measures normalization.
 2. Reviewer analyses not yet run: principal angles between participant and condition subspaces, the interaction term, the monotonicity test on the PCA sweep, a measured test of unequal class composition (Proposition 1 predicts the effect, P3 can test it).
-3. Ethics statement for SHAPE, from the data custodian.
+3. Ethics statement for SHAPE: the BIBM sentence is in place. A protocol number may be requested.
 4. Author order and affiliations. The draft carries the names in the order of the earlier letter and no addresses.
 5. A second trial-averaged cohort with three or more conditions would strengthen the panel result.
 
@@ -78,5 +78,4 @@ realizability.
 - Remote branches that still hold earlier identity metadata: `journal-tnsre`, `journal-tnsre-stonybrook`, `journal-tnsre-clean`, `journal-tnsre-noemail`. This session cannot delete remote branches. They can be deleted from the repository's Branches page. `journal-extension` and two `ccr-` branches also exist and were not inspected.
 
 **Next highest-value action**
-The ethics statement for SHAPE, which only the data custodian can supply, then co-author
-sign-off on Paper A.
+Co-author sign-off on Paper A, then the cover letter.
