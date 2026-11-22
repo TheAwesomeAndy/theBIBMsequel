@@ -23,11 +23,15 @@ Statistic (fixed before any X03 run): the pre-registered time-resolved
 statistic of dissoAdventuresv2@69b6c97, i.e. shrinkage LDA on the 28-channel
 pattern of each 4-sample bin, averaged over bins centered in [-200, 0) ms.
 
+Run record: a first full run (one shared random stream) reached N400 before a
+workspace restart; its printed values are superseded by this per-paradigm-seeded run.
+
 Usage: ERPCORE_DATA_DIR=... python experiments/X03/run.py
 Output: outputs/X03/x03_results.json
 """
 from __future__ import annotations
 
+import json
 import sys
 import time
 from pathlib import Path
@@ -96,10 +100,14 @@ def participant_curve(x, times, y, norm, rng):
 
 
 def main():
+    """Saves after each paradigm; a rerun skips paradigms already in OUT.
+    Each paradigm's pseudo-trial draws are seeded separately so a resumed run matches a full run."""
     t0 = time.time()
-    rng = np.random.default_rng(2026)
-    res = {}
+    res = json.loads(OUT.read_text())["results"] if OUT.exists() else {}
     for par in ec.CONTRASTS:
+        if par in res:
+            continue
+        rng = np.random.default_rng([2026, list(ec.CONTRASTS).index(par)])
         parts = ec.participants(par)
         curves = {n: {k: [] for k in KS} for n in NORMS}
         for pid, f in parts:
@@ -123,6 +131,9 @@ def main():
         out["prediction_from_k1"] = {str(k): float(stats.norm.cdf(np.sqrt(k) * stats.norm.ppf(b1)))
                                      for k in KS}
         res[par] = out
+        cm.write_json(OUT, {"provenance": {"experiment": "X03-2026-11", "ks": KS, "R": R, "norms": NORMS,
+                                           "prediction": "BA(k) = Phi(sqrt(k) Phi^-1(BA(1)))"},
+                            "results": res, "runtime_s": round(time.time() - t0, 1)})
         print(par, {k: round(v["ba"], 3) for k, v in out["epoch_z"].items()},
               "pred", {k: round(v, 3) for k, v in out["prediction_from_k1"].items()},
               "pre_sd", {k: round(v["ba"], 3) for k, v in out["pre_sd"].items()},
