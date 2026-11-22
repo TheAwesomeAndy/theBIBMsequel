@@ -76,7 +76,8 @@ def scale(X, mode):
         sd = X.std(1, keepdims=True)
         return np.where(sd > 0, (X - X.mean(1, keepdims=True)) / np.where(sd > 0, sd, 1), X)
     if mode == "pre_sd":
-        return X / X[:, :PRE].std(1, keepdims=True)
+        sd = X[:, :PRE].std(1, keepdims=True)   # same zero-SD guard as the original z-score
+        return np.where(sd > 0, X / np.where(sd > 0, sd, 1), X)
     if mode == "none":
         return X.copy()
     raise ValueError(mode)
