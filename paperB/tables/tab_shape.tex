@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{SHAPE, three affective conditions (chance 0.333), 211 participants, unscaled epochs, participant-grouped 10-fold cross-validation. Balanced accuracy with participant-bootstrap 95\% intervals. Every transform uses only the participant's own unlabeled panel.}
+\label{tab:shape}
+\begin{tabular}{llc}
+\toprule
+Transform & Order & Balanced accuracy \\
+\midrule
+None & -- & 0.679 [0.646, 0.712] \\
+Euclidean alignment & second & 0.834 [0.806, 0.863] \\
+Tangent space, cohort reference & -- & 0.472 [0.439, 0.507] \\
+Tangent space, participant recentering & second & 0.727 [0.690, 0.765] \\
+Panel centering & first & 0.900 [0.872, 0.927] \\
+Panel centering and scaling & first & 0.905 [0.875, 0.932] \\
+Euclidean alignment, then centering & both & 0.912 [0.883, 0.937] \\
+Panel centering, joint assignment & first & 0.953 [0.926, 0.976] \\
+\bottomrule
+\end{tabular}
+\end{table}

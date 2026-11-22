@@ -1,0 +1,106 @@
+{
+  "provenance": {
+    "experiment": "X11-2026-11 (ERP CORE)",
+    "features": "participant-condition averages, unscaled, 4-sample bin means x 28 channels over the full epoch",
+    "cv": "participant-grouped 5-fold x5, StandardScaler, LogisticRegression C=0.1; balanced design so accuracy equals balanced accuracy; 4000 participant bootstraps",
+    "null": "500 within-participant label swaps, one repeat each, panel_center"
+  },
+  "results": {
+    "N170": {
+      "n_participants": 40,
+      "uncentered": {
+        "ba": 0.7350000000000001,
+        "ci": [
+          0.675,
+          0.795
+        ]
+      },
+      "panel_center": {
+        "ba": 0.9650000000000001,
+        "ci": [
+          0.905,
+          1.0
+        ],
+        "p": 0.001996007984031936,
+        "null_q95": 0.65
+      }
+    },
+    "P3": {
+      "n_participants": 40,
+      "uncentered": {
+        "ba": 0.8324999999999999,
+        "ci": [
+          0.7725,
+          0.89
+        ]
+      },
+      "panel_center": {
+        "ba": 0.9949999999999999,
+        "ci": [
+          0.985,
+          1.0
+        ],
+        "p": 0.001996007984031936,
+        "null_q95": 0.65
+      }
+    },
+    "N400": {
+      "n_participants": 40,
+      "uncentered": {
+        "ba": 0.8675,
+        "ci": [
+          0.8099999999999999,
+          0.9225
+        ]
+      },
+      "panel_center": {
+        "ba": 1.0,
+        "ci": [
+          1.0,
+          1.0
+        ],
+        "p": 0.001996007984031936,
+        "null_q95": 0.65
+      }
+    },
+    "N2pc": {
+      "n_participants": 39,
+      "uncentered": {
+        "ba": 0.635897435897436,
+        "ci": [
+          0.5769230769230769,
+          0.6974358974358975
+        ]
+      },
+      "panel_center": {
+        "ba": 0.8666666666666666,
+        "ci": [
+          0.7743589743589744,
+          0.9487179487179487
+        ],
+        "p": 0.001996007984031936,
+        "null_q95": 0.6423076923076911
+      }
+    },
+    "MMN": {
+      "n_participants": 40,
+      "uncentered": {
+        "ba": 0.8724999999999999,
+        "ci": [
+          0.8125,
+          0.9275
+        ]
+      },
+      "panel_center": {
+        "ba": 0.9550000000000001,
+        "ci": [
+          0.8949999999999999,
+          1.0
+        ],
+        "p": 0.001996007984031936,
+        "null_q95": 0.65
+      }
+    }
+  },
+  "runtime_s": 136.9
+}

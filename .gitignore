@@ -24,3 +24,8 @@ manuscript/*.out
 manuscript/*.bbl
 manuscript/*.blg
 manuscript/*.synctex.gz
+paperB/*.aux
+paperB/*.log
+paperB/*.out
+paperB/*.bbl
+paperB/*.blg

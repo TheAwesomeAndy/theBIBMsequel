@@ -28,3 +28,14 @@ New evidence: theBIBMsequel `outputs/X07`, `outputs/X08`.
 | R2.12 | Energy-efficiency claim | Remove |
 | R2.11 | Overstated wording | Rewrite claims to match the evidence |
 | R1.8 | Why gains differ across architectures | Relate gain to each representation's subject-variance fraction |
+
+## Update 2026-11-22
+
+The resubmission is now a new paper with its own draft in `paperB/` (five pages).
+New evidence: `outputs/X11` (alignment comparison, joint assignment, complete panels on
+ERP CORE, panel controls on 211 participants) and `outputs/X12` (reference-size law on
+single trials of five ERP CORE paradigms). Points now answered: R1.1 (derivation,
+`paperB/sections/theory.tex`), R1.2, R2.9, R2.13 (alignment alternatives), R1.4 (second
+dataset), R2.12 (energy claim removed), R2.11 (wording). Still open: R1.3 monotonicity
+test, R2.4 principal angles, R2.5 interaction term, R2.10 clinical covariates, R1.7
+ethics statement, R1.8 architecture differences. Full status in `docs/PROGRAM_STATUS.md`.

@@ -1,0 +1,44 @@
+{
+  "provenance": {
+    "experiment": "X11b-2026-11",
+    "git_commit": "af43a154859d3d331aafa77d36cd3a78188afba3",
+    "utc": "2026-11-22T15:33:33+00:00",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "sklearn": "1.9.1",
+    "data_checksum": "85f81c854574122bc0e4d2764b288a1465ab2e6ad8173d0df5ee1e80f365c9a3",
+    "params": {
+      "rules": "experiments/X08/run.py",
+      "input": "unscaled, X07 loader, one participant with an all-zero epoch excluded"
+    }
+  },
+  "n_subjects": 211,
+  "results": {
+    "uncentered": 0.6793048973143759,
+    "full_panel": 0.9004739336492892,
+    "loo": 0.9036334913112164,
+    "panel2": 0.8197414059409913,
+    "panel2_draws": [
+      0.7995778030645427,
+      0.8198074974670719,
+      0.8186671312547814,
+      0.8414397921758922,
+      0.8192148057426686
+    ],
+    "panel1": 0.5092649851458362,
+    "panel1_draws": [
+      0.5034136546184739,
+      0.5194318753142283,
+      0.4962019738139141,
+      0.5221934667586842,
+      0.5050839552238806
+    ],
+    "null_full_panel": {
+      "n_perm": 100,
+      "mean": 0.3354818325434439,
+      "max": 0.4028436018957346,
+      "p": 0.009900990099009901
+    }
+  },
+  "runtime_s": 1472.2
+}

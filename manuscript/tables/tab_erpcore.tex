@@ -1,20 +1,20 @@
 \begin{table*}[t]
 \centering
-\caption{ERP CORE: mean pre-stimulus decoding accuracy ($-200$ to $0$~ms, 15.6~ms bins), two classes, chance 0.5, 40 participants per paradigm. Across participants: trials scaled, then averaged; $p$ from 200 label permutations. Within participants: single trials; mean [95\% CI] and one-sample $t$-test $p$ against 0.5.}
+\caption{ERP CORE: mean pre-stimulus decoding accuracy ($-200$ to $0$~ms, 15.6~ms bins), two classes, chance 0.5, 40 participants per paradigm. Across participants: trials scaled, then averaged; $p$ from 200 within-participant label permutations, values marked $\ast$ use 2000 (\texttt{epoch\_z}) or 500 (\texttt{none}) permutations. Within participants: single trials; mean [95\% CI] and one-sample $t$-test $p$ against 0.5.}
 \label{tab:erpcore}
 \begin{tabular}{llcccc}
 \toprule
 Paradigm & Regime & \texttt{none} & \texttt{pre\_sd} & \texttt{epoch\_z} & \texttt{post\_z} \\
 \midrule
-\multirow{2}{*}{N170} & across & 0.488 ($p=0.726$) & 0.492 ($p=0.567$) & 0.573 ($p=0.005$) & 0.582 ($p=0.010$) \\
+\multirow{2}{*}{N170} & across & 0.488 ($p=0.7146^{\ast}$) & 0.492 ($p=0.567$) & 0.573 ($p=0.0040^{\ast}$) & 0.582 ($p=0.010$) \\
  & within & 0.508 ($p=0.36$) & 0.505 ($p=0.53$) & 0.515 ($p=0.084$) & 0.520 ($p=0.024$) \\
-\multirow{2}{*}{P3} & across & 0.520 ($p=0.234$) & 0.524 ($p=0.169$) & 0.695 ($p=0.005$) & 0.703 ($p=0.005$) \\
+\multirow{2}{*}{P3} & across & 0.520 ($p=0.1776^{\ast}$) & 0.524 ($p=0.169$) & 0.695 ($p=0.0005^{\ast}$) & 0.703 ($p=0.005$) \\
  & within & 0.500 ($p=0.84$) & 0.499 ($p=0.32$) & 0.504 ($p=0.052$) & 0.507 ($p=0.018$) \\
-\multirow{2}{*}{N400} & across & 0.488 ($p=0.701$) & 0.486 ($p=0.687$) & 0.715 ($p=0.005$) & 0.724 ($p=0.005$) \\
+\multirow{2}{*}{N400} & across & 0.488 ($p=0.7206^{\ast}$) & 0.486 ($p=0.687$) & 0.715 ($p=0.0005^{\ast}$) & 0.724 ($p=0.005$) \\
  & within & 0.499 ($p=0.71$) & 0.501 ($p=0.77$) & 0.537 ($p=5.2e-08$) & 0.544 ($p=1.3e-08$) \\
-\multirow{2}{*}{N2pc} & across & 0.502 ($p=0.478$) & 0.483 ($p=0.761$) & 0.597 ($p=0.005$) & 0.597 ($p=0.005$) \\
+\multirow{2}{*}{N2pc} & across & 0.502 ($p=0.4970^{\ast}$) & 0.483 ($p=0.761$) & 0.597 ($p=0.0010^{\ast}$) & 0.597 ($p=0.005$) \\
  & within & 0.504 ($p=0.14$) & 0.504 ($p=0.095$) & 0.510 ($p=0.0084$) & 0.511 ($p=0.017$) \\
-\multirow{2}{*}{MMN} & across & 0.537 ($p=0.070$) & 0.524 ($p=0.174$) & 0.553 ($p=0.045$) & 0.592 ($p=0.025$) \\
+\multirow{2}{*}{MMN} & across & 0.537 ($p=0.0878^{\ast}$) & 0.524 ($p=0.174$) & 0.553 ($p=0.0550^{\ast}$) & 0.592 ($p=0.025$) \\
  & within & 0.500 ($p=0.66$) & 0.500 ($p=0.3$) & 0.499 ($p=0.0014$) & 0.499 ($p=0.011$) \\
 \bottomrule
 \end{tabular}
