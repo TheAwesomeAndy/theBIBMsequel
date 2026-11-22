@@ -13,11 +13,17 @@ Prediction, fixed before this run: EEGNet on `pre` is above chance under
 epoch_z and at chance under pre_sd. Anchor: BIBM reports EEGNet BA 0.731 on
 `full` under epoch_z.
 
-Usage: SHAPE_DATA_DIR=... python experiments/X04/run.py
+Run record: the first run finished pre|epoch_z (0.539), full|epoch_z (0.731)
+and pre|pre_sd (0.300) and was stopped by a session interruption during
+full|pre_sd. Its predictions were not saved, so the resumed run recomputes
+all four; training is seeded, so the three finished values must reproduce.
+
+Usage: SHAPE_DATA_DIR=... python experiments/X04/run.py [RUN ...]
 Output: outputs/X04/x04_results.json
 """
 from __future__ import annotations
 
+import json
 import sys
 import time
 from pathlib import Path
@@ -34,6 +40,7 @@ from sequel import common as cm  # noqa: E402
 EPOCHS, BATCH, LR, DROPOUT = 80, 64, 1e-3, 0.25
 torch.set_num_threads(1)
 OUT = ROOT / "outputs" / "X04" / "x04_results.json"
+PRED = Path("/home/claude/data_local/x04_oof_predictions.json")  # out-of-fold labels, kept outside the repo
 
 
 class EEGNet(nn.Module):
@@ -81,15 +88,19 @@ def run(X, y, g, k):
     return P.argmax(1)
 
 
-def main():
+def main(only=None):
+    """`only`: list like ['full|pre_sd']; predictions of other runs are reloaded from PRED."""
     t0 = time.time()
     raw, y, g = cm.load_shape_raw()
     Xb = cm.downsample(raw)
-    preds = {}
+    preds = {k: np.array(v) for k, v in json.loads(PRED.read_text()).items()} if (only and PRED.exists()) else {}
     for norm in ["epoch_z", "pre_sd"]:
         Xn = cm.normalize(Xb, norm)
         for name, Xi, k in [("pre", Xn[:, :cm.ONSET_DS], 32), ("full", Xn, 64)]:
+            if only and f"{name}|{norm}" not in only:
+                continue
             preds[f"eegnet_{name}|{norm}"] = run(Xi, y, g, k)
+            PRED.write_text(json.dumps({kk: vv.tolist() for kk, vv in preds.items()}))
             print(f"{name}|{norm} BA {cm.balanced_accuracy(y, preds[f'eegnet_{name}|{norm}']):.3f} "
                   f"{time.time() - t0:.0f}s", flush=True)
     summary, B, names = cm.subject_bootstrap(y, g, preds)
@@ -103,4 +114,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:] or None)

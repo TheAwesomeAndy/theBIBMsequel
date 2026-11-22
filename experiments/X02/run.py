@@ -29,7 +29,11 @@ Run record: the first run computed N170, P3, N400 with one permutation stream
 (default_rng(2026)) shared across paradigms and was stopped during N2pc by a
 session interruption. N2pc and MMN were then computed with `run.py N2pc MMN`,
 which seeds each paradigm's permutations separately. This changes only which
-random permutations are drawn.
+random permutations are drawn. The resumed run first stopped on an N2pc
+participant with 2 retained trials in one class; participants with fewer
+than MIN_WITHIN=5 trials in either class are now excluded from the
+within-participant regime only (the 5-fold split is undefined for them).
+No N170, P3, or N400 participant falls below that threshold.
 
 Usage: ERPCORE_DATA_DIR=... python experiments/X02/run.py [PARADIGM ...]
 Output: outputs/X02/x02_results.json
@@ -57,6 +61,7 @@ from sequel import erpcore as ec  # noqa: E402
 NORMS = ["none", "pre_sd", "epoch_z", "post_z"]
 BIN = 4
 N_PERM = 200
+MIN_WITHIN = 5   # 5-fold CV within a participant needs >= 5 trials per class
 OUT = ROOT / "outputs" / "X02" / "x02_results.json"
 
 
@@ -116,7 +121,8 @@ def main(only=None):
             avg_raw = np.stack([x[y == c].mean(0) for c in (0, 1)])
             for n in NORMS:
                 xb = binned(ec.normalize(x, times, n))
-                W[n].append(within(xb, y, seed=pid))
+                if min(counts[-1]) >= MIN_WITHIN:
+                    W[n].append(within(xb, y, seed=pid))
                 A[n] += [xb[y == c].mean(0) for c in (0, 1)]
                 Aavg[n] += list(binned(ec.normalize(avg_raw, times, n)))
             ident += list(-avg_raw.mean(1) / avg_raw.std(1))
@@ -125,7 +131,8 @@ def main(only=None):
         pre = np.flatnonzero((centers >= -200) & (centers < 0))
         allb = np.arange(len(centers))
         out = {"n_participants": len(parts), "trials_per_class_median": np.median(counts, 0).tolist(),
-               "min_trials_per_class": int(np.min(counts)), "bin_center_ms": centers.round(2).tolist(),
+               "min_trials_per_class": int(np.min(counts)),
+               "n_within": int(sum(min(c) >= MIN_WITHIN for c in counts)), "bin_center_ms": centers.round(2).tolist(),
                "pre_bins": pre.tolist(), "within": {}, "across": {}, "across_avgnorm": {}}
         out["identity_across_ba"] = flat_across(np.array(ident), y2, g)
         for n in NORMS:
