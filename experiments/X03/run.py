@@ -104,6 +104,8 @@ def main():
         curves = {n: {k: [] for k in KS} for n in NORMS}
         for pid, f in parts:
             x, times, y, _ = ec.load(f, par)
+            if min((y == 0).sum(), (y == 1).sum()) < 5:
+                continue   # same rule as X02: 5-fold split needs >= 5 trials per class
             for n in NORMS:
                 for k, a in participant_curve(x, times, y, n, rng).items():
                     curves[n][k].append(a)
