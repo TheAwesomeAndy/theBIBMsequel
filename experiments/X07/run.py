@@ -112,7 +112,7 @@ def center(F, g):
 
 
 def pca_all(B):
-    return np.concatenate([PCA(64).fit_transform(B[:, ch]) for ch in range(B.shape[1])], 1)
+    return np.concatenate([PCA(64, random_state=0).fit_transform(B[:, ch]) for ch in range(B.shape[1])], 1)
 
 
 def evaluate(F, y, g, B=None, centered=False):
@@ -122,7 +122,7 @@ def evaluate(F, y, g, B=None, centered=False):
         if B is not None:
             Ftr, Fte = [], []
             for ch in range(B.shape[1]):
-                p = PCA(64).fit(B[tr, ch]); Ftr.append(p.transform(B[tr, ch])); Fte.append(p.transform(B[te, ch]))
+                p = PCA(64, random_state=0).fit(B[tr, ch]); Ftr.append(p.transform(B[tr, ch])); Fte.append(p.transform(B[te, ch]))
             Ftr, Fte = np.concatenate(Ftr, 1), np.concatenate(Fte, 1)
             if centered:
                 Ftr, Fte = center(Ftr, g[tr]), center(Fte, g[te])
