@@ -33,7 +33,8 @@ random permutations are drawn. The resumed run first stopped on an N2pc
 participant with 2 retained trials in one class; participants with fewer
 than MIN_WITHIN=5 trials in either class are now excluded from the
 within-participant regime only (the 5-fold split is undefined for them).
-No N170, P3, or N400 participant falls below that threshold.
+No N170, P3, or N400 participant falls below that threshold. One N2pc
+participant has no retained trial in one condition and is excluded from N2pc.
 
 Usage: ERPCORE_DATA_DIR=... python experiments/X02/run.py [PARADIGM ...]
 Output: outputs/X02/x02_results.json
@@ -112,10 +113,12 @@ def main(only=None):
         rng = np.random.default_rng([2026, list(ec.CONTRASTS).index(par)])
         parts = ec.participants(par)
         W = {n: [] for n in NORMS}; A = {n: [] for n in NORMS}; Aavg = {n: [] for n in NORMS}
-        ident, g, y2, counts = [], [], [], []
+        ident, g, y2, counts, excluded = [], [], [], [], []
         centers = None
         for pid, f in parts:
             x, times, y, _ = ec.load(f, par)
+            if min((y == 0).sum(), (y == 1).sum()) == 0:
+                excluded.append(int(pid)); continue   # no average exists for an empty condition
             counts.append([int((y == 0).sum()), int((y == 1).sum())])
             centers = times[:(len(times) // BIN) * BIN].reshape(-1, BIN).mean(1)
             avg_raw = np.stack([x[y == c].mean(0) for c in (0, 1)])
@@ -130,7 +133,7 @@ def main(only=None):
         g = np.array(g); y2 = np.array(y2)
         pre = np.flatnonzero((centers >= -200) & (centers < 0))
         allb = np.arange(len(centers))
-        out = {"n_participants": len(parts), "trials_per_class_median": np.median(counts, 0).tolist(),
+        out = {"n_participants": len(parts) - len(excluded), "excluded_zero_trial_participants": len(excluded), "trials_per_class_median": np.median(counts, 0).tolist(),
                "min_trials_per_class": int(np.min(counts)),
                "n_within": int(sum(min(c) >= MIN_WITHIN for c in counts)), "bin_center_ms": centers.round(2).tolist(),
                "pre_bins": pre.tolist(), "within": {}, "across": {}, "across_avgnorm": {}}
@@ -149,7 +152,7 @@ def main(only=None):
                 obs = float(tc[pre].mean())
                 null = []
                 for _ in range(N_PERM):
-                    flip = rng.random(len(parts)) < 0.5
+                    flip = rng.random(len(g) // 2) < 0.5
                     yp = y2.reshape(-1, 2).copy(); yp[flip] = yp[flip][:, ::-1]
                     null.append(across(Arr, yp.ravel(), g, pre, repeats=1, seed=int(rng.integers(1e6))).mean())
                 null = np.array(null)
